@@ -1,0 +1,29 @@
+.row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 239, 239);
+
+}
+.hero-image{
+   width: 400px;
+}
+.card-image{
+    width: 150px;
+}
+
+.btn{
+    background-color: #9c3353;
+    color: rgb(255, 254, 254);
+}
+.home-container{
+    height: 100vh;
+}
+.heading{
+    text-align: center;
+}
