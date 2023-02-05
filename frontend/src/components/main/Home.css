@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .card{
     display: flex;
@@ -10,20 +11,27 @@
     background-color: rgb(240, 239, 239);
 
 }
-.hero-image{
-   width: 400px;
+.heroimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.hero-image{
+    width: 70%;
+    
+}
+
 .card-image{
     width: 150px;
 }
 
 .btn{
     background-color: #9c3353;
-    color: rgb(255, 254, 254);
+    color: #fffefe;
 }
 .home-container{
-    height: 100vh;
+    
+    height: 90vh;
 }
-.heading{
-    text-align: center;
-}
+
