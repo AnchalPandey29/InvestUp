@@ -1,59 +1,63 @@
 import React from 'react'
 import './Home.css';
+import Eligibility from './Eligibility';
+
 
 const Home = () => {
   return (
-     
-  <>
-  
+
+    <>
+
       <div className="home-container pt-5" >
         <div className="row">
-          
-          <div className="col-md-4">
+
+          <div className="col-md-4 p-4 ">
             <h1>InvestUp</h1>
             <p>Explore the funding environment with InvestUp and tap into some of the most relevant models for your startup's growth.</p>
-            <button className='btn '> 
+            <button className='btn '>
               Get started
             </button>
           </div>
           <div className="col-md-4 heroimg">
-            <img className='hero-image' src="\home.png" alt="" /> 
+            <img className='hero-image' src="\home.png" alt="" />
           </div>
-          <img src="\wave.png" alt="" />
+
+
+
+          <svg
+            className="hero-waves"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28 "
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <path
+                id="wave-path"
+                d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+              ></path>
+            </defs>
+            <g className="wave1">
+              <use xlinkHref="#wave-path" x={50} y={2} fill="rgba(156, 51, 83, 0.2)"></use>
+            </g>
+            <g className="wave2">
+              <use xlinkHref="#wave-path" x={50} y={4} fill="rgba(156, 51, 83, 0.5)"></use>
+            </g>
+            <g className="wave3">
+              <use xlinkHref="#wave-path" x={50} y={6} fill="rgba(156, 51, 83)"></use>
+            </g>
+          </svg>
+
         </div>
-        
+
+
+
       </div>
 
+      <Eligibility />
 
-      <div className='row'>
-        <div className='col-md-3 p-1'>
-            <div className='card'>
-                  <img className='card-image' src="\seed.png" alt="" />
-                  {/* https://img.freepik.com/free-vector/plant-white_1308-41021.jpg?w=740&t=st=1674664226~exp=1674664826~hmac=dbbe97c9db1b898f9e8bffaa36507ff84122fb5d7306e590f6159b09f6affdae */}
-                  <h3>Startup</h3>
-                  <p><i class="fa fa-circle" aria-hidden="true"></i>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                  </p>
-            </div>
-        </div>
+    </>
 
-        <div className='col-md-3 p-1'>
-            <div className='card'>
-                  <img className='card-image' src="\plant.png" alt="" />
-                  <h3>Startup</h3>
-                    <p><i class="fa fa-circle" aria-hidden="true"></i>
-                    <i class="fa fa-circle" aria-hidden="true"></i>
-                    <i class="fa fa-circle" aria-hidden="true"></i>
-                     </p>
-            </div>
-        </div>
-      </div>
 
-      
-  </>
-    
-  
   )
 }
 
