@@ -9,7 +9,7 @@ const Header = () => {
       <div className="container">
         {/* Toggle button */}
         <button
-          className="navbar-toggler"
+          className="navbar-toggler "
           type="button"
           data-mdb-toggle="collapse"
           data-mdb-target="#navbarSupportedContent"
@@ -22,18 +22,18 @@ const Header = () => {
         {/* Collapsible wrapper */}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {/* Navbar brand */}
-          <a className="navbar-brand mt-2 mt-lg-0" href="#">
+          <a className="navbar-brand mt-2 mt-lg-0" href="/main/home">
             <img
               src="\logo.png"
               height={55}
-              alt="MDB Logo"
+              alt="InvestUp logo"
               loading="lazy"
             />
           </a>
           {/* Left links */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link hover-overlay " to="/main/home">
+              <NavLink className="nav-link hover-overlay nav-dark" to="/main/home">
                 Home
               </NavLink>
             </li>

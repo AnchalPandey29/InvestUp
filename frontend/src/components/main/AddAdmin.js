@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Signup = () => {
+const AddAdmin = () => {
 
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ const Signup = () => {
     // 4. data format - json, etc.
 
     setSubmitting(true);
-    const res = await fetch("http://localhost:5000/user/add", {
+    const res = await fetch("http://localhost:5000/admin/add", {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },
@@ -45,21 +45,22 @@ const Signup = () => {
           <div className="card-body">
             <p className="text-center h4">Signup Form</p>
             <hr />
-            <Formik initialValues={{ name: "", email: "", password: "", age: "" }} onSubmit={userSubmit}>
+            <Formik initialValues={{ username: "", email: "", password: "", contact: "" }} onSubmit={userSubmit}>
               {({ values, handleSubmit, handleChange, isSubmitting }) => (
                 <form onSubmit={handleSubmit}>
-                  <label>Name</label>
-                  <input value={values.name} onChange={handleChange} name="name" className="form-control" />
+                  <label> Username</label>
+                  <input value={values.username} onChange={handleChange} name="username" className="form-control" />
 
                   <label>Email Address</label>
                   <input value={values.email} onChange={handleChange} name="email" className="form-control" />
 
-                  <label>Age</label>
-                  <input type="number" value={values.age} onChange={handleChange} name="age" className="form-control" />
-
                   <label>Password</label>
                   <input className="form-control mb-3" type="password" value={values.password} onChange={handleChange} name="password" />
 
+                  <label>Contact</label>
+                  <input value={values.contact} className="form-control mb-3" type="tel" maxLength={10} name="contact" onChange={handleChange}/>
+
+                 
                   <button disabled={isSubmitting} type="submit" className="btn btn-primary">
                     {
                       isSubmitting ?
@@ -78,6 +79,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
-
-
+export default AddAdmin;
