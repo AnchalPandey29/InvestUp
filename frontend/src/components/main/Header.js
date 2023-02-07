@@ -29,6 +29,7 @@ const Header = () => {
               alt="InvestUp logo"
               loading="lazy"
             />
+
           </a>
           {/* Left links */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">

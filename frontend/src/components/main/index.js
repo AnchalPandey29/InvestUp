@@ -12,7 +12,6 @@ const Main = () => {
       <Outlet />
       <Services/>
       <Testimonial/>
-
       <Footer />
     </div>
   );

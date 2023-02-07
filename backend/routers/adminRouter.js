@@ -12,7 +12,7 @@ router.post("/add", (req, res) => {
   new Model(req.body)
     .save()
     .then((result) => {
-      console.log("User Data Saved");
+      console.log("Admin Data Saved");
       res.status(201).json({ status: "success", result });
     })
     .catch((err) => {
@@ -30,17 +30,17 @@ router.post("/auth", (req, res) => {
             console.error("Error authenticating user", err);
             res.status(500).send({status: "failed"});
           } else {
-            console.log("User authenticated");
+            console.log("Admin authenticated");
             res.status(201).json({ status: "success", result });
           }
         });
       } else {
-        console.error("Error authenticating user");
+        console.error("Error authenticating Admin");
         res.status(501).json({status: "failed"});
       }
     })
     .catch((err) => {
-      console.error("Error authenticating user", err);
+      console.error("Error authenticating Admin", err);
       res.status(502).json({status: "failed"});
     });
 
