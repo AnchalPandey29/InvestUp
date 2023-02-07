@@ -11,7 +11,7 @@ const Main = () => {
       <Header />
       <Outlet />
       <Services/>
-    
+      <Testimonial/>
 
       <Footer />
     </div>

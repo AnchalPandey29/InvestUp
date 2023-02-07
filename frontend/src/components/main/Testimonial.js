@@ -3,7 +3,7 @@ import people from './Test';
 import './Testimonial.css'
 
 const Testimonial = () => {
-    const [ people, setPeople ] = useState(people);
+  const [peopleList, setPeopleList] = useState(people)
   const [ index, setIndex ] = useState(0);
 
   useEffect(() => {
