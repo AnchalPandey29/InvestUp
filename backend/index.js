@@ -4,6 +4,13 @@ dotenv.config();
 
 const userRouter = require('./routers/userRouter');
 const adminRouter = require('./routers/adminRouter');
+const startupRouter = require('./routers/startupRouter');
+const investorRouter = require('./routers/investorRouter');
+const campaignRouter = require('./routers/campaignRouter');
+const NewsRouter = require('./routers/NewsRouter');
+const BlogRouter = require('./routers/BlogRouter');
+const SubscriptionRouter = require('./routers/SubscriptionRouter');
+
 
 const cors = require('cors');
 const { PORT } = require('./config');
@@ -21,6 +28,15 @@ app.use(cors(
 ));
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);
+app.use('/startup', startupRouter);
+app.use('/investor', investorRouter);
+app.use('/campaign', campaignRouter);
+app.use('/News', NewsRouter);
+app.use('/Blog', BlogRouter);
+app.use('/Subscription', SubscriptionRouter);
+
+
+
 
 app.get('/', (req, res) => {
     console.log('Request at index');
