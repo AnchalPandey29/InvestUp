@@ -5,6 +5,7 @@ const schema = new Schema({
   lastdate: {Date},
   heading: { type: String, required: true },
   content: { type: String, required: true},
+  image:{type:String},
   created_at:{Date},
   });
 
