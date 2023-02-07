@@ -32,7 +32,7 @@ const About = () => {
                       className="aboutimg"
                       src="https://cdni.iconscout.com/illustration/premium/thumb/startup-idea-3374849-2804221.png"
                       alt="img2"
-                      initial={{ y: "55%" }}
+                      initial={{ y: "45%" }}
                   />
                   <motion.img
                       className="aboutimg"
