@@ -2,9 +2,11 @@ import React from 'react'
 
 const Eligibility = () => {
   return (
-        <div>
+     
+        <div className='section2'>
+            
             <div className='mb-5'>
-                <h1 class="d-flex justify-content-center ">Eligibility Criteria</h1>
+                <h1 class="d-flex justify-content-center mb-4">Eligibility Criteria</h1>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card p-4">
@@ -37,6 +39,8 @@ const Eligibility = () => {
                 </div>
             </div>
         </div>
+    
+
     )
 }
 

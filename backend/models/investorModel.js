@@ -6,10 +6,10 @@ const investorSchema = new Schema({
   ownername: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  contact: { type: Int32Array, required: true},
+  contact: { type: Number, required: true},
   owneravatar: {type: String},
-  created_at:{Date},
-  IdProof: {type: document},
+  created_at:Date,
+  IdProof: {type: String},
   
   
 });
@@ -57,4 +57,4 @@ investorSchema.methods.authenticate = function (formData, cb) {
   });
 };
 
-module.exports = model("user", userSchema);
+module.exports = model("investor", investorSchema);

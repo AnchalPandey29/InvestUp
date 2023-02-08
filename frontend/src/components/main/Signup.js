@@ -45,12 +45,10 @@ const Signup = () => {
           <div className="card-body">
             <p className="text-center h4">Signup Form</p>
             <hr />
-            <Formik initialValues={{ name: "", email: "", password: "", age: "" }} onSubmit={userSubmit}>
+            <Formik initialValues={{ name: "", email: "", password: ""}} onSubmit={userSubmit}>
               {({ values, handleSubmit, handleChange, isSubmitting }) => (
                 // <form className="form-floating" onSubmit={handleSubmit}>
-                //   <label for="floatingInputValue">Name</label>
-                //   <input value={values.name} onChange={handleChange} name="name" className="form-control" />
-
+                //   
                 //   <label>Email Address</label>
                 //   <input value={values.email} onChange={handleChange} name="email" className="form-control" />
 
@@ -58,38 +56,32 @@ const Signup = () => {
                 //   <input type="number" value={values.age} onChange={handleChange} name="age" className="form-control" />
 
                 //   <label >Password</label>
-                //   <input className="form-control mb-3" type="password" value={values.password} onChange={handleChange} name="password" />
+                //   <input className="form-control mb-3" type="password"  />
 
-                //   <button disabled={isSubmitting} type="submit" className="btn btn-primary">
-                //     {
-                //       isSubmitting ?
-                //         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                //         :
-                //         'Submit'
-                //     }
-                //   </button>
+                //   
                 // </form>
                   
                   <form>
   {/* 2 column grid layout with text inputs for the first and last names */}
-  <div className="row mb-4">
+  <div className="row mb-4 form-floating" onSubmit={handleSubmit}>
     <div className="col">
       <div className="form-outline">
-        <input type="text" id="form3Example1" className="form-control" />
-        <label className="form-label" htmlFor="form3Example1">First name</label>
+      <input type="text"  value={values.name} onChange={handleChange} name="name" className="form-control" />
+      <label className="form-label" for="floatingInputValue">Name</label>
+
       </div>
     </div>
     <div className="col">
       <div className="form-outline">
-        <input type="text" id="form3Example2" className="form-control" />
-        <label className="form-label" htmlFor="form3Example2">Last name</label>
+        <input type="text" value={values.name} onChange={handleChange} name="name" className="form-control" />
+        <label className="form-label">Last name</label>
       </div>
     </div>
   </div>
 
   {/* Email input */}
   <div className="form-outline mb-4">
-    <input type="email" id="form3Example3" className="form-control" />
+    <input type="email" value={values.password} onChange={handleChange} name="password" className="form-control" />
     <label className="form-label" htmlFor="form3Example3">Email address</label>
   </div>
 
@@ -108,7 +100,16 @@ const Signup = () => {
   </div>
 
   {/* Submit button */}
-  <button type="submit" className="btn btn-primary btn-block mb-4">Sign up</button>
+  {/* <button type="submit" className="btn btn-primary ">Sign up</button> */}
+
+  <button disabled={isSubmitting} type="submit" className="btn btn-primary btn-block mb-4">
+                {
+                   isSubmitting ?
+                   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                   :
+                   'Submit'
+               }
+            </button>
 
   {/* Register buttons */}
   <div className="text-center">

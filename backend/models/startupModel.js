@@ -2,21 +2,21 @@ const { Schema, model } = require("../connection");
 const bcrypt = require("bcrypt");
 const SALT = 10;
 
-const userSchema = new Schema({
+const startupSchema = new Schema({
   ownername: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   title: { type: String, required: true },
-  contact: { type: Int32Array, required: true},
+  contact: { type: Number, required: true},
   coverimage: {type: String},
   owneravatar: {type: String},
   product: {type: Array, required:true},
-  documents: {type: document},
+  documents: {type: String},
   created_at: Date,
   
 });
 
-userSchema.pre("save", function (next) {
+startupSchema.pre("save", function (next) {
   let user = this;
 
   // only hash the password if it has been modified (or is new)
@@ -39,7 +39,7 @@ userSchema.pre("save", function (next) {
   });
 });
 
-userSchema.methods.comparePassword = function (candidatePassword, cb) {
+startupSchema.methods.comparePassword = function (candidatePassword, cb) {
   console.log("comparing...", candidatePassword);
   bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
     console.log(isMatch);
@@ -51,7 +51,7 @@ userSchema.methods.comparePassword = function (candidatePassword, cb) {
   });
 };
 
-userSchema.methods.authenticate = function (formData, cb) {
+startupSchema.methods.authenticate = function (formData, cb) {
   // console.log('formData', formData);
   bcrypt.compare(formData.password, this.password, function (err, isMatch) {
     if (err && formData.email === this.email) return cb(err);
@@ -59,4 +59,4 @@ userSchema.methods.authenticate = function (formData, cb) {
   });
 };
 
-module.exports = model("user", userSchema);
+module.exports = model("startup", startupSchema);

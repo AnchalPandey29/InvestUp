@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-const Model = require("../models/NewszModel");
+const Model = require("../models/BlogModel");
 
 router.get("/", (req, res) => {
   console.log("Request at user index");

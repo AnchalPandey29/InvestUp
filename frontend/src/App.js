@@ -17,6 +17,8 @@ import { useState } from "react";
 import AddAdmin from "./components/main/AddAdmin";
 import Contact from "./components/main/Contact";
 import About from "./components/main/About";
+import AddCompaign from "./components/admin/AddCampaign";
+import ManageStartup from "./components/admin/ManageStartup";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -42,6 +44,8 @@ function App() {
               path="admin"
             >
               <Route element={<AdminProfile />} path="profile" />
+              <Route element={<AddCompaign />} path="addcampaign" />
+              <Route element={<ManageStartup />} path="managestartup" />
             </Route>
 
             <Route element={<Main />} path="main">

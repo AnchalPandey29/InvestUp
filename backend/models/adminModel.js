@@ -7,7 +7,7 @@ const adminSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   contact: { type: Number, required: true},
-  created_at:{Date},
+  created_at:Date,
   });
 
 adminSchema.pre("save", function (next) {
