@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="text-center text-lg-start bg-dark text-white">
+    <footer className="text-center text-lg-start bg-white text-dark">
       {/* Section: Social media */}
       <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         {/* Left */}
@@ -43,84 +43,76 @@ const Footer = () => {
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               {/* Content */}
               <h6 className="text-uppercase fw-bold mb-4">
-                <i className="fas fa-gem me-3" />
-                Company name
+                <img src="/logo.png" alt="logo" style={{width:"35px"}} />&nbsp;
+                InvestUp
               </h6>
               <p>
-                Here you can use rows and columns to organize your footer
-                content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
+              Grow Your Business with InvestUp
+              Your seed fund journey begins right here.
               </p>
             </div>
             {/* Grid column */}
             {/* Grid column */}
             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               {/* Links */}
-              <h6 className="text-uppercase fw-bold mb-4">Products</h6>
+              <h6 className="text-uppercase fw-bold mb-4">Useful Links</h6>
               <p>
                 <a href="#!" className="text-reset">
-                  Angular
+                  Startup
                 </a>
               </p>
               <p>
                 <a href="#!" className="text-reset">
-                  React
+                  Investor
                 </a>
               </p>
               <p>
                 <a href="#!" className="text-reset">
-                  Vue
+                  Subscription
                 </a>
               </p>
-              <p>
-                <a href="#!" className="text-reset">
-                  Laravel
-                </a>
-              </p>
+              
+              
             </div>
             {/* Grid column */}
             {/* Grid column */}
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
               {/* Links */}
-              <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
+              <h6 className="text-uppercase fw-bold mb-4">Services</h6>
+             
               <p>
                 <a href="#!" className="text-reset">
-                  Pricing
+                  News
                 </a>
               </p>
               <p>
                 <a href="#!" className="text-reset">
-                  Settings
+                  Campaign
                 </a>
               </p>
               <p>
                 <a href="#!" className="text-reset">
-                  Orders
+                  Blog
                 </a>
               </p>
-              <p>
-                <a href="#!" className="text-reset">
-                  Help
-                </a>
-              </p>
-            </div>
+                         </div>
             {/* Grid column */}
             {/* Grid column */}
             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
               {/* Links */}
               <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
               <p>
-                <i className="fas fa-home me-3" /> New York, NY 10012, US
+                <i className="fas fa-home me-3" /> Lucknow, Uttar Pradesh
               </p>
               <p>
                 <i className="fas fa-envelope me-3" />
-                info@example.com
+                InvestUp@gmail.com
               </p>
               <p>
-                <i className="fas fa-phone me-3" /> + 01 234 567 88
+                <i className="fas fa-phone me-3" /> + 91 408 932 88
               </p>
               <p>
-                <i className="fas fa-print me-3" /> + 01 234 567 89
+                <i className="fas fa-print me-3" /> + 98 234 567 89
               </p>
             </div>
             {/* Grid column */}
@@ -135,8 +127,8 @@ const Footer = () => {
         style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
       >
         © 2021 Copyright:
-        <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
-          MDBootstrap.com
+        <a className="text-reset fw-bold" href="/main/home">
+          InvestUp
         </a>
       </div>
       {/* Copyright */}

@@ -18,7 +18,10 @@ import AddAdmin from "./components/main/AddAdmin";
 import Contact from "./components/main/Contact";
 import About from "./components/main/About";
 import AddCompaign from "./components/admin/AddCampaign";
-import ManageStartup from "./components/admin/ManageStartup";
+import AddNews from "./components/admin/AddNews";
+import AddBlog from "./components/admin/AddBlog";
+import ManageCompaign from "./components/admin/ManageCampaign"
+import ManageNews from "./components/admin/ManageNews";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -45,7 +48,10 @@ function App() {
             >
               <Route element={<AdminProfile />} path="profile" />
               <Route element={<AddCompaign />} path="addcampaign" />
-              <Route element={<ManageStartup />} path="managestartup" />
+              <Route element={<AddNews />} path="addnews" />
+              <Route element={<AddBlog />} path="addblog" />
+              <Route element={<ManageCompaign />} path="managecompaign" />
+              <Route element={<ManageNews/>} path="managenews"/>
             </Route>
 
             <Route element={<Main />} path="main">

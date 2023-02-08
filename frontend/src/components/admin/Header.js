@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+      <nav className="navbar navbar-expand-lg navbar-dark  text-white">
         {/* Container wrapper */}
         <div className="container">
           {/* Toggle button */}
@@ -28,9 +28,9 @@ const Header = () => {
             {/* Navbar brand */}
             <a className="navbar-brand mt-2 mt-lg-0" href="#">
             <img
-              src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-              height={15}
-              alt="MDB Logo"
+              src="/logo.png"
+              height={55}
+              alt=" Logo"
               loading="lazy"
             />
             </a>
@@ -63,9 +63,9 @@ const Header = () => {
           {/* Right elements */}
           <div className="d-flex align-items-center">
             {/* Icon */}
-            <a className="text-reset me-3" href="#">
+            {/* <a className="text-reset me-3" href="#">
               <i className="fas fa-shopping-cart" />
-            </a>
+            </a> */}
             {/* Notifications */}
             <div className="dropdown">
               <a
@@ -76,7 +76,7 @@ const Header = () => {
                 data-mdb-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i className="fas fa-bell" />
+                <i className="fas fa-bell " style={{color:"black"}} />
                 <span className="badge rounded-pill badge-notification bg-danger">
                   1
                 </span>
@@ -113,7 +113,7 @@ const Header = () => {
                 aria-expanded="false"
               >
                 <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+            src="https://img.freepik.com/free-icon/user_318-219674.jpg"
             class="rounded-circle"
             height="25"
             alt="Black and White Portrait of a Man"
