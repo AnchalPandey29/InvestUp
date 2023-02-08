@@ -117,7 +117,11 @@ const Signup = () => {
     <button type="button" className="btn btn-secondary btn-floating mx-1">
       <i className="fab fa-facebook-f"></i>
     </button>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> fdac17e0b722864625dfdf8232dc4a8437dca988
 
     <button type="button" className="btn btn-secondary btn-floating mx-1">
       <i className="fab fa-google"></i>
