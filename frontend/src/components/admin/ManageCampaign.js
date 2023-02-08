@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 
-const ManageStartup = () => {
+const ManageCampaign = () => {
 
     const [userList, setUserList] = useState([]);
 
@@ -49,21 +49,29 @@ const ManageStartup = () => {
             <table className='table table-dark'>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        
+                        <th>id</th>
+                        <th>startdate</th>
+                        <th>lastdate</th>
                         <th>Title</th>
-                        <th>Email</th>
-                        <th>Age</th>
-                        <th></th>
+                        <th>Content</th>
+                        <th>image</th>
+                        <th>created at</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         userList.map( (user) => (
                             <tr>
-                                <td>{user._id}</td>
-                                <td>{user.title}</td>
+                                
+                                <td>{user.id}</td>
                                 <td>{user.startdate}</td>
-                                <td>{user.age}</td>
+                                <td>{user.lastdate}</td>
+                                <td>{user.title}</td>
+                                <td>{user.content}</td>
+                                <td>{user.image}</td>
+                                <td>{user.createdat}</td>
+
                                 <td>
                                     <button className='btn btn-danger' onClick={() => deleteUser(user._id)}> <i class="fas fa-trash"></i></button>
                                 </td>

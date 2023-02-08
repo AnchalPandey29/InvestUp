@@ -116,7 +116,8 @@ const Signup = () => {
     <p>or sign up with:</p>
     <button type="button" className="btn btn-secondary btn-floating mx-1">
       <i className="fab fa-facebook-f"></i>
-    </button>
+    </button>4d5tredwq
+    
 
     <button type="button" className="btn btn-secondary btn-floating mx-1">
       <i className="fab fa-google"></i>

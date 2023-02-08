@@ -1,13 +1,14 @@
+
 import { Formik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AddCompaign = () => {
+const AddBlog = () => {
 
   const navigate = useNavigate();
 
-  const compaignSubmit = async (formdata, { setSubmitting }) => {
+  const BlogSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
 
 
@@ -17,7 +18,7 @@ const AddCompaign = () => {
     // 4. data format - json, etc.
 
     setSubmitting(true);
-    const res = await fetch("http://localhost:5000/campaign/add", {
+    const res = await fetch("http://localhost:5000/Blog/add", {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },
@@ -45,23 +46,21 @@ const AddCompaign = () => {
           <div className="card-body">
             <p className="text-center h4">Signup Form</p>
             <hr />
-            <Formik initialValues={{ title: "", content: "", startdate: "", lastdate: "" , image:"" }} onSubmit={compaignSubmit}>
+            <Formik initialValues={{heading:" ",content:" ",image:"",date:"" }} onSubmit={AddBlog}>
               {({ values, handleSubmit, handleChange, isSubmitting }) => (
                 <form onSubmit={handleSubmit}>
-                  <label>Title</label>
-                  <input value={values.title} onChange={handleChange} name="title" className="form-control" />
+                  <label> Heading</label>
+                  <input value={values.heading} onChange={handleChange} name="Title" className="form-control" />
 
                   <label>Content</label>
-                  <input value={values.content} onChange={handleChange} name="content" type="text" className="form-control" />
+                  <input value={values.content} onChange={handleChange} name="Content" type="textbox" className="form-control" />
 
-                  <label>Start Date</label>
-                  <input className="form-control mb-3" type="date" value={values.startdate} onChange={handleChange} name="startdate" />
+                  <label>image</label>
+                  <input className="form-control mb-3" type="file" value={values.image} onChange={handleChange} name="image" />
 
-                  <label>Last Date</label>
-                  <input value={values.lastdate} className="form-control mb-3" type="date" name="lastdate" onChange={handleChange}/>
+                  <label>Date</label>
+                  <input value={values.Date} className="form-control mb-3" type="Date"  name="date" onChange={handleChange}/>
 
-                  <label>Image</label>
-                  <input value={values.image} className="form-control mb-3" type="file" name="image" onChange={handleChange}/>
                  
                   <button disabled={isSubmitting} type="submit" className="btn btn-primary">
                     {
@@ -81,4 +80,4 @@ const AddCompaign = () => {
   )
 }
 
-export default AddCompaign;
+export default AddBlog;
