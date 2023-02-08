@@ -46,14 +46,14 @@ const AddBlog = () => {
           <div className="card-body">
             <p className="text-center h4">Signup Form</p>
             <hr />
-            <Formik initialValues={{heading:" ",content:" ",image:"",date:"" }} onSubmit={AddBlog}>
+            <Formik initialValues={{heading:"",content:"",image:"",date:"" }} onSubmit={AddBlog}>
               {({ values, handleSubmit, handleChange, isSubmitting }) => (
                 <form onSubmit={handleSubmit}>
                   <label> Heading</label>
-                  <input value={values.heading} onChange={handleChange} name="Title" className="form-control" />
+                  <input value={values.heading} type="text" onChange={handleChange} name="heading" className="form-control" />
 
                   <label>Content</label>
-                  <input value={values.content} onChange={handleChange} name="Content" type="textbox" className="form-control" />
+                  <input value={values.content} onChange={handleChange} name="content" type="text" className="form-control" />
 
                   <label>image</label>
                   <input className="form-control mb-3" type="file" value={values.image} onChange={handleChange} name="image" />

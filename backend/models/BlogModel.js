@@ -4,7 +4,7 @@ const schema = new Schema({
   heading: { type: String, required: true },
   content: { type: String, required: true},
   image:{type:String},
-  date: Date,
+  date:Date,
   
   });
 

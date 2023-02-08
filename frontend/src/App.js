@@ -22,6 +22,7 @@ import AddNews from "./components/admin/AddNews";
 import AddBlog from "./components/admin/AddBlog";
 import ManageCompaign from "./components/admin/ManageCampaign"
 import ManageNews from "./components/admin/ManageNews";
+import ManageBlog from "./components/admin/ManageBlog";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -52,6 +53,7 @@ function App() {
               <Route element={<AddBlog />} path="addblog" />
               <Route element={<ManageCompaign />} path="managecompaign" />
               <Route element={<ManageNews/>} path="managenews"/>
+              <Route element={<ManageBlog/>} path="manageblog"/>
             </Route>
 
             <Route element={<Main />} path="main">
