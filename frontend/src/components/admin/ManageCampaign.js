@@ -40,15 +40,15 @@ const ManageCampaign = () => {
     <div>
         <header className='py-5'>
             <div className="container">
-                <h1 className='display-3 fw-bold text-dark text-center'>Manage Campaign Data</h1>
+                <h1 className='display-3 fw-bold text-center'  style={{color:"#9c3353"}}>Manage Campaign Data</h1>
             </div>
         </header>
 
         <div className='container mt-4'>
 
-            <table className='table' style={{backgroundColor:"#9c3353", color:"white"}}>
+        <table class="table table-striped table-hover">
                 <thead>
-                    <tr>
+                    <tr style={{backgroundColor:"#9c3353", color:"white"}}>
                         
                         <th>ID</th>
                         <th>TITLE</th>
@@ -60,7 +60,7 @@ const ManageCampaign = () => {
                         
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style={{backgroundColor:"white"}}>
                     {
                         userList.map( (user) => (
                             <tr>
@@ -73,7 +73,7 @@ const ManageCampaign = () => {
                                 <td>{user.image}</td>
                                 
                                 <td>
-                                    <button className='btn btn-dark' style={{backgroundColor:"#f0efef"}} onClick={() => deleteUser(user._id)}> <i style={{color:"black"}} class="fas fa-trash"></i></button>
+                                    <button className='btn btn-dark' style={{backgroundColor:"#9c3353"}} onClick={() => deleteUser(user._id)}> <i style={{color:"white"}} class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                         ))

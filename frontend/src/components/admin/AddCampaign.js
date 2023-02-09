@@ -43,7 +43,7 @@ const AddCompaign = () => {
       <div className="col-md-3 mx-auto pt-5">
         <div className="card">
           <div className="card-body">
-            <p className="text-center h4">Signup Form</p>
+            <p className="text-center h4">Compaign</p>
             <hr />
             <Formik initialValues={{ title: "", content: "", startdate: "", lastdate: "" , image:"" }} onSubmit={compaignSubmit}>
               {({ values, handleSubmit, handleChange, isSubmitting }) => (

@@ -40,15 +40,15 @@ const ManageNews = () => {
     <div>
         <header className='py-5'>
             <div className="container">
-                <h1 className='display-3 fw-bold text-dark text-center'>Manage News Data</h1>
+                <h1 className='display-3 fw-bold  text-center' style={{color:"#9c3353"}}>Manage News Data</h1>
             </div>
         </header>
 
         <div className='container mt-4'>
 
-            <table className='table' style={{backgroundColor:"#9c3353", color:"white"}}>
-                <thead>
-                    <tr>
+        <table class="table table-striped table-hover">
+                <thead >
+                    <tr style={{backgroundColor:"#9c3353", color:"white"}}>
                         
                         <th>ID</th>
                         <th>DATE</th>
@@ -59,10 +59,10 @@ const ManageNews = () => {
                         
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style={{backgroundColor:"white"}}>
                     {
                         userList.map( (user) => (
-                            <tr>
+                            <tr >
                                 
                                 <td>{user.id}</td>
                                 <td>{user.date}</td>
@@ -71,7 +71,7 @@ const ManageNews = () => {
                                 <td>{user.image}</td>
                                 
                                 <td>
-                                    <button className='btn btn-dark' style={{backgroundColor:"#f0efef"}} onClick={() => deleteUser(user._id)}> <i style={{color:"black"}} class="fas fa-trash"></i></button>
+                                    <button className='btn btn-dark' style={{backgroundColor:"#9c3353"}} onClick={() => deleteUser(user._id)}> <i style={{color:"white"}} class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                         ))

@@ -43,7 +43,7 @@ const AddNews = () => {
       <div className="col-md-3 mx-auto pt-5">
         <div className="card">
           <div className="card-body">
-            <p className="text-center h4">Signup Form</p>
+            <p className="text-center h4">News</p>
             <hr />
             <Formik initialValues={{ date: "",heading: "", content: "",image:"" }} onSubmit={newsSubmit}>
               {({ values, handleSubmit, handleChange, isSubmitting }) => (
