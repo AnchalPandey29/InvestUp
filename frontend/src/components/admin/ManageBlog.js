@@ -2,13 +2,13 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 
-const ManageCampaign = () => {
+const ManageBlog = () => {
 
     const [userList, setUserList] = useState([]);
 
     const getDataFromBackend = async () => {
         // send request 
-        const res= await fetch('http://localhost:5000/campaign/getall');
+        const res= await fetch('http://localhost:5000/Blog/getall');
 
         // accessing data from response
         const data = await res.json();
@@ -26,7 +26,7 @@ const ManageCampaign = () => {
     
     const deleteUser = async (id) => {
         console.log(id);
-        const res = await fetch('http://localhost:5000/campaign/delete/'+id, {
+        const res = await fetch('http://localhost:5000/Blog/delete/'+id, {
             method : 'DELETE'
         })
 
@@ -40,40 +40,38 @@ const ManageCampaign = () => {
     <div>
         <header className='py-5'>
             <div className="container">
-                <h1 className='display-3 fw-bold text-center'  style={{color:"#9c3353"}}>Manage Campaign Data</h1>
+                <h1 className='display-3 fw-bold text-dark text-center'>Manage Blog Data</h1>
             </div>
         </header>
 
         <div className='container mt-4'>
 
-        <table class="table table-striped table-hover">
+            <table className='table' style={{backgroundColor:"#9c3353", color:"white"}}>
                 <thead>
-                    <tr style={{backgroundColor:"#9c3353", color:"white"}}>
+                    <tr>
                         
                         <th>ID</th>
-                        <th>TITLE</th>
+                        <th>DATE</th>
+                        <th>HEADING</th>
                         <th>CONTENT</th>
-                        <th>START DATE</th>
-                        <th>LAST DATE</th>
                         <th>IMAGE</th>
                         <th>DELETE</th>
                         
                     </tr>
                 </thead>
-                <tbody style={{backgroundColor:"white"}}>
+                <tbody>
                     {
                         userList.map( (user) => (
                             <tr>
                                 
                                 <td>{user.id}</td>
-                                <td>{user.title}</td>
+                                <td>{user.date}</td>
+                                <td>{user.heading}</td>
                                 <td>{user.content}</td>
-                                <td>{user.startdate}</td>
-                                <td>{user.lastdate}</td>
                                 <td>{user.image}</td>
                                 
                                 <td>
-                                    <button className='btn btn-dark' style={{backgroundColor:"#9c3353"}} onClick={() => deleteUser(user._id)}> <i style={{color:"white"}} class="fas fa-trash"></i></button>
+                                    <button className='btn btn-dark' style={{backgroundColor:"#f0efef"}} onClick={() => deleteUser(user._id)}> <i style={{color:"black"}} class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                         ))
@@ -88,4 +86,4 @@ const ManageCampaign = () => {
   )
 }
 
-export default ManageCampaign;
+export default ManageBlog;
