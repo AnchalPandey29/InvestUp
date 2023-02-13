@@ -1,13 +1,12 @@
-import { Formik } from "formik";
+<!-- import { Formik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Signup = () => {
+const startup = () => {
 
   const navigate = useNavigate();
 
-  
   const userSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
 
@@ -148,3 +147,4 @@ const Signup = () => {
 export default Signup
 
 
+ -->
