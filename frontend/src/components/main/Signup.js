@@ -94,8 +94,8 @@ const Signup = () => {
 
   {/* Checkbox */}
   <div className="form-check d-flex justify-content-center mb-4">
-    <input className="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-    <label className="form-check-label" htmlFor="form2Example33">
+    <input className="form-check-input me-2" type="checkbox" value="" id="form2Example33" style={{backgroundColor:"#9c3353"}} />
+    <label className="form-check-label" htmlFor="form2Example33" >
       Subscribe to our newsletter
     </label>
   </div>
@@ -103,7 +103,7 @@ const Signup = () => {
   {/* Submit button */}
   {/* <button type="submit" className="btn btn-primary ">Sign up</button> */}
 
-  <button disabled={isSubmitting} type="submit" className="btn btn-primary btn-block mb-4">
+  <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{backgroundColor:"#9c3353", color:"#fffefe"}}>
                 {
                    isSubmitting ?
                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

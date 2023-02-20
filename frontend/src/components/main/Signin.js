@@ -33,7 +33,7 @@ const Signup = () => {
         title: 'Success',
         text: 'You have registered successfully'
       })
-      navigate('/login');
+      navigate('/option');
     } else {
       // error alert
     }
@@ -65,7 +65,7 @@ const Signup = () => {
     <label className="form-label" htmlFor="form3Example4">Password</label>
   </div>
 
-                                  <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{}}>
+                                  <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{backgroundColor:"#9c3353", color:"#fffefe"}}>
                                       {
                                           isSubmitting ?
                                               <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -74,28 +74,20 @@ const Signup = () => {
                                       }
                                   </button>
 
+
   {/* Register buttons */}
   <div className="text-center">
-    <p>or login with:</p>
-    <button type="button" className="btn btn-secondary btn-floating mx-1">
-      <i className="fab fa-facebook-f"></i>
-    </button>
-
-
+  
+     
+     <p className="btn btn-secondary btn-floating "> 
+     <i className="fab fa-google"></i>
+      Login with Google
+      </p>
     
 
+   
 
-    <button type="button" className="btn btn-secondary btn-floating mx-1" >
-      <i className="fab fa-google"></i>
-    </button>
 
-    <button type="button" className="btn btn-secondary btn-floating mx-1">
-      <i className="fab fa-twitter"></i>
-    </button>
-
-    <button type="button" className="btn btn-secondary btn-floating mx-1">
-      <i className="fab fa-github"></i>
-    </button>
   </div>
 </form>
               )}

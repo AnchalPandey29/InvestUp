@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Admin from "./components/admin";
 import Main from "./components/main";
+import Startup from "./components/startup";
 import Signin from "./components/main/Signin";
 import Signup from "./components/main/Signup";
 import Option from "./components/main/Option";
@@ -25,6 +26,7 @@ import AddBlog from "./components/admin/AddBlog";
 import ManageCompaign from "./components/admin/ManageCampaign"
 import ManageNews from "./components/admin/ManageNews";
 import ManageBlog from "./components/admin/ManageBlog";
+import Chat from "./components/startup/Chat";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -67,6 +69,13 @@ function App() {
               <Route element={<About />} path="aboutus" />
               <Route element={<Contact />} path="contact" />
             </Route>
+            
+
+            <Route element={<Startup />} path="startup">
+            <Route element={<Chat />} path="chat"/>
+            </Route>
+
+
 
             <Route
               element={
@@ -78,6 +87,9 @@ function App() {
             >
               <Route path="profile" element={<UserProfile />} />
             </Route>
+
+            
+
             <Route path="addadmin" element={<AddAdmin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

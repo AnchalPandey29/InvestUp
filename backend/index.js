@@ -18,6 +18,22 @@ const { PORT } = require('./config');
 
 const app = express();
 
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+
+const httpServer = createServer(app);
+const io = new Server(httpServer, { cors: { origin: ['http://localhost:3000', 'http://localhost:3001'], } });
+
+io.on("connection", (socket) => {
+    console.log('client connected');
+
+    socket.on('sendmsg', (data) => {
+        console.log(data);
+        data.sent = false;
+        socket.broadcast.emit('recmsg', data);
+    })
+});
+
 
 app.use(express.json());
 // app.use(express.urlencoded({extended : true}));
@@ -45,4 +61,4 @@ app.get('/', (req, res) => {
     res.status(299).send('Working Perfectly!!');
 })
 
-app.listen(PORT, () => console.log(`Express server has started at ${PORT}`));
+httpServer.listen(PORT, () => console.log(`Express server has started at ${PORT}`));
