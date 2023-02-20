@@ -1,94 +1,112 @@
-// import React from 'react';
-// <<<<<<< HEAD
-// import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from "formik";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-// const SignInForm = () => {
-//   const validate = values => {
-//     let errors = {};
-//     if (!values.email) {
-//       errors.email = 'Email is required';
-//     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-//       errors.email = 'Invalid email address';
-//     }
-//     if (!values.password) {
-//       errors.password = 'Password is required';
-//     } else if (values.password.length < 8) {
-//       errors.password = 'Password must be at least 8 characters';
-//     }
-//     return errors;
-//   };
+const Signup = () => {
 
-//   return (
-//     <Formik
-//       initialValues={{ email: '', password: '' }}
-//       validate={validate}
-//       onSubmit={(values, { setSubmitting }) => {
-//         setTimeout(() => {
-//           console.log(JSON.stringify(values, null, 2));
-//           setSubmitting(false);
-//         }, 400);
-//       }}
-//     >
-//       {({ isSubmitting }) => (
-//         <Form>
-//           <Field name="email" type="email" />
-//           <ErrorMessage name="email" component="div" />
-//           <Field name="password" type="password" />
-//           <ErrorMessage name="password" component="div" />
-//           <button type="submit" disabled={isSubmitting}>
-//             Submit
-//           </button>
-//         </Form>
-//       )}
-//     </Formik>
-//   );
-// };
+  const navigate = useNavigate();
 
-// export default SignInForm;
-// =======
-//  import { Formik, Form, Field, ErrorMessage } from 'formik';
+  
+  const userSubmit = async (formdata, { setSubmitting }) => {
+    console.log(formdata);
 
-//  const SignInForm = () => {
-//  const validate = values => {
-//        let errors = {};
-//     if (!values.email) {
-//     errors.email = 'Email is required';
-//  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-//       errors.email = 'Invalid email address';
-//     }
-//    if (!values.password) {
-//      errors.password = 'Password is required';
-//     } else if (values.password.length < 8) {
-//       errors.password = 'Password must be at least 8 characters';
-//     }
-//    return errors;
-//  };
 
-//   return (
-//     <Formik
-//        initialValues={{ email: '', password: '' }}
-//        validate={validate}
-//        onSubmit={(values, { setSubmitting }) => {
-//         setTimeout(() => {
-//           console.log(JSON.stringify(values, null, 2));
-//          setSubmitting(false);
-//         }, 400);
-//        }}
-//     >
-//     {({ isSubmitting }) => (
-//        <Form>
-//            <Field name="email" type="email" />
-//            <ErrorMessage name="email" component="div" />
-//            <Field name="password" type="password" />
-//            <ErrorMessage name="password" component="div" />
-//            <button type="submit" disabled={isSubmitting}>
-//              Submit
-//            </button>
-//       </Form>
-//      )}
-//    </Formik>
-//   );
-//  };
+    // 1. URL
+    // 2. request method - get, post, put, delete , etc.
+    // 3. Data you want to sent.
+    // 4. data format - json, etc.
 
-//  export default SignInForm;
+    setSubmitting(true);
+    const res = await fetch("http://localhost:5000/user/add", {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    console.log(res.status)
+    setSubmitting(false);
+
+    if (res.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: 'Success',
+        text: 'You have registered successfully'
+      })
+      navigate('/login');
+    } else {
+      // error alert
+    }
+  }
+
+  return (
+    <div className="d-flex justify-content-center align-items-center" style={{height:"90vh"}}>
+      <div className="col-md-3 pt-5" >
+        <div className="card " style={{height:"400px",width:"300px"}}>
+          <div className="card-body">
+            <p className="text-center h4">Login Form</p>
+            <hr />
+            <Formik initialValues={{ email: "", password: ""}} onSubmit={userSubmit}>
+              {({ values, handleSubmit, handleChange, isSubmitting }) => (
+                
+                  
+                  <form>
+  
+
+  {/* Email input */}
+  <div className="form-outline mb-4">
+    <input type="email" value={values.password} onChange={handleChange} name="password" className="form-control" />
+    <label className="form-label" htmlFor="form3Example3">Email address</label>
+  </div>
+
+  {/* Password input */}
+  <div className="form-outline mb-4">
+    <input type="password" id="form3Example4" className="form-control" />
+    <label className="form-label" htmlFor="form3Example4">Password</label>
+  </div>
+
+                                  <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{}}>
+                                      {
+                                          isSubmitting ?
+                                              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                              :
+                                              'Submit'
+                                      }
+                                  </button>
+
+  {/* Register buttons */}
+  <div className="text-center">
+    <p>or login with:</p>
+    <button type="button" className="btn btn-secondary btn-floating mx-1">
+      <i className="fab fa-facebook-f"></i>
+    </button>
+
+
+    
+
+
+    <button type="button" className="btn btn-secondary btn-floating mx-1" >
+      <i className="fab fa-google"></i>
+    </button>
+
+    <button type="button" className="btn btn-secondary btn-floating mx-1">
+      <i className="fab fa-twitter"></i>
+    </button>
+
+    <button type="button" className="btn btn-secondary btn-floating mx-1">
+      <i className="fab fa-github"></i>
+    </button>
+  </div>
+</form>
+              )}
+            </Formik>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Signup
+
 

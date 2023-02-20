@@ -34,13 +34,13 @@ const Contact= () => (
                         </div>
                         {/* Checkbox */}
                         <div className="form-check d-flex justify-content-center mb-4">
-                            <Field type="checkbox" id="form4Example4" name="copy" checked className="form-check-input me-2" />
+                            <Field type="checkbox" id="form4Example4" name="copy" className="form-check-input me-2" style={{backgroundColor:"#9c3353", color:"#fffefe"}} />
                             <label className="form-check-label" htmlFor="form4Example4">
                                 Send me a copy of this message
                             </label>
                         </div>
                         {/* Submit button */}
-                        <button type="submit" disabled={isSubmitting} className="btn btn-primary btn-block mb-4">Send</button>
+                        <button type="submit" disabled={isSubmitting} className="btn btn-block mb-4" style={{backgroundColor:"#9c3353", color:"#fffefe"}}>Send</button>
                     </Form>
                 </div>
             </div>

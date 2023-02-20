@@ -14,7 +14,7 @@ const Home = () => {
           <div className="col-md-4 p-4 ">
             <h1>InvestUp</h1>
             <p>Explore the funding environment with InvestUp and tap into some of the most relevant models for your startup's growth.</p>
-            <button className='btn '>
+            <button className='btn ' style={{backgroundColor:"#9c3353", color:"#fffefe"}}>
               Get started
             </button>
           </div>

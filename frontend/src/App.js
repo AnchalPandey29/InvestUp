@@ -4,6 +4,8 @@ import Admin from "./components/admin";
 import Main from "./components/main";
 import Signin from "./components/main/Signin";
 import Signup from "./components/main/Signup";
+import Option from "./components/main/Option";
+import Forgot from "./components/main/Forgot";
 import Home from "./components/main/Home";
 import UserAuth from "./auth/UserAuth";
 import User from "./components/user";
@@ -58,7 +60,9 @@ function App() {
 
             <Route element={<Main />} path="main">
               <Route element={<Home />} path="home" />
+              <Route element={<Forgot />} path="forgot" />
               <Route element={<Signin />} path="login" />
+              <Route element={<Option />} path="option" />
               <Route element={<Signup />} path="signup" />
               <Route element={<About />} path="aboutus" />
               <Route element={<Contact />} path="contact" />

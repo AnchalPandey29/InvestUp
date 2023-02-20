@@ -123,7 +123,7 @@ const Signup = () => {
     
 
 
-    <button type="button" className="btn btn-secondary btn-floating mx-1">
+    <button type="button" className="btn btn-secondary btn-floating mx-1" >
       <i className="fab fa-google"></i>
     </button>
 

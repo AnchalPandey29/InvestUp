@@ -78,6 +78,18 @@ router.get("/getbyid/:id", (req, res) => {
     });
 });
 
+router.get("/getbyemail/:email", (req, res) => {
+  Model.findOne({email : req.params.email})
+    .then((result) => {
+      console.log("User Data Retrieved");
+      res.status(200).json({ status: "success", result });
+    })
+    .catch((err) => {
+      console.error("Error retrieving user data", err);
+      res.status(500).send("Error retrieving user data");
+    });
+});
+
 router.put("/update/:id", (req, res) => {
   Model.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((result) => {

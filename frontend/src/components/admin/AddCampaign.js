@@ -41,7 +41,7 @@ const AddCompaign = () => {
   return (
     <div>
       <div className="col-md-3 mx-auto pt-5">
-        <div className="card">
+        <div className="card" style={{height:"70vh"}}>
           <div className="card-body">
             <p className="text-center h4">Compaign</p>
             <hr />
@@ -52,7 +52,7 @@ const AddCompaign = () => {
                   <input value={values.title} onChange={handleChange} name="title" className="form-control" />
 
                   <label>Content</label>
-                  <input value={values.content} onChange={handleChange} name="content" type="text" className="form-control" />
+                  <textarea name="content" className="form-control"   value={values.content} onChange={handleChange}  rows="2" style={{resize:"none"}}></textarea>
 
                   <label>Start Date</label>
                   <input className="form-control mb-3" type="date" value={values.startdate} onChange={handleChange} name="startdate" />
@@ -62,8 +62,9 @@ const AddCompaign = () => {
 
                   <label>Image</label>
                   <input value={values.image} className="form-control mb-3" type="file" name="image" onChange={handleChange}/>
-                 
-                  <button disabled={isSubmitting} type="submit" className="btn btn-primary">
+            
+                  <div className="d-flex justify-content-center align-item-center">                
+                  <button disabled={isSubmitting} type="submit" className="btn"  style={{backgroundColor:"#9c3353", color:"white"}}>
                     {
                       isSubmitting ?
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -71,6 +72,7 @@ const AddCompaign = () => {
                         'Submit'
                     }
                   </button>
+                  </div>
                 </form>
               )}
             </Formik>
