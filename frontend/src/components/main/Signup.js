@@ -1,4 +1,5 @@
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
+import { padding } from "@mui/system";
 import { Formik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -31,6 +32,30 @@ const Signup = () => {
     }
   }
 
+  const addInvestor = async (formdata, {setSubmitting}) => {
+    setSubmitting(true);
+    const res = await fetch("http://localhost:5000/investor/add", {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    console.log(res.status)
+    setSubmitting(false);
+
+    if (res.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: 'Success',
+        text: 'You have registered successfully'
+      })
+      navigate('/login');
+    } else {
+      // error alert
+    }
+  }
+
+
   const userSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
     return;
@@ -41,14 +66,16 @@ const Signup = () => {
     // 4. data format - json, etc.
     if(formdata.role === 'startup')
       await addStartup(formdata, {setSubmitting});
-    // else if(formdata)
+     else if(formdata.role ==='investor')
+      await addInvestor(formdata, {setSubmitting});
   }
 
+  
   return (
     <div style={{height:"100vh"}}>
       <div className="col-md-3 mx-auto pt-5">
-        <div className="card" style={{height:"600px"}}>
-          <div className="card-body" >
+        <div className="card pt-5" style={{ height:"fit-content",padding:"40px"}} >
+          <div className="card-body"  style={{height:"fit-content", width:"fit-content" ,padding:"0"}}>
             <p className="text-center h4">Signup Form</p>
             <hr />
             <Formik initialValues={{ name: "", email: "", password: "", role: "startup" }} onSubmit={userSubmit}>
@@ -56,7 +83,7 @@ const Signup = () => {
                
           
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} style={{width:"250px"}}>
                   {/* 2 column grid layout with text inputs for the first and last names */}
                   <div className="row mb-4 form-floating" onSubmit={handleSubmit}>
                     <div className="col">
@@ -83,7 +110,7 @@ const Signup = () => {
 
                   
 
-                  <FormControl>
+                  <FormControl className="ps-3 pb-4">
                     <FormLabel id="demo-radio-buttons-group-label">Role</FormLabel>
                     <RadioGroup
                       aria-labelledby="demo-radio-buttons-group-label"
@@ -92,19 +119,15 @@ const Signup = () => {
                       onChange={handleChange}
                       value={values.role}
                     >
+                      <div className="">
                       <FormControlLabel value="startup" control={<Radio />} label="Startup" />
                       <FormControlLabel value="investor" control={<Radio />} label="Investor" />
                       <FormControlLabel value="common" control={<Radio />} label="Common" />
+                      </div>
                     </RadioGroup>
                   </FormControl>
 
-                  {/* Checkbox */}
-                  <div className="form-check d-flex justify-content-center mb-4">
-                    <input className="form-check-input me-2" type="checkbox" value="" id="form2Example33" style={{ backgroundColor: "#9c3353" }} />
-                    <label className="form-check-label" htmlFor="form2Example33" >
-                      Subscribe to our newsletter
-                    </label>
-                  </div>
+                  
 
                   {/* Submit button */}
                   {/* <button type="submit" className="btn btn-primary ">Sign up</button> */}
@@ -118,17 +141,13 @@ const Signup = () => {
                     }
                   </button>
 
-
-
+                   
                   {/* Register buttons */}
                   <div className="text-center">
                     <p>or sign up with:</p>
                     <button type="button" className="btn btn-secondary btn-floating mx-1">
                       <i className="fab fa-facebook-f"></i>
                     </button>
-
-
-
 
 
                     <button type="button" className="btn btn-secondary btn-floating mx-1" >

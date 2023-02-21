@@ -28,6 +28,7 @@ import ManageCompaign from "./components/admin/ManageCampaign"
 import ManageNews from "./components/admin/ManageNews";
 import ManageBlog from "./components/admin/ManageBlog";
 import Chat from "./components/startup/Chat";
+import ManageStartup from "./components/startup/ManageStartup";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -74,6 +75,7 @@ function App() {
 
             <Route element={<Startup />} path="startup">
             <Route element={<Chat />} path="chat"/>
+            <Route element={<ManageStartup />} path="managestartup"/>
             </Route>
 
             <Route element={<Investor />} path="investor">

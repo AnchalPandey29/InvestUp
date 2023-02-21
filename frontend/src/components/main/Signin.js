@@ -40,9 +40,9 @@ const Signup = () => {
   }
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
-      <div className="col-md-3 pt-5" >
-        <div className="card " style={{ height: "400px", width: "300px" }}>
+    <div className="d-flex justify-content-center align-items-center" style={{height:"100vh"}}>
+      <div className="col-md-3 mx-auto" >
+        <div className="card pt-4" style={{ height:"fit-content",padding:"40px"}}>
           <div className="card-body">
             <p className="text-center h4">Login Form</p>
             <hr />
