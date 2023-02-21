@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Admin from "./components/admin";
 import Main from "./components/main";
 import Startup from "./components/startup";
+import Investor from "./components/investor";
 import Signin from "./components/main/Signin";
 import Signup from "./components/main/Signup";
 import Option from "./components/main/Option";
@@ -75,7 +76,10 @@ function App() {
             <Route element={<Chat />} path="chat"/>
             </Route>
 
-
+            <Route element={<Investor />} path="investor">
+            <Route element={<Chat />} path="chat"/>
+            </Route>
+              
 
             <Route
               element={

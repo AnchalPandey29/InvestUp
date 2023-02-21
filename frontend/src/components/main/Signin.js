@@ -7,7 +7,7 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  
+
   const userSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
 
@@ -40,56 +40,67 @@ const Signup = () => {
   }
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{height:"90vh"}}>
+    <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
       <div className="col-md-3 pt-5" >
-        <div className="card " style={{height:"400px",width:"300px"}}>
+        <div className="card " style={{ height: "400px", width: "300px" }}>
           <div className="card-body">
             <p className="text-center h4">Login Form</p>
             <hr />
-            <Formik initialValues={{ email: "", password: ""}} onSubmit={userSubmit}>
+            <Formik initialValues={{ email: "", password: "" }} onSubmit={userSubmit}>
               {({ values, handleSubmit, handleChange, isSubmitting }) => (
-                
-                  
-                  <form>
-  
-
-  {/* Email input */}
-  <div className="form-outline mb-4">
-    <input type="email" value={values.password} onChange={handleChange} name="password" className="form-control" />
-    <label className="form-label" htmlFor="form3Example3">Email address</label>
-  </div>
-
-  {/* Password input */}
-  <div className="form-outline mb-4">
-    <input type="password" id="form3Example4" className="form-control" />
-    <label className="form-label" htmlFor="form3Example4">Password</label>
-  </div>
-
-                                  <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{backgroundColor:"#9c3353", color:"#fffefe"}}>
-                                      {
-                                          isSubmitting ?
-                                              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                              :
-                                              'Submit'
-                                      }
-                                  </button>
 
 
-  {/* Register buttons */}
-  <div className="text-center">
-  
-     
-     <p className="btn btn-secondary btn-floating "> 
-     <i className="fab fa-google"></i>
-      Login with Google
-      </p>
-    
-
-   
+                <form>
 
 
-  </div>
-</form>
+                  {/* Email input */}
+                  <div className="form-outline mb-4">
+                    <input type="email" value={values.email} onChange={handleChange} name="email" className="form-control" />
+                    <label className="form-label" htmlFor="form3Example3">Email address</label>
+                  </div>
+
+                  {/* Password input */}
+                  <div className="form-outline mb-4">
+                    <input type="password" value={values.password} onChange={handleChange} name="password"  id="form3Example4" className="form-control" />
+                    <label className="form-label" htmlFor="form3Example4">Password</label>
+                  </div>
+
+                  <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        :
+                        'Submit'
+                    }
+                  </button>
+
+                  <div className="row">
+                    <div class="d-flex align-items-center justify-content-center">
+
+                      <a href="/main/forgot">Forgot password?</a>
+                    </div>
+
+
+                    <div class=" d-flex align-items-center justify-content-center">
+
+                      <a href="/main/signup">New User? Create Account</a>
+                    </div>
+                    
+                  </div>
+
+                 
+                    <p className="text-center">or</p>
+              
+
+                  <div className="d-flex align-items-center justify-content-center">
+
+                    <button href="" className="btn btn-toggle">
+                      <i className="fab fa-google" />&nbsp;
+                      Login with Google 
+                    </button>
+                  </div>
+                 
+                </form>
               )}
             </Formik>
           </div>

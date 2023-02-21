@@ -36,17 +36,20 @@ const Chat = () => {
   })
 
   return (
-    <div style={{ backgroundColor: "#ccc", minHeight: "100vh" }}>
-      <div className="container pt-5">
-        <div className="card">
+   
+    <div className="container d-flex flex-column justify-content-center align-items-center p-5">
+     
+        <div className="card " style={{height:"90vh", width:"100vh"}}>
+         
           <div className="card-header">
             <p className="m-0 h4">Contact Name</p>
+          
           </div>
           <div
             className="card-body chat-body"
             style={{
-              height: "70vh",
-              backgroundImage: "url('https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Background.max-1000x1000.jpg')",
+              height: "80vh",
+              width: "100vh"
             }}>
             {messageList.map((obj) => (
               <div className={obj.sent ? "msg-sent" : "msg-rec"}>
@@ -54,7 +57,10 @@ const Chat = () => {
               </div>
             ))}
           </div>
-          <div className="card-footer">
+          <div className="card-footer" style={{
+        
+              width: "100vh"
+            }}>
             <div className="input-group">
               <input
                 type="text"
@@ -69,9 +75,10 @@ const Chat = () => {
               </button>
             </div>
           </div>
-        </div>
-      </div>
+          </div>
     </div>
+      
+    
   )
 }
 
