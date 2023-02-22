@@ -21,14 +21,16 @@ import { useState } from "react";
 import AddAdmin from "./components/main/AddAdmin";
 import Contact from "./components/main/Contact";
 import About from "./components/main/About";
+import Testimonial from "./components/main/Testimonial";
 import AddCompaign from "./components/admin/AddCampaign";
 import AddNews from "./components/admin/AddNews";
 import AddBlog from "./components/admin/AddBlog";
 import ManageCompaign from "./components/admin/ManageCampaign"
 import ManageNews from "./components/admin/ManageNews";
 import ManageBlog from "./components/admin/ManageBlog";
+import ManageStartup from "./components/admin/ManageStartup";
+import ManageInvestor from "./components/admin/ManageInvestor";
 import Chat from "./components/startup/Chat";
-import ManageStartup from "./components/startup/ManageStartup";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -60,6 +62,9 @@ function App() {
               <Route element={<ManageCompaign />} path="managecompaign" />
               <Route element={<ManageNews/>} path="managenews"/>
               <Route element={<ManageBlog/>} path="manageblog"/>
+              <Route element={<ManageStartup />} path="managestartup"/>
+              <Route element={<ManageInvestor />} path="manageinvestor"/>
+
             </Route>
 
             <Route element={<Main />} path="main">
@@ -70,12 +75,13 @@ function App() {
               <Route element={<Signup />} path="signup" />
               <Route element={<About />} path="aboutus" />
               <Route element={<Contact />} path="contact" />
+              <Route element={<Testimonial/>} path="test" />
+              
             </Route>
             
 
             <Route element={<Startup />} path="startup">
             <Route element={<Chat />} path="chat"/>
-            <Route element={<ManageStartup />} path="managestartup"/>
             </Route>
 
             <Route element={<Investor />} path="investor">
