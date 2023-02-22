@@ -48,6 +48,11 @@ const Header = () => {
                 Contact
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link hover-overlay " to="/main/faq">
+                FAQs
+              </NavLink>
+            </li>
           </ul>
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item me-2">
@@ -65,6 +70,9 @@ const Header = () => {
       </div>
       {/* Container wrapper */}
     </nav>
+    
+
+    
   );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Home.css';
 import Eligibility from './Eligibility';
-
+import Testimonial from './Testimonial';
 
 const Home = () => {
   return (
@@ -54,7 +54,8 @@ const Home = () => {
       </div>
 
       <Eligibility />
-
+      <Testimonial/>
+      
     </>
 
 

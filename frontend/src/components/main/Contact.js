@@ -14,9 +14,12 @@ const Contact= () => (
     }}
   >
     {({ isSubmitting }) => (
-        <div className='d-flex flex-column align-items-center justify-content-center 'style={{ height:"100vh"}}>
-                <div  style={{ width: "20%" }}>
-                    <Form >
+        <div className=' d-flex align-items-center justify-content-center 'style={{ height:"100vh"}}>
+                <div >
+                    <Form className='card p-5 ' style={{height:"fit-content",width:"400px"}}>
+                    <p className="text-center h4">Contact Us</p>
+                    <hr style={{width:"250px"}}/>
+
                         {/* Name input */}
                         <div className="form-outline mb-4">
                             <Field type="text" id="form4Example1" name="name" className="form-control" />

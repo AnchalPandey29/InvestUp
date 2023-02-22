@@ -21,6 +21,7 @@ import { useState } from "react";
 import AddAdmin from "./components/main/AddAdmin";
 import Contact from "./components/main/Contact";
 import About from "./components/main/About";
+import Faq from "./components/main/Faq";
 import Testimonial from "./components/main/Testimonial";
 import AddCompaign from "./components/admin/AddCampaign";
 import AddNews from "./components/admin/AddNews";
@@ -76,6 +77,8 @@ function App() {
               <Route element={<About />} path="aboutus" />
               <Route element={<Contact />} path="contact" />
               <Route element={<Testimonial/>} path="test" />
+              <Route element={<Faq />} path="faq" />
+
               
             </Route>
             
