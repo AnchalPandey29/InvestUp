@@ -56,12 +56,12 @@ const Header = () => {
           </ul>
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item me-2">
-              <NavLink className="btn btn-outline-dark" to="/main/signup" style={{backgroundColor:"#9c3353", color:"#fffefe"}}>
+              <NavLink className="btn btn-outline-dark" to="/main/signup" style={{backgroundColor:"#9c3353", color:"white"}}>
                 Create Account
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="btn btn-outline-dark" to="/main/login" style={{backgroundColor:"#9c3353", color:"#fffefe"}}>
+              <NavLink className="btn btn-outline-dark" to="/main/login" style={{backgroundColor:"#9c3353", color:"white"}}>
                 Signin
               </NavLink>
             </li>

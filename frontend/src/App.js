@@ -22,6 +22,8 @@ import AddAdmin from "./components/main/AddAdmin";
 import Contact from "./components/main/Contact";
 import About from "./components/main/About";
 import Faq from "./components/main/Faq";
+import NewsBrowser from "./components/main/NewsBrowse";
+import NewsCard from "./components/main/NewsCard";
 import Testimonial from "./components/main/Testimonial";
 import AddCompaign from "./components/admin/AddCampaign";
 import AddNews from "./components/admin/AddNews";
@@ -32,6 +34,7 @@ import ManageBlog from "./components/admin/ManageBlog";
 import ManageStartup from "./components/admin/ManageStartup";
 import ManageInvestor from "./components/admin/ManageInvestor";
 import Chat from "./components/startup/Chat";
+import BlogCard from "./components/main/BlogCard";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -75,6 +78,9 @@ function App() {
               <Route element={<Option />} path="option" />
               <Route element={<Signup />} path="signup" />
               <Route element={<About />} path="aboutus" />
+              <Route element={<NewsBrowser/>} path="newsbrowse" />
+              <Route element={<NewsCard/>} path="newscard" />
+              <Route element={<BlogCard/>} path="blogcard" />
               <Route element={<Contact />} path="contact" />
               <Route element={<Testimonial/>} path="test" />
               <Route element={<Faq />} path="faq" />

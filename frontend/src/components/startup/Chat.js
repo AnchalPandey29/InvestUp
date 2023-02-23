@@ -14,8 +14,8 @@ const Chat = () => {
     
 
   const [messageList, setMessageList] = useState([
-    { text: "Kal wale exam ka syllabus send kro", sent: false },
-    { text: "Kal kaun sa exam hai??", sent: true },
+    // { text: "Kal wale exam ka syllabus send kro", sent: false },
+    // { text: "Kal kaun sa exam hai??", sent: true },
   ])
 
   const [inputText, setInputText] = useState("")
@@ -39,10 +39,10 @@ const Chat = () => {
    
     <div className="container d-flex flex-column justify-content-center align-items-center p-5">
      
-        <div className="card " style={{height:"90vh", width:"100vh"}}>
+        <div className="card " style={{height:"80vh", width:"100vh"}}>
          
           <div className="card-header">
-            <p className="m-0 h4">Contact Name</p>
+            <p className="m-0 h4">Anchal Pandey</p>
           
           </div>
           <div
