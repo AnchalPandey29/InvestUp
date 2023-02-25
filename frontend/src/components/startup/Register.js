@@ -158,6 +158,37 @@ const Register = () => {
        Categories and Interest</div>
     </div>
     <form>
+    <div class="col-12">
+    <label class="visually-hidden" for="inlineFormSelectPref"></label>
+    <select class="select">
+      <option value="Private Limited Company">Private Limited Company </option>
+      <option value="Limited Liability Partnership">Limited Liability Partnership</option>
+      <option value="Registered Partnrship">Registered Partnership</option>
+      </select>
+      </div>
+      <div class="col-12">
+    <label class="visually-hidden" for="inlineFormSelectPref"></label>
+    <select class="select">
+      <option value="Private Limited Company">Private Limited Company </option>
+      <option value="Limited Liability Partnership">Limited Liability Partnership</option>
+      <option value="Registered Partnrship">Registered Partnership</option>
+      </select>
+      </div>
+      
+      
+    <FormControl className="ps-3 pb-4">
+      <FormLabel id="demo-radio-buttons-group-label">Your Interests</FormLabel>
+      <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="none" name="type" onChange={handleChange} value={values.type} >
+                      <div className="">
+                      <FormControlLabel value=" All" control={<Radio />} label="All" />
+                      <FormControlLabel value="Investors" control={<Radio />} label="Investors" />
+                      <FormControlLabel value="Accelerators" control={<Radio />} label=" Accelerators" />
+                      <FormControlLabel value="Mentors" control={<Radio />} label="Mentors" />
+
+                     
+                      </div>
+                    </RadioGroup>
+                  </FormControl>
 
     
 
