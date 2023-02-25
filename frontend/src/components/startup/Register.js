@@ -339,7 +339,11 @@ const Register = () => {
 
       </div>
     </div>
-    {/* Tab content */}
+    <form>
+
+    
+
+    </form>
   </div>
 </div>
 
