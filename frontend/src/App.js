@@ -22,7 +22,7 @@ import AddAdmin from "./components/main/AddAdmin";
 import Contact from "./components/main/Contact";
 import About from "./components/main/About";
 import Faq from "./components/main/Faq";
-import NewsBrowser from "./components/main/NewsBrowse";
+import NewsBrowser from "./components/main/NewsDetail";
 import NewsCard from "./components/main/NewsCard";
 import Testimonial from "./components/main/Testimonial";
 import AddCompaign from "./components/admin/AddCampaign";
@@ -36,6 +36,10 @@ import ManageInvestor from "./components/admin/ManageInvestor";
 import Chat from "./components/startup/Chat";
 import BlogCard from "./components/main/BlogCard";
 import Register from "./components/startup/Register";
+import CampaignCard from "./components/main/CampaignCard";
+import NewsDetail from "./components/main/NewsDetail";
+import CampaignDetail from "./components/main/CampaignDetail";
+import BlogDetail from "./components/main/BlogDetail";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -81,7 +85,11 @@ function App() {
               <Route element={<About />} path="aboutus" />
               <Route element={<NewsBrowser/>} path="newsbrowse" />
               <Route element={<NewsCard/>} path="newscard" />
+              <Route element={<NewsDetail/>} path="newsdetail" />
+              <Route element={<CampaignCard/>} path="campaigncard" />
+              <Route element={<CampaignDetail/>} path="campaigndetail" />
               <Route element={<BlogCard/>} path="blogcard" />
+              <Route element={<BlogDetail/>} path="blogdetail" />
               <Route element={<Contact />} path="contact" />
               <Route element={<Testimonial/>} path="test" />
               <Route element={<Faq />} path="faq" />

@@ -41,42 +41,41 @@ const AddBlog = () => {
 
   return (
     <div>
-      <div className="col-md-3 mx-auto pt-5">
-        <div className="card">
-          <div className="card-body">
-            <p className="text-center h4">Signup Form</p>
-            <hr />
-            <Formik initialValues={{heading:"",content:"",image:"",date:"" }} onSubmit={AddBlog}>
-              {({ values, handleSubmit, handleChange, isSubmitting }) => (
-                <form onSubmit={handleSubmit}>
-                  <label> Heading</label>
-                  <input value={values.heading} type="text" onChange={handleChange} name="heading" className="form-control" />
+    <div className="col-md-3 mx-auto pt-5">
+      <div className="card" >
+        <div className="card-body">
+          <p className="text-center h4">News</p>
+          <hr />
+          <Formik initialValues={{ date: new Date(),heading: "", content: "",image:"" }} onSubmit={BlogSubmit}>
+           {({ values, handleSubmit, handleChange, isSubmitting }) => (
+             <form onSubmit={handleSubmit} >
+                 <label>Heading</label>
+                 <input value={values.heading} onChange={handleChange} name="heading" type="text" className="form-control" />
 
-                  <label>Content</label>
-                  <input value={values.content} onChange={handleChange} name="content" type="text" className="form-control" />
-
-                  <label>image</label>
-                  <input className="form-control mb-3" type="file" value={values.image} onChange={handleChange} name="image" />
-
-                  <label>Date</label>
-                  <input value={values.date} className="form-control mb-3" type="Date"  name="date" onChange={handleChange}/>
-
-                 
-                  <button disabled={isSubmitting} type="submit" className="btn btn-primary">
-                    {
-                      isSubmitting ?
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        :
-                        'Submit'
-                    }
-                  </button>
-                </form>
-              )}
-            </Formik>
-          </div>
+                 <label>Content</label>
+                <textarea name="content" className="form-control" value={values.content} onChange={handleChange} cols="5" rows="5" style={{resize:"none"}}></textarea>
+               
+               
+                <label>Image</label>
+                <input value={values.image} className="form-control mb-3" type="file" name="image" onChange={handleChange}/>
+               
+               <div className="d-flex justify-content-center align-item-center">
+                <button disabled={isSubmitting} type="submit" className="btn " style={{backgroundColor:"#9c3353", color:"white"}}>
+                  {
+                    isSubmitting ?
+                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      :
+                      'Submit'
+                  }
+                </button>
+                </div>
+              </form>
+            )}
+          </Formik>
         </div>
       </div>
     </div>
+  </div>
   )
 }
 

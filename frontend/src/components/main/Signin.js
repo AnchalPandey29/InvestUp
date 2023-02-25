@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Signup = () => {
+const Signin = () => {
 
   const navigate = useNavigate();
 
@@ -31,11 +31,12 @@ const Signup = () => {
       Swal.fire({
         icon: "success",
         title: 'Success',
-        text: 'You have registered successfully'
+        text: 'You have logged in successfully'
       })
-      navigate('/option');
-    } else {
-      // error alert
+      if(formdata.role==='startup')
+        navigate('/startup/register');
+    else if(formdata.role==='investor')
+    navigate('/investor/register');
     }
   }
 
@@ -111,6 +112,6 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Signin
 
 
