@@ -10,7 +10,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Register = () => {
+const Registeri = () => {
   const navigate = useNavigate();
 
   const initialValues = {
@@ -18,6 +18,7 @@ const Register = () => {
     email: "",
     tel: "",
     type: "none",
+    Date,
     category: "",
     interests: "",
     brief: "",
@@ -109,7 +110,7 @@ const Register = () => {
         aria-controls="v-tabs-home"
         aria-selected="true"
       >
-        About Startup
+        Basic Info
       </a>
       <a
         className="nav-link"
@@ -131,7 +132,7 @@ const Register = () => {
         aria-controls="v-tabs-messages"
         aria-selected="false"
       >
-        Categories And Interests
+        Incubator Category
       </a>
     </div>
     {/* Tab navs */}
@@ -167,29 +168,67 @@ const Register = () => {
                 </div>
                 <div className="form-outline mb-4">
                   <Field type="name" name="name" className="form-control" />
-                  <label className="form-label" htmlFor="form3Example3">Startup Name</label>
+                  <label className="form-label" htmlFor="form3Example3">Investor Name</label>
                 </div>
-                <FormControl className="ps-3 pb-4">
-                  <FormLabel id="demo-radio-buttons-group-label">Funded Or Bootstrapped</FormLabel>
-                  <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="none" name="type" onChange={handleChange} value={values.type} >
-                    <div className="">
-                      <FormControlLabel value=" Funded" control={<Radio />} label="Funded" />
-                      <FormControlLabel value="Bootstrapped" control={<Radio />} label="Bootstarpped" />
-
+                <div className="form-outline mb-4">
+                  <Field type="date" name="date" className="form-control" />
+                  <label className="form-label" htmlFor="form3Example3">Date Of Establishment</label>
+                </div>
+                <div className="col-12">
+                <label className="visually-hidden" htmlFor="select1"></label>
+                <select
+                className="select"
+                name="select1"
+                value={values.select1}
+                onChange={handleChange}>
+                        <FormLabel> Duration</FormLabel>
+                        <option value=" Upto 6"> Upto 6</option>
+                        <option value="6 to 12"> 6 to 12 Months</option>
+                        <option value="Above 12 months">Above 12 Months</option>
+                      </select>
                     </div>
-                  </RadioGroup>
-                </FormControl>
-                <div class="btn-group shadow-0" role="group" aria-label="Basic example">
-                    <FormLabel>Stage</FormLabel>
-                  <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Ideation</button>
-                  <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Validation</button>
-                  <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Early Traction</button>
-                  <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Scaling</button>
+                
+                <FormLabel> Select Stages of Startup You Are Interested in Working With</FormLabel>
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">Ideation</label>
                 </div>
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">Validation</label>
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">Early Traction</label>
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">Scaling</label>
+                </div>
+                
                 <div class="form-outline mb-4">
                   <Field as="textarea" name="brief" class="form-control" id="form6Example7" rows="4"></Field>
                   <label class="form-label" for="form6Example7">Brief</label>
                 </div>
+                <div className="form-outline mb-4">
+                  <Field type="name" name="name" className="form-control" />
+                  <label className="form-label" htmlFor="form3Example3">Current Incubatees</label>
+                </div>
+                <div className="form-outline mb-4">
+                  <Field type="name" name="name" className="form-control" />
+                  <label className="form-label" htmlFor="form3Example3">Graduated Incubatees</label>
+                </div>
+                <FormControl className="ps-3 pb-4">
+                  <FormLabel id="demo-radio-buttons-group-label">Government Funded ?</FormLabel>
+                  <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="none" name="type" onChange={handleChange} value={values.type} >
+                    <div className="">
+                      <FormControlLabel value=" Funded" control={<Radio />} label="Yes" />
+                      <FormControlLabel value="Bootstrapped" control={<Radio />} label="No" />
+
+                    </div>
+                  </RadioGroup>
+                </FormControl>
+
               </Form>
             )}
           </Formik>
@@ -244,16 +283,20 @@ const Register = () => {
                         </div>
                       </div>
                     </div>
+                    <div className="form-outline mb-4">
+                  <Field type="url" name="link" className="form-control" />
+                  <label className="form-label" htmlFor="form3Example3">Application Link</label>
+                </div>
                     <div className="row mb-4 form-floating">
                       <div className="col">
                         <div className="form-outline">
-                          <input type="url" value={values.website} onChange={handleChange} name="website" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Website</label>
+                          <input type="url" value={values.website} onChange={handleChange} name="Incubation Center Loacation" className="form-control" />
+                          <label className="form-label" htmlFor="floatingInputValue">Incubation Center Loacation</label>
                         </div>
                         <div className="col">
                           <div className="form-outline">
-                            <input type="url" value={values.mobileAppLink} onChange={handleChange} name="mobileAppLink" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">Mobile App Link</label>
+                            <input type="url" value={values.mobileAppLink} onChange={handleChange} name="Incubator Center Location Address" className="form-control" />
+                            <label className="form-label" htmlFor="floatingInputValue">Incubator Center Location Address</label>
                           </div>
                         </div>
                       </div>
@@ -296,9 +339,9 @@ const Register = () => {
                         onChange={handleChange}
                       >
                         <FormLabel> Industry</FormLabel>
-                        <option value="Private Limited Company">Private Limited Company</option>
-                        <option value="Limited Liability Partnership">Limited Liability Partnership</option>
-                        <option value="Registered Partnrship">Registered Partnership</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
                       </select>
                     </div>
                     <div className="col-12">
@@ -314,29 +357,25 @@ const Register = () => {
                         <option value=""></option>
                       </select>
                     </div>
+                    <div className="col-12">
+                      <label className="visually-hidden" htmlFor="select2"></label>
+                      <select
+                        className="select"
+                        name="select2"
+                        value={values.select2}
+                        onChange={handleChange}
+                      ><FormLabel>Interests</FormLabel>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                      </select>
+                    </div>
                     <div className="col">
                         <div className="form-outline">
-                          <input type="text" value={values.text} onChange={handleChange} name="text" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Udyog Aadhar</label>
+                          <input type="number" value={values.text} onChange={handleChange} name="   DIPPT Number" className="form-control" />
+                          <label className="form-label" htmlFor="floatingInputValue">DIPPT Enpanelment Number</label>
                         </div>
                         </div>
-
-                    <FormControl className="ps-3 pb-4">
-                      <FormLabel id="demo-radio-buttons-group-label">Your Interests</FormLabel>
-                      <RadioGroup
-                        aria-labelledby="demo-radio-buttons-group-label"
-                        name="type"
-                        onChange={handleChange}
-                        value={values.type}
-                      >
-                        <div className="">
-                          <FormControlLabel value=" All" control={<Radio />} label="All" />
-                          <FormControlLabel value="Investors" control={<Radio />} label="Investors" />
-                          <FormControlLabel value="Accelerators" control={<Radio />} label=" Accelerators" />
-                          <FormControlLabel value="Mentors" control={<Radio />} label="Mentors" />
-                        </div>
-                      </RadioGroup>
-                    </FormControl>
 
                     <button type="submit">Submit</button>
                   </form>
@@ -359,4 +398,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Registeri
