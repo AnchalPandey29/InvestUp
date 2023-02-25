@@ -83,7 +83,7 @@ const Signup = () => {
                
           
 
-                <form onSubmit={handleSubmit} style={{width:"250px"}}>
+                <form onSubmit={handleSubmit} >
                   {/* 2 column grid layout with text inputs for the first and last names */}
                   <div className="row mb-4 form-floating" onSubmit={handleSubmit}>
                     <div className="col">

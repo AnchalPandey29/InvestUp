@@ -35,6 +35,7 @@ import ManageStartup from "./components/admin/ManageStartup";
 import ManageInvestor from "./components/admin/ManageInvestor";
 import Chat from "./components/startup/Chat";
 import BlogCard from "./components/main/BlogCard";
+import Register from "./components/startup/Register";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -91,6 +92,7 @@ function App() {
 
             <Route element={<Startup />} path="startup">
             <Route element={<Chat />} path="chat"/>
+            <Route element={<Register />} path="register"/>
             </Route>
 
             <Route element={<Investor />} path="investor">
