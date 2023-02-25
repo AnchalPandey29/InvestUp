@@ -1,355 +1,205 @@
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-} from "@mui/material";
+import { Formik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Register = () => {
+
   const navigate = useNavigate();
 
-  const initialValues = {
-    name: "",
-    email: "",
-    tel: "",
-    type: "none",
-    category: "",
-    interests: "",
-    brief: "",
-  };
+  
+  const userSubmit = async (formdata, { setSubmitting }) => {
+    console.log(formdata);
 
-  const onSubmit = async (values, { setSubmitting }) => {
-    console.log(values);
+
+    // 1. URL
+    // 2. request method - get, post, put, delete , etc.
+    // 3. Data you want to sent.
+    // 4. data format - json, etc.
 
     setSubmitting(true);
-    const res = await fetch("http://localhost:5000/startup/add", {
+    const res = await fetch("http://localhost:5000/user/add", {
       method: "POST",
-      body: JSON.stringify(values),
+      body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },
     });
 
-    console.log(res.status);
+    console.log(res.status)
     setSubmitting(false);
 
     if (res.status === 200) {
       Swal.fire({
         icon: "success",
-        title: "Success",
-        text: "You have registered successfully",
-      });
-      navigate("/");
+        title: 'Success',
+        text: 'You have registered successfully'
+      })
+      navigate('/login');
     } else {
       // error alert
     }
-  };
-
-  const validate = (values) => {
-    const errors = {};
-
-    if (!values.name) {
-      errors.name = "Required";
-    }
-
-    if (!values.email) {
-      errors.email = "Required";
-    }
-
-    if (!values.tel) {
-      errors.tel = "Required";
-    }
-
-    if (values.type === "none") {
-      errors.type = "Required";
-    }
-
-    if (!values.category) {
-      errors.category = "Required";
-    }
-
-    if (!values.interests) {
-      errors.interests = "Required";
-    }
-
-    if (!values.brief) {
-      errors.brief = "Required";
-    }
-
-    return errors;
-  };
-          
-
+  }
 
   return (
     <div>
-
-
-
-
-
-<div className="row w-100">
-  <div className="col-3">
-    {/* Tab navs */}
-    <div
-      className="nav flex-column nav-tabs text-center"
-      id="v-tabs-tab"
-      role="tablist"
-      aria-orientation="vertical"
-    >
-      <a
-        className="nav-link active"
-        id="v-tabs-home-tab"
-        data-mdb-toggle="tab"
-        href="#v-tabs-home"
-        role="tab"
-        aria-controls="v-tabs-home"
-        aria-selected="true"
-      >
-        Home
-      </a>
-      <a
-        className="nav-link"
-        id="v-tabs-profile-tab"
-        data-mdb-toggle="tab"
-        href="#v-tabs-profile"
-        role="tab"
-        aria-controls="v-tabs-profile"
-        aria-selected="false"
-      >
-        Profile
-      </a>
-      <a
-        className="nav-link"
-        id="v-tabs-messages-tab"
-        data-mdb-toggle="tab"
-        href="#v-tabs-messages"
-        role="tab"
-        aria-controls="v-tabs-messages"
-        aria-selected="false"
-      >
-        Messages
-      </a>
+        <div class="row">
+  <div class="col-3">
+    
+    <div class="nav flex-column nav-pills text-center"id="v-pills-tab" role="tablist"aria-orientation="vertical" >
+      <a class="nav-link active" id="v-pills-About Startup-tab" data-mdb-toggle="pill" href="#v-pills-AboutStartup" role="tab"
+        aria-controls="v-pills-AboutStartup" aria-selected="true">About Startup</a>
+      <a class="nav-link" id="v-pills-ContactInfo-tab" data-mdb-toggle="pill" href="#v-pills-ContactInfo" role="tab"aria-controls="v-pills-ContactInfo"
+        aria-selected="false">Contact Info</a>
+      <a class="nav-link" id="v-pills-Category And Interests-tab" data-mdb-toggle="pill" href="#v-pills-Category And Interests" role="tab"
+      aria-controls="v-pills-Category And Interests" aria-selected="false" >Category And Interests</a >
     </div>
-    {/* Tab navs */}
+    
   </div>
-  <div className="col-9">
-    {/* Tab content */}
-    <div className="tab-content" id="v-tabs-tabContent">
-      <div
-        className="tab-pane fade show active"
-        id="v-tabs-home"
-        role="tabpanel"
-        aria-labelledby="v-tabs-home-tab"
-      >
-        
-          {/* first form */}
-        <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
-          <Formik
-            initialValues={{ name: '', type: '', brief: '' }}
-            onSubmit={values => {
-              console.log(values);
-            }}
-          >
-            {({ values, handleSubmit, handleChange, isSubmitting }) => (
-                <Form onSubmit={handleSubmit}>
-                <div class="col-md-7">
-                  <div class="file-upload-wrapper">
-                    <div class="image-section"></div>
-                    <div class="image-body">
-                      <span>Browse</span>
-                      <input type="file" class="image-input" name="image"></input>
-                    </div>
-                  </div>
-                </div>
-                <div className="form-outline mb-4">
-                  <Field type="name" name="name" className="form-control" />
-                  <label className="form-label" htmlFor="form3Example3">Startup Name</label>
-                </div>
-                <FormControl className="ps-3 pb-4">
-                  <FormLabel id="demo-radio-buttons-group-label">Funded Or Bootstrapped</FormLabel>
-                  <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="none" name="type" onChange={handleChange} value={values.type} >
-                    <div className="">
+
+  <div class="col-9">
+    
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-About Startup"role="tabpanel"aria-labelledby="v-pills-About Startup-tab" >
+      <form>
+        <div class="col-md-7">
+          < div class="file-upload-wrapper">
+            <div class="image-section"></div>
+            <div class="image-body">
+              <span>Browse</span>
+              <input type="file" class="image-input" name="image"></input>
+            </div>
+          </div>
+        </div>
+      <div className="form-outline mb-4">
+      <input type="name" value={values.name} onChange={handleChange} name="name" className="form-control" />
+      <label className="form-label" htmlFor="form3Example3">Startup Name</label>
+      </div>
+  <FormControl className="ps-3 pb-4">
+      <FormLabel id="demo-radio-buttons-group-label">Funded Or Bootstrapped</FormLabel>
+      <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="none" name="type" onChange={handleChange} value={values.type} >
+                      <div className="">
                       <FormControlLabel value=" Funded" control={<Radio />} label="Funded" />
                       <FormControlLabel value="Bootstrapped" control={<Radio />} label="Bootstarpped" />
+                     
+                      </div>
+                    </RadioGroup>
+                  </FormControl>
+                  <div class="btn-group shadow-0" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Ideation</button>
+                <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Validation</button>
+                <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Early Traction</button>
+                 <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Scaling</button>
+               </div>
+               <div class="form-outline mb-4">
+              <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+              <label class="form-label" for="form6Example7">Brief</label>
+              </div>
 
-                    </div>
-                  </RadioGroup>
-                </FormControl>
-                <div class="btn-group shadow-0" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Ideation</button>
-                  <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Validation</button>
-                  <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Early Traction</button>
-                  <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Scaling</button>
-                </div>
-                <div class="form-outline mb-4">
-                  <Field as="textarea" name="brief" class="form-control" id="form6Example7" rows="4"></Field>
-                  <label class="form-label" for="form6Example7">Brief</label>
-                </div>
-              </Form>
-            )}
-          </Formik>
 
-        </div>
-      </div>
-          {/* first form end  */}
-
+        </form>
       </div>
       <div
-        className="tab-pane fade"
-        id="v-tabs-profile"
+        class="tab-pane fade"
+        id="v-pills-Contact Info"
         role="tabpanel"
-        aria-labelledby="v-tabs-profile-tab"
+        aria-labelledby="v-pills-Contact Info-tab"
       >
-        
-              {/* second form  */}
+        <form>
+        <div className="row mb-4 form-floating" onSubmit={handleSubmit}>
+                    <div className="col">
+                      <div className="form-outline">
+                        <input type="email" value={values.email} onChange={handleChange} name="email" className="form-control" />
+                        <label className="form-label" for="floatingInputValue">Email</label>
+                     </div>
+                     <div className="col">
+                      <div className="form-outline">
+                        <input type="tel" value={values.tel} onChange={handleChange} name="Mobile" className="form-control" />
+                        <label className="form-label" for="floatingInputValue">Mobile</label>
+                     </div>
 
-              <Formik
-                initialValues={{ name: '', type: '', brief: '' }}
-                onSubmit={values => {
-                  console.log(values);
-                }}
-              >
-{({ values, handleSubmit, handleChange, isSubmitting }) => (
-                    <form onSubmit={handleSubmit} >
-                    <div className="row mb-4 form-floating">
-                      <div className="col">
-                        <div className="form-outline">
-                          <input type="email" value={values.email} onChange={handleChange} name="email" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Email</label>
-                        </div>
-                        <div className="col">
-                          <div className="form-outline">
-                            <input type="tel" value={values.tel} onChange={handleChange} name="tel" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">Mobile</label>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                    <div className="row mb-4 form-floating">
-                      <div className="col">
-                        <div className="form-outline">
-                          <input type="text" value={values.state} onChange={handleChange} name="state" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">State</label>
-                        </div>
-                        <div className="col">
-                          <div className="form-outline">
-                            <input type="text" value={values.city} onChange={handleChange} name="city" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">City</label>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                    <div className="row mb-4 form-floating">
-                      <div className="col">
-                        <div className="form-outline">
-                          <input type="url" value={values.website} onChange={handleChange} name="website" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Website</label>
-                        </div>
-                        <div className="col">
-                          <div className="form-outline">
-                            <input type="url" value={values.mobileAppLink} onChange={handleChange} name="mobileAppLink" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">Mobile App Link</label>
-                          </div>
-                        </div>
-                      </div>
+                    
+                  </div>
+                  <div className="row mb-4 form-floating" onSubmit={handleSubmit}>
+                    <div className="col">
+                      <div className="form-outline">
+                        <input type="text" value={values.name} onChange={handleChange} name="state" className="form-control" />
+                        <label className="form-label" for="floatingInputValue">State</label>
+                     </div>
+                     <div className="col">
+                      <div className="form-outline">
+                        <input type="text" value={values.name} onChange={handleChange} name="city" className="form-control" />
+                        <label className="form-label" for="floatingInputValue">city</label>
+                     </div>
+
                     </div>
-                    <button type="submit">Submit</button>
+                    </div>
+                    
+                  </div>
+                  <div className="row mb-4 form-floating" onSubmit={handleSubmit}>
+                    <div className="col">
+                      <div className="form-outline">
+                        <input type="url" value={values.name} onChange={handleChange} name="name" className="form-control" />
+                        <label className="form-label" for="floatingInputValue">Website</label>
+                     </div>
+                     <div className="col">
+                      <div className="form-outline">
+                        <input type="url" value={values.name} onChange={handleChange} name="name" className="form-control" />
+                        <label className="form-label" for="floatingInputValue">Mobile App Link</label>
+                     </div>
+
+                    </div>
+                    </div>
+                    
+                  </div>
                   </form>
-                )}
-              </Formik>
-
-              {/* second form end  */}
-
-
       </div>
-      <div
-        className="tab-pane fade"
-        id="v-tabs-messages"
-        role="tabpanel"
-        aria-labelledby="v-tabs-messages-tab"
-      >
-        
-    {/* third form  */}
-              <Formik
-                initialValues={{
-                  select1: '',
-                  select2: '',
-                  type: '',
-                }}
-                onSubmit={values => {
-                  console.log(values);
-                }}
-              >
-                {({ values, handleSubmit, handleChange, isSubmitting }) => (
-                  <form onSubmit={handleSubmit} >
-                    <div className="col-12">
-                      <label className="visually-hidden" htmlFor="select1"></label>
-                      <select
-                        className="select"
-                        name="select1"
-                        value={values.select1}
-                        onChange={handleChange}
-                      >
-                        <option value="Private Limited Company">Private Limited Company</option>
-                        <option value="Limited Liability Partnership">Limited Liability Partnership</option>
-                        <option value="Registered Partnrship">Registered Partnership</option>
-                      </select>
-                    </div>
-                    <div className="col-12">
-                      <label className="visually-hidden" htmlFor="select2"></label>
-                      <select
-                        className="select"
-                        name="select2"
-                        value={values.select2}
-                        onChange={handleChange}
-                      >
-                        <option value="Private Limited Company">Private Limited Company</option>
-                        <option value="Limited Liability Partnership">Limited Liability Partnership</option>
-                        <option value="Registered Partnrship">Registered Partnership</option>
-                      </select>
-                    </div>
-
-                    <FormControl className="ps-3 pb-4">
-                      <FormLabel id="demo-radio-buttons-group-label">Your Interests</FormLabel>
-                      <RadioGroup
-                        aria-labelledby="demo-radio-buttons-group-label"
-                        name="type"
-                        onChange={handleChange}
-                        value={values.type}
-                      >
-                        <div className="">
-                          <FormControlLabel value=" All" control={<Radio />} label="All" />
-                          <FormControlLabel value="Investors" control={<Radio />} label="Investors" />
-                          <FormControlLabel value="Accelerators" control={<Radio />} label=" Accelerators" />
-                          <FormControlLabel value="Mentors" control={<Radio />} label="Mentors" />
-                        </div>
-                      </RadioGroup>
-                    </FormControl>
-
-                    <button type="submit">Submit</button>
-                  </form>
-                )}
-              </Formik>
-              {/* third form end  */}
-
-      </div>
+      <div class="tab-pane fade" id="v-pills-Categories and Interests" role="tabpanel" aria-labelledby="v-pills-Categories and Interests-tab">
+       Categories and Interest</div>
     </div>
     <form>
+    <div class="col-12">
+    <label class="visually-hidden" for="inlineFormSelectPref"></label>
+    <select class="select">
+      <option value="Private Limited Company">Private Limited Company </option>
+      <option value="Limited Liability Partnership">Limited Liability Partnership</option>
+      <option value="Registered Partnrship">Registered Partnership</option>
+      </select>
+      </div>
+      <div class="col-12">
+    <label class="visually-hidden" for="inlineFormSelectPref"></label>
+    <select class="select">
+      <option value="Private Limited Company">Private Limited Company </option>
+      <option value="Limited Liability Partnership">Limited Liability Partnership</option>
+      <option value="Registered Partnrship">Registered Partnership</option>
+      </select>
+      </div>
+      
+      
+    <FormControl className="ps-3 pb-4">
+      <FormLabel id="demo-radio-buttons-group-label">Your Interests</FormLabel>
+      <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="none" name="type" onChange={handleChange} value={values.type} >
+                      <div className="">
+                      <FormControlLabel value=" All" control={<Radio />} label="All" />
+                      <FormControlLabel value="Investors" control={<Radio />} label="Investors" />
+                      <FormControlLabel value="Accelerators" control={<Radio />} label=" Accelerators" />
+                      <FormControlLabel value="Mentors" control={<Radio />} label="Mentors" />
+
+                     
+                      </div>
+                    </RadioGroup>
+                  </FormControl>
 
     
 
     </form>
   </div>
 </div>
-
-      
-    </div>
+</div>
   )
 }
 
 export default Register
+
+
+
