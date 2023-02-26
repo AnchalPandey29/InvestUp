@@ -25,11 +25,12 @@ const NewsBrowser = () => {
         <div>
 
             
-            {/* {
+
+             {
                 newsList.map((news) => (
                     <div>{news.heading}</div>
                 ))
-            } */}
+            } 
 
 
 

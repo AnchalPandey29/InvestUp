@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 
-const ManageStartup = () => {
+const StartupProfile = () => {
 
     const [userList, setUserList] = useState([]);
 
@@ -40,7 +40,7 @@ const ManageStartup = () => {
     <div>
         <header className='py-5'>
             <div className="container">
-                <h1 className='display-3 fw-bold  text-center' style={{color:"#9c3353"}}>Manage Startup Data</h1>
+                <h1 className='display-3 fw-bold  text-center' style={{color:"#9c3353"}}> Startup Profile</h1>
             </div>
         </header>
 
@@ -49,26 +49,33 @@ const ManageStartup = () => {
         <table class="table table-striped table-hover">
                 <thead >
                     <tr style={{backgroundColor:"#9c3353", color:"white"}}>
-                         <th></th>
-                        <th>NAME</th>
-                        <th>EMAIL</th>
-                        <th>PASSWORD</th>
-                        <th>ROLE</th>
-                      
-                    
-                      
                         
+                    <th>OwnerName</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Title</th>
+                        <th>Contact</th>
+                        <th>Image</th>
+                        <th>OwnerAvatar</th>
+                        <th>Product Information</th>
+                        <th>Documents</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody style={{backgroundColor:"white"}}>
                     {
                         userList.map( (user) => (
                             <tr >
-                                <td>{user.id}</td>
-                                <td>{user.name}</td>
+                                <td>{user.ownername}</td>
                                 <td>{user.email}</td>
                                 <td>{user.password}</td>
-                                <td>{user.role}</td>
+                                <td>{user.title}</td>
+                                <td>{user.contact}</td>
+                                <td>{user.coverimage}</td>
+                                <td>{user.owneravatar}</td>
+                                <td>{user.product}</td>
+                                <td>{user.documents}</td>
+                                <td>{user.created_at}</td>
                                 
                                 
                                 <td>
@@ -87,4 +94,4 @@ const ManageStartup = () => {
   )
 }
 
-export default StartupProfile;
+export default ManageStartup;
