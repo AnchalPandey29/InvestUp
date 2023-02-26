@@ -41,6 +41,7 @@ import CampaignDetail from "./components/main/CampaignDetail";
 import BlogDetail from "./components/main/BlogDetail";
 import Registerinvestor from "./components/investor/Register";
 import NewsBrowser from "./components/main/NewsBrowser";
+import ConsultancyCard from "./components/main/ConsultancyCard";
 import Consultancy from "./components/main/Consultancy";
 
 function App() {
@@ -91,7 +92,8 @@ function App() {
               <Route element={<CampaignDetail/>} path="campaigndetail" />
               <Route element={<BlogCard/>} path="blogcard" />
               <Route element={<BlogDetail/>} path="blogdetail" />
-              <Route element={<Consultancy />} path="consultancy" />
+              <Route element={<ConsultancyCard />} path="consultancy" />
+              <Route element={<Consultancy />} path="chat" />
               <Route element={<Contact />} path="contact" />
               <Route element={<Testimonial/>} path="test" />
               <Route element={<Faq />} path="faq" />

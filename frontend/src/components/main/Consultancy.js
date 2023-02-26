@@ -1,111 +1,85 @@
-import React from 'react'
+import React, { useEffect, useState } from "react"
+import "./Chat.css";
+import {io} from 'socket.io-client';
+import app_config from "../../config";
 
-const Consultancy = () => {
+const Chat = () => {
+
+    const url = app_config.apiurl;
+    const [socket, setSocket] = useState(io(url, {autoConnect: false}));    
+
+    useEffect(() => {
+      socket.connect();
+    }, [])
+    
+
+  const [messageList, setMessageList] = useState([
+    // { text: "Kal wale exam ka syllabus send kro", sent: false },
+    // { text: "Kal kaun sa exam hai??", sent: true },
+  ])
+
+  const [inputText, setInputText] = useState("")
+
+  const sendMessage = () => {
+    if (!inputText.trim()) return
+    const temp = { text: inputText, sent: true }
+
+    // sending msg to backend
+    socket.emit('sendmsg', temp);
+
+    setMessageList([...messageList, temp])
+    setInputText("")
+  }
+
+  socket.on('recmsg', (data) => {
+    setMessageList([...messageList, data])
+  })
+
   return (
-    <div>
-        <div className="carousel-item active">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-4 p-5">
-              <img
-                className="rounded-circle shadow-1-strong mb-4"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
-                alt="avatar"
-                style={{ width: 150 }}
+   
+    <div className="container d-flex flex-column justify-content-center align-items-center p-5">
+     
+        <div className="card " style={{height:"70vh", width:"100vh"}}>
+         
+          <div className="card-header">
+            <p className="m-0 h4">Ola Daudin</p>
+          
+          </div>
+          <div
+            className="card-body chat-body"
+            style={{
+              height: "10vh",
+              width: "100vh"
+            }}>
+            {messageList.map((obj) => (
+              <div className={obj.sent ? "msg-sent" : "msg-rec"}>
+                <p className="m-0">{obj.text}</p>
+              </div>
+            ))}
+          </div>
+          <div className="card-footer" style={{
+        
+              width: "100vh"
+            }}>
+            <div className="input-group">
+              <input
+                type="text"
+                className="form-control"
+                onChange={(e) => {
+                  setInputText(e.target.value)
+                }}
+                value={inputText}
               />
-              <h5 className="mb-3">Anna Deynah</h5>
-              <p>CEO, Lapharma.co</p>
-              <p className="text-muted">
-                <i className="fas fa-quote-left pe-2" />
-                We are a private
-              </p>
-              <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-              </ul>
-            </div>
-            <div className="col-lg-4 d-none d-lg-block p-5">
-              <img
-                className="rounded-circle shadow-1-strong mb-4"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
-                alt="avatar"
-                style={{ width: 150 }}
-              />
-              <h5 className="mb-3">John Doe</h5>
-              <p>Web Developer</p>
-              <p className="text-muted">
-                <i className="fas fa-quote-left pe-2" />
-                Ut enim ad minima veniam, quis nostrum exercitationem ullam
-                corporis suscipit laboriosam, nisi ut aliquid commodi.
-              </p>
-              <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="fas fa-star-half-alt fa-sm" />
-                </li>
-              </ul>
-            </div>
-            <div className="col-lg-4 d-none d-lg-block p-5">
-              <img
-                className="rounded-circle shadow-1-strong mb-4"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
-                alt="avatar"
-                style={{ width: 150 }}
-              />
-              <h5 className="mb-3">Maria Kate</h5>
-              <p>Photographer</p>
-              <p className="text-muted">
-                <i className="fas fa-quote-left pe-2" />
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                blanditiis praesentium voluptatum deleniti atque corrupti.
-              </p>
-              <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="fas fa-star fa-sm" />
-                </li>
-                <li>
-                  <i className="far fa-star fa-sm" />
-                </li>
-              </ul>
+              <button className="btn btn-success" onClick={sendMessage}>
+                <i class="fas fa-paper-plane"></i> &nbsp; Send
+              </button>
             </div>
           </div>
-        </div>
-      </div>
+          </div>
     </div>
+      
+    
   )
 }
 
-export default Consultancy
+export default Chat
