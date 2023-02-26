@@ -86,7 +86,7 @@ const Register = () => {
 
 
   return (
-    <div className="m-5 card" style={{height:"fit-content", paddingTop:"20px"}}>
+    <div className="m-5 card mx-auto" style={{height:"90vh",width:"50%", paddingTop:"20px"}}>
 
 
 
@@ -170,25 +170,26 @@ const Register = () => {
                           <Field type="name" name="name" className="form-control" />
                           <label className="form-label" htmlFor="form3Example3">Investor Name</label>
                         </div>
-                        <div className="form-outline mb-4">
+                        <div className="form-outline mb-4" style={{width:"200px"}}>
+                        <label  htmlFor="form3Example3">Date Of Establishment</label>
                           <Field type="date" name="date" className="form-control" />
-                          <label className="form-label" htmlFor="form3Example3">Date Of Establishment</label>
                         </div>
                         <div className="col-12">
-                          <label className="visually-hidden" htmlFor="select1"></label>
+                          <label htmlFor="select1">Duration</label>
+                          <br />
                           <select
                             className="select"
                             name="select1"
                             value={values.select1}
                             onChange={handleChange}>
-                            <FormLabel> Duration</FormLabel>
+                              <label htmlFor="Duration">Duration</label>
                             <option value=" Upto 6"> Upto 6</option>
                             <option value="6 to 12"> 6 to 12 Months</option>
                             <option value="Above 12 months">Above 12 Months</option>
                           </select>
                         </div>
 
-                        <label htmlFor="">Select Stages of Startup You Are Interested in Working With</label>
+                        <label className="mt-4" htmlFor="">Select Stages of Startup You Are Interested in Working With</label>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                           <label class="form-check-label" for="flexCheckDefault">Ideation</label>
@@ -207,14 +208,14 @@ const Register = () => {
                         </div>
 
                         <div class="form-outline mb-4">
-                          <Field as="textarea" name="brief" class="form-control" id="form6Example7" rows="4"></Field>
+                          <Field as="textarea" name="brief" class="form-control" id="form6Example7" rows="2"></Field>
                           <label class="form-label" for="form6Example7">Brief</label>
                         </div>
-                        <div className="form-outline mb-4">
+                        <div className="form-outline ">
                           <Field type="name" name="name" className="form-control" />
                           <label className="form-label" htmlFor="form3Example3">Current Incubatees</label>
                         </div>
-                        <div className="form-outline mb-4">
+                        <div className="form-outline mb-2">
                           <Field type="name" name="name" className="form-control" />
                           <label className="form-label" htmlFor="form3Example3">Graduated Incubatees</label>
                         </div>
