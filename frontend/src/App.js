@@ -40,6 +40,7 @@ import CampaignCard from "./components/main/CampaignCard";
 import NewsDetail from "./components/main/NewsDetail";
 import CampaignDetail from "./components/main/CampaignDetail";
 import BlogDetail from "./components/main/BlogDetail";
+import Registerinvestor from "./components/investor/Register";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -105,6 +106,7 @@ function App() {
 
             <Route element={<Investor />} path="investor">
             <Route element={<Chat />} path="chat"/>
+            <Route element={<Registerinvestor />} path="register"/>
             </Route>
               
 

@@ -85,7 +85,7 @@ const Register = () => {
 
 
   return (
-    <div>
+    <div className="card m-5">
 
 
 
@@ -157,19 +157,20 @@ const Register = () => {
           >
             {({ values, handleSubmit, handleChange, isSubmitting }) => (
                 <Form onSubmit={handleSubmit}>
-                <div class="col-md-7">
-                  <div class="file-upload-wrapper">
-                    <div class="image-section">...</div>
-                    <div class="image-body">
+                <div className="d-flex flex-column">
+                  <div>
+                  <div className="file-upload-wrapper">
+                    <div className="image-section">...</div>
+                    <div className="image-body">
                     <input type="file" class="image-input" name="image"></input>
                     </div>
                   </div>
                 </div>
-                <div className="form-outline mb-4">
+                <div className="form-outline mt-4 ms-1">
                   <Field type="name" name="name" className="form-control" />
                   <label className="form-label" htmlFor="form3Example3">Startup Name</label>
                 </div>
-                <FormControl className="ps-3 pb-4">
+                <FormControl className="ps-3 pb-4 ">
                   <FormLabel id="demo-radio-buttons-group-label">Funded Or Bootstrapped</FormLabel>
                   <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="none" name="type" onChange={handleChange} value={values.type} >
                     <div className="">
@@ -179,16 +180,20 @@ const Register = () => {
                     </div>
                   </RadioGroup>
                 </FormControl>
-                <div class="btn-group shadow-0" role="group" aria-label="Basic example">
-                    <FormLabel>Stage</FormLabel>
+
+                <div class="d-flex flex-column  btn-group shadow-0" role="group" aria-label="Basic example">
+                    <FormLabel className="ms-3" >Stage</FormLabel>
+                    <div>
                   <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Ideation</button>
                   <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Validation</button>
                   <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Early Traction</button>
                   <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Scaling</button>
+                    </div>              
                 </div>
-                <div class="form-outline mb-4">
+                <div class="form-outline mt-4 ms-1">
                   <Field as="textarea" name="brief" class="form-control" id="form6Example7" rows="4"></Field>
                   <label class="form-label" for="form6Example7">Brief</label>
+                </div>
                 </div>
               </Form>
             )}
@@ -287,8 +292,8 @@ const Register = () => {
               >
                 {({ values, handleSubmit, handleChange, isSubmitting }) => (
                   <form onSubmit={handleSubmit} >
-                    <div className="col-12">
-                      <label className="visually-hidden" htmlFor="select1"></label>
+                    <div className="col-12 m-4">
+                      <label htmlFor="select1"> Industry</label><br />
                       <select
                         className="select"
                         name="select1"
@@ -301,19 +306,24 @@ const Register = () => {
                         <option value="Registered Partnrship">Registered Partnership</option>
                       </select>
                     </div>
-                    <div className="col-12">
-                      <label className="visually-hidden" htmlFor="select2"></label>
+                    <div className="col-12 m-4">
+                      <label  htmlFor="select2">Sector</label>
+                      <br />
                       <select
+                        style={{width:"200px"}}
                         className="select"
                         name="select2"
                         value={values.select2}
                         onChange={handleChange}
-                      ><FormLabel>Sector</FormLabel>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
+                      >
+                        <FormLabel>Sector</FormLabel>
+                        <option value="Technology">Technology</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Entertainment">Entertainment</option>
                       </select>
                     </div>
+
+                   
                     <div className="col">
                         <div className="form-outline">
                           <input type="text" value={values.text} onChange={handleChange} name="text" className="form-control" />
