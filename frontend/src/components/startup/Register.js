@@ -27,7 +27,7 @@ const Register = () => {
     console.log(values);
 
     setSubmitting(true);
-    const res = await fetch("http://localhost:5000/startup/add", {
+    const res = await fetch("http://localhost:5000/startup/getall", {
       method: "POST",
       body: JSON.stringify(values),
       headers: { "Content-Type": "application/json" },
