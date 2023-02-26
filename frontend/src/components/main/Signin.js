@@ -40,8 +40,8 @@ const Signin = () => {
     }else{
       Swal.fire({
         icon: "error",
-        title: 'Success',
-        text: 'You have logged in successfully'
+        title: 'Error',
+        text: 'Please Enter right credentials'
       })
     }
   }

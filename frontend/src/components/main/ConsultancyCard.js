@@ -34,7 +34,7 @@ const ConsultancyCard = () => {
                 <i className="fas fa-quote-left pe-2" />
                 Providing health and daignosis services as well as world's largest network of drugs and medicines.
               </p>
-              <a className='btn' href="" style={{background:" #9c3353",color:"white"}}>Chat</a>
+              <a className='btn' href="/main/chat" style={{background:" #9c3353",color:"white"}}>Chat</a>
 
              
             </div>
@@ -52,7 +52,7 @@ const ConsultancyCard = () => {
                Foodstrukk is classified as Non-govt food product company based in Pune, Maharashtra.
 
               </p>
-              <a className='btn' href="" style={{background:" #9c3353",color:"white"}}>Chat</a>
+              <a className='btn' href="/main/chat" style={{background:" #9c3353",color:"white"}}>Chat</a>
 
              
             </div>
