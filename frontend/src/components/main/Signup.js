@@ -57,8 +57,12 @@ const Signup = () => {
 
 
   const userSubmit = async (formdata, { setSubmitting }) => {
-    console.log(formdata);
-    return;
+    setSubmitting(true);
+    const res = await fetch("http://localhost:5000/user/add", {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: { "Content-Type": "application/json" },
+    });
 
     // 1. URL
     // 2. request method - get, post, put, delete , etc.
@@ -68,6 +72,8 @@ const Signup = () => {
       await addStartup(formdata, {setSubmitting});
      else if(formdata.role ==='investor')
       await addInvestor(formdata, {setSubmitting});
+      else
+      await userSubmit(formdata, {setSubmitting});
   }
 
   

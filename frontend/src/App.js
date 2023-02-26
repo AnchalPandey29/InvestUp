@@ -41,6 +41,7 @@ import CampaignDetail from "./components/main/CampaignDetail";
 import BlogDetail from "./components/main/BlogDetail";
 import Registerinvestor from "./components/investor/Register";
 import NewsBrowser from "./components/main/NewsBrowser";
+import Consultancy from "./components/main/Consultancy";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -90,6 +91,7 @@ function App() {
               <Route element={<CampaignDetail/>} path="campaigndetail" />
               <Route element={<BlogCard/>} path="blogcard" />
               <Route element={<BlogDetail/>} path="blogdetail" />
+              <Route element={<Consultancy />} path="consultancy" />
               <Route element={<Contact />} path="contact" />
               <Route element={<Testimonial/>} path="test" />
               <Route element={<Faq />} path="faq" />
