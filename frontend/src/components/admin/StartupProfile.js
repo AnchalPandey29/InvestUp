@@ -94,4 +94,4 @@ const StartupProfile = () => {
   )
 }
 
-export default ManageStartup;
+export default StartupProfile;
