@@ -372,7 +372,7 @@ const Registeri = () => {
                     </div>
                     <div className="col">
                         <div className="form-outline">
-                          <input type="number" value={values.text} onChange={handleChange} name="   DIPPT Number" className="form-control" />
+                          <input type="number" value={values.text} onChange={handleChange} name=" DIPPT Number" className="form-control" />
                           <label className="form-label" htmlFor="floatingInputValue">DIPPT Enpanelment Number</label>
                         </div>
                         </div>
