@@ -18,7 +18,7 @@ const Signin = () => {
     // 4. data format - json, etc.
 
     setSubmitting(true);
-    const res = await fetch("http://localhost:5000/user/add", {
+    const res = await fetch("http://localhost:5000/user/auth", {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },
@@ -33,18 +33,24 @@ const Signin = () => {
         title: 'Success',
         text: 'You have logged in successfully'
       })
-      if(formdata.role==='startup')
+      if (formdata.role === 'startup')
         navigate('/startup/register');
-    else if(formdata.role==='investor')
-    navigate('/investor/register');
+      else if (formdata.role === 'investor')
+        navigate('/investor/register');
+    }else{
+      Swal.fire({
+        icon: "error",
+        title: 'Success',
+        text: 'You have logged in successfully'
+      })
     }
   }
 
-  
+
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{height:"100vh"}}>
+    <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
       <div className="col-md-3 mx-auto" >
-        <div className="card pt-4" style={{ height:"fit-content",padding:"40px"}}>
+        <div className="card pt-4" style={{ height: "fit-content", padding: "40px" }}>
           <div className="card-body">
             <p className="text-center h4">Login Form</p>
             <hr />
@@ -52,7 +58,7 @@ const Signin = () => {
               {({ values, handleSubmit, handleChange, isSubmitting }) => (
 
 
-                <form>
+                <form onSubmit={handleSubmit}>
 
 
                   {/* Email input */}
@@ -63,7 +69,7 @@ const Signin = () => {
 
                   {/* Password input */}
                   <div className="form-outline mb-4">
-                    <input type="password" value={values.password} onChange={handleChange} name="password"  id="form3Example4" className="form-control" />
+                    <input type="password" value={values.password} onChange={handleChange} name="password" id="form3Example4" className="form-control" />
                     <label className="form-label" htmlFor="form3Example4">Password</label>
                   </div>
 
@@ -87,21 +93,21 @@ const Signin = () => {
 
                       <a href="/main/signup">New User? Create Account</a>
                     </div>
-                    
+
                   </div>
 
-                 
-                    <p className="text-center">or</p>
-              
+
+                  <p className="text-center">or</p>
+
 
                   <div className="d-flex align-items-center justify-content-center">
 
                     <button href="" className="btn btn-toggle">
                       <i className="fab fa-google" />&nbsp;
-                      Login with Google 
+                      Login with Google
                     </button>
                   </div>
-                 
+
                 </form>
               )}
             </Formik>
