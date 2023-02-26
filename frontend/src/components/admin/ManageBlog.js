@@ -46,9 +46,9 @@ const ManageBlog = () => {
 
         <div className='container mt-4'>
 
-            <table className='table' style={{backgroundColor:"#9c3353", color:"white"}}>
+        <table class="table table-striped table-hover">
                 <thead>
-                    <tr>
+                <tr style={{backgroundColor:"#9c3353", color:"white"}}>
                         
                         <th>ID</th>
                         <th>DATE</th>
@@ -59,7 +59,7 @@ const ManageBlog = () => {
                         
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style={{backgroundColor:"white"}}>
                     {
                         userList.map( (user) => (
                             <tr>
@@ -71,7 +71,7 @@ const ManageBlog = () => {
                                 <td>{user.image}</td>
                                 
                                 <td>
-                                    <button className='btn btn-dark' style={{backgroundColor:"#f0efef"}} onClick={() => deleteUser(user._id)}> <i style={{color:"black"}} class="fas fa-trash"></i></button>
+                                <button className='btn btn-dark' style={{backgroundColor:"#9c3353"}} onClick={() => deleteUser(user._id)}> <i style={{color:"white"}} class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                         ))

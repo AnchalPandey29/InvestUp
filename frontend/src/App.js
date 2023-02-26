@@ -22,7 +22,6 @@ import AddAdmin from "./components/main/AddAdmin";
 import Contact from "./components/main/Contact";
 import About from "./components/main/About";
 import Faq from "./components/main/Faq";
-import NewsCard from "./components/main/NewsCard";
 import Testimonial from "./components/main/Testimonial";
 import AddCompaign from "./components/admin/AddCampaign";
 import AddNews from "./components/admin/AddNews";
@@ -43,6 +42,7 @@ import Registerinvestor from "./components/investor/Register";
 import NewsBrowser from "./components/main/NewsBrowser";
 import ConsultancyCard from "./components/main/ConsultancyCard";
 import Consultancy from "./components/main/Consultancy";
+import BlogBrowser from "./components/main/BlogBrowser";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -86,7 +86,6 @@ function App() {
               <Route element={<Option />} path="option" />
               <Route element={<Signup />} path="signup" />
               <Route element={<About />} path="aboutus" />
-              <Route element={<NewsCard/>} path="newscard" />
               <Route element={<NewsDetail/>} path="newsdetail" />
               <Route element={<CampaignCard/>} path="campaigncard" />
               <Route element={<CampaignDetail/>} path="campaigndetail" />
@@ -98,6 +97,7 @@ function App() {
               <Route element={<Testimonial/>} path="test" />
               <Route element={<Faq />} path="faq" />
               <Route element={<NewsBrowser />} path="newsbrowser" />
+              <Route element={<BlogBrowser />} path="blogbrowser" />
 
 
               
