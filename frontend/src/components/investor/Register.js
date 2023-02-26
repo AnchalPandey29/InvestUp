@@ -28,7 +28,7 @@ const Register = () => {
     console.log(values);
 
     setSubmitting(true);
-    const res = await fetch("http://localhost:5000/startup/add", {
+    const res = await fetch("http://localhost:5000/investor/getall", {
       method: "POST",
       body: JSON.stringify(values),
       headers: { "Content-Type": "application/json" },
@@ -86,7 +86,7 @@ const Register = () => {
 
 
   return (
-    <div>
+    <div className="m-5 card" style={{height:"fit-content", paddingTop:"20px"}}>
 
 
 
