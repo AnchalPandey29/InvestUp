@@ -334,7 +334,7 @@ const Register = () => {
                 {({ values, handleSubmit, handleChange, isSubmitting }) => (
                   <form onSubmit={handleSubmit} >
                     <div className="col-12">
-                      <label className="visually-hidden" htmlFor="select1"></label>
+                      <label  htmlFor="select1"> Industry</label>
                       <select
                         className="select"
                         name="select1"
@@ -363,7 +363,7 @@ const Register = () => {
                       </select>
                     </div>
                     <div className="col-12">
-                      <label className="visually-hidden" htmlFor="select2"></label>
+                      <label htmlFor="select2"> Interests</label>
                       <select
                         className="select"
                         name="select2"
