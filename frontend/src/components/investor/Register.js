@@ -342,22 +342,24 @@ const Register = () => {
                         onChange={handleChange}
                       >
                         <FormLabel> Industry</FormLabel>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                      </select>
-                    </div>
-                    <div className="col-12">
-                      <label className="visually-hidden" htmlFor="select2"></label>
-                      <select
-                        className="select"
-                        name="select2"
-                        value={values.select2}
-                        onChange={handleChange}
-                      ><FormLabel>Sector</FormLabel>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
+                        <option value="" selected></option>
+                        <option value="Advertising">Advertising</option>
+                        <option value="Art And Photography">Art And Photography</option>
+                        <option value="Chemicals">Chemicals</option>
+                        <option value="Telecommunication And Networking"> Telecommunication And Networking</option>
+                        <option value="Construction">Construction</option>
+                        <option value="Agriculture">Chemicals</option>
+                        <option value="Agriculture">Chemicals</option>
+                        <option value="Events">Event</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Education">Education</option>
+                        <option value="Healthcare And Lifesciences">Healthcare And Lifesciences</option>
+                        <option value="IT Services">IT Services</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Others">Others</option>
+
+                        
+
                       </select>
                     </div>
                     <div className="col-12">
@@ -368,14 +370,23 @@ const Register = () => {
                         value={values.select2}
                         onChange={handleChange}
                       ><FormLabel>Interests</FormLabel>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                      </select>
+                        <option value="" selected></option>
+                        <option value="Government">Government</option>
+                        <option value="Discovery">Discovery</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Marketplace">Marketplace</option>
+                        <option value="Mobile">Mobile</option>
+                        <option value="Platform">Platform</option>
+                        <option value="Consulting">Consulting</option>
+                        <option value="Engineering">Engineering</option> 
+                        <option value="Others">Others</option>
+                        <option value="Rental">Rental</option>
+                         <option value="Research">Research</option>
+                     </select>
                     </div>
                     <div className="col">
                       <div className="form-outline">
-                        <input type="number" value={values.text} onChange={handleChange} name="   DIPPT Number" className="form-control" />
+                        <input type="number" value={values.text} onChange={handleChange} name="DIPPT Number" className="form-control" />
                         <label className="form-label" htmlFor="floatingInputValue">DIPPT Enpanelment Number</label>
                       </div>
                     </div>

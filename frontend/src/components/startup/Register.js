@@ -292,8 +292,8 @@ const Register = () => {
               >
                 {({ values, handleSubmit, handleChange, isSubmitting }) => (
                   <form onSubmit={handleSubmit} >
-                    <div className="col-12 m-4">
-                      <label htmlFor="select1"> Industry</label><br />
+                    <div className="col-12">
+                      <label className="visually-hidden" htmlFor="select1"></label>
                       <select
                         className="select"
                         name="select1"
@@ -301,9 +301,24 @@ const Register = () => {
                         onChange={handleChange}
                       >
                         <FormLabel> Industry</FormLabel>
-                        <option value="Private Limited Company">Private Limited Company</option>
-                        <option value="Limited Liability Partnership">Limited Liability Partnership</option>
-                        <option value="Registered Partnrship">Registered Partnership</option>
+                        <option value="" selected></option>
+                        <option value="Advertising">Advertising</option>
+                        <option value="Art And Photography">Art And Photography</option>
+                        <option value="Chemicals">Chemicals</option>
+                        <option value="Telecommunication And Networking"> Telecommunication And Networking</option>
+                        <option value="Construction">Construction</option>
+                        <option value="Agriculture">Chemicals</option>
+                        <option value="Agriculture">Chemicals</option>
+                        <option value="Events">Event</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Education">Education</option>
+                        <option value="Healthcare And Lifesciences">Healthcare And Lifesciences</option>
+                        <option value="IT Services">IT Services</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Others">Others</option>
+
+                        
+
                       </select>
                     </div>
                     <div className="col-12 m-4">
@@ -321,6 +336,28 @@ const Register = () => {
                         <option value="Sports">Sports</option>
                         <option value="Entertainment">Entertainment</option>
                       </select>
+                    </div>
+                    <div className="col-12">
+                      <label className="visually-hidden" htmlFor="select2"></label>
+                      <select
+                        className="select"
+                        name="select2"
+                        value={values.select2}
+                        onChange={handleChange}
+                      ><FormLabel>Interests</FormLabel>
+                        <option value="" selected></option>
+                        <option value="Government">Government</option>
+                        <option value="Discovery">Discovery</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Marketplace">Marketplace</option>
+                        <option value="Mobile">Mobile</option>
+                        <option value="Platform">Platform</option>
+                        <option value="Consulting">Consulting</option>
+                        <option value="Engineering">Engineering</option> 
+                        <option value="Others">Others</option>
+                        <option value="Rental">Rental</option>
+                         <option value="Research">Research</option>
+                     </select>
                     </div>
 
                    
