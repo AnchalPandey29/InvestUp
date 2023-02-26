@@ -67,7 +67,7 @@ const Header = () => {
               <i className="fas fa-shopping-cart" />
             </a> */}
             {/* Notifications */}
-            <div className="dropdown">
+            {/* <div className="dropdown">
               <a
                 className="text-reset me-3 dropdown-toggle hidden-arrow"
                 href="#"
@@ -103,7 +103,7 @@ const Header = () => {
               </ul>
             </div>
             {/* Avatar */}
-            <div className="dropdown">
+            {/* <div className="dropdown">
               <a
                 className="dropdown-toggle d-flex align-items-center hidden-arrow"
                 href="#"
@@ -137,8 +137,8 @@ const Header = () => {
                 </li>
               </ul>
             </div>
+          </div> */} */}
           </div>
-          {/* Right elements */}
         </div>
         {/* Container wrapper */}
       </nav>
