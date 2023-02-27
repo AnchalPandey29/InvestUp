@@ -11,19 +11,19 @@ const Signin = () => {
 
   const userSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
-
-
-    // 1. URL
-    // 2. request method - get, post, put, delete , etc.
-    // 3. Data you want to sent.
-    // 4. data format - json, etc.
-
     setSubmitting(true);
     const res = await fetch("http://localhost:5000/${selRole}/auth", {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },
     });
+
+    // 1. URL
+    // 2. request method - get, post, put, delete , etc.
+    // 3. Data you want to sent.
+    // 4. data format - json, etc.
+
+   
 
     console.log(res.status)
     setSubmitting(false);
