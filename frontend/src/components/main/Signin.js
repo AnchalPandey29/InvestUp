@@ -1,11 +1,12 @@
 import { Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Signin = () => {
 
   const navigate = useNavigate();
+  const [selRole, setSelRole] = useState('startup');
 
 
   const userSubmit = async (formdata, { setSubmitting }) => {
@@ -18,7 +19,7 @@ const Signin = () => {
     // 4. data format - json, etc.
 
     setSubmitting(true);
-    const res = await fetch("http://localhost:5000/user/auth", {
+    const res = await fetch("http://localhost:5000/${selRole}/auth", {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },
@@ -27,16 +28,24 @@ const Signin = () => {
     console.log(res.status)
     setSubmitting(false);
 
-    if (res.status === 200) {
+    if (res.status === 201) {
       Swal.fire({
         icon: "success",
         title: 'Success',
         text: 'You have logged in successfully'
       })
-      if (formdata.role === 'startup')
-        navigate('/startup/register');
-      else if (formdata.role === 'investor')
-        navigate('/investor/register');
+      if(selRole==='startup'){
+        const data = await res.json();
+        console.log(data);
+        sessionStorage.setItem('startup', JSON.stringify(data.result));
+        navigate('/startup/profile');
+      }
+      else if (selRole==='investor'){
+        const data = await res.json();
+        console.log(data);
+        sessionStorage.setItem('investor', JSON.stringify(data.result));
+        navigate('/investor/profile');
+      }
     }else{
       Swal.fire({
         icon: "error",

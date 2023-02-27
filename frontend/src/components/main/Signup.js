@@ -1,17 +1,18 @@
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
 import { padding } from "@mui/system";
 import { Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Signup = () => {
 
   const navigate = useNavigate();
+  const [selRole, setSelRole] = useState('startup');
 
-  const addStartup = async (formdata, {setSubmitting}) => {
+  const userSubmit = async (formdata, {setSubmitting}) => {
     setSubmitting(true);
-    const res = await fetch("http://localhost:5000/startup/add", {
+    const res = await fetch(`http://localhost:5000/${selRole}/add`, {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },
@@ -20,61 +21,38 @@ const Signup = () => {
     console.log(res.status)
     setSubmitting(false);
 
-    if (res.status === 200) {
+    if (res.status === 201) {
       Swal.fire({
         icon: "success",
         title: 'Success',
         text: 'You have registered successfully'
       })
-      navigate('/login');
-    } else {
-      // error alert
+      
+      if(selRole==='startup'){
+        const data = await res.json();
+        console.log(data);
+        sessionStorage.setItem('startup', JSON.stringify(data.result));
+        navigate('/startup/profile');
+      }
+      else if (selRole==='investor'){
+        const data = await res.json();
+        console.log(data);
+        sessionStorage.setItem('investor', JSON.stringify(data.result));
+        navigate('/investor/profile');
+      }
+    }
+     else {
+      
+        Swal.fire({
+          icon: "error",
+          title: 'Error',
+          text: 'Please Enter right credentials'
+        })
     }
   }
 
-  const addInvestor = async (formdata, {setSubmitting}) => {
-    setSubmitting(true);
-    const res = await fetch("http://localhost:5000/investor/add", {
-      method: "POST",
-      body: JSON.stringify(formdata),
-      headers: { "Content-Type": "application/json" },
-    });
+ 
 
-    console.log(res.status)
-    setSubmitting(false);
-
-    if (res.status === 200) {
-      Swal.fire({
-        icon: "success",
-        title: 'Success',
-        text: 'You have registered successfully'
-      })
-      navigate('/login');
-    } else {
-      // error alert
-    }
-  }
-
-
-  const userSubmit = async (formdata, { setSubmitting }) => {
-    setSubmitting(true);
-    const res = await fetch("http://localhost:5000/user/add", {
-      method: "POST",
-      body: JSON.stringify(formdata),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    // 1. URL
-    // 2. request method - get, post, put, delete , etc.
-    // 3. Data you want to sent.
-    // 4. data format - json, etc.
-    if(formdata.role === 'startup')
-      await addStartup(formdata, {setSubmitting});
-     else if(formdata.role ==='investor')
-      await addInvestor(formdata, {setSubmitting});
-      else
-      await userSubmit(formdata, {setSubmitting});
-  }
 
   
   return (
@@ -121,14 +99,14 @@ const Signup = () => {
                     <RadioGroup
                       aria-labelledby="demo-radio-buttons-group-label"
                       defaultValue="startup"
-                      name="role"
-                      onChange={handleChange}
-                      value={values.role}
+                      
+                      onChange={(e, v) => setSelRole(v)}
+                      value={selRole}
                     >
                       <div className="">
                       <FormControlLabel value="startup" control={<Radio />} label="Startup" />
                       <FormControlLabel value="investor" control={<Radio />} label="Investor" />
-                      <FormControlLabel value="common" control={<Radio />} label="Common" />
+                      <FormControlLabel value="user" control={<Radio />} label="Common User" />
                       </div>
                     </RadioGroup>
                   </FormControl>

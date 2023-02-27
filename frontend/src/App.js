@@ -43,6 +43,9 @@ import NewsBrowser from "./components/main/NewsBrowser";
 import ConsultancyCard from "./components/main/ConsultancyCard";
 import Consultancy from "./components/main/Consultancy";
 import BlogBrowser from "./components/main/BlogBrowser";
+import CampaignBrowser from "./components/main/CampaignBrowser";
+import StartupList from "./components/startup/StartupList";
+import StartupDetails from "./components/startup/StartupDetails";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -98,6 +101,7 @@ function App() {
               <Route element={<Faq />} path="faq" />
               <Route element={<NewsBrowser />} path="newsbrowser" />
               <Route element={<BlogBrowser />} path="blogbrowser" />
+              <Route element={<CampaignBrowser />} path="campaignbrowser" />
 
 
               
@@ -106,12 +110,14 @@ function App() {
 
             <Route element={<Startup />} path="startup">
             <Route element={<Chat />} path="chat"/>
-            <Route element={<Register />} path="register"/>
+            <Route element={<StartupList />} path="startuplist"/>
+            <Route element={<StartupDetails />} path="startupdetails"/>
+            <Route element={<Register />} path="profile"/>
             </Route>
 
             <Route element={<Investor />} path="investor">
             <Route element={<Chat />} path="chat"/>
-            <Route element={<Registerinvestor />} path="register"/>
+            <Route element={<Registerinvestor />} path="profile"/>
             </Route>
               
 

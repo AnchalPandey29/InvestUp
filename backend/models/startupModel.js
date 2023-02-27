@@ -3,14 +3,14 @@ const bcrypt = require("bcrypt");
 const SALT = 10;
 
 const startupSchema = new Schema({
-  ownername: { type: String, required: true },
+  name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  title: { type: String, required: true },
-  contact: { type: Number, required: true},
+  title: { type: String },
+  contact: { type: Number},
   coverimage: {type: String},
   owneravatar: {type: String},
-  product: {type: Array, required:true},
+  product: {type: Array},
   documents: {type: String},
   created_at: Date,
   

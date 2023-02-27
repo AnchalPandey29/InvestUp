@@ -3,10 +3,10 @@ const bcrypt = require("bcrypt");
 const SALT = 10;
 
 const investorSchema = new Schema({
-  ownername: { type: String, required: true },
+  name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  contact: { type: Number, required: true},
+  contact: { type: Number},
   owneravatar: {type: String},
   created_at:Date,
   IdProof: {type: String},

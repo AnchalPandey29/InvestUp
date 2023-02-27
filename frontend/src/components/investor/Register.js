@@ -6,30 +6,33 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Register = () => {
   const navigate = useNavigate();
+    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('investor')));
 
-  const initialValues = {
-    name: "",
-    email: "",
-    tel: "",
-    type: "none",
-    Date,
-    category: "",
-    interests: "",
-    brief: "",
-  };
+
+  // const initialValues = {
+  //   name: "",
+  //   email: "",
+  //   tel: "",
+  //   type: "none",
+  //   Date,
+  //   category: "",
+  //   interests: "",
+  //   brief: "",
+  // };
 
   const onSubmit = async (values, { setSubmitting }) => {
     console.log(values);
 
     setSubmitting(true);
-    const res = await fetch("http://localhost:5000/investor/getall", {
-      method: "POST",
+    const res = await fetch("http://localhost:5000/startup/update/"+currentUser._id, {
+
+      method: "PUT",
       body: JSON.stringify(values),
       headers: { "Content-Type": "application/json" },
     });
@@ -94,6 +97,7 @@ const Register = () => {
 
       <div className="row w-100">
         <div className="col-3">
+
           {/* Tab navs */}
           <div
             className="nav flex-column nav-tabs text-center"
@@ -135,6 +139,7 @@ const Register = () => {
               Incubator Category
             </a>
           </div>
+          
           {/* Tab navs */}
         </div>
         <div className="col-9">
@@ -148,7 +153,7 @@ const Register = () => {
             >
 
               {/* first form */}
-            <div className="">
+            <div >
               <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
                   <Formik
@@ -240,8 +245,9 @@ const Register = () => {
   
               {/* first form end  */}
 
-            </div>
+            </div >
             <div
+
               className="tab-pane fade"
               id="v-tabs-profile"
               role="tabpanel"
