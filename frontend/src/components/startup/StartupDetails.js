@@ -11,7 +11,7 @@ const StartupDetails = () => {
                     className="rounded-circle shadow-1-strong mb-4"
                     src='/logo.png'
                     alt="avatar"
-                    style={{ width: 150 }}
+                    style={{ width: 150,color:"" }}
                 />
             </div>
             <div className='text-center row'>
