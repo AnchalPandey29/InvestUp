@@ -108,7 +108,8 @@ function App() {
               <Route element={<NewsBrowser />} path="newsbrowser" />
               <Route element={<BlogBrowser />} path="blogbrowser" />
               <Route element={<CampaignBrowser />} path="campaignbrowser" />
-
+              <Route element={<StartupList />} path="startuplist"/>
+              <Route element={<StartupDetails />} path="startupdetails/:id"/>
 
               
             </Route>
@@ -116,8 +117,7 @@ function App() {
 
             <Route element={<Startup />} path="startup">
             <Route element={<Chat />} path="chat"/>
-            <Route element={<StartupList />} path="startuplist"/>
-            <Route element={<StartupDetails />} path="startupdetails"/>
+
             <Route element={<Register />} path="profile"/>
             </Route>
 
