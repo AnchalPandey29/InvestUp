@@ -49,7 +49,11 @@ import BlogBrowser from "./components/main/BlogBrowser";
 import CampaignBrowser from "./components/main/CampaignBrowser";
 import StartupList from "./components/startup/StartupList";
 import StartupDetails from "./components/startup/StartupDetails";
+
 import Subscription from "./components/main/Subscription";
+import InvestorList from "./components/investor/InvestorList";
+import InvestorDetails from "./components/investor/InvestorDetails";
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -108,7 +112,8 @@ function App() {
               <Route element={<NewsBrowser />} path="newsbrowser" />
               <Route element={<BlogBrowser />} path="blogbrowser" />
               <Route element={<CampaignBrowser />} path="campaignbrowser" />
-
+              <Route element={<StartupList />} path="startuplist"/>
+              <Route element={<StartupDetails />} path="startupdetails/:id"/>
 
               
             </Route>
@@ -116,13 +121,14 @@ function App() {
 
             <Route element={<Startup />} path="startup">
             <Route element={<Chat />} path="chat"/>
-            <Route element={<StartupList />} path="startuplist"/>
-            <Route element={<StartupDetails />} path="startupdetails"/>
+
             <Route element={<Register />} path="profile"/>
             </Route>
 
             <Route element={<Investor />} path="investor">
             <Route element={<Chat />} path="chat"/>
+            <Route element={<InvestorList />} path="investorlist"/>
+            <Route element={<InvestorDetails />} path="investordetails"/>
             <Route element={<Registerinvestor />} path="profile"/>
             </Route>
               

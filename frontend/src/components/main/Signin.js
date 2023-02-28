@@ -6,8 +6,7 @@ import Swal from "sweetalert2";
 const Signin = () => {
 
   const navigate = useNavigate();
-  const [selRole, setSelRole] = useState('startup');
-
+  const [selRole, setSelRole] = useState('startup')
 
   const userSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
