@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StartupDetails = () => {
+const InvestorDetails = () => {
 
     return (
         <div className='col card mx-auto m-3 p-2' style={{ width: "80%", height: "fit-content" }}>
@@ -78,4 +78,4 @@ const StartupDetails = () => {
     )
 }
 
-export default StartupDetails
+export default InvestorDetails

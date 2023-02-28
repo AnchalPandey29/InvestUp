@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import app_config from '../../config';
 
-const StartupList = () => {
+const InvestorList = () => {
 
-    const [startupList, setStartupList] = useState([]);
+    const [investorList, setInvestorList] = useState([]);
 
     const url = app_config.apiurl;
 
     const fetchData = async () => {
-        const res = await fetch(url+'/startup/getall');
+        const res = await fetch(url+'/investor/getall');
         const data = await res.json();
         console.log(data);
-        setStartupList(data.result);
+        setInvestorList(data.result);
     }
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const StartupList = () => {
 
 
 {
-                startupList.map((startup)=>(
+                investorList.map((investor)=>(
                     <div>
 <div className="row card gx-5 mx-auto m-3" style={{width:"70%",height:"fit-content"}}>
           <div className="col-md-6 mb-4">
@@ -46,10 +46,10 @@ const StartupList = () => {
           <div className="col-md-6 mb-4">
             
             <h4>
-              <strong> {startup.name} </strong>
+              <strong> {investor.name} </strong>
             </h4>
             <p className="text-muted">
-              {startup.email}
+              {investor.email}
             </p>
             <a type="button" className="btn" href='/main/newsdetail' style={{ backgroundColor: "#9c3353", color: "white" }}>
               Read more
@@ -65,4 +65,4 @@ const StartupList = () => {
   )
 }
 
-export default StartupList
+export default InvestorList
