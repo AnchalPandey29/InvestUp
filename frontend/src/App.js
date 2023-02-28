@@ -49,8 +49,11 @@ import BlogBrowser from "./components/main/BlogBrowser";
 import CampaignBrowser from "./components/main/CampaignBrowser";
 import StartupList from "./components/startup/StartupList";
 import StartupDetails from "./components/startup/StartupDetails";
+
+import Subscription from "./components/main/Subscription";
 import InvestorList from "./components/investor/InvestorList";
 import InvestorDetails from "./components/investor/InvestorDetails";
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -95,6 +98,7 @@ function App() {
               <Route element={<Signup />} path="signup" />
               <Route element={<About />} path="aboutus" />
               <Route element={<Eligible />} path="Eligible" />
+              <Route element={<Subscription />} path="Subscription" />
               <Route element={<NewsDetail/>} path="newsdetail" />
               <Route element={<CampaignCard/>} path="campaigncard" />
               <Route element={<CampaignDetail/>} path="campaigndetail" />
