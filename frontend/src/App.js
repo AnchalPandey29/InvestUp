@@ -9,6 +9,8 @@ import Signup from "./components/main/Signup";
 import Option from "./components/main/Option";
 import Forgot from "./components/main/Forgot";
 import Home from "./components/main/Home";
+import Eligible from "./components/main/Eligible";
+
 import UserAuth from "./auth/UserAuth";
 import User from "./components/user";
 import UserProfile from "./components/user/UserProfile";
@@ -25,6 +27,7 @@ import Faq from "./components/main/Faq";
 import Testimonial from "./components/main/Testimonial";
 import AddCompaign from "./components/admin/AddCampaign";
 import AddNews from "./components/admin/AddNews";
+
 import AddBlog from "./components/admin/AddBlog";
 import ManageCompaign from "./components/admin/ManageCampaign"
 import ManageNews from "./components/admin/ManageNews";
@@ -91,6 +94,7 @@ function App() {
               <Route element={<Option />} path="option" />
               <Route element={<Signup />} path="signup" />
               <Route element={<About />} path="aboutus" />
+              <Route element={<Eligible />} path="Eligible" />
               <Route element={<NewsDetail/>} path="newsdetail" />
               <Route element={<CampaignCard/>} path="campaigncard" />
               <Route element={<CampaignDetail/>} path="campaigndetail" />
