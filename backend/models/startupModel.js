@@ -6,6 +6,7 @@ const startupSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  tel: String,
   title: { type: String },
   contact: { type: Number},
   coverimage: {type: String},

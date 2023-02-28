@@ -1,4 +1,5 @@
 import { Formik } from "formik";
+import { MDBInput } from "mdb-react-ui-kit";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -11,7 +12,7 @@ const Signin = () => {
   const userSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
     setSubmitting(true);
-    const res = await fetch("http://localhost:5000/${selRole}/auth", {
+    const res = await fetch(`http://localhost:5000/${selRole}/auth`, {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },
@@ -71,14 +72,16 @@ const Signin = () => {
 
                   {/* Email input */}
                   <div className="form-outline mb-4">
-                    <input type="email" value={values.email} onChange={handleChange} name="email" className="form-control" />
-                    <label className="form-label" htmlFor="form3Example3">Email address</label>
+                  <MDBInput label='Email' type="email" value={values.email} onChange={handleChange} name="email" />
+
+                    
                   </div>
 
                   {/* Password input */}
                   <div className="form-outline mb-4">
-                    <input type="password" value={values.password} onChange={handleChange} name="password" id="form3Example4" className="form-control" />
-                    <label className="form-label" htmlFor="form3Example4">Password</label>
+                  <MDBInput label='Password' type="password" value={values.password} onChange={handleChange} name="password" />
+
+                   
                   </div>
 
                   <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>

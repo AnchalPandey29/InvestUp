@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import app_config from '../../config'
 
 const NewsBrowser = () => {
@@ -86,9 +87,13 @@ const NewsBrowser = () => {
             <p className="text-muted">
               {news.content}
             </p>
-            <a type="button" className="btn" href='/main/newsdetail' style={{ backgroundColor: "#9c3353", color: "white" }}>
+            <Link
+             type="button" 
+             className="btn" 
+             to={"/main/newsdetail/"+news._id} 
+             style={{ backgroundColor: "#9c3353", color: "white" }}>
               Read more
-            </a>
+            </Link>
           </div>
         </div>
 

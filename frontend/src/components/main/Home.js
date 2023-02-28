@@ -64,3 +64,8 @@ const Home = () => {
 
 export default Home;
 
+//startup list details add
+//profile page
+//detail id se
+
+

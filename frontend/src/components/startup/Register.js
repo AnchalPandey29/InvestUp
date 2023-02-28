@@ -4,6 +4,7 @@ import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup,
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import {MDBInput} from 'mdb-react-ui-kit';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Register = () => {
   //   brief: "",
   // };
 
-  const onSubmit = async (values, { setSubmitting }) => {
+  const updateUser = async (values, { setSubmitting }) => {
     console.log(values);
 
     setSubmitting(true);
@@ -30,15 +31,19 @@ const Register = () => {
     });
 
     console.log(res.status);
+    
     setSubmitting(false);
-
+    
     if (res.status === 200) {
+      const data = await res.json();
+      console.log(data.result);
+      setCurrentUser(data.result);
+      sessionStorage.setItem('user', JSON.stringify(data.result))
       Swal.fire({
         icon: "success",
         title: "Success",
         text: "You have registered successfully",
       });
-      navigate("/");
     } else {
       // error alert
     }
@@ -210,18 +215,16 @@ const Register = () => {
               {/* second form  */}
 
               <Formik
-                initialValues={{ name: '', type: '', brief: '' }}
-                onSubmit={values => {
-                  console.log(values);
-                }}
+                initialValues={currentUser}
+                onSubmit={updateUser}
               >
                 {({ values, handleSubmit, handleChange, isSubmitting }) => (
                   <form onSubmit={handleSubmit} >
                     <div className="row mb-4 form-floating">
                       <div className="col">
                         <div className="form-outline">
-                          <input type="email" value={values.email} onChange={handleChange} name="email" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Email</label>
+                        <MDBInput label='Email Address' type="email" value={values.email} onChange={handleChange} name="email" />
+                         
                         </div>
                         <div className="col">
                           <div className="form-outline">
