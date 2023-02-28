@@ -67,13 +67,13 @@ body {
             .pricing-palden .pricing__item--featured {
                 margin: 0;
                 z-index: 10;
-                box-shadow: 0 0 20px rgba(46, 59, 125, 0.23);
+                box-shadow: 0 0 20px rgba(125, 46, 59, 0.23);
             }
         }
         
         .pricing-palden .pricing-deco {
             border-radius: 10px 10px 0 0;
-            background: linear-gradient(135deg,#4097f9,#0af0c7);
+            background: linear-gradient(first and last card);
             padding: 4em 0 9em;
             position: relative;
         }
@@ -156,7 +156,7 @@ body {
             padding: 1em 2em;
             color: #fff;
             border-radius: 30px;
-            background: linear-gradient(135deg,#a93bfe,#584efd);
+            background: linear-gradient(135deg,#fd7d57,#f55d59);
             -webkit-transition: background-color 0.3s;
             transition: background-color 0.3s;
         }
