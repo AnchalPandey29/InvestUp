@@ -106,7 +106,6 @@ const Signup = () => {
                         {errors.name && touched.name ? (
                           <div>{errors.name}</div>
                         ) : null}
-                        {touched.name && errors.name ? <div className="invalid-feedback">{errors.name}</div> : null}
 
                       </div>
                     </div>
@@ -126,7 +125,6 @@ const Signup = () => {
                     name="email"
                   />
                    {errors.email && touched.email ? <div>{errors.email}</div> : null}
-
 
                   
                   </div>
