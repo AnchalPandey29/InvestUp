@@ -3,7 +3,8 @@ import './Subscription.css'
 
 const Subscription = () => {
   return (
-    <div>   <section>
+    <div>   
+      <section className='sec'>
     <center>
       <div className="pricing pricing-palden">
         <div className="pricing-item features-item ja-animate" data-animation="move-from-bottom" data-delay="item-0" style={{minHeight: '497px'}}>
@@ -27,7 +28,7 @@ const Subscription = () => {
           <button className="pricing-action">Choose plan</button>
         </div>
         <div className="pricing-item features-item ja-animate pricing__item--featured" data-animation="move-from-bottom" data-delay="item-1" style={{minHeight: '497px'}}>
-          <div className="pricing-deco" style={{background: 'linear-gradient(135deg, middle card)'}}>
+          <div className="pricing-deco" style={{background: 'linear-gradient(135deg,#a93bfe,#584efd)'}}>
             <svg className="pricing-deco-img" enableBackground="new 0 0 300 100" height="100px" id="Layer_1" preserveAspectRatio="none" version="1.1" viewBox="0 0 300 100" width="300px" x="0px" xmlSpace="preserve" y="0px">
               <path className="deco-layer deco-layer--1" d="M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z" fill="#FFFFFF" opacity="0.6" />
               <path className="deco-layer deco-layer--2" d="M-35.667,44.628c0,0,42.91-34.463,87.51-14.191c77.31,35.141,113.304-1.952,146.639-4.729c48.653-4.055,69.939,16.218,69.939,16.218v54.396H-35.667V44.628z" fill="#FFFFFF" opacity="0.6" />

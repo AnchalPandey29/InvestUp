@@ -1,6 +1,5 @@
 const { Schema, model } = require("../connection");
 const bcrypt = require("bcrypt");
-const { CheckBox, RadioButtonChecked } = require("@mui/icons-material");
 const SALT = 10;
 
 const startupSchema = new Schema({
@@ -12,9 +11,14 @@ const startupSchema = new Schema({
   stage:{type:String},// stage by button
   brief:{type:String},// Description about startup
   sdocuments: {type: String},//document for the verification of startup
+
   owneravatar:{type:String},//owner image
   ownername:{type:String},// name of the owner
   identityproof:{type:String},
+  owneravatar:String,//owner image
+  ownername:{type:String},// name of the owner
+  identityproof:String,
+
   identityno:{type:String},
   documents: {type: String},//document for the verification of owner
   ownercontact: { type: Number},//contact no of owner
@@ -22,7 +26,11 @@ const startupSchema = new Schema({
   teammemberno:{type:Number},//no of members in team
   teammembers:{type:Array},//name of members
   documents: {type: String},//document for the verification of owner
+
   productimage:{type:String},//image of startup product
+
+  productimage:String,//image of startup product
+
   productname:{type:String},//Name of the product
   productdescription:{type:String},//Description of the product 
   email: { type: String, required: true, unique: true },//startupemail
@@ -31,8 +39,13 @@ const startupSchema = new Schema({
   contact: { type: Number},
   state:{type:String},
   city:{type:String},
+
   website:{type:url},//website link of startup
   app:{type:url},//app link of startup
+
+  website:{type:String},//website link of startup
+  app:{type:String},//app link of startup
+
   industry:{type:String},
   sector:{type:String},
   interests:{type:String,}

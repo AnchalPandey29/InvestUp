@@ -10,6 +10,7 @@ import Option from "./components/main/Option";
 import Forgot from "./components/main/Forgot";
 import Home from "./components/main/Home";
 import Eligible from "./components/main/Eligible";
+import Subscription from "./components/main/Subscription";
 
 import UserAuth from "./auth/UserAuth";
 import User from "./components/user";
@@ -50,7 +51,7 @@ import CampaignBrowser from "./components/main/CampaignBrowser";
 import StartupList from "./components/startup/StartupList";
 import StartupDetails from "./components/startup/StartupDetails";
 
-import Subscription from "./components/main/Subscription";
+//import Subscription from "./components/main/Subscription";
 import InvestorList from "./components/investor/InvestorList";
 import InvestorDetails from "./components/investor/InvestorDetails";
 
@@ -98,7 +99,7 @@ function App() {
               <Route element={<Signup />} path="signup" />
               <Route element={<About />} path="aboutus" />
               <Route element={<Eligible />} path="Eligible" />
-              <Route element={<Subscription />} path="Subscription" />
+              {/* <Route element={<Subscription />} path="Subscription" /> */}
               <Route element={<NewsDetail/>} path="newsdetail" />
               <Route element={<CampaignCard/>} path="campaigncard" />
               <Route element={<CampaignDetail/>} path="campaigndetail" />
@@ -113,7 +114,7 @@ function App() {
               <Route element={<BlogBrowser />} path="blogbrowser" />
               <Route element={<CampaignBrowser />} path="campaignbrowser" />
               <Route element={<StartupList />} path="startuplist"/>
-              <Route element={<StartupDetails />} path="startupdetails"/>
+              <Route element={<StartupDetails />} path="startupdetails/:id"/>
               
 
               

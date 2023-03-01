@@ -173,7 +173,8 @@ const Register = () => {
                         <div className="d-flex flex-column">
                           <div>
                             <div className="file-upload-wrapper">
-                             
+                   
+
                               <div className="image-body">
                                 <input type="file" class="image-input" name="startupimage" value={values.startupimage}></input>
                               </div>
@@ -185,8 +186,8 @@ const Register = () => {
                             <label className="form-label" htmlFor="form3Example3">Startup Name</label>
                           </div>
                           <div className="form-outline mt-4 ms-1">
-                            <Field type="date" name="created_at" value={values.craeted_at} className="form-control" />
-                            <label className="form-label" htmlFor="form3Example3">Craeted_At</label>
+                            <Field type="date" name="created_at" value={values.created_at} className="form-control" />
+                            <label className="form-label" htmlFor="form3Example3">Created At</label>
                           </div>
 
                           <FormControl className="ps-3 pb-4 ">
@@ -218,7 +219,8 @@ const Register = () => {
                        
                           <div>
                             <div className="file-upload-wrapper">
-                              
+              
+
                               <div className="image-body">
                                 <formlabel>Documents</formlabel>
                                 <input type="file" class="image-input" value={values.sdocuments} name="image"></input>
@@ -259,7 +261,10 @@ const Register = () => {
                         <div className="d-flex flex-column">
                           <div>
                             <div className="file-upload-wrapper">
+
+
                               
+
                               <div className="image-body">
                                 <input type="file" class="image-input" name="owneravatar" value={values.owneravatar}></input>
                               </div>
@@ -272,7 +277,10 @@ const Register = () => {
                           </div>
                           <div>
                             <div className="file-upload-wrapper">
+
+
                               
+
                               <div className="image-body">
                                 <formlabel>Identity Proof(Aadhar Card/PAN/VoterID)</formlabel>
                                 <input type="file" class="image-input" name="identityproof" value={values.identityproof}></input>
@@ -285,7 +293,10 @@ const Register = () => {
                           </div>
                           <div>
                             <div className="file-upload-wrapper">
+
+
                              
+
                               <div className="image-body">
                                 <formlabel>Document</formlabel>
                                 <input type="file" class="image-input" name="documents" value={values.documents}></input>
@@ -316,7 +327,9 @@ const Register = () => {
                        
                           <div>
                             <div className="file-upload-wrapper">
+
                              
+
                               <div className="image-body">
                                 <formlabel>Image Of The Product</formlabel>
                                 <input type="file" class="image-input" value={values.productimage} name="productimage"></input>
