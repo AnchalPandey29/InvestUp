@@ -87,8 +87,6 @@ const Signup = () => {
 
               {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
                
-          
-
                 <form onSubmit={handleSubmit} >
                   {/* 2 column grid layout with text inputs for the first and last names */}
                   <div className="row form-floating" onSubmit={handleSubmit}>
