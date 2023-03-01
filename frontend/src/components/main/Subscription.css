@@ -4,7 +4,7 @@ body {
 }
         
         .sec {
-            color: #2ed60d;
+            color: #147800;
             padding: 2em 0 8em;
             min-height: 100vh;
             position: relative;
@@ -161,7 +161,6 @@ body {
             border-radius: 30px;
 
             background: linear-gradient(135deg,#9c3353,#ff588a);
-            background: linear-gradient(135deg,#fd7d57,#f55d59);
 
             -webkit-transition: background-color 0.3s;
             transition: background-color 0.3s;

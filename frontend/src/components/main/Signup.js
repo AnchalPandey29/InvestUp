@@ -4,12 +4,28 @@ import { MDBInput } from "mdb-react-ui-kit";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import * as Yup from "yup";
 
 const Signup = () => {
+
+
+//signup schema validation
+  const SignupSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string()
+      .min(8, "Password must be at least 8 characters")
+      .required("Password is required"),
+  });
+  
+  /////////////////////////////////////////
 
   const navigate = useNavigate();
   const [selRole, setSelRole] = useState('startup');
 
+  
+///usersubmit event
   const userSubmit = async (formdata, {setSubmitting}) => {
     setSubmitting(true);
     const res = await fetch(`http://localhost:5000/${selRole}/add`, {
@@ -21,6 +37,8 @@ const Signup = () => {
     console.log(res.status)
     setSubmitting(false);
 
+
+    //pop up 
     if (res.status === 201) {
       Swal.fire({
         icon: "success",
@@ -62,36 +80,70 @@ const Signup = () => {
           <div className="card-body"  style={{height:"fit-content", width:"fit-content" ,padding:"0"}}>
             <p className="text-center h4">Signup Form</p>
             <hr />
-            <Formik initialValues={{ name: "", email: "", password: "", role: "startup" }} onSubmit={userSubmit}>
-              {({ values, handleSubmit, handleChange, isSubmitting }) => (
+            <Formik
+              initialValues={{ name: "", email: "", password: "", role: "startup" }}
+              validationSchema={SignupSchema} // Add the validation schema here
+              onSubmit={userSubmit}>
+
+              {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
                
           
 
                 <form onSubmit={handleSubmit} >
                   {/* 2 column grid layout with text inputs for the first and last names */}
-                  <div className="row mb-4 form-floating" onSubmit={handleSubmit}>
+                  <div className="row form-floating" onSubmit={handleSubmit}>
                     <div className="col">
-                      <div className="form-outline">
-                      <MDBInput label='Name' type="text" value={values.name} onChange={handleChange} name="name" />
+                      <div className="form-outline mb-4">
+                        
+                        
+                        <MDBInput
+                          label="Name"
+                          type="text"
+                          value={values.name}
+                          onChange={handleChange}
+                          name="name"
+                          />
+                        {errors.name && touched.name ? (
+                          <div>{errors.name}</div>
+                        ) : null}
+                        {touched.name && errors.name ? <div className="invalid-feedback">{errors.name}</div> : null}
 
-                       
                       </div>
                     </div>
                     
                   </div>
 
+
+                
+                 
                   {/* Email input */}
                   <div className="form-outline mb-4">
-                  <MDBInput label='Email' type="email" value={values.email} onChange={handleChange} name="email" />
+                  <MDBInput
+                    label="Email"
+                    type="email"
+                    value={values.email}
+                    onChange={handleChange}
+                    name="email"
+                  />
+                   {errors.email && touched.email ? <div>{errors.email}</div> : null}
+
 
                   
                   </div>
-
+                
                   {/* Password input */}
                   <div className="form-outline mb-4">
-                  <MDBInput label='Password' type="password" value={values.password} onChange={handleChange} name="password" />
 
-                  
+                  <MDBInput
+                    label="Password"
+                    type="password"
+                    value={values.password}
+                    onChange={handleChange}
+                    name="password"
+                  />
+                  {errors.password && touched.password ? <div>{errors.password}</div> : null}
+
+           
                   </div>
 
                   
