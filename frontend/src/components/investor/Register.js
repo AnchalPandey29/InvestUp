@@ -155,7 +155,7 @@ const Register = () => {
 
               {/* first form */}
             <div >
-              <div class="tab-content" id="v-pills-tabContent">
+              {/*  */}<div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
                   <Formik
                     initialValues={{ name: '', type: '', brief: '' }}
