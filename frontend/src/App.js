@@ -100,7 +100,7 @@ function App() {
               <Route element={<About />} path="aboutus" />
               <Route element={<Eligible />} path="Eligible" />
               {/* <Route element={<Subscription />} path="Subscription" /> */}
-              <Route element={<NewsDetail/>} path="newsdetail" />
+              <Route element={<NewsDetail/>} path="newsdetail/:id" />
               <Route element={<CampaignCard/>} path="campaigncard" />
               <Route element={<CampaignDetail/>} path="campaigndetail" />
               <Route element={<BlogCard/>} path="blogcard" />
@@ -123,8 +123,7 @@ function App() {
 
             <Route element={<Startup />} path="startup">
             <Route element={<Chat />} path="chat"/>
-
-            <Route element={<Register />} path="profile"/>
+            <Route element={<Register />} path="register"/>
             </Route>
 
             <Route element={<Investor />} path="investor">

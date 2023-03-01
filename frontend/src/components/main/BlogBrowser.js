@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import app_config from '../../config'
 
 const BlogBrowse = () => {
@@ -50,12 +51,12 @@ const BlogBrowse = () => {
 </div>
 
       <div>
+              <div>
+
+
+                      <div className='row p-5'>
           {
-              blogList.map((blog) => (
-                  <div>
-
-
-                      <div className='d-flex flex-row row p-5'>
+                      blogList.map((blog) => (
                           <div className='col-md-3 card m-2'>
                               <div className='row-md-6'>
                                   <img src={blog.image} alt='' />
@@ -65,22 +66,23 @@ const BlogBrowse = () => {
                                   <h4>{blog.heading}</h4>
                                   <p>{blog.content}</p>
                                   <p>{blog.date}</p>
-                                  <button
+                                  <Link
+                                     to={"/main/blogdetails/"+blog._id}
                                       type='button'
                                       className='btn'
                                       style={{ backgroundColor: '#9c3353', color: 'white' }}
                                   >
                                       Read more
-                                  </button >
+                                  </Link>
                               </div>
                           </div>
 
+                      ))
+                    }
       
                       </div>
                   </div>
-              ))
 
-          }
       </div>
       </div>
   )
