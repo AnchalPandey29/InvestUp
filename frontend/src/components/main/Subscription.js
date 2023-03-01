@@ -16,9 +16,9 @@ const Subscription = () => {
               <path className="deco-layer deco-layer--4" d="M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z" fill="#FFFFFF" />
             </svg>
             <div className="pricing-price"><span className="pricing-currency">$</span>29
-              <span className="pricing-period">/ mo</span>
+              <span className="pricing-period">/ month</span>
             </div>
-            <h3 className="pricing-title">Freelance</h3>
+            <h3 className="pricing-title">Basic</h3>
           </div>
           <ul className="pricing-feature-list">
             <li className="pricing-feature">1 GB of space</li>
@@ -36,9 +36,9 @@ const Subscription = () => {
               <path className="deco-layer deco-layer--4" d="M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z" fill="#FFFFFF" />
             </svg>
             <div className="pricing-price"><span className="pricing-currency">$</span>59
-              <span className="pricing-period">/ mo</span>
+              <span className="pricing-period">/ month</span>
             </div>
-            <h3 className="pricing-title">Business</h3>
+            <h3 className="pricing-title">Standard</h3>
           </div>
           <ul className="pricing-feature-list">
             <li className="pricing-feature">5 GB of space</li>
@@ -56,9 +56,9 @@ const Subscription = () => {
               <path className="deco-layer deco-layer--4" d="M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z" fill="#FFFFFF" />
             </svg>
             <div className="pricing-price"><span className="pricing-currency">$</span>99
-              <span className="pricing-period">/ mo</span>
+              <span className="pricing-period">/ month</span>
             </div>
-            <h3 className="pricing-title">Enterprise</h3>
+            <h3 className="pricing-title">Premium</h3>
           </div>
           <ul className="pricing-feature-list">
             <li className="pricing-feature">10 GB of space</li>

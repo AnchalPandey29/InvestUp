@@ -9,7 +9,7 @@ const BlogDetail = () => {
   const [loading, setLoading] = useState(false);
   const url = app_config.apiurl;
 
-  const fetchStartupById = async () => {
+  const fetchBlogById = async () => {
     setLoading(true);
     const res = await fetch("http://localhost:5000/Blog/getbyid/" + id);
     const data = await res.json();
@@ -19,12 +19,22 @@ const BlogDetail = () => {
   };
 
   useEffect(() => {
-    fetchStartupById();
+    fetchBlogById();
   }, []);
 
-  return (
-    <div className='m-5 card'>BlogDetail</div>
-  )
+  const displayDetails = () => {
+    if (!loading && blogData) {
+      return<div>
+        <h1>{blogData.heading}</h1>
+      </div>
+    }
+    else{
+      return <h1>loading...</h1>
+    }
+  
+};
+
+return displayDetails()
 }
 
-export default BlogDetail
+export default BlogDetail;

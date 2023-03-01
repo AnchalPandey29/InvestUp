@@ -63,8 +63,9 @@ const Signin = () => {
           <div className="card-body">
             <p className="text-center h4">Login Form</p>
             <hr />
+
             <Formik initialValues={{ email: "", password: "" }} onSubmit={userSubmit}>
-              {({ values, handleSubmit, handleChange, isSubmitting }) => (
+              {({ values, handleSubmit, handleChange, isSubmitting}) => (
 
 
                 <form onSubmit={handleSubmit}>
@@ -73,17 +74,14 @@ const Signin = () => {
                   {/* Email input */}
                   <div className="form-outline mb-4">
                   <MDBInput label='Email' type="email" value={values.email} onChange={handleChange} name="email" />
-
                     
                   </div>
 
                   {/* Password input */}
                   <div className="form-outline mb-4">
                   <MDBInput label='Password' type="password" value={values.password} onChange={handleChange} name="password" />
-
                    
                   </div>
-
                   <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
                     {
                       isSubmitting ?

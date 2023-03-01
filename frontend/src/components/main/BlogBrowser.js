@@ -88,4 +88,4 @@ const BlogBrowse = () => {
   )
 }
 
-export default BlogBrowse
+export default BlogBrowse;

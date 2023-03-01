@@ -36,9 +36,7 @@ import ManageBlog from "./components/admin/ManageBlog";
 import ManageStartup from "./components/admin/ManageStartup";
 import ManageInvestor from "./components/admin/ManageInvestor";
 import Chat from "./components/startup/Chat";
-import BlogCard from "./components/main/BlogCard";
 import Register from "./components/startup/Register";
-import CampaignCard from "./components/main/CampaignCard";
 import NewsDetail from "./components/main/NewsDetail";
 import CampaignDetail from "./components/main/CampaignDetail";
 import BlogDetail from "./components/main/BlogDetail";
@@ -50,7 +48,6 @@ import BlogBrowser from "./components/main/BlogBrowser";
 import CampaignBrowser from "./components/main/CampaignBrowser";
 import StartupList from "./components/startup/StartupList";
 import StartupDetails from "./components/startup/StartupDetails";
-
 //import Subscription from "./components/main/Subscription";
 import InvestorList from "./components/investor/InvestorList";
 import InvestorDetails from "./components/investor/InvestorDetails";
@@ -99,12 +96,10 @@ function App() {
               <Route element={<Signup />} path="signup" />
               <Route element={<About />} path="aboutus" />
               <Route element={<Eligible />} path="Eligible" />
-              {/* <Route element={<Subscription />} path="Subscription" /> */}
+              <Route element={<Subscription />} path="Subscription" />
               <Route element={<NewsDetail/>} path="newsdetail/:id" />
-              <Route element={<CampaignCard/>} path="campaigncard" />
-              <Route element={<CampaignDetail/>} path="campaigndetail" />
-              <Route element={<BlogCard/>} path="blogcard" />
-              <Route element={<BlogDetail/>} path="blogdetail" />
+              <Route element={<CampaignDetail/>} path="campaigndetails/:id" />
+              <Route element={<BlogDetail/>} path="blogdetails/:id" />
               <Route element={<ConsultancyCard />} path="consultancy" />
               <Route element={<Consultancy />} path="chat" />
               <Route element={<Contact />} path="contact" />

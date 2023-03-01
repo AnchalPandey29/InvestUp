@@ -9,6 +9,7 @@ import {
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { MDBInput } from "mdb-react-ui-kit";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -167,19 +168,31 @@ const Register = () => {
                         <div class="col-md-7">
                           <div class="file-upload-wrapper">
                             <div class="image-body">
+
                               <input type="file" class="image-input" name="image"></input>
                             </div>
                           </div>
                         </div>
                         <div className="form-outline mb-4">
-                          <Field type="name" name="name" className="form-control" />
-                          <label className="form-label" htmlFor="form3Example3">Investor Name</label>
+                        <MDBInput label='Investor Name' type="text" value={values.name} onChange={handleChange} name="name" />
+
+                          
                         </div>
+
+                        <div className="form-outline mb-4">
+                        <MDBInput label='Identity Proof Number' type="text" value={values.name} onChange={handleChange} name="name" />
+                        </div>
+                        
+                        <div className="form-outline mb-4">
+                        <MDBInput label='Identity Proof (Aadhar/PAN/)' type="text" value={values.name} onChange={handleChange} name="name" />
+                        </div>
+                        
                         <div className="form-outline mb-4" style={{width:"200px"}}>
-                        <label  htmlFor="form3Example3">Date Of Establishment</label>
-                          <Field type="date" name="date" className="form-control" />
+                        <MDBInput label='Date Of Establishment' type="date" value={values.name} onChange={handleChange} name="date" />
+
                         </div>
                         <div className="col-12">
+
                           <label htmlFor="select1">Duration</label>
                           <br />
                           <select

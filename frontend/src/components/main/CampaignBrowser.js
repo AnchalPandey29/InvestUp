@@ -101,7 +101,7 @@ const CampaignBrowser = () => {
             <Link
              type="button" 
              className="btn" 
-             to={"/main/campaigndetail/"+campaign._id} 
+             to={"/main/campaigndetails/"+campaign._id} 
              style={{ backgroundColor: "#9c3353", color: "white" }}>
               Read more
             </Link>

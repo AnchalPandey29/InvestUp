@@ -40,8 +40,8 @@ const startupSchema = new Schema({
   state:{type:String},
   city:{type:String},
 
-  website:{type:url},//website link of startup
-  app:{type:url},//app link of startup
+  website:{type:String},//website link of startup
+  app:{type:String},//app link of startup
 
   website:{type:String},//website link of startup
   app:{type:String},//app link of startup
