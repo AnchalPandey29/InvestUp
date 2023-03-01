@@ -103,44 +103,44 @@ const Register = () => {
           >
             <a
               className="nav-link active"
-              id="v-tabs-home-tab"
+              id="v-tabs-aboutstartup-tab"
               data-mdb-toggle="tab"
-              href="#v-tabs-home"
+              href="#v-tabs-aboutstartup"
               role="tab"
-              aria-controls="v-tabs-home"
+              aria-controls="v-tabs-aboutstartup"
               aria-selected="true"
             >
               About Startup
             </a>
             <a
               className="nav-link active"
-              id="v-tabs-home-tab"
+              id="v-tabs-ownerandproductdetails-tab"
               data-mdb-toggle="tab"
-              href="#v-tabs-home"
+              href="#v-tabs-ownerandproductdetails"
               role="tab"
-              aria-controls="v-tabs-home"
+              aria-controls="v-tabs-ownerandproductdetails"
               aria-selected="true"
             >
               Owner And Product Details
             </a>
             <a
               className="nav-link"
-              id="v-tabs-profile-tab"
+              id="v-tabs-contactinfo-tab"
               data-mdb-toggle="tab"
-              href="#v-tabs-profile"
+              href="#v-tabs-contactinfo"
               role="tab"
-              aria-controls="v-tabs-profile"
+              aria-controls="v-tabs-contactinfo"
               aria-selected="false"
             >
               Contact Info
             </a>
             <a
               className="nav-link"
-              id="v-tabs-messages-tab"
+              id="v-tabs-categoriesandinterests-tab"
               data-mdb-toggle="tab"
-              href="#v-tabs-messages"
+              href="#v-tabs-categoriesandinterests"
               role="tab"
-              aria-controls="v-tabs-messages"
+              aria-controls="v-tabs-categoriesandinterests"
               aria-selected="false"
             >
               Categories And Interests
@@ -153,9 +153,9 @@ const Register = () => {
           <div className="tab-content" id="v-tabs-tabContent">
             <div
               className="tab-pane fade show active"
-              id="v-tabs-home"
+              id="v-tabs-aboutstartup"
               role="tabpanel"
-              aria-labelledby="v-tabs-home-tab"
+              aria-labelledby="v-tabs-aboutstartup-tab"
             >
 
               {/* first form */}
@@ -173,6 +173,8 @@ const Register = () => {
                         <div className="d-flex flex-column">
                           <div>
                             <div className="file-upload-wrapper">
+                   
+
                               <div className="image-body">
                                 <input type="file" class="image-input" name="startupimage" value={values.startupimage}></input>
                               </div>
@@ -217,6 +219,8 @@ const Register = () => {
                        
                           <div>
                             <div className="file-upload-wrapper">
+              
+
                               <div className="image-body">
                                 <formlabel>Documents</formlabel>
                                 <input type="file" class="image-input" value={values.sdocuments} name="image"></input>
@@ -237,9 +241,9 @@ const Register = () => {
             </div>
             <div
               className="tab-pane fade show active"
-              id="v-tabs-home"
+              id="v-tabs-ownerandproductdetails"
               role="tabpanel"
-              aria-labelledby="v-tabs-home-tab"
+              aria-labelledby="v-tabs-ownerandproductdetails-tab"
             >
 
               {/* second form */}
@@ -257,6 +261,10 @@ const Register = () => {
                         <div className="d-flex flex-column">
                           <div>
                             <div className="file-upload-wrapper">
+
+
+                              
+
                               <div className="image-body">
                                 <input type="file" class="image-input" name="owneravatar" value={values.owneravatar}></input>
                               </div>
@@ -269,6 +277,10 @@ const Register = () => {
                           </div>
                           <div>
                             <div className="file-upload-wrapper">
+
+
+                              
+
                               <div className="image-body">
                                 <formlabel>Identity Proof(Aadhar Card/PAN/VoterID)</formlabel>
                                 <input type="file" class="image-input" name="identityproof" value={values.identityproof}></input>
@@ -281,6 +293,10 @@ const Register = () => {
                           </div>
                           <div>
                             <div className="file-upload-wrapper">
+
+
+                             
+
                               <div className="image-body">
                                 <formlabel>Document</formlabel>
                                 <input type="file" class="image-input" name="documents" value={values.documents}></input>
@@ -311,6 +327,9 @@ const Register = () => {
                        
                           <div>
                             <div className="file-upload-wrapper">
+
+                             
+
                               <div className="image-body">
                                 <formlabel>Image Of The Product</formlabel>
                                 <input type="file" class="image-input" value={values.productimage} name="productimage"></input>
@@ -336,9 +355,9 @@ const Register = () => {
             </div>
             <div
               className="tab-pane fade"
-              id="v-tabs-profile"
+              id="v-tabs-contactinfo"
               role="tabpanel"
-              aria-labelledby="v-tabs-profile-tab"
+              aria-labelledby="v-tabs-contactinfo-tab"
             >
 
               {/* second form  */}
@@ -352,7 +371,7 @@ const Register = () => {
                     <div className="row mb-4 form-floating">
                       <div className="col">
                         <div className="form-outline">
-                        <MDBInput label='Email Address' type="email" value={values.email} onChange={handleChange} name="email" />
+                        <MDBInput label='Email Address' type="text" value={values.email} onChange={handleChange} name="email" />
                          
                         </div>
                         <div className="col">
@@ -403,9 +422,9 @@ const Register = () => {
             </div>
             <div
               className="tab-pane fade"
-              id="v-tabs-messages"
+              id="v-tabs-categoriesandinterests"
               role="tabpanel"
-              aria-labelledby="v-tabs-messages-tab"
+              aria-labelledby="v-tabs-categoriesandinterests-tab"
             >
 
               {/* fourth form  */}
