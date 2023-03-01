@@ -155,7 +155,7 @@ const Register = () => {
 
               {/* first form */}
             <div >
-              {/*  */}<div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
                   <Formik
                     initialValues={{ name: '', type: '', brief: '' }}
@@ -169,7 +169,7 @@ const Register = () => {
                           <div class="file-upload-wrapper">
                             <div class="image-body">
 
-                              <input type="file" class="image-input" name="image"></input>
+                              <input type="file" class="image-input" value={values.investoravatar} name="investoravatar"> Investor Avatar</input>
                             </div>
                           </div>
                         </div>
@@ -180,15 +180,15 @@ const Register = () => {
                         </div>
 
                         <div className="form-outline mb-4">
-                        <MDBInput label='Identity Proof Number' type="text" value={values.name} onChange={handleChange} name="name" />
+                        <MDBInput label='Identity Proof Number' type="text" value={values.identityproofno} onChange={handleChange} name="identityproofno" />
                         </div>
                         
                         <div className="form-outline mb-4">
-                        <MDBInput label='Identity Proof (Aadhar/PAN/ )' type="text" value={values.name} onChange={handleChange} name="name" />
+                        <MDBInput label='Identity Proof (Aadhar/PAN/)' type="text" value={values.identityproof} onChange={handleChange} name="identityproof" />
                         </div>
                         
                         <div className="form-outline mb-4" style={{width:"200px"}}>
-                        <MDBInput label='Date Of Establishment' type="date" value={values.name} onChange={handleChange} name="date" />
+                        <MDBInput label='Date Of Establishment' type="date" value={values.date} onChange={handleChange} name="date" />
 
                         </div>
                         <div className="col-12">
@@ -226,16 +226,18 @@ const Register = () => {
                         </div>
 
                         <div class="form-outline mb-4">
-                          <Field as="textarea" name="brief" class="form-control" id="form6Example7" rows="2"></Field>
+                          <Field as="textarea" name="brief" class="form-control" value={values.brief} id="form6Example7" rows="2"></Field>
                           <label class="form-label" for="form6Example7">Brief</label>
                         </div>
                         <div className="form-outline ">
                           <Field type="name" name="name" className="form-control" />
-                          <label className="form-label" htmlFor="form3Example3">Current Incubatees</label>
+                          <MDBInput label="Current Incubatees" type="text" value={values.currentincubatees}
+                          onChange={handleChange} name="Current Incubatees"/>
                         </div>
                         <div className="form-outline mb-2">
                           <Field type="name" name="name" className="form-control" />
-                          <label className="form-label" htmlFor="form3Example3">Graduated Incubatees</label>
+                          < MDBInput label="Graduated Incubatees"  type="text" value={values.graduatedincubatees} 
+                          onChange={handleChange} name="Graduated Incubatees"/>
                         </div>
                         <FormControl className="ps-3 pb-4">
                           <FormLabel id="demo-radio-buttons-group-label">Government Funded ?</FormLabel>
@@ -280,13 +282,13 @@ const Register = () => {
                     <div className="row mb-4 form-floating">
                       <div className="col">
                         <div className="form-outline">
-                          <input type="email" value={values.email} onChange={handleChange} name="email" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Email</label>
+                          <MDBInput  label="Email" type="email" value={values.email} onChange={handleChange} name="Email "/>
+                          
                         </div>
                         <div className="col">
                           <div className="form-outline">
-                            <input type="tel" value={values.tel} onChange={handleChange} name="tel" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">Mobile</label>
+                            <MDBInput label="Mobile Number" type="tel" value={values.tel} onChange={handleChange} name="Mobile Number" />
+                            
                           </div>
                         </div>
                       </div>
@@ -294,36 +296,36 @@ const Register = () => {
                     <div className="row mb-4 form-floating">
                       <div className="col">
                         <div className="form-outline">
-                          <input type="text" value={values.state} onChange={handleChange} name="state" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">State</label>
+                          < MDBInput  label="State" type="text" value={values.state} onChange={handleChange} name="state"/>
+                          
                         </div>
                         <div className="col">
                           <div className="form-outline">
-                            <input type="text" value={values.city} onChange={handleChange} name="city" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">City</label>
+                            <MDBInput  label="City" type="text" value={values.city} onChange={handleChange} name="city"/>
+                           
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="form-outline mb-4">
-                      <Field type="url" name="link" className="form-control" />
-                      <label className="form-label" htmlFor="form3Example3">Application Link</label>
+                      <MDBInput label="Application Link" type="text" value={values.alink} onChange={handleChange} name="Application Link"/>
+                      
                     </div>
                     <div className="row mb-4 form-floating">
                       <div className="col">
                         <div className="form-outline">
-                          <input type="url" value={values.website} onChange={handleChange} name="Incubation Center Loacation" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Incubation Center Loacation</label>
+                          <MDBInput label="Incubation Center Location" type="text" value={values.centerlocation} onChange={handleChange} name="Incubation Center Loacation" />
+                          
                         </div>
                         <div className="col">
                           <div className="form-outline">
-                            <input type="url" value={values.mobileAppLink} onChange={handleChange} name="Incubator Center Location Address" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">Incubator Center Location Address</label>
+                            <MDBInput  label="Incubator Center Location Address" type="text" value={values.centerloactionaddress} onChange={handleChange} name="Incubator Center Location Address" />
+                            
                           </div>
                         </div>
                       </div>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Next</button>
                   </form>
                 )}
               </Formik>
@@ -342,8 +344,8 @@ const Register = () => {
               {/* third form  */}
               <Formik
                 initialValues={{
-                  select1: '',
-                  select2: '',
+                  industry: '',
+                  sector: '',
                   type: '',
                 }}
                 onSubmit={values => {
@@ -356,8 +358,8 @@ const Register = () => {
                       <label  htmlFor="select1"> Industry</label>
                       <select
                         className="select"
-                        name="select1"
-                        value={values.select1}
+                        name="industry"
+                        value={values.industry}
                         onChange={handleChange}
                       >
                         <FormLabel> Industry</FormLabel>
@@ -385,8 +387,8 @@ const Register = () => {
                       <label htmlFor="select2"> Interests</label>
                       <select
                         className="select"
-                        name="select2"
-                        value={values.select2}
+                        name="sector"
+                        value={values.sector}
                         onChange={handleChange}
                       ><FormLabel>Interests</FormLabel>
                         <option value="" selected></option>
@@ -405,10 +407,12 @@ const Register = () => {
                     </div>
                     <div className="col">
                       <div className="form-outline">
-                        <input type="number" value={values.text} onChange={handleChange} name="DIPPT Number" className="form-control" />
-                        <label className="form-label" htmlFor="floatingInputValue">DIPPT Enpanelment Number</label>
+                        <MDBInput  label="DIPPT Enpanelment Number" type="text
+                        " value={values.DIPPTNumber} onChange={handleChange} name="DIPPT Number"  />
+                        
                       </div>
                     </div>
+                  
 
                     <button type="submit">Submit</button>
                   </form>
