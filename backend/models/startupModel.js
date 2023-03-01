@@ -15,9 +15,9 @@ const startupSchema = new Schema({
   owneravatar:{type:String},//owner image
   ownername:{type:String},// name of the owner
   identityproof:{type:String},
-  owneravatar:String,//owner image
+  owneravatar:{type:String},//owner image
   ownername:{type:String},// name of the owner
-  identityproof:String,
+  identityproof:{type:String},
 
   identityno:{type:String},
   documents: {type: String},//document for the verification of owner
@@ -29,7 +29,7 @@ const startupSchema = new Schema({
 
   productimage:{type:String},//image of startup product
 
-  productimage:String,//image of startup product
+  productimage:{type:String},//image of startup product
 
   productname:{type:String},//Name of the product
   productdescription:{type:String},//Description of the product 
