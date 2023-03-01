@@ -24,21 +24,16 @@ const NewsDetail = () => {
 
   const displayDetails = () => {
     if (!loading && newsData) {
-        return 
-        <div className='m-5 card'>
-          <h1>hiiiiii</h1>
-         {newsData.image}
-         {newsData.heading}
-         {newsData.content}
+        return<div className="m-5 card">
+          <h1>{newsData.heading}</h1>
+          <h2>hii</h2>
+         <p>{newsData.content}</p>
          
         </div>
       }
       else{
-        return 
-        <p>
-            
-            <h1>Loading...</h1>
-        </p>
+        return <h1>Loading...</h1>
+        
     }
   };
  
@@ -46,4 +41,4 @@ const NewsDetail = () => {
   
 };
 
-export default NewsDetail
+export default NewsDetail;

@@ -2,6 +2,7 @@ import React from 'react'
 import './Home.css';
 import Eligibility from './Eligibility';
 import Testimonial from './Testimonial';
+import Subscription from './Subscription';
 
 const Home = () => {
   return (
@@ -22,7 +23,7 @@ const Home = () => {
             <img className='hero-image' src="\home.png" alt="" />
           </div>
 
-
+       
 
           <svg
             className="hero-waves"
@@ -55,6 +56,7 @@ const Home = () => {
 
       <Eligibility />
       <Testimonial/>
+      <Subscription/>
       
     </>
 

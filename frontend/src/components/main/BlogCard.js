@@ -70,7 +70,7 @@ const BlogCard = (props) => {
     <div>
       
 
-   
+    
 <div className='row d-flex justify-content-center align-items-center'>
       <div className="col-4 input-group m-5" style={{width:"40%"}}>
         <div className="form-outline bg-white">
