@@ -3,13 +3,31 @@ const bcrypt = require("bcrypt");
 const SALT = 10;
 
 const investorSchema = new Schema({
+  investoravatar:{type:String},
   name: { type: String, required: true },
+  identityproofno:{type:String},
+  identityproof:{type:String},
+  date:{type:String},
+  select1:{type:String},
+  stage:{type:String},
+  brief:{type:String},
+  currentincubatees:{type:String},
+  graduatedincubatees:{type:String},
+  funded:{type:String},
   email: { type: String, required: true, unique: true },
+  tel:{type:String},
   password: { type: String, required: true },
-  contact: { type: Number},
-  owneravatar: {type: String},
-  created_at:Date,
-  IdProof: {type: String},
+  state:{type:String},
+  city:{type:String},
+  alink:{type:String},
+  centerlocation:{type:String},
+  centerloactionaddress:{type:String},
+  industry:{type:String},
+  sector:{type:String},
+  DIPPTNumber:{type:String},
+  
+
+  
   
   
 });
