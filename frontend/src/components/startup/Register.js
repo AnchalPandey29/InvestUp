@@ -248,7 +248,7 @@ const Register = () => {
 
               {/* second form */}
               <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-Owner And Product Deatails" role="tabpanel" aria-labelledby="v-pills-Owner And Product Details-tab" >
+                <div class="tab-pane fade show active" id="v-pills-Owner And Product Details" role="tabpanel" aria-labelledby="v-pills-Owner And Product Details-tab" >
                   <Formik
                     initialValues={currentUser}
                     onSubmit={values => {
@@ -344,6 +344,7 @@ const Register = () => {
                             <Field as="textarea" name="productdescription"  value={values.productdescription} class="form-control" id="form6Example7" rows="4"></Field>
                             <label class="form-label" for="form6Example7">Description Of Product</label>
                           </div>
+                          <button type="submit">Next</button>
                           </Form>
                     )}
                   </Formik>
@@ -360,7 +361,7 @@ const Register = () => {
               aria-labelledby="v-tabs-contactinfo-tab"
             >
 
-              {/* second form  */}
+              {/* third form  */}
 
               <Formik
                 initialValues={currentUser}
@@ -372,6 +373,7 @@ const Register = () => {
                       <div className="col">
                         <div className="form-outline">
                         <MDBInput label='Email Address' type="text" value={values.email} onChange={handleChange} name="email" />
+                        </div>
                          
                         </div>
                         <div className="col">
@@ -381,7 +383,7 @@ const Register = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    
                     
                     <div className="row mb-4 form-floating">
                       <div className="col">
@@ -411,7 +413,8 @@ const Register = () => {
                         </div>
                       </div>
                     </div>
-                    <button type="submit">Submit</button>
+                    
+                    <button type="submit">Next</button>
                   </form>
                 )}
               </Formik>
