@@ -22,7 +22,6 @@ const RegisterSchema = Yup.object().shape({
   tel:Yup.string()
   .max(10)
   .required("contact number is required"),
-  
   aplink:Yup.string().aplink("Application Link is mandatory"),
   state:Yup.string().state("State is required"),
   DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
