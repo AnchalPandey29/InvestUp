@@ -9,23 +9,26 @@ import {MDBTextArea, MDBBtn , MDBFile,MDBInput, MDBInputGroup} from 'mdb-react-u
 import * as Yup from "yup";
 
 const RegisterSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  identityproofno:Yup.string().required("This field is mandatory"),
-  identityproof:Yup.string().required("Identity Proof is requied"),
-  date:Yup.string().required("This field is mandatory"),
-  brief:Yup.string().required("Description is required"),
-  currentincubatees:Yup.string().required("Description is required"),
+  name: Yup.string()
+  .min(2, 'Too Short!')
+  .required("Name is required"),
+  //identityproofno:Yup.string().required("This field is mandatory"),
+  //identityproof:Yup.string().required("Identity Proof is requied"),
+ // date:Yup.string().required("This field is mandatory"),
+ // brief:Yup.string().required("Description is required"),
+ // currentincubatees:Yup.string().required("Description is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string()
     .min(8, "Password must be at least 8 characters")
     .required("Password is required"),
-  tel:Yup.string()
-  .max(10)
-  .required("contact number is required"),
-  aplink:Yup.string().aplink("Application Link is mandatory"),
-  state:Yup.string().state("State is required"),
-  DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+  // tel:Yup.string()
+ // .max(10)
+ // .required("contact number is required"),
+  //aplink:Yup.string().aplink("Application Link is mandatory"),
+  //istate:Yup.string().istate("State is required"),
+ // DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 });
+
 
 
 const Register = () => {
@@ -330,8 +333,8 @@ const Register = () => {
                     <div className="row mb-4 form-floating">
                       <div className="col">
                         <div className="form-outline mb-4">
-                        <MDBInput label='State' type="text" value={values.state} onChange={handleChange} name="state" />
-                        {errors.state && touched.state? <div>{errors.state}</div> : null}  
+                        <MDBInput label='State' type="text" value={values.istate} onChange={handleChange} name="istate" />
+                        {errors.istate && touched.istate? <div>{errors.istate}</div> : null}  
                         </div>
                         <div className="col">
                           <div className="form-outline mb-4">
@@ -383,7 +386,7 @@ const Register = () => {
                   select2: '',
                   type: '',
                 }}
-                validationSchema={RegisterSchema}
+               // validationSchema={RegisterSchema}
                 onSubmit={values => {
                   console.log(values);
                 }}
