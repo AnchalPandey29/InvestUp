@@ -108,7 +108,7 @@ const Register = () => {
 
 
   return (
-    <div className="m-5 card mx-auto" style={{height:"100vh", color:"",width:"50%", paddingTop:"20px"}}>
+    <div className="m-5 card mx-auto" style={{height:"fit-content", color:"",width:"50%", paddingTop:"20px"}}>
 
 
 
