@@ -17,7 +17,7 @@ const investorSchema = new Schema({
   email: { type: String, required: true, unique: true },
   tel:{type:String},
   password: { type: String, required: true },
-  state:{type:String},
+  istate:{type:String},
   city:{type:String},
   aplink:{type:String},
   centerlocation:{type:String},
