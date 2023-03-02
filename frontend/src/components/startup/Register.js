@@ -11,15 +11,7 @@ const Register = () => {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('startup')));
 
-  // const initialValues = {
-  //   name: "",
-  //   email: "",
-  //   tel: "",
-  //   type: "none",
-  //   category: "",
-  //   interests: "",
-  //   brief: "",
-  // };
+  
 
   const updateUser = async (values, { setSubmitting }) => {
     console.log(values);
@@ -537,6 +529,6 @@ const Register = () => {
     </div>
 
   )
-}
+};
 
-          export default Register
+export default Register
