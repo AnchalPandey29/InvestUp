@@ -50,12 +50,26 @@ const ManageStartup = () => {
                 <thead >
                     <tr style={{backgroundColor:"#9c3353", color:"white"}}>
                         
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>EMAIL</th>
-                        <th>PASSWORD</th>
-                        <th>ROLE</th>
-                      
+                        <th>Investor Name</th>
+                        <th>Identity Proof No</th>
+                        <th>Identity Proof</th>
+                        <th>Date</th>
+                        <th>Stage</th>
+                        <th>Brief</th>
+                        <th>Current Incubatees</th>
+                        <th>Graduated Incubatees</th>
+                        <th>Funded</th>
+                        <th>Email</th>
+                        <th>Contact Number</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Application Link</th>
+                        <th>Center Location</th>
+                        <th>Center Location Address</th>
+                        <th>Industry</th>
+                        <th>Sector</th>
+                        <th>DIPPTNumber</th>
+
                         
                     </tr>
                 </thead>
@@ -64,11 +78,26 @@ const ManageStartup = () => {
                         userList.map( (user) => (
                             <tr >
                                 
-                                <td>{user.id}</td>
                                 <td>{user.name}</td>
+                                <td>{user.identityproofno}</td>
+                                <td>{user.identityproof}</td>
+                                <td>{user.date}</td>
+                                <td>{user.stage}</td>
+                                <td>{user.brief}</td>
+                                <td>{user.currentincubatees}</td>
+                                <td>{user.graduatedincubatees}</td>
+                                <td>{user.funded}</td>
                                 <td>{user.email}</td>
-                                <td>{user.password}</td>
-                                <td>{user.role}</td>
+                                <td>{user.tel}</td>
+                                <td>{user.istate}</td>
+                                <td>{user.city}</td>
+                                <td>{user.aplink}</td>
+                                <td>{user.centerlocation}</td>
+                                <td>{user.centerlocationaddress}</td>
+                                <td>{user.industry}</td>
+                                <td>{user.sector}</td>
+                                <td>{user.DIPPTNumber}</td>
+                                
                                 
                                 <td>
                                     <button className='btn btn-dark' style={{backgroundColor:"#9c3353"}} onClick={() => deleteUser(user._id)}> <i style={{color:"white"}} class="fas fa-trash"></i></button>
