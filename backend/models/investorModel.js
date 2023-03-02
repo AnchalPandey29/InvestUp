@@ -19,7 +19,7 @@ const investorSchema = new Schema({
   password: { type: String, required: true },
   state:{type:String},
   city:{type:String},
-  alink:{type:String},
+  aplink:{type:String},
   centerlocation:{type:String},
   centerloactionaddress:{type:String},
   industry:{type:String},

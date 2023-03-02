@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MDBInput } from 'mdb-react-ui-kit';
 
-const Register = () => {
+const Register = () => 
+{
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('startup')));
 
@@ -536,7 +537,8 @@ const Register = () => {
         
     </div>
 
+
   )
 }
 
-          export default Register
+export default Register

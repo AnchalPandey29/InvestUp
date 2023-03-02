@@ -3,11 +3,22 @@ import { MDBInput } from "mdb-react-ui-kit";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import * as Yup from "yup";
 
 const Signin = () => {
+  // signin schema validation
+  const SigninSchema = Yup.object().shape({
+   
 
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string()
+      .min(8, "Password must be at least 8 characters")
+      .required("Password is required"),
+  });
+    ///////////////////////////////
   const navigate = useNavigate();
   const [selRole, setSelRole] = useState('startup')
+  
 
   const userSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
@@ -64,8 +75,10 @@ const Signin = () => {
             <p className="text-center h4">Login Form</p>
             <hr />
 
-            <Formik initialValues={{ email: "", password: "" }} onSubmit={userSubmit}>
-              {({ values, handleSubmit, handleChange, isSubmitting}) => (
+            <Formik initialValues={{ email: "", password: "" }} 
+            validationSchema={SigninSchema}//Validation Schema
+            onSubmit={userSubmit}>
+              {({ values, handleSubmit, handleChange, isSubmitting,errors, touched}) => (
 
 
                 <form onSubmit={handleSubmit}>
@@ -74,13 +87,14 @@ const Signin = () => {
                   {/* Email input */}
                   <div className="form-outline mb-4">
                   <MDBInput label='Email' type="email" value={values.email} onChange={handleChange} name="email" />
+                  {errors.email && touched.email ? <div>{errors.email}</div> : null}
                     
                   </div>
 
                   {/* Password input */}
                   <div className="form-outline mb-4">
                   <MDBInput label='Password' type="password" value={values.password} onChange={handleChange} name="password" />
-                   
+                  {errors.password && touched.password ? <div>{errors.password}</div> : null}
                   </div>
                   <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
                     {

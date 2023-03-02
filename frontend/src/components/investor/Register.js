@@ -1,15 +1,33 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
+import { FormControl, FormControlLabel, FormLabel, Radio,RadioGroup,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { MDBInput } from "mdb-react-ui-kit";
+//import { MDBInput, MDBInputGroup } from "mdb-react-ui-kit";
+import {MDBTextArea, MDBBtn , MDBFile,MDBInput, MDBInputGroup} from 'mdb-react-ui-kit';
+import * as Yup from "yup";
+
+const RegisterSchema = Yup.object().shape({
+  name: Yup.string().required("Name is required"),
+  identityproofno:Yup.string().required("This field is mandatory"),
+  identityproof:Yup.string().required("Identity Proof is requied"),
+  date:Yup.string().required("This field is mandatory"),
+  brief:Yup.string().required("Description is required"),
+  currentincubatees:Yup.string().required("Description is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required"),
+  tel:Yup.string()
+  .max(10)
+  .required("contact number is required"),
+  
+  aplink:Yup.string().aplink("Application Link is mandatory"),
+  state:Yup.string().state("State is required"),
+  DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+});
+
 
 const Register = () => {
   const navigate = useNavigate();
@@ -90,7 +108,7 @@ const Register = () => {
 
 
   return (
-    <div className="m-5 card mx-auto" style={{height:"90vh",width:"50%", paddingTop:"20px"}}>
+    <div className="m-5 card mx-auto" style={{height:"100vh", color:"",width:"50%", paddingTop:"20px"}}>
 
 
 
@@ -159,37 +177,47 @@ const Register = () => {
                 <div class="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
                   <Formik
                     initialValues={{ name: '', type: '', brief: '' }}
+                    validationSchema={RegisterSchema}//Schema
                     onSubmit={values => {
                       console.log(values);
                     }}
                   >
-                    {({ values, handleSubmit, handleChange, isSubmitting }) => (
+                    {({ values, handleSubmit, handleChange, isSubmitting, errors, touched}) => (
                       <Form  onSubmit={handleSubmit}>
-                        <div class="col-md-7">
+                        <div class="form-outline mb-2">
                           <div class="file-upload-wrapper">
                             <div class="image-body">
+                            <MDBFile label='Investor Avatar'  id='investoravatar'  value={values.investoravatar} onChange={handleChange}/>
 
-                              <input type="file" class="image-input" name="image"></input>
+                              
                             </div>
                           </div>
                         </div>
                         <div className="form-outline mb-4">
                         <MDBInput label='Investor Name' type="text" value={values.name} onChange={handleChange} name="name" />
-
+                        {errors.name && touched.name ? (
+                          <div>{errors.name}</div>
+                        ) : null}
                           
                         </div>
 
                         <div className="form-outline mb-4">
-                        <MDBInput label='Identity Proof Number' type="text" value={values.name} onChange={handleChange} name="name" />
-                        </div>
+                        <MDBInput label='Identity Proof Number' type="text" value={values.identityproofno} onChange={handleChange} name="identityproofno" />
+                        {errors.identityproofno && touched.identityproofno ? (
+                          <div>{errors.identityproofno}</div>
+                        ) : null} </div>
                         
                         <div className="form-outline mb-4">
-                        <MDBInput label='Identity Proof (Aadhar/PAN/ )' type="text" value={values.name} onChange={handleChange} name="name" />
-                        </div>
+                        <MDBFile label='Identity Proof'  id='identityproof'  value={values.identityproof} onChange={handleChange}/>
+                        {errors.identityproof && touched.identityproof ? (
+                          <div>{errors.identityproof}</div>
+                        ) : null}</div>
                         
                         <div className="form-outline mb-4" style={{width:"200px"}}>
-                        <MDBInput label='Date Of Establishment' type="date" value={values.name} onChange={handleChange} name="date" />
-
+                        <MDBInput label='Date Of Establishment' type="date" value={values.date} onChange={handleChange} name="date" />
+                        {errors.date && touched.date ? (
+                          <div>{errors.date}</div>
+                        ) : null}
                         </div>
                         <div className="col-12">
 
@@ -226,20 +254,26 @@ const Register = () => {
                         </div>
 
                         <div class="form-outline mb-4">
-                          <Field as="textarea" name="brief" class="form-control" id="form6Example7" rows="2"></Field>
-                          <label class="form-label" for="form6Example7">Brief</label>
+                        <MDBTextArea label='Brief' id='textAreaExample' rows={2} value={values.brief} onChange={handleChange}/>
+                        {errors.brief && touched.brief ? (
+                          <div>{errors.brief}</div>
+                        ) : null}
                         </div>
-                        <div className="form-outline ">
-                          <Field type="name" name="name" className="form-control" />
-                          <label className="form-label" htmlFor="form3Example3">Current Incubatees</label>
+
+                        <div className="form-outline mb-4 ">
+                        <MDBInput label='Current Incubatees' type="text" value={values.currentincubatees} onChange={handleChange} name="currentincubatees" />
+                        {errors.currentincubatees && touched.currentincubatees ? (
+                          <div>{errors.currentincubatees}</div>
+                        ) : null}
                         </div>
-                        <div className="form-outline mb-2">
-                          <Field type="name" name="name" className="form-control" />
-                          <label className="form-label" htmlFor="form3Example3">Graduated Incubatees</label>
+                        <div className="form-outline mb-4">
+                          <div>
+                        <MDBInput label='Graduated Incubatees' type="text" value={values.graduatedincubatees} onChange={handleChange} name="graduatedincubatees" />
+                          </div>
                         </div>
                         <FormControl className="ps-3 pb-4">
                           <FormLabel id="demo-radio-buttons-group-label">Government Funded ?</FormLabel>
-                          <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="none" name="type" onChange={handleChange} value={values.type} >
+                          <RadioGroup aria-labelledby="demo-radio-buttons-group-label" value={values.funded} defaultValue="none" name="type" onChange={handleChange}  >
                             <div className="">
                               <FormControlLabel value=" Funded" control={<Radio />} label="Yes" />
                               <FormControlLabel value="Bootstrapped" control={<Radio />} label="No" />
@@ -247,8 +281,9 @@ const Register = () => {
                             </div>
                           </RadioGroup>
                         </FormControl>
-
+                        <MDBBtn type="Submit">Next</MDBBtn>
                       </Form>
+                      
                     )}
                   </Formik>
 
@@ -271,59 +306,62 @@ const Register = () => {
 
               <Formik
                 initialValues={{ name: '', type: '', brief: '' }}
+                validationSchema={RegisterSchema}
                 onSubmit={values => {
                   console.log(values);
                 }}
               >
-                {({ values, handleSubmit, handleChange, isSubmitting }) => (
+                {({ values, handleSubmit, handleChange, isSubmitting ,errors , touched}) => (
                   <form onSubmit={handleSubmit} >
                     <div className="row mb-4 form-floating">
-                      <div className="col">
-                        <div className="form-outline">
-                          <input type="email" value={values.email} onChange={handleChange} name="email" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Email</label>
+                      <div className="col ">
+                        <div className="form-outline mb-4">
+                        <MDBInput label='Email' type="email" value={values.email} onChange={handleChange} name="email" />
+                        {errors.email && touched.email ? <div>{errors.email}</div> : null} 
+                          
                         </div>
                         <div className="col">
-                          <div className="form-outline">
-                            <input type="tel" value={values.tel} onChange={handleChange} name="tel" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">Mobile</label>
+                          <div className="form-outline mb-4">
+                          <MDBInput label='Mobile Number' type="text" value={values.tel} onChange={handleChange} name="tel" />
+                          {errors.tel && touched.tel ? <div>{errors.tel}</div> : null}  
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="row mb-4 form-floating">
                       <div className="col">
-                        <div className="form-outline">
-                          <input type="text" value={values.state} onChange={handleChange} name="state" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">State</label>
+                        <div className="form-outline mb-4">
+                        <MDBInput label='State' type="text" value={values.state} onChange={handleChange} name="state" />
+                        {errors.state && touched.state? <div>{errors.state}</div> : null}  
                         </div>
                         <div className="col">
-                          <div className="form-outline">
-                            <input type="text" value={values.city} onChange={handleChange} name="city" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">City</label>
+                          <div className="form-outline mb-4">
+                          <MDBInput label='City' type="text" value={values.city} onChange={handleChange} name="city" />
+                           
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="form-outline mb-4">
-                      <Field type="url" name="link" className="form-control" />
-                      <label className="form-label" htmlFor="form3Example3">Application Link</label>
+                    <MDBInput label='Application Link' type="text" value={values.aplink} onChange={handleChange} name="aplink" />
+                    {errors.aplink && touched.aplink ? <div>{errors.aplink}</div> : null} 
                     </div>
                     <div className="row mb-4 form-floating">
                       <div className="col">
-                        <div className="form-outline">
-                          <input type="url" value={values.website} onChange={handleChange} name="Incubation Center Loacation" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Incubation Center Loacation</label>
+                        <div className="form-outline mb-4">
+                        <MDBInput label='Incubation Center Loacation' type="text" value={values.centerlocation} onChange={handleChange} name="centerlocation" />
+                          
                         </div>
                         <div className="col">
-                          <div className="form-outline">
-                            <input type="url" value={values.mobileAppLink} onChange={handleChange} name="Incubator Center Location Address" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">Incubator Center Location Address</label>
+                          <div className="form-outline mb-4">
+                          <MDBInput label='Incubation Center Loacation Address' type="text" value={values.centerlocationaddress} onChange={handleChange} name="centerlocationaddress" />
+                          
+                           
                           </div>
                         </div>
                       </div>
                     </div>
-                    <button type="submit">Submit</button>
+                    <MDBBtn type="Submit">Next</MDBBtn>
                   </form>
                 )}
               </Formik>
@@ -346,13 +384,14 @@ const Register = () => {
                   select2: '',
                   type: '',
                 }}
+                validationSchema={RegisterSchema}
                 onSubmit={values => {
                   console.log(values);
                 }}
               >
-                {({ values, handleSubmit, handleChange, isSubmitting }) => (
+                {({ values, handleSubmit, handleChange, isSubmitting,errors,touched }) => (
                   <form onSubmit={handleSubmit} >
-                    <div className="col-12">
+                    <div className="col-12  form outline mb-4">
                       <label  htmlFor="select1"> Industry</label>
                       <select
                         className="select"
@@ -361,6 +400,7 @@ const Register = () => {
                         onChange={handleChange}
                       >
                         <FormLabel> Industry</FormLabel>
+                        <option value=""></option>
                         <option value="Advertising">Advertising</option>
                         <option value="Art And Photography">Art And Photography</option>
                         <option value="Chemicals">Chemicals</option>
@@ -380,7 +420,7 @@ const Register = () => {
 
                       </select>
                     </div>
-                    <div className="col-12">
+                    <div className="col-12 form outline mb-4">
                       <label htmlFor="select2"> Interests</label>
                       <select
                         className="select"
@@ -403,13 +443,13 @@ const Register = () => {
                      </select>
                     </div>
                     <div className="col">
-                      <div className="form-outline">
-                        <input type="number" value={values.text} onChange={handleChange} name="DIPPT Number" className="form-control" />
-                        <label className="form-label" htmlFor="floatingInputValue">DIPPT Enpanelment Number</label>
+                      <div className="form-outline mb-4">
+                      <MDBFile label='DIPPT Enpanelment Number'  id='DIPPTNumber'  value={values.DIPPTNumber} onChange={handleChange}/>
+                      {errors.DIPPTNumber && touched.DIPPTNumber? <div>{errors.DIPPTNumber}</div> : null}  
                       </div>
                     </div>
 
-                    <button type="submit">Submit</button>
+                    <MDBBtn type="Submit">Submit</MDBBtn>
                   </form>
                 )}
               </Formik>
