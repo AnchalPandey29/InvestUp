@@ -73,35 +73,16 @@ const Register = () => {
     }
   };
 
-  const validate = (values) => {
-    const errors = {};
 
-    if (!values.name) {
-      errors.name = "Required";
+  // validation function
+  function validate(values) {
+    let errors;
+    if (!values.identityproofno) {
+      errors.identityproofno = "Required";
     }
 
-    if (!values.email) {
-      errors.email = "Required";
-    }
-
-    if (!values.tel) {
-      errors.tel = "Required";
-    }
-
-    if (values.type === "none") {
-      errors.type = "Required";
-    }
-
-    if (!values.category) {
-      errors.category = "Required";
-    }
-
-    if (!values.interests) {
-      errors.interests = "Required";
-    }
-
-    if (!values.brief) {
-      errors.brief = "Required";
+    if (!values.identityproof) {
+      errors.identityproof = "Required";
     }
 
     return errors;
@@ -204,13 +185,13 @@ const Register = () => {
                         </div>
 
                         <div className="form-outline mb-4">
-                        <MDBInput label='Identity Proof Number' type="text" value={values.identityproofno} onChange={handleChange} name="identityproofno" />
+                        <MDBInput label='Identity Proof Number' type="text" value={values.identityproofno}  validate={validate} onChange={handleChange} name="identityproofno" />
                         {errors.identityproofno && touched.identityproofno ? (
                           <div>{errors.identityproofno}</div>
                         ) : null} </div>
                         
                         <div className="form-outline mb-4">
-                        <MDBFile label='Identity Proof'  id='identityproof'  value={values.identityproof} onChange={handleChange}/>
+                        <MDBFile label='Identity Proof'  id='identityproof'  value={values.identityproof} validate={validate} onChange={handleChange}/>
                         {errors.identityproof && touched.identityproof ? (
                           <div>{errors.identityproof}</div>
                         ) : null}</div>
