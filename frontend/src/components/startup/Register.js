@@ -1,10 +1,11 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup,
+import {
+  FormControl, FormControlLabel, FormLabel, Radio, RadioGroup,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import {MDBInput} from 'mdb-react-ui-kit';
+import { MDBInput } from 'mdb-react-ui-kit';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -24,16 +25,16 @@ const Register = () => {
     console.log(values);
 
     setSubmitting(true);
-    const res = await fetch("http://localhost:5000/startup/update/"+currentUser._id, {
+    const res = await fetch("http://localhost:5000/startup/update/" + currentUser._id, {
       method: "PUT",
       body: JSON.stringify(values),
       headers: { "Content-Type": "application/json" },
     });
 
     console.log(res.status);
-    
+
     setSubmitting(false);
-    
+
     if (res.status === 200) {
       const data = await res.json();
       console.log(data.result);
@@ -49,118 +50,85 @@ const Register = () => {
     }
   };
 
-  const validate = (values) => {
-    const errors = {};
-
-    if (!values.name) {
-      errors.name = "Required";
-    }
-
-    if (!values.email) {
-      errors.email = "Required";
-    }
-
-    if (!values.tel) {
-      errors.tel = "Required";
-    }
-
-    if (values.type === "none") {
-      errors.type = "Required";
-    }
-
-    if (!values.category) {
-      errors.category = "Required";
-    }
-
-    if (!values.interests) {
-      errors.interests = "Required";
-    }
-
-    if (!values.brief) {
-      errors.brief = "Required";
-    }
-
-    return errors;
-  };
-
 
 
   return (
-    <div className="card m-5">
+    <div className="card m-5 mx-auto" style={{ height: "fit-content" ,width:"fit-content"}}>
 
 
+      
 
+          {/* <!-- Tabs navs --> */}
+          <ul className="nav nav-tabs nav-justified mb-5" id="ex3" role="tablist" style={{width:"900px"}}>
+            <li className="nav-item" role="presentation">
+              <a
+                className="nav-link active"
+                id="ex3-tab-1"
+                data-mdb-toggle="tab"
+                href="#ex3-tabs-1"
+                role="tab"
+                aria-controls="ex3-tabs-1"
+                aria-selected="true"
+              >              Basic Info
 
+              </a
+              >
+            </li>
+            <li className="nav-item" role="presentation">
+              <a
+                className="nav-link"
+                id="ex3-tab-2"
+                data-mdb-toggle="tab"
+                href="#ex3-tabs-2"
+                role="tab"
+                aria-controls="ex3-tabs-2"
+                aria-selected="false"
+              >              Contact Info
+              </a
+              >
+            </li>
+            <li className="nav-item" role="presentation">
+              <a
+                className="nav-link"
+                id="ex3-tab-3"
+                data-mdb-toggle="tab"
+                href="#ex3-tabs-3"
+                role="tab"
+                aria-controls="ex3-tabs-3"
+                aria-selected="false"
+              >Incubator Category
+              </a
+              >
+            </li>
+            <li className="nav-item" role="presentation">
+              <a
+                className="nav-link"
+                id="ex3-tab-4"
+                data-mdb-toggle="tab"
+                href="#ex3-tabs-4"
+                role="tab"
+                aria-controls="ex3-tabs-4"
+                aria-selected="false"
+              >  Categories And Interests
+              </a
+              >
+            </li>
 
-      <div className="row w-100">
-        <div className="col-3">
-          {/* Tab navs */}
-          <div
-            className="nav flex-column nav-tabs text-center"
-            id="v-tabs-tab"
-            role="tablist"
-            aria-orientation="vertical"
-          >
-            <a
-              className="nav-link active"
-              id="v-tabs-aboutstartup-tab"
-              data-mdb-toggle="tab"
-              href="#v-tabs-aboutstartup"
-              role="tab"
-              aria-controls="v-tabs-aboutstartup"
-              aria-selected="true"
-            >
-              About Startup
-            </a>
-            <a
-              className="nav-link active"
-              id="v-tabs-ownerandproductdetails-tab"
-              data-mdb-toggle="tab"
-              href="#v-tabs-ownerandproductdetails"
-              role="tab"
-              aria-controls="v-tabs-ownerandproductdetails"
-              aria-selected="true"
-            >
-              Owner And Product Details
-            </a>
-            <a
-              className="nav-link"
-              id="v-tabs-contactinfo-tab"
-              data-mdb-toggle="tab"
-              href="#v-tabs-contactinfo"
-              role="tab"
-              aria-controls="v-tabs-contactinfo"
-              aria-selected="false"
-            >
-              Contact Info
-            </a>
-            <a
-              className="nav-link"
-              id="v-tabs-categoriesandinterests-tab"
-              data-mdb-toggle="tab"
-              href="#v-tabs-categoriesandinterests"
-              role="tab"
-              aria-controls="v-tabs-categoriesandinterests"
-              aria-selected="false"
-            >
-              Categories And Interests
-            </a>
-          </div>
-          {/* Tab navs */}
-        </div>
-        <div className="col-9">
-          {/* Tab content */}
-          <div className="tab-content" id="v-tabs-tabContent">
+          </ul>
+          {/* <!-- Tabs navs --> */}
+
+          {/* <!-- Tabs content --> */}
+          <div className="tab-content" id="ex2-content">
             <div
               className="tab-pane fade show active"
-              id="v-tabs-aboutstartup"
+              id="ex3-tabs-1"
               role="tabpanel"
-              aria-labelledby="v-tabs-aboutstartup-tab"
+              aria-labelledby="ex3-tab-1"
             >
+              {/* first form  */}
 
-              {/* first form */}
-              <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
+              <div className="tab-content" id="v-pills-tabContent">
+                <div className="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
                   <Formik
                     initialValues={currentUser}
                     onSubmit={values => {
@@ -169,14 +137,14 @@ const Register = () => {
                   >
                     {({ values, handleSubmit, handleChange, isSubmitting }) => (
                       <Form onSubmit={handleSubmit}>
-                        
+
                         <div className="d-flex flex-column">
                           <div>
                             <div className="file-upload-wrapper">
-                   
+
 
                               <div className="image-body">
-                                <input type="file" class="image-input" name="startupimage" value={values.startupimage}></input>
+                                <input type="file" className="image-input" name="startupimage" value={values.startupimage}></input>
                               </div>
                             </div>
                           </div>
@@ -201,34 +169,34 @@ const Register = () => {
                             </RadioGroup>
                           </FormControl>
 
-                          <div class="d-flex flex-column  btn-group shadow-0" role="group" aria-label="Basic example">
+                          <div className="d-flex flex-column  btn-group shadow-0" role="group" aria-label="Basic example">
                             <FormLabel className="ms-3" value={values.stage}>Stage</FormLabel>
                             <div>
-                              <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Ideation</button>
-                              <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Validation</button>
-                              <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Early Traction</button>
-                              <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark">Scaling</button>
+                              <button type="button" className="btn btn-outline-secondary" data-mdb-color="dark">Ideation</button>
+                              <button type="button" className="btn btn-outline-secondary" data-mdb-color="dark">Validation</button>
+                              <button type="button" className="btn btn-outline-secondary" data-mdb-color="dark">Early Traction</button>
+                              <button type="button" className="btn btn-outline-secondary" data-mdb-color="dark">Scaling</button>
                             </div>
                           </div>
-                          
-                          <div class="form-outline mt-4 ms-1">
-                            <Field as="textarea" name="brief"  value={values.brief} class="form-control" id="form6Example7" rows="4"></Field>
-                            <label class="form-label" for="form6Example7">Brief</label>
+
+                          <div className="form-outline mt-4 ms-1">
+                            <Field as="textarea" name="brief" value={values.brief} className="form-control" id="form6Example7" rows="4"></Field>
+                            <label className="form-label" for="form6Example7">Brief</label>
                           </div>
                         </div>
-                       
-                          <div>
-                            <div className="file-upload-wrapper">
-              
 
-                              <div className="image-body">
-                                <formlabel>Documents</formlabel>
-                                <input type="file" class="image-input" value={values.sdocuments} name="image"></input>
-                              </div>
+                        <div>
+                          <div className="file-upload-wrapper">
+
+
+                            <div className="image-body">
+                              <formlabel>Documents</formlabel>
+                              <input type="file" className="image-input" value={values.sdocuments} name="image"></input>
                             </div>
                           </div>
+                        </div>
 
-                        
+
 
                       </Form>
                     )}
@@ -238,17 +206,20 @@ const Register = () => {
               </div>
               {/* first form end  */}
 
-            </div>
-            <div
-              className="tab-pane fade show active"
-              id="v-tabs-ownerandproductdetails"
-              role="tabpanel"
-              aria-labelledby="v-tabs-ownerandproductdetails-tab"
-            >
 
+
+            </div>
+
+
+            <div
+              className="tab-pane fade"
+              id="ex3-tabs-2"
+              role="tabpanel"
+              aria-labelledby="ex3-tab-2"
+            >
               {/* second form */}
-              <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-Owner And Product Details" role="tabpanel" aria-labelledby="v-pills-Owner And Product Details-tab" >
+              <div className="tab-content" id="v-pills-tabContent">
+                <div className="tab-pane fade show active" id="v-pills-Owner And Product Details" role="tabpanel" aria-labelledby="v-pills-Owner And Product Details-tab" >
                   <Formik
                     initialValues={currentUser}
                     onSubmit={values => {
@@ -257,95 +228,95 @@ const Register = () => {
                   >
                     {({ values, handleSubmit, handleChange, isSubmitting }) => (
                       <Form onSubmit={handleSubmit}>
-                        
+
                         <div className="d-flex flex-column">
                           <div>
                             <div className="file-upload-wrapper">
 
 
-                              
+
 
                               <div className="image-body">
-                                <input type="file" class="image-input" name="owneravatar" value={values.owneravatar}></input>
+                                <input type="file" className="image-input" name="owneravatar" value={values.owneravatar}></input>
                               </div>
                             </div>
                           </div>
 
                           <div className="form-outline mt-4 ms-1">
-                            <Field type="name" name="ownername"  value={values.ownername}className="form-control" />
+                            <Field type="name" name="ownername" value={values.ownername} className="form-control" />
                             <label className="form-label" htmlFor="form3Example3">Owner Name</label>
                           </div>
                           <div>
                             <div className="file-upload-wrapper">
 
 
-                              
+
 
                               <div className="image-body">
                                 <formlabel>Identity Proof(Aadhar Card/PAN/VoterID)</formlabel>
-                                <input type="file" class="image-input" name="identityproof" value={values.identityproof}></input>
+                                <input type="file" className="image-input" name="identityproof" value={values.identityproof}></input>
                               </div>
                             </div>
                           </div>
                           <div className="form-outline mt-4 ms-1">
-                            <Field type="number" name="ownername"  value={values.identityno}className="form-control" />
+                            <Field type="number" name="ownername" value={values.identityno} className="form-control" />
                             <label className="form-label" htmlFor="form3Example3">Identity No</label>
                           </div>
                           <div>
                             <div className="file-upload-wrapper">
 
 
-                             
+
 
                               <div className="image-body">
                                 <formlabel>Document</formlabel>
-                                <input type="file" class="image-input" name="documents" value={values.documents}></input>
+                                <input type="file" className="image-input" name="documents" value={values.documents}></input>
                               </div>
                             </div>
                           </div>
                           <div className="col">
-                          <div className="form-outline">
-                            <input type="tel" value={values.ownercontact} onChange={handleChange} name="ownercontact" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">Contact</label>
+                            <div className="form-outline">
+                              <input type="tel" value={values.ownercontact} onChange={handleChange} name="ownercontact" className="form-control" />
+                              <label className="form-label" htmlFor="floatingInputValue">Contact</label>
+                            </div>
                           </div>
-                        </div>
-                        
-                      <div className="col">
-                        <div className="form-outline">
-                        <MDBInput label='Email ' type="email" value={values.owneremail} onChange={handleChange} name="email" />
-                        </div>
-                        </div>
-                        <div className="form-outline mt-4 ms-1">
-                            <Field type="number" name="teammemberno"  value={values.teammemberno}className="form-control" />
-                            <label className="form-label" htmlFor="form3Example3">No of members in team</label>
-                          </div>
-                          <div class="form-outline mt-4 ms-1">
-                            <Field as="textarea" name="teammembers"  value={values.teammembers}class="form-control" id="form6Example7" rows="2"></Field>
-                            <label class="form-label" for="form6Example7">Members Of Team</label>
-                          </div>
-                        </div>
-                       
-                          <div>
-                            <div className="file-upload-wrapper">
 
-                             
-
-                              <div className="image-body">
-                                <formlabel>Image Of The Product</formlabel>
-                                <input type="file" class="image-input" value={values.productimage} name="productimage"></input>
-                              </div>
+                          <div className="col">
+                            <div className="form-outline">
+                              <MDBInput label='Email ' type="email" value={values.owneremail} onChange={handleChange} name="email" />
                             </div>
                           </div>
                           <div className="form-outline mt-4 ms-1">
-                            <Field type="name" name="productname"  value={values.productname}className="form-control" />
-                            <label className="form-label" htmlFor="form3Example3">Name Of Product</label>
+                            <Field type="number" name="teammemberno" value={values.teammemberno} className="form-control" />
+                            <label className="form-label" htmlFor="form3Example3">No of members in team</label>
                           </div>
-                          <div class="form-outline mt-4 ms-1">
-                            <Field as="textarea" name="productdescription"  value={values.productdescription} class="form-control" id="form6Example7" rows="4"></Field>
-                            <label class="form-label" for="form6Example7">Description Of Product</label>
+                          <div className="form-outline mt-4 ms-1">
+                            <Field as="textarea" name="teammembers" value={values.teammembers} className="form-control" id="form6Example7" rows="2"></Field>
+                            <label className="form-label" for="form6Example7">Members Of Team</label>
                           </div>
-                          <button type="submit">Next</button>
-                          </Form>
+                        </div>
+
+                        <div>
+                          <div className="file-upload-wrapper">
+
+
+
+                            <div className="image-body">
+                              <formlabel>Image Of The Product</formlabel>
+                              <input type="file" className="image-input" value={values.productimage} name="productimage"></input>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="form-outline mt-4 ms-1">
+                          <Field type="name" name="productname" value={values.productname} className="form-control" />
+                          <label className="form-label" htmlFor="form3Example3">Name Of Product</label>
+                        </div>
+                        <div className="form-outline mt-4 ms-1">
+                          <Field as="textarea" name="productdescription" value={values.productdescription} className="form-control" id="form6Example7" rows="4"></Field>
+                          <label className="form-label" for="form6Example7">Description Of Product</label>
+                        </div>
+                        <button type="submit">Next</button>
+                      </Form>
                     )}
                   </Formik>
 
@@ -354,13 +325,17 @@ const Register = () => {
               {/* second form end  */}
 
             </div>
+
+
             <div
               className="tab-pane fade"
-              id="v-tabs-contactinfo"
+              id="ex3-tabs-3"
               role="tabpanel"
-              aria-labelledby="v-tabs-contactinfo-tab"
+              aria-labelledby="ex3-tab-3"
             >
 
+
+              
               {/* third form  */}
 
               <Formik
@@ -369,22 +344,22 @@ const Register = () => {
               >
                 {({ values, handleSubmit, handleChange, isSubmitting }) => (
                   <form onSubmit={handleSubmit} >
-                    <div className="row mb-4 form-floating">
+                    <div className="row mb-4 form-floating " >
                       <div className="col">
                         <div className="form-outline">
-                        <MDBInput label='Email Address' type="text" value={values.email} onChange={handleChange} name="email" />
+                          <MDBInput label='Email Address' type="text" value={values.email} onChange={handleChange} name="email" />
                         </div>
-                         
-                        </div>
-                        <div className="col">
-                          <div className="form-outline">
-                            <input type="tel" value={values.tel} onChange={handleChange} name="tel" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">Mobile</label>
-                          </div>
+
+                      </div>
+                      <div className="col">
+                        <div className="form-outline">
+                          <input type="tel" value={values.tel} onChange={handleChange} name="tel" className="form-control" />
+                          <label className="form-label" htmlFor="floatingInputValue">Mobile</label>
                         </div>
                       </div>
-                    
-                    
+                    </div>
+
+
                     <div className="row mb-4 form-floating">
                       <div className="col">
                         <div className="form-outline">
@@ -413,7 +388,7 @@ const Register = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     <button type="submit">Next</button>
                   </form>
                 )}
@@ -422,15 +397,18 @@ const Register = () => {
               {/* third form end  */}
 
 
-            </div>
-            <div
-              className="tab-pane fade"
-              id="v-tabs-categoriesandinterests"
-              role="tabpanel"
-              aria-labelledby="v-tabs-categoriesandinterests-tab"
-            >
 
-              {/* fourth form  */}
+
+             
+
+
+              <div
+                className="tab-pane fade"
+                id="ex3-tabs-4"
+                role="tabpanel"
+                aria-labelledby="ex3-tabs-4"
+              >
+                {/* fourth form */}
               <Formik
                 initialValues={{
                   select1: '',
@@ -542,19 +520,23 @@ const Register = () => {
               </Formik>
               {/* fourth form end  */}
 
+
+              </div>
             </div>
+
+
+
+
+
+
+
+
+
           </div>
-          <form>
-
-
-
-          </form>
-        </div>
-      </div>
-
-
+        
     </div>
+
   )
 }
 
-export default Register
+          export default Register
