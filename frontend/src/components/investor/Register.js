@@ -13,20 +13,20 @@ const RegisterSchema1 = Yup.object().shape({
   .min(2, 'Too Short!')
   .required("Name is required"),
   identityproofno:Yup.string().required("This field is mandatory"),
-  identityproof:Yup.string().required("Identity Proof is requied"),
- date:Yup.string().required("This field is mandatory"),
- brief:Yup.string().required("Description is required"),
-  currentincubatees:Yup.string().required("Description is required"),
-  email: Yup.string()
-  .email("Invalid email")
-  .required("Email is required"),
-  password: Yup.string()
-  .min(8, "Password must be at least 8 characters")
-  .required("Password is required"),
-  tel:Yup.string()
-        .max(10)
-      .required("contact number is required"),
-       //aplink:Yup.string().aplink("Application Link is mandatory"),
+//   identityproof:Yup.string().required("Identity Proof is requied"),
+//  date:Yup.string().required("This field is mandatory"),
+//  brief:Yup.string().required("Description is required"),
+//   currentincubatees:Yup.string().required("Description is required"),
+//   email: Yup.string()
+//   .email("Invalid email")
+//   .required("Email is required"),
+//   password: Yup.string()
+//   .min(8, "Password must be at least 8 characters")
+//   .required("Password is required"),
+//   tel:Yup.string()
+//         .max(10)
+//       .required("contact number is required"),
+//        //aplink:Yup.string().aplink("Application Link is mandatory"),
     //istate:Yup.string().istate("State is required"),
     //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 })
@@ -86,7 +86,7 @@ const Register = () => {
 
         text: "You have registered successfully",
       });
-      navigate("/");
+      
     } else {
       // error alert
     }
@@ -270,14 +270,8 @@ const Register = () => {
                           </div>
                         </RadioGroup>
                       </FormControl>
-                      <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
-                    {
-                      isSubmitting ?
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        :
-                        'Submit'
-                    }
-                  </button>                   
+                      <button type="submit">Next</button>
+               
                    </form>
 
                   )}
@@ -359,14 +353,8 @@ const Register = () => {
                     </div>
                   </div>
                 </div>
-                <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
-                    {
-                      isSubmitting ?
-                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                        :
-                        'Next'
-                    }
-                  </button>
+                <button type="submit">Next</button>
+
               </form>
             )}
           </Formik>
@@ -461,14 +449,8 @@ const Register = () => {
                   </div>
                 </div>
 
-                <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
-                    {
-                      isSubmitting ?
-                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
-                        :
-                        'Submit'
-                    }
-                  </button>
+                <button type="submit">Submit</button>
+
               </form>
             )}
           </Formik>
