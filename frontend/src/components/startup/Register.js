@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MDBInput } from 'mdb-react-ui-kit';
+import {MDBTextArea , MDBFile} from 'mdb-react-ui-kit';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -126,23 +127,24 @@ const Register = () => {
                   <Form onSubmit={handleSubmit}>
 
                     <div className="d-flex flex-column">
-                      <div>
-                        <div className="file-upload-wrapper">
+                    <div class="form-outline mb-2">
+                        <div class="file-upload-wrapper">
+                          <div class="image-body">
+                            <MDBFile label='Startup Image' id='startupimage' name="startupimage" value={values.startupimage} onChange={handleChange} />
 
 
-                          <div className="image-body">
-                            <input type="file" className="image-input" name="startupimage" value={values.startupimage}></input>
                           </div>
                         </div>
                       </div>
+                      
 
                       <div className="form-outline mt-4 ms-1">
-                        <Field type="name" name="name" className="form-control" />
-                        <label className="form-label" htmlFor="form3Example3">Startup Name</label>
+                      <MDBInput label='Startup Name'id="startupname" type="text" value={values.className} onChange={handleChange} name="startupname" />
+                        
                       </div>
                       <div className="form-outline mt-4 ms-1">
-                        <Field type="date" name="created_at" value={values.created_at} className="form-control" />
-                        <label className="form-label" htmlFor="form3Example3">Created At</label>
+                      <MDBInput label='Created At'id="created_at" type="text" value={values.created_at} onChange={handleChange} name="created_at" />
+                        
                       </div>
 
                       <FormControl className="ps-3 pb-4 ">
@@ -167,8 +169,8 @@ const Register = () => {
                       </div>
 
                       <div className="form-outline mt-4 ms-1">
-                        <Field as="textarea" name="brief" value={values.brief} className="form-control" id="form6Example7" rows="4"></Field>
-                        <label className="form-label" for="form6Example7">Brief</label>
+                      <MDBTextArea label='Brief' type="text" id='brief' rows={2} value={values.brief} onChange={handleChange} name="brief" />
+                        
                       </div>
                     </div>
 
