@@ -367,7 +367,7 @@ const Register = () => {
               <form onSubmit={handleSubmit} >
                 <div className="col-12  form outline mb-4">
                   <label htmlFor="select1"> Industry</label>
-                          <br />               
+                    <br />               
                     <select
                     className="select"
                     name="select1"
