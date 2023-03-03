@@ -124,7 +124,7 @@ const Register = () => {
                 }}
               >
                 {({ values, handleSubmit, handleChange, isSubmitting }) => (
-                  <Form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit}>
 
                     <div className="d-flex flex-column">
                     <div class="form-outline mb-2">
@@ -143,29 +143,39 @@ const Register = () => {
                         
                       </div>
                       <div className="form-outline mt-4 ms-1">
-                      <MDBInput label='Created At'id="created_at" type="text" value={values.created_at} onChange={handleChange} name="created_at" />
+                      <MDBInput label='Created At'id="created_at" type="date" value={values.created_at} onChange={handleChange} name="created_at" />
                         
                       </div>
 
-                      <FormControl className="ps-3 pb-4 ">
+                      <FormControl className="form-outline mt-4 ms-1">
                         <FormLabel id="demo-radio-buttons-group-label">Funded Or Bootstrapped</FormLabel>
-                        <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="none" name="type" onChange={handleChange} value={values.type} >
-                          <div className="">
+                        <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="none" name="type" id="type" value={values.type}onChange={handleChange}  >
+                          <div className="form-outline ">
                             <FormControlLabel value=" Funded" control={<Radio />} label="Funded" />
                             <FormControlLabel value="Bootstrapped" control={<Radio />} label="Bootstarpped" />
 
                           </div>
                         </RadioGroup>
                       </FormControl>
-
+                      <label className="mt-3" name="stage"id="stage" value={values.stage}onChange={handleChange}>Select Stages of Startup You Are Interested in Working With</label>
                       <div className="d-flex flex-column  btn-group shadow-0" role="group" aria-label="Basic example">
-                        <FormLabel className="ms-3" value={values.stage}>Stage</FormLabel>
-                        <div>
-                          <button type="button" className="btn btn-outline-secondary" data-mdb-color="dark">Ideation</button>
-                          <button type="button" className="btn btn-outline-secondary" data-mdb-color="dark">Validation</button>
-                          <button type="button" className="btn btn-outline-secondary" data-mdb-color="dark">Early Traction</button>
-                          <button type="button" className="btn btn-outline-secondary" data-mdb-color="dark">Scaling</button>
-                        </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">Ideation</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">Validation</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">Early Traction</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">Scaling</label>
+                      </div> 
+                      
                       </div>
 
                       <div className="form-outline mt-4 ms-1">
@@ -174,21 +184,28 @@ const Register = () => {
                       </div>
                     </div>
 
-                    <div>
-                      <div className="file-upload-wrapper">
+                    
+
+                      <div class="form-outline mb-2">
+                        <div class="file-upload-wrapper">
+                          <div class="image-body">
+                            <MDBFile label='Documents'type="file" id='sdocuments' name="sdocuments" value={values.sdocuments} onChange={handleChange} />
 
 
-                        <div className="image-body">
-                          <formlabel>Documents</formlabel>
-                          <input type="file" className="image-input" value={values.sdocuments} name="image"></input>
+                          </div>
                         </div>
                       </div>
-                    </div>
-
-
-
-                  </Form>
+                         <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        :
+                        'Next'
+                    }
+                  </button>    
+                  </form>
                 )}
+
               </Formik>
 
             </div>
@@ -216,92 +233,90 @@ const Register = () => {
                   <Form onSubmit={handleSubmit}>
 
                     <div className="d-flex flex-column">
-                      <div>
-                        <div className="file-upload-wrapper">
+                    <div class="form-outline mb-4">
+                        <div class="file-upload-wrapper">
+                          <div class="image-body">
+                            <MDBFile label='Owner Avatar'type="file" id='owneravatar' name="owneravatar" value={values.owneravatar} onChange={handleChange} />
 
-
-
-
-                          <div className="image-body">
-                            <input type="file" className="image-input" name="owneravatar" value={values.owneravatar}></input>
+</div>
                           </div>
                         </div>
                       </div>
+                      <div>
+                        
 
-                      <div className="form-outline mt-4 ms-1">
-                        <Field type="name" name="ownername" value={values.ownername} className="form-control" />
-                        <label className="form-label" htmlFor="form3Example3">Owner Name</label>
+                      <div className="form-outline mb-4">
+                      <MDBInput label='Owner Name'id="ownername" type="text" value={values.ownername} onChange={handleChange} name="ownername" />
+                       </div>
                       </div>
                       <div>
-                        <div className="file-upload-wrapper">
-
-
-
-
-                          <div className="image-body">
-                            <formlabel>Identity Proof(Aadhar Card/PAN/VoterID)</formlabel>
-                            <input type="file" className="image-input" name="identityproof" value={values.identityproof}></input>
+                      <div class="form-outline mb-4">
+                        <div class="file-upload-wrapper">
+                          <div class="image-body">
+                            <MDBFile label='Identity Proof(Aadhar Card/PAN/VoterID)'type="file" id='identityproof' name="identityproof" value={values.identityproof} onChange={handleChange} /></div>
                           </div>
                         </div>
-                      </div>
-                      <div className="form-outline mt-4 ms-1">
-                        <Field type="number" name="ownername" value={values.identityno} className="form-control" />
-                        <label className="form-label" htmlFor="form3Example3">Identity No</label>
+                        
+                      <div className="form-outline mb-4">
+                      <MDBInput label='Identity No' id="identityno" name="identityno"type="text" value={values.identityno} onChange={handleChange}/>
+                        
                       </div>
                       <div>
-                        <div className="file-upload-wrapper">
-
-
-
-
-                          <div className="image-body">
-                            <formlabel>Document</formlabel>
-                            <input type="file" className="image-input" name="documents" value={values.documents}></input>
+                      <div class="form-outline mb-4">
+                        <div class="file-upload-wrapper">
+                          <div class="image-body">
+                            <MDBFile label='Document'type="file" id='documents' name="documents" value={values.documents} onChange={handleChange} /></div>
                           </div>
                         </div>
-                      </div>
+                         </div>
                       <div className="col">
-                        <div className="form-outline">
-                          <input type="tel" value={values.ownercontact} onChange={handleChange} name="ownercontact" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Contact</label>
+                        <div className="form-outline mb-4">
+                        <MDBInput label='Contact' type="text"id="ownercontact" name="iownercontact"  value={values.ownercontact} onChange={handleChange}/>
+                          
                         </div>
                       </div>
 
                       <div className="col">
-                        <div className="form-outline">
-                          <MDBInput label='Email ' type="email" value={values.owneremail} onChange={handleChange} name="email" />
+                     
+                        <div className="form-outline mb-4">
+                          <MDBInput label='Email ' type="email" id="owneremail" value={values.owneremail} onChange={handleChange} name="email" />
                         </div>
                       </div>
-                      <div className="form-outline mt-4 ms-1">
-                        <Field type="number" name="teammemberno" value={values.teammemberno} className="form-control" />
-                        <label className="form-label" htmlFor="form3Example3">No of members in team</label>
+                      <div className="form-outline mb-4">
+                      <MDBInput label='No of members in team ' type="number" id="teammemberno" value={values.teammemberno} onChange={handleChange} name="teammemberno" />
+                        
                       </div>
-                      <div className="form-outline mt-4 ms-1">
-                        <Field as="textarea" name="teammembers" value={values.teammembers} className="form-control" id="form6Example7" rows="2"></Field>
-                        <label className="form-label" for="form6Example7">Members Of Team</label>
+                      <div className="form-outline mb-4">
+                      <MDBTextArea label='Members Of Team' type="text" id='teammembers' rows={2} value={values.teammembers} onChange={handleChange} name="teammembers" />
+                        
                       </div>
                     </div>
-
                     <div>
-                      <div className="file-upload-wrapper">
-
-
-
-                        <div className="image-body">
-                          <formlabel>Image Of The Product</formlabel>
-                          <input type="file" className="image-input" value={values.productimage} name="productimage"></input>
+                      <div class="form-outline mb-4">
+                        <div class="file-upload-wrapper">
+                          <div class="image-body">
+                            <MDBFile label='Image Of The Product'type="file" id='productimage' name="productimage" value={values.productimage} onChange={handleChange} /></div>
+                          </div>
                         </div>
-                      </div>
+                         </div>
+                    
+                    <div className="form-outline mb-4">
+                    <MDBInput label=' Name Of Product' type="text" id="productname" value={values.productname} onChange={handleChange} name="productname" />
+                      
                     </div>
-                    <div className="form-outline mt-4 ms-1">
-                      <Field type="name" name="productname" value={values.productname} className="form-control" />
-                      <label className="form-label" htmlFor="form3Example3">Name Of Product</label>
+                    <div className="form-outline mb-4 ">
+                      
+                    <MDBTextArea label='Description Of Product' type="text" id='productdescription' rows={2} value={values.productdescription} onChange={handleChange} name="productdescription" /> 
+                      
                     </div>
-                    <div className="form-outline mt-4 ms-1">
-                      <Field as="textarea" name="productdescription" value={values.productdescription} className="form-control" id="form6Example7" rows="4"></Field>
-                      <label className="form-label" for="form6Example7">Description Of Product</label>
-                    </div>
-                    <button type="submit">Next</button>
+                    <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
+                        :
+                        'Next'
+                    }
+                  </button>
                   </Form>
                 )}
               </Formik>
@@ -333,15 +348,15 @@ const Register = () => {
                   <form onSubmit={handleSubmit} >
                     <div className="row mb-4 form-floating " >
                       <div className="col">
-                        <div className="form-outline">
+                        <div className="form-outline mb-4">
                           <MDBInput label='Email Address' type="text" value={values.email} onChange={handleChange} name="email" />
                         </div>
 
                       </div>
                       <div className="col">
-                        <div className="form-outline">
-                          <input type="tel" value={values.tel} onChange={handleChange} name="tel" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Mobile</label>
+                        <div className="form-outline mb-4">
+                        <MDBInput label=' Mobile' type="text" id="tel" value={values.tel} onChange={handleChange} name="tel" />
+                         
                         </div>
                       </div>
                     </div>
@@ -349,34 +364,41 @@ const Register = () => {
 
                     <div className="row mb-4 form-floating">
                       <div className="col">
-                        <div className="form-outline">
-                          <input type="text" value={values.state} onChange={handleChange} name="state" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">State</label>
+                        <div className="form-outline mb-4">
+                        <MDBInput label=' State' type="text" id="state" value={values.state} onChange={handleChange} name="state" />
+                          
                         </div>
                         <div className="col">
-                          <div className="form-outline">
-                            <input type="text" value={values.city} onChange={handleChange} name="city" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">City</label>
+                          <div className="form-outline mb-4">
+                          <MDBInput label='City ' type="text" id="City" value={values.city} onChange={handleChange} name="city" />
+                            
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="row mb-4 form-floating">
                       <div className="col">
-                        <div className="form-outline">
-                          <input type="url" value={values.website} onChange={handleChange} name="website" className="form-control" />
-                          <label className="form-label" htmlFor="floatingInputValue">Website</label>
+                        <div className="form-outline mb-4">
+                        <MDBInput label='Website ' type="text" id="website" value={values.website} onChange={handleChange} name="website" />
+                         
                         </div>
                         <div className="col">
-                          <div className="form-outline">
-                            <input type="url" value={values.mobileAppLink} onChange={handleChange} name="mobileAppLink" className="form-control" />
-                            <label className="form-label" htmlFor="floatingInputValue">Mobile App Link</label>
+                          <div className="form-outline mb-4">
+                          <MDBInput label='Mobile App Link ' type="text" id="mobileAppLink" value={values.mobileAppLink} onChange={handleChange} name="mobileAppLink" />
+                           
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <button type="submit">Next</button>
+                    <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
+                        :
+                        'Next'
+                    }
+                  </button>
                   </form>
                 )}
               </Formik>
@@ -412,8 +434,8 @@ const Register = () => {
               >
                 {({ values, handleSubmit, handleChange, isSubmitting }) => (
                   <form onSubmit={handleSubmit} >
-                    <div className="col-12">
-                      <label htmlFor="select1"> Industry</label>
+                    <div className="col-12 mb-4">
+                      <label htmlFor="select1"> Industry</label><br/>
                       <select
                         className="select"
                         name="select1"
@@ -441,11 +463,12 @@ const Register = () => {
 
                       </select>
                     </div>
-                    <div className="col-12 m-4">
-                      <label htmlFor="select2">Sector</label>
-                      <br />
+                    <div className="col-12 mb-4">
+                   
+                      <label htmlFor="select2">Sector</label><br/>
+                      
                       <select
-                        style={{ width: "200px" }}
+                       // style={{ width: "200px" }}
                         className="select"
                         name="select2"
                         value={values.select2}
@@ -456,9 +479,11 @@ const Register = () => {
                         <option value="Sports">Sports</option>
                         <option value="Entertainment">Entertainment</option>
                       </select>
-                    </div>
-                    <div className="col-12">
-                      <label htmlFor="select2">Interests</label>
+                      </div>
+                    
+                    <div className="col-12 mb-4">
+                    
+                      <label htmlFor="select2">Interests</label><br/>
                       <select
                         className="select"
                         name="select2"
@@ -478,18 +503,19 @@ const Register = () => {
                         <option value="Rental">Rental</option>
                         <option value="Research">Research</option>
                       </select>
+                      
                     </div>
 
 
                     <div className="col">
-                      <div className="form-outline">
-                        <input type="text" value={values.text} onChange={handleChange} name="text" className="form-control" />
-                        <label className="form-label" htmlFor="floatingInputValue">Udyog Aadhar</label>
+                      <div className="form-outline mb-4">
+                      <MDBInput label='Udyog Aadhar ' type="text" id="text" value={values.text} onChange={handleChange} name="mtext" />
+                       <br/>
                       </div>
                     </div>
 
                     <FormControl className="ps-3 pb-4">
-                      <FormLabel id="demo-radio-buttons-group-label">Your Interests</FormLabel>
+                      <FormLabel id="demo-radio-buttons-group-label">Your Interests</FormLabel><br/>
                       <RadioGroup
                         aria-labelledby="demo-radio-buttons-group-label"
                         name="type"
@@ -505,7 +531,14 @@ const Register = () => {
                       </RadioGroup>
                     </FormControl>
 
-                    <button type="submit">Submit</button>
+                    <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
+                        :
+                        'Submit'
+                    }
+                  </button>
                   </form>
                 )}
               </Formik>
