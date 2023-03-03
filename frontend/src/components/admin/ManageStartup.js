@@ -88,33 +88,33 @@ const ManageStartup = () => {
                     {
                         userList.map( (user) => (
                             <tr >
-                        <td>user.startupimage</td>
-                        <td>user.startupname</td>
-                        <td>user.created_at</td>
-                        <td>user.type</td>
-                        <td>user.stage</td>
-                        <td>user.brief</td>
-                        <td>user.sdocuments</td>
-                        <td>user.ownername</td>
-                        <td>user.identityproof</td>
-                        <td>user.identityNo</td>
-                        <td>user.ownercontact</td>
-                        <td>user.owneremail</td>
-                        <td>user.teammembers</td>
-                        <td>user.documents</td>
-                        <td>user.productimage</td>
-                        <td>user.productname</td>
-                        <td>user.productdescription</td>
-                        <td>user.email</td>
-                        <td>user.password</td>
-                        <td>user.tel</td>
-                        <td>user.state</td>
-                        <td>user.city</td>
-                        <td>user.website</td>
-                        <td>user.app</td>
-                        <td>user.industry</td>
-                        <td>user.sector</td>
-                        <td>user.interests</td>
+                        <td>{user.startupimage}</td>
+                        <td>{user.startupname}</td>
+                        <td>{user.created_at}</td>
+                        <td>{user.type}</td>
+                        <td>{user.stage}</td>
+                        <td>{user.brief}</td>
+                        <td>{user.sdocuments}</td>
+                        <td>{user.ownername}</td>
+                        <td>{user.identityproof}</td>
+                        <td>{user.identityNo}</td>
+                        <td>{user.ownercontact}</td>
+                        <td>{user.owneremail}</td>
+                        <td>{user.teammembers}</td>
+                        <td>{user.documents}</td>
+                        <td>{user.productimage}</td>
+                        <td>{user.productname}</td>
+                        <td>{user.productdescription}</td>
+                        <td>{user.email}</td>
+                        <td>{user.password}</td>
+                        <td>{user.tel}</td>
+                        <td>{user.state}</td>
+                        <td>{user.city}</td>
+                        <td>{user.website}</td>
+                        <td>{user.app}</td>
+                        <td>{user.industry}</td>
+                        <td>{user.sector}</td>
+                        <td>{user.interests}</td>
                         
                                 
                                 
