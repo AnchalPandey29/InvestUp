@@ -13,7 +13,7 @@ const RegisterSchema = Yup.object().shape({
   .min(2, 'Too Short!')
   .required("Name is required"),
   //identityproofno:Yup.string().required("This field is mandatory"),
-  //identityproof:Yup.string().required("Identity Proof is requied"),
+  //identityproof:Yup.string().required("Identity Proof is required"),
  // date:Yup.string().required("This field is mandatory"),
  // brief:Yup.string().required("Description is required"),
  // currentincubatees:Yup.string().required("Description is required"),
