@@ -59,7 +59,8 @@ const BlogBrowse = () => {
                       blogList.map((blog) => (
                           <div className='col-md-3 card m-2'>
                               <div className='row-md-6'>
-                                  <img src={blog.image} alt='' />
+                              src={url+'/'+blog.image}
+                                  
                               </div>
 
                               <div className='row-md-6'>

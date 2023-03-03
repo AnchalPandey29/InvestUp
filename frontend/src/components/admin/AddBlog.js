@@ -1,12 +1,15 @@
 
 import { Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import app_config from "../../config";
+
 
 const AddBlog = () => {
-
+  const url = app_config.apiurl;
   const navigate = useNavigate();
+  const [selImage, setSelImage] = useState("");
 
   const BlogSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
@@ -38,6 +41,20 @@ const AddBlog = () => {
       // error alert
     }
   }
+  const uploadFile = (e) => {
+    const file = e.target.files[0];
+    setSelImage(file.name);
+    const fd = new FormData();
+    fd.append("myfile", file);
+    fetch(url + "/util/uploadfile", {
+      method: "POST",
+      body: fd,
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log("file uploaded");
+      }
+    });
+  };
 
   return (
     <div>
