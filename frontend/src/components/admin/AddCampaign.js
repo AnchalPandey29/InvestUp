@@ -13,6 +13,7 @@ const AddCompaign = () => {
 
   const compaignSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
+    formdata.image = selImage;
 
 
     // 1. URL
