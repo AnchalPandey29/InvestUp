@@ -5,7 +5,7 @@ const SALT = 10;
 const startupSchema = new Schema({
   
   startupimage: {type: String},//startuplogo
-  startupname: { type: String, required: true },//startupname
+  startupname: { type: String },//startupname
   created_at: Date,//date of creation of startup
   type:{type:String},//bootstrap or funded
   stage:{type:String},// stage by button
