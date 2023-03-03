@@ -50,11 +50,35 @@ const ManageStartup = () => {
                 <thead >
                     <tr style={{backgroundColor:"#9c3353", color:"white"}}>
                          <th></th>
-                        <th>NAME</th>
-                        <th>EMAIL</th>
-                        <th>PASSWORD</th>
-                        <th>ROLE</th>
-                      
+                         <th>StartupImage</th>
+                        <th>StartupName</th>
+                        <th>Created_At</th>
+                        <th>Type</th>
+                        <th>Stage</th>
+                        <th>Brief</th>
+                        <th>Documents</th>
+                        <th>Ownername</th>
+                        <th>IdentityProof</th>
+                        <th>IdentityNo</th>
+                        <th>OwnerContact</th>
+                        <th>OwnerEmail</th>
+                        <th>TeamMembers</th>
+                        <th>Document</th>
+                        <th>ProductImage</th>
+                        <th>ProductName</th>
+                        <th>ProductDescription</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>ContactNumber</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Website</th>
+                        <th>App</th>
+                        <th>Industry</th>
+                        <th>Sector</th>
+                        <th>Interests</th>
+                        
+                        
                     
                       
                         
@@ -64,11 +88,34 @@ const ManageStartup = () => {
                     {
                         userList.map( (user) => (
                             <tr >
-                                <td>{user.id}</td>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>{user.password}</td>
-                                <td>{user.role}</td>
+                        <td>user.startupimage</td>
+                        <td>user.startupname</td>
+                        <td>user.created_at</td>
+                        <td>user.type</td>
+                        <td>user.stage</td>
+                        <td>user.brief</td>
+                        <td>user.sdocuments</td>
+                        <td>user.ownername</td>
+                        <td>user.identityproof</td>
+                        <td>user.identityNo</td>
+                        <td>user.ownercontact</td>
+                        <td>user.owneremail</td>
+                        <td>user.teammembers</td>
+                        <td>user.documents</td>
+                        <td>user.productimage</td>
+                        <td>user.productname</td>
+                        <td>user.productdescription</td>
+                        <td>user.email</td>
+                        <td>user.password</td>
+                        <td>user.tel</td>
+                        <td>user.state</td>
+                        <td>user.city</td>
+                        <td>user.website</td>
+                        <td>user.app</td>
+                        <td>user.industry</td>
+                        <td>user.sector</td>
+                        <td>user.interests</td>
+                        
                                 
                                 
                                 <td>
