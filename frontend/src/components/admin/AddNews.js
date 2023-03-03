@@ -58,45 +58,7 @@ const AddNews = () => {
   };
 
   return (
-  //   <div>
-  //     <div className="col-md-3 mx-auto pt-5">
-  //       <div className="card">
-  //         <div className="card-body ">
-  //           <p className="text-center h4">News</p>
-  //           <hr />
-  //           <Formik initialValues={{ date: new Date(),heading: "", content: "",image:"" }} onSubmit={newsSubmit}>
-  //             {({ values, handleSubmit, handleChange, isSubmitting }) => (
-  //               <form onSubmit={handleSubmit} >
-                  
-  //                 <label>Heading</label>
-  //                 <input value={values.heading} onChange={handleChange} name="heading" type="text" className="form-control" />
-
-
-  //                 <label>Content</label>
-  //                 <textarea name="content" className="form-control" value={values.content} onChange={handleChange} cols="5" rows="5"></textarea>
-                 
-
-  //                 <label htmlFor="image" className="btn btn-primary mt-4">Add Image</label>
-  //                 <input hidden id="image" className="mb-5" type="file"  onChange={uploadFile}/>
-        
-  //                 <br />
-
-  //                 <button disabled={isSubmitting} type="submit" className="btn" style={{backgroundColor:"#9c3353", color:"#fffefe"}}>
-  //                   {
-  //                     isSubmitting ?
-  //                       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  //                       :
-  //                       'Submit'
-  //                   }
-  //                 </button>
-  //               </form>
-  //             )}
-  //           </Formik>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-
+  
   <div>
       <div className="col-md-3 mx-auto pt-5">
         <div className="card" >

@@ -9,10 +9,11 @@ import app_config from "../../config";
 const AddBlog = () => {
   const url = app_config.apiurl;
   const navigate = useNavigate();
-  const [selImage, setSelImage] = useState("");
+  const [selImage, setSelImage] = useState();
 
   const BlogSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
+    formdata.image = selImage;
 
 
     // 1. URL
