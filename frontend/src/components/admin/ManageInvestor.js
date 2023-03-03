@@ -4,7 +4,8 @@ import { toast } from 'react-hot-toast';
 
 const ManageStartup = () => {
 
-    const [userList, setUserList] = useState([]);
+    const [
+        userList, setUserList] = useState([]);
 
     const getDataFromBackend = async () => {
         // send request 
@@ -15,6 +16,7 @@ const ManageStartup = () => {
 
         console.log(data);
         setUserList(data.result);
+        
 
     };
 
