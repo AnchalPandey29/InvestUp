@@ -91,17 +91,49 @@ const Register = () => {
 
 
   return (
-    <div className="m-5 card mx-auto" style={{height:"fit-content", color:"",width:"50%", paddingTop:"20px"}}>
+    <div className="m-5 card mx-auto" style={{ height: "fit-content", color: "", width: "50%", paddingTop: "20px" }}>
+      {/* Tab navs */}
 
+      <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link active"
+            id="ex3-tab-1"
+            data-mdb-toggle="tab"
+            href="#ex3-tabs-1"
+            role="tab"
+            aria-controls="ex3-tabs-1"
+            aria-selected="true"
+          >Link</a
+          >
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link"
+            id="ex3-tab-2"
+            data-mdb-toggle="tab"
+            href="#ex3-tabs-2"
+            role="tab"
+            aria-controls="ex3-tabs-2"
+            aria-selected="false"
+          >Very very very very long link</a
+          >
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link"
+            id="ex3-tab-3"
+            data-mdb-toggle="tab"
+            href="#ex3-tabs-3"
+            role="tab"
+            aria-controls="ex3-tabs-3"
+            aria-selected="false"
+          >Another link</a
+          >
+        </li>
+      </ul>
 
-
-
-
-      <div className="row w-100">
-        <div className="col-3">
-
-          {/* Tab navs */}
-          <div
+      {/* <div
             className="nav flex-column nav-tabs text-center"
             id="v-tabs-tab"
             role="tablist"
@@ -141,308 +173,309 @@ const Register = () => {
               Incubator Category
             </a>
           </div>
-          
-          {/* Tab navs */}
-        </div>
-        <div className="col-9">
-          {/* Tab content */}
-          <div className="tab-content" id="v-tabs-tabContent">
-            <div
-              className="tab-pane fade show active"
-              id="v-tabs-home"
-              role="tabpanel"
-              aria-labelledby="v-tabs-home-tab"
-            >
+           */}
+      {/* Tab navs */}
 
-              {/* first form */}
-            <div >
-              <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
-                  <Formik
-                    initialValues={{ name: '', type: '', brief: '' }}
-                    validationSchema={RegisterSchema}//Schema
-                    onSubmit={onSubmit}
-                  >
-                    {({ values, handleSubmit, handleChange, isSubmitting, errors, touched}) => (
-                      <form  onSubmit={handleSubmit}>
-                        <div class="form-outline mb-2">
-                          <div class="file-upload-wrapper">
-                            <div class="image-body">
-                            <MDBFile label='Investor Avatar'  id='investoravatar'  value={values.investoravatar} onChange={handleChange}/>
 
-                              
-                            </div>
+      <div class="tab-content" id="ex2-content">
+        <div
+          class="tab-pane fade show active"
+          id="ex3-tabs-1"
+          role="tabpanel"
+          aria-labelledby="ex3-tab-1"
+        >
+          {/* first form */}
+          <div style={{height:"fit-content"}}>
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
+                <Formik
+                  initialValues={{ name: '', type: '', brief: '' }}
+                  validationSchema={RegisterSchema}//Schema
+                  onSubmit={values => {
+                    console.log(values);
+                  }}
+                >
+                  {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
+                    <Form onSubmit={handleSubmit}>
+                      <div class="form-outline mb-2">
+                        <div class="file-upload-wrapper">
+                          <div class="image-body">
+                            <MDBFile label='Investor Avatar' id='investoravatar' value={values.investoravatar} onChange={handleChange} />
+
+
                           </div>
                         </div>
-                        <div className="form-outline mb-4">
+                      </div>
+                      <div className="form-outline mb-4">
                         <MDBInput label='Investor Name' type="text" value={values.name} onChange={handleChange} name="name" />
                         {errors.name && touched.name ? (
                           <div>{errors.name}</div>
                         ) : null}
-                          
-                        </div>
 
-                        <div className="form-outline mb-4">
-                        <MDBInput label='Identity Proof Number' type="text" value={values.identityproofno}  validate={validate} onChange={handleChange} name="identityproofno" />
+                      </div>
+
+                      <div className="form-outline mb-4">
+                        <MDBInput label='Identity Proof Number' type="text" value={values.identityproofno} validate={validate} onChange={handleChange} name="identityproofno" />
                         {errors.identityproofno && touched.identityproofno ? (
                           <div>{errors.identityproofno}</div>
                         ) : null} </div>
-                        
-                        <div className="form-outline mb-4">
-                        <MDBFile label='Identity Proof'  id='identityproof'  value={values.identityproof} validate={validate} onChange={handleChange}/>
+
+                      <div className="form-outline mb-4">
+                        <MDBFile label='Identity Proof' id='identityproof' value={values.identityproof} validate={validate} onChange={handleChange} />
                         {errors.identityproof && touched.identityproof ? (
                           <div>{errors.identityproof}</div>
                         ) : null}</div>
-                        
-                        <div className="form-outline mb-4" style={{width:"200px"}}>
+
+                      <div className="form-outline mb-4" style={{ width: "200px" }}>
                         <MDBInput label='Date Of Establishment' type="date" value={values.date} onChange={handleChange} name="date" />
                         {errors.date && touched.date ? (
                           <div>{errors.date}</div>
                         ) : null}
-                        </div>
-                        <div className="col-12">
+                      </div>
+                      <div className="col-12">
 
-                          <label htmlFor="select1">Duration</label>
-                          <br />
-                          <select
-                            className="select"
-                            name="select1"
-                            value={values.select1}
-                            onChange={handleChange}>
-                              <label htmlFor="Duration">Duration</label>
-                            <option value=" Upto 6"> Upto 6</option>
-                            <option value="6 to 12"> 6 to 12 Months</option>
-                            <option value="Above 12 months">Above 12 Months</option>
-                          </select>
-                        </div>
+                        <label htmlFor="select1">Duration</label>
+                        <br />
+                        <select
+                          className="select"
+                          name="select1"
+                          value={values.select1}
+                          onChange={handleChange}>
+                          <label htmlFor="Duration">Duration</label>
+                          <option value=" Upto 6"> Upto 6</option>
+                          <option value="6 to 12"> 6 to 12 Months</option>
+                          <option value="Above 12 months">Above 12 Months</option>
+                        </select>
+                      </div>
 
-                        <label className="mt-4" htmlFor="">Select Stages of Startup You Are Interested in Working With</label>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                          <label class="form-check-label" for="flexCheckDefault">Ideation</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                          <label class="form-check-label" for="flexCheckDefault">Validation</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                          <label class="form-check-label" for="flexCheckDefault">Early Traction</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                          <label class="form-check-label" for="flexCheckDefault">Scaling</label>
-                        </div>
+                      <label className="mt-4" htmlFor="">Select Stages of Startup You Are Interested in Working With</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">Ideation</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">Validation</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">Early Traction</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">Scaling</label>
+                      </div>
 
-                        <div class="form-outline mb-4">
-                        <MDBTextArea label='Brief' id='textAreaExample' rows={2} value={values.brief} onChange={handleChange}/>
+                      <div class="form-outline mb-4">
+                        <MDBTextArea label='Brief' id='textAreaExample' rows={2} value={values.brief} onChange={handleChange} />
                         {errors.brief && touched.brief ? (
                           <div>{errors.brief}</div>
                         ) : null}
-                        </div>
+                      </div>
 
-                        <div className="form-outline mb-4 ">
+                      <div className="form-outline mb-4 ">
                         <MDBInput label='Current Incubatees' type="text" value={values.currentincubatees} onChange={handleChange} name="currentincubatees" />
                         {errors.currentincubatees && touched.currentincubatees ? (
                           <div>{errors.currentincubatees}</div>
                         ) : null}
+                      </div>
+                      <div className="form-outline mb-4">
+                        <div>
+                          <MDBInput label='Graduated Incubatees' type="text" value={values.graduatedincubatees} onChange={handleChange} name="graduatedincubatees" />
                         </div>
-                        <div className="form-outline mb-4">
-                          <div>
-                        <MDBInput label='Graduated Incubatees' type="text" value={values.graduatedincubatees} onChange={handleChange} name="graduatedincubatees" />
+                      </div>
+                      <FormControl className="ps-3 pb-4">
+                        <FormLabel id="demo-radio-buttons-group-label">Government Funded ?</FormLabel>
+                        <RadioGroup aria-labelledby="demo-radio-buttons-group-label" value={values.funded} defaultValue="none" name="type" onChange={handleChange}  >
+                          <div className="">
+                            <FormControlLabel value=" Funded" control={<Radio />} label="Yes" />
+                            <FormControlLabel value="Bootstrapped" control={<Radio />} label="No" />
+
                           </div>
-                        </div>
-                        <FormControl className="ps-3 pb-4">
-                          <FormLabel id="demo-radio-buttons-group-label">Government Funded ?</FormLabel>
-                          <RadioGroup aria-labelledby="demo-radio-buttons-group-label" value={values.funded} defaultValue="none" name="type" onChange={handleChange}  >
-                            <div className="">
-                              <FormControlLabel value=" Funded" control={<Radio />} label="Yes" />
-                              <FormControlLabel value="Bootstrapped" control={<Radio />} label="No" />
+                        </RadioGroup>
+                      </FormControl>
+                      <MDBBtn type="Submit">Next</MDBBtn>
+                    </Form>
 
-                            </div>
-                          </RadioGroup>
-                        </FormControl>
-                        <button className="btn btn-primary" type="Submit">Next</button>
-                      </form>
-                      
-                    )}
-                  </Formik>
+                  )}
+                </Formik>
 
-                </div>
               </div>
-              </div>
-  
-              {/* first form end  */}
-
-            </div >
-            <div
-
-              className="tab-pane fade"
-              id="v-tabs-profile"
-              role="tabpanel"
-              aria-labelledby="v-tabs-profile-tab"
-            >
-
-              {/* second form  */}
-
-              <Formik
-                initialValues={{ name: '', type: '', brief: '' }}
-                validationSchema={RegisterSchema}
-                onSubmit={values => {
-                  console.log(values);
-                }}
-              >
-                {({ values, handleSubmit, handleChange, isSubmitting ,errors , touched}) => (
-                  <form onSubmit={handleSubmit} >
-                    <div className="row mb-4 form-floating">
-                      <div className="col ">
-                        <div className="form-outline mb-4">
-                        <MDBInput label='Email' type="email" value={values.email} onChange={handleChange} name="email" />
-                        {errors.email && touched.email ? <div>{errors.email}</div> : null} 
-                          
-                        </div>
-                        <div className="col">
-                          <div className="form-outline mb-4">
-                          <MDBInput label='Mobile Number' type="text" value={values.tel} onChange={handleChange} name="tel" />
-                          {errors.tel && touched.tel ? <div>{errors.tel}</div> : null}  
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row mb-4 form-floating">
-                      <div className="col">
-                        <div className="form-outline mb-4">
-                        <MDBInput label='State' type="text" value={values.istate} onChange={handleChange} name="istate" />
-                        {errors.istate && touched.istate? <div>{errors.istate}</div> : null}  
-                        </div>
-                        <div className="col">
-                          <div className="form-outline mb-4">
-                          <MDBInput label='City' type="text" value={values.city} onChange={handleChange} name="city" />
-                           
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="form-outline mb-4">
-                    <MDBInput label='Application Link' type="text" value={values.aplink} onChange={handleChange} name="aplink" />
-                    {errors.aplink && touched.aplink ? <div>{errors.aplink}</div> : null} 
-                    </div>
-                    <div className="row mb-4 form-floating">
-                      <div className="col">
-                        <div className="form-outline mb-4">
-                        <MDBInput label='Incubation Center Loacation' type="text" value={values.centerlocation} onChange={handleChange} name="centerlocation" />
-                          
-                        </div>
-                        <div className="col">
-                          <div className="form-outline mb-4">
-                          <MDBInput label='Incubation Center Loacation Address' type="text" value={values.centerlocationaddress} onChange={handleChange} name="centerlocationaddress" />
-                          
-                           
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <button className="btn btn-primary" type="Submit">Next</button>
-                  </form>
-                )}
-              </Formik>
-
-              {/* second form end  */}
-
-
             </div>
-            <div
-              className="tab-pane fade"
-              id="v-tabs-messages"
-              role="tabpanel"
-              aria-labelledby="v-tabs-messages-tab"
-            >
+          </div>
 
-              {/* third form  */}
-              <Formik
-                initialValues={{
-                  select1: '',
-                  select2: '',
-                  type: '',
-                }}
-               // validationSchema={RegisterSchema}
-                onSubmit={values => {
-                  console.log(values);
-                }}
-              >
-                {({ values, handleSubmit, handleChange, isSubmitting,errors,touched }) => (
-                  <form onSubmit={handleSubmit} >
-                    <div className="col-12  form outline mb-4">
-                      <label  htmlFor="select1"> Industry</label>
-                      <select
-                        className="select"
-                        name="select1"
-                        value={values.select1}
-                        onChange={handleChange}
-                      >
-                        <FormLabel> Industry</FormLabel>
-                        <option value=""></option>
-                        <option value="Advertising">Advertising</option>
-                        <option value="Art And Photography">Art And Photography</option>
-                        <option value="Chemicals">Chemicals</option>
-                        <option value="Telecommunication And Networking"> Telecommunication And Networking</option>
-                        <option value="Construction">Construction</option>
-                        <option value="Agriculture">Chemicals</option>
-                        <option value="Agriculture">Chemicals</option>
-                        <option value="Events">Event</option>
-                        <option value="Fashion">Fashion</option>
-                        <option value="Education">Education</option>
-                        <option value="Healthcare And Lifesciences">Healthcare And Lifesciences</option>
-                        <option value="IT Services">IT Services</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Others">Others</option>
+          {/* first form end  */}
 
-                        
+        </div>
+        <div
+          class="tab-pane fade"
+          id="ex3-tabs-2"
+          role="tabpanel"
+          aria-labelledby="ex3-tab-2"
+        >
 
-                      </select>
-                    </div>
-                    <div className="col-12 form outline mb-4">
-                      <label htmlFor="select2"> Interests</label>
-                      <select
-                        className="select"
-                        name="select2"
-                        value={values.select2}
-                        onChange={handleChange}
-                      ><FormLabel>Interests</FormLabel>
-                        <option value="" selected></option>
-                        <option value="Government">Government</option>
-                        <option value="Discovery">Discovery</option>
-                        <option value="Manufacturing">Manufacturing</option>
-                        <option value="Marketplace">Marketplace</option>
-                        <option value="Mobile">Mobile</option>
-                        <option value="Platform">Platform</option>
-                        <option value="Consulting">Consulting</option>
-                        <option value="Engineering">Engineering</option> 
-                        <option value="Others">Others</option>
-                        <option value="Rental">Rental</option>
-                         <option value="Research">Research</option>
-                     </select>
+          {/* second form  */}
+
+
+          <div style={{height:"fit-content"}}>
+
+          <Formik
+            initialValues={{ name: '', type: '', brief: '' }}
+            validationSchema={RegisterSchema}
+            onSubmit={values => {
+              console.log(values);
+            }}
+          >
+            {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
+              <form onSubmit={handleSubmit} >
+                <div className="row mb-4 form-floating">
+                  <div className="col ">
+                    <div className="form-outline mb-4">
+                      <MDBInput label='Email' type="email" value={values.email} onChange={handleChange} name="email" />
+                      {errors.email && touched.email ? <div>{errors.email}</div> : null}
+
                     </div>
                     <div className="col">
                       <div className="form-outline mb-4">
-                      <MDBFile label='DIPPT Enpanelment Number'  id='DIPPTNumber'  value={values.DIPPTNumber} onChange={handleChange}/>
-                      {errors.DIPPTNumber && touched.DIPPTNumber? <div>{errors.DIPPTNumber}</div> : null}  
+                        <MDBInput label='Mobile Number' type="text" value={values.tel} onChange={handleChange} name="tel" />
+                        {errors.tel && touched.tel ? <div>{errors.tel}</div> : null}
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div className="row mb-4 form-floating">
+                  <div className="col">
+                    <div className="form-outline mb-4">
+                      <MDBInput label='State' type="text" value={values.istate} onChange={handleChange} name="istate" />
+                      {errors.istate && touched.istate ? <div>{errors.istate}</div> : null}
+                    </div>
+                    <div className="col">
+                      <div className="form-outline mb-4">
+                        <MDBInput label='City' type="text" value={values.city} onChange={handleChange} name="city" />
 
-                    <button className="btn btn-primary" type="Submit">Submit</button>
-                  </form>
-                )}
-              </Formik>
-              {/* third form end  */}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="form-outline mb-4">
+                  <MDBInput label='Application Link' type="text" value={values.aplink} onChange={handleChange} name="aplink" />
+                  {errors.aplink && touched.aplink ? <div>{errors.aplink}</div> : null}
+                </div>
+                <div className="row mb-4 form-floating">
+                  <div className="col">
+                    <div className="form-outline mb-4">
+                      <MDBInput label='Incubation Center Loacation' type="text" value={values.centerlocation} onChange={handleChange} name="centerlocation" />
 
-            </div>
+                    </div>
+                    <div className="col">
+                      <div className="form-outline mb-4">
+                        <MDBInput label='Incubation Center Loacation Address' type="text" value={values.centerlocationaddress} onChange={handleChange} name="centerlocationaddress" />
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <MDBBtn type="Submit">Next</MDBBtn>
+              </form>
+            )}
+          </Formik>
           </div>
-          <form>
+
+          {/* second form end  */}
+
+
+        </div>
+        <div
+          class="tab-pane fade"
+          id="ex3-tabs-3"
+          role="tabpanel"
+          aria-labelledby="ex3-tab-3"
+        >
+          {/* third form  */}
+          <div style={{height:"500px"}}>
+
+          <Formik
+            initialValues={{
+              select1: '',
+              select2: '',
+              type: '',
+            }}
+            // validationSchema={RegisterSchema}
+            onSubmit={values => {
+              console.log(values);
+            }}
+          >
+            {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
+              <form onSubmit={handleSubmit} >
+                <div className="col-12  form outline mb-4">
+                  <label htmlFor="select1"> Industry</label>
+                          <br />               
+                    <select
+                    className="select"
+                    name="select1"
+                    value={values.select1}
+                    onChange={handleChange}
+                  >
+                    <FormLabel> Industry</FormLabel>
+                    <option value=""></option>
+                    <option value="Advertising">Advertising</option>
+                    <option value="Art And Photography">Art And Photography</option>
+                    <option value="Chemicals">Chemicals</option>
+                    <option value="Telecommunication And Networking"> Telecommunication And Networking</option>
+                    <option value="Construction">Construction</option>
+                    <option value="Agriculture">Chemicals</option>
+                    <option value="Agriculture">Chemicals</option>
+                    <option value="Events">Event</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Education">Education</option>
+                    <option value="Healthcare And Lifesciences">Healthcare And Lifesciences</option>
+                    <option value="IT Services">IT Services</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Others">Others</option>
 
 
 
-          </form>
+                  </select>
+                </div>
+                <div className="col-12 form outline mb-4">
+                  <label htmlFor="select2"> Interests</label>
+                  <br />               
+
+                  <select
+                    className="select"
+                    name="select2"
+                    value={values.select2}
+                    onChange={handleChange}
+                  ><FormLabel>Interests</FormLabel>
+                    <option value="" selected></option>
+                    <option value="Government">Government</option>
+                    <option value="Discovery">Discovery</option>
+                    <option value="Manufacturing">Manufacturing</option>
+                    <option value="Marketplace">Marketplace</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="Platform">Platform</option>
+                    <option value="Consulting">Consulting</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Others">Others</option>
+                    <option value="Rental">Rental</option>
+                    <option value="Research">Research</option>
+                  </select>
+                </div>
+                <div className="col">
+                  <div className="form-outline mb-4">
+                  <MDBInput label='DIPPT Enpanelment Number' id='DIPPTNumber' value={values.DIPPTNumber} onChange={handleChange}  />
+                    {errors.DIPPTNumber && touched.DIPPTNumber ? <div>{errors.DIPPTNumber}</div> : null}
+                  </div>
+                </div>
+
+                <MDBBtn type="Submit">Submit</MDBBtn>
+              </form>
+            )}
+          </Formik>
+          {/* third form end  */}
+
+              </div>
         </div>
       </div>
 
