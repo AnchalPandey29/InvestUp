@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 //import { MDBInput, MDBInputGroup } from "mdb-react-ui-kit";
-import {MDBTextArea, MDBBtn , MDBFile,MDBInput, MDBInputGroup} from 'mdb-react-ui-kit';
+import {MDBTextArea , MDBFile,MDBInput, MDBInputGroup} from 'mdb-react-ui-kit';
 import * as Yup from "yup";
 
 const RegisterSchema1 = Yup.object().shape({
@@ -256,7 +256,7 @@ const Register = () => {
                           </div>
                         </RadioGroup>
                       </FormControl>
-                      <MDBBtn type="Submit">Next</MDBBtn>
+                      <button>Next</button>
                     </Form>
 
                   )}
@@ -338,7 +338,7 @@ const Register = () => {
                     </div>
                   </div>
                 </div>
-                <MDBBtn type="Submit">Next</MDBBtn>
+               <button>Next</button>
               </form>
             )}
           </Formik>
@@ -431,7 +431,7 @@ const Register = () => {
                   </div>
                 </div>
 
-                <MDBBtn type="Submit">Submit</MDBBtn>
+                <button>Submit</button>
               </form>
             )}
           </Formik>
