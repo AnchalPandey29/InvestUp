@@ -94,7 +94,7 @@ const Register = () => {
     <div className="m-5 card mx-auto" style={{ height: "fit-content", color: "", width: "50%", paddingTop: "20px" }}>
       {/* Tab navs */}
 
-      <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist">
+      <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist" style={{width:"600px"}}>
         <li class="nav-item" role="presentation">
           <a
             class="nav-link active"
@@ -104,7 +104,7 @@ const Register = () => {
             role="tab"
             aria-controls="ex3-tabs-1"
             aria-selected="true"
-          >Link</a
+          >Basic Info</a
           >
         </li>
         <li class="nav-item" role="presentation">
@@ -116,7 +116,7 @@ const Register = () => {
             role="tab"
             aria-controls="ex3-tabs-2"
             aria-selected="false"
-          >Very very very very long link</a
+          >Contact Info</a
           >
         </li>
         <li class="nav-item" role="presentation">
@@ -128,13 +128,13 @@ const Register = () => {
             role="tab"
             aria-controls="ex3-tabs-3"
             aria-selected="false"
-          >Another link</a
+          >Incubator Category</a
           >
         </li>
       </ul>
 
      
-      <div class="tab-content" id="ex2-content">
+      <div class="tab-content" id="ex2-content" >
         <div
           class="tab-pane fade show active"
           id="ex3-tabs-1"
