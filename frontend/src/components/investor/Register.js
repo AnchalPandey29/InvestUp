@@ -8,26 +8,44 @@ import Swal from "sweetalert2";
 import {MDBTextArea , MDBFile,MDBInput} from 'mdb-react-ui-kit';
 import * as Yup from "yup";
 
-const RegisterSchema = Yup.object().shape({
+const RegisterSchema1 = Yup.object().shape({
   name: Yup.string()
   .min(2, 'Too Short!')
   .required("Name is required"),
   identityproofno:Yup.string().required("This field is mandatory"),
-  //identityproof:Yup.string().required("Identity Proof is requied"),
- // date:Yup.string().required("This field is mandatory"),
- // brief:Yup.string().required("Description is required"),
- // currentincubatees:Yup.string().required("Description is required"),
-  // email: Yup.string().email("Invalid email").required("Email is required"),
-  // password: Yup.string()
-  //   .min(8, "Password must be at least 8 characters")
-  //   .required("Password is required"),
-  // tel:Yup.string()
- // .max(10)
- // .required("contact number is required"),
-  //aplink:Yup.string().aplink("Application Link is mandatory"),
-  //istate:Yup.string().istate("State is required"),
+  identityproof:Yup.string().required("Identity Proof is requied"),
+ date:Yup.string().required("This field is mandatory"),
+ brief:Yup.string().required("Description is required"),
+  currentincubatees:Yup.string().required("Description is required"),
+  email: Yup.string()
+  .email("Invalid email")
+  .required("Email is required"),
+  password: Yup.string()
+  .min(8, "Password must be at least 8 characters")
+  .required("Password is required"),
+  tel:Yup.string()
+        .max(10)
+      .required("contact number is required"),
+       //aplink:Yup.string().aplink("Application Link is mandatory"),
+    //istate:Yup.string().istate("State is required"),
+    //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+})
+
+ /*   const RegisterSchema2= Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+     password: Yup.string()
+      .min(8, "Password must be at least 8 characters")
+      .required("Password is required"),
+      tel:Yup.string()
+        .max(10)
+       .required("contact number is required"),
+     aplink:Yup.string().aplink("Application Link is mandatory"),
+    istate:Yup.string().istate("State is required"),
+    });*/
+  
+    //const RegisterSchema3= Yup.object().shape({
  // DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
-});
+//});
 
 
 
@@ -65,6 +83,7 @@ const Register = () => {
       Swal.fire({
         icon: "success",
         title: "Success",
+
         text: "You have registered successfully",
       });
       navigate("/");
@@ -147,7 +166,7 @@ const Register = () => {
               <div class="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
                 <Formik
                   initialValues={{ name: '', type: '', brief: '' }}
-                  validationSchema={RegisterSchema}//Schema
+                  validationSchema={RegisterSchema1}//Schema
                   onSubmit={onSubmit}>
                 
                 
@@ -177,7 +196,7 @@ const Register = () => {
                         ) : null} </div>
 
                       <div className="form-outline mb-4">
-                        <MDBFile label='Identity Proof' id='identityproof' value={values.identityproof} validate={validate} onChange={handleChange} />
+                        <MDBFile label='Identity Proof' id='identityproof' value={values.identityproof} name="identityproof" validate={validate} onChange={handleChange} />
                         {errors.identityproof && touched.identityproof ? (
                           <div>{errors.identityproof}</div>
                         ) : null}</div>
@@ -195,6 +214,7 @@ const Register = () => {
                         <select
                           className="select"
                           name="select1"
+                          id="select1"
                           value={values.select1}
                           onChange={handleChange}>
                           <label htmlFor="Duration">Duration</label>
@@ -204,7 +224,7 @@ const Register = () => {
                         </select>
                       </div>
 
-                      <label className="mt-4" htmlFor="">Select Stages of Startup You Are Interested in Working With</label>
+                      <label className="mt-4" name="stage"id="stage" value={values.stage}onChange={handleChange}>Select Stages of Startup You Are Interested in Working With</label>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                         <label class="form-check-label" for="flexCheckDefault">Ideation</label>
@@ -223,7 +243,7 @@ const Register = () => {
                       </div>
 
                       <div class="form-outline mb-4">
-                        <MDBTextArea label='Brief' id='textAreaExample' rows={2} value={values.brief} onChange={handleChange} />
+                        <MDBTextArea label='Brief' name="brief" type="text" id='textAreaExample' rows={2} value={values.brief} onChange={handleChange} />
                         {errors.brief && touched.brief ? (
                           <div>{errors.brief}</div>
                         ) : null}
@@ -277,6 +297,7 @@ const Register = () => {
           aria-labelledby="ex3-tab-2"
         >
 
+
           {/* second form  */}
 
 
@@ -284,10 +305,9 @@ const Register = () => {
 
           <Formik
             initialValues={{ name: '', type: '', brief: '' }}
-            validationSchema={RegisterSchema}
-            onSubmit={values => {
-              console.log(values);
-            }}
+            validationSchema={RegisterSchema1}
+            
+             onSubmit={onSubmit}
           >
             {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
               <form onSubmit={handleSubmit} >
@@ -371,19 +391,20 @@ const Register = () => {
               select2: '',
               type: '',
             }}
-            // validationSchema={RegisterSchema}
-            onSubmit={values => {
-              console.log(values);
-            }}
+            validationSchema={RegisterSchema1}
+             //validationSchema={RegisterSchema3}
+            onSubmit={onSubmit}
+            
           >
             {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
               <form onSubmit={handleSubmit} >
-                <div className="col-12  form outline mb-4">
+                <div className="col-12 form outline mb-4" >
                   <label htmlFor="select1"> Industry</label>
                     <br />               
                     <select
                     className="select"
                     name="select1"
+                    id="select1"
                     value={values.select1}
                     onChange={handleChange}
                   >
@@ -415,6 +436,7 @@ const Register = () => {
                   <select
                     className="select"
                     name="select2"
+                    id="select2"
                     value={values.select2}
                     onChange={handleChange}
                   ><FormLabel>Interests</FormLabel>
