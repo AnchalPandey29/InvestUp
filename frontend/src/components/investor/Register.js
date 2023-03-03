@@ -133,50 +133,7 @@ const Register = () => {
         </li>
       </ul>
 
-      {/* <div
-            className="nav flex-column nav-tabs text-center"
-            id="v-tabs-tab"
-            role="tablist"
-            aria-orientation="vertical"
-          >
-            <a
-              className="nav-link active"
-              id="v-tabs-home-tab"
-              data-mdb-toggle="tab"
-              href="#v-tabs-home"
-              role="tab"
-              aria-controls="v-tabs-home"
-              aria-selected="true"
-            >
-              Basic Info
-            </a>
-            <a
-              className="nav-link"
-              id="v-tabs-profile-tab"
-              data-mdb-toggle="tab"
-              href="#v-tabs-profile"
-              role="tab"
-              aria-controls="v-tabs-profile"
-              aria-selected="false"
-            >
-              Contact Info
-            </a>
-            <a
-              className="nav-link"
-              id="v-tabs-messages-tab"
-              data-mdb-toggle="tab"
-              href="#v-tabs-messages"
-              role="tab"
-              aria-controls="v-tabs-messages"
-              aria-selected="false"
-            >
-              Incubator Category
-            </a>
-          </div>
-           */}
-      {/* Tab navs */}
-
-
+     
       <div class="tab-content" id="ex2-content">
         <div
           class="tab-pane fade show active"
