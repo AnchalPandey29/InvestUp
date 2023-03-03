@@ -161,9 +161,7 @@ const Signup = () => {
                       </div>
                     </RadioGroup>
                   </FormControl>
-
                   
-
                   {/* Submit button */}
                   {/* <button type="submit" className="btn btn-primary ">Sign up</button> */}
 
