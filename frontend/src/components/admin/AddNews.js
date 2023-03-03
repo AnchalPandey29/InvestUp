@@ -8,7 +8,7 @@ const AddNews = () => {
 
   const url = app_config.apiurl;
   const navigate = useNavigate();
-  const [selImage, setSelImage] = useState("");
+  const [selImage, setSelImage] = useState();
 
   const newsSubmit = async (formdata, { setSubmitting }) => {
     formdata.image = selImage;
