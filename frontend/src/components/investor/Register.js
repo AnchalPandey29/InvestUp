@@ -161,12 +161,10 @@ const Register = () => {
                   <Formik
                     initialValues={{ name: '', type: '', brief: '' }}
                     validationSchema={RegisterSchema}//Schema
-                    onSubmit={values => {
-                      console.log(values);
-                    }}
+                    onSubmit={onSubmit}
                   >
                     {({ values, handleSubmit, handleChange, isSubmitting, errors, touched}) => (
-                      <Form  onSubmit={handleSubmit}>
+                      <form  onSubmit={handleSubmit}>
                         <div class="form-outline mb-2">
                           <div class="file-upload-wrapper">
                             <div class="image-body">
@@ -264,8 +262,8 @@ const Register = () => {
                             </div>
                           </RadioGroup>
                         </FormControl>
-                        <MDBBtn type="Submit">Next</MDBBtn>
-                      </Form>
+                        <button className="btn btn-primary" type="Submit">Next</button>
+                      </form>
                       
                     )}
                   </Formik>

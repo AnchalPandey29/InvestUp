@@ -65,7 +65,7 @@ const NewsBrowser = () => {
               data-mdb-ripple-color="light"
             >
               <img
-                src={news.image}
+                src={url+'/'+news.image}
                 className="img-fluid mx-auto"
                 style={{ maxHeight: "150px", display: "block" }}
               />

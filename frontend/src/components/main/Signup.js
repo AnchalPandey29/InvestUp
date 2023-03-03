@@ -27,8 +27,9 @@ const Signup = () => {
   
 ///usersubmit event
   const userSubmit = async (formdata, {setSubmitting}) => {
+    formdata.role = selRole;
     setSubmitting(true);
-    const res = await fetch(`http://localhost:5000/${selRole}/add`, {
+    const res = await fetch(`http://localhost:5000/startup/add`, {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },

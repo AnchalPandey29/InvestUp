@@ -119,7 +119,7 @@ const Register = () => {
             >
               {/* first form  */}
 
-              <div className="tab-content" id="v-pills-tabContent">
+              <div className="tab-content mb-5" id="v-pills-tabContent">
                 <div className="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
                   <Formik
                     initialValues={currentUser}
@@ -210,7 +210,7 @@ const Register = () => {
               aria-labelledby="ex3-tab-2"
             >
               {/* second form */}
-              <div className="tab-content" id="v-pills-tabContent">
+              <div className="tab-content mb-5" id="v-pills-tabContent">
                 <div className="tab-pane fade show active" id="v-pills-Owner And Product Details" role="tabpanel" aria-labelledby="v-pills-Owner And Product Details-tab" >
                   <Formik
                     initialValues={currentUser}
@@ -401,6 +401,7 @@ const Register = () => {
                 aria-labelledby="ex3-tabs-4"
               >
                 {/* fourth form */}
+              
               <Formik
                 initialValues={{
                   select1: '',

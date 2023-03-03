@@ -53,7 +53,7 @@ app.use('/Blog', BlogRouter);
 app.use('/Subscription', SubscriptionRouter);
 app.use('/util', utilRouter);
 
-
+app.use(express.static('./static/uploads'));
 
 
 app.get('/', (req, res) => {

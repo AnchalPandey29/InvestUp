@@ -6,6 +6,7 @@ const startupSchema = new Schema({
   
   startupimage: {type: String},//startuplogo
   startupname: { type: String },//startupname
+  role: String,
   created_at: Date,//date of creation of startup
   type:{type:String},//bootstrap or funded
   stage:{type:String},// stage by button
