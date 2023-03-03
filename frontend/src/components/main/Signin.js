@@ -17,13 +17,13 @@ const Signin = () => {
   });
     ///////////////////////////////
   const navigate = useNavigate();
-  const [selRole, setSelRole] = useState('startup')
+  const [selRole, setSelRole] = useState(selRole)
   
 
   const userSubmit = async (formdata, { setSubmitting }) => {
     console.log(formdata);
     setSubmitting(true);
-    const res = await fetch(`http://localhost:5000/${selRole}/auth`, {
+    const res = await fetch(`http://localhost:5000/startup/auth`, {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },

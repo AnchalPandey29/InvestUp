@@ -342,7 +342,7 @@ const Register = () => {
                         </div>
                       </div>
                     </div>
-                    <MDBBtn type="Submit">Next</MDBBtn>
+                    <button className="btn btn-primary" type="Submit">Next</button>
                   </form>
                 )}
               </Formik>
@@ -430,7 +430,7 @@ const Register = () => {
                       </div>
                     </div>
 
-                    <MDBBtn type="Submit">Submit</MDBBtn>
+                    <button className="btn btn-primary" type="Submit">Submit</button>
                   </form>
                 )}
               </Formik>
