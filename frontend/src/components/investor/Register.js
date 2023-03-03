@@ -8,26 +8,31 @@ import Swal from "sweetalert2";
 import {MDBTextArea, MDBBtn , MDBFile,MDBInput, MDBInputGroup} from 'mdb-react-ui-kit';
 import * as Yup from "yup";
 
-const RegisterSchema = Yup.object().shape({
+const RegisterSchema1 = Yup.object().shape({
   name: Yup.string()
   .min(2, 'Too Short!')
   .required("Name is required"),
-  //identityproofno:Yup.string().required("This field is mandatory"),
-  //identityproof:Yup.string().required("Identity Proof is requied"),
- // date:Yup.string().required("This field is mandatory"),
- // brief:Yup.string().required("Description is required"),
- // currentincubatees:Yup.string().required("Description is required"),
+  identityproofno:Yup.string().required("This field is mandatory"),
+  identityproof:Yup.string().required("Identity Proof is requied"),
+  date:Yup.string().required("This field is mandatory"),
+  brief:Yup.string().required("Description is required"),
+  currentincubatees:Yup.string().required("Description is required"),});
+
+  const RegisterSchema2 = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string()
     .min(8, "Password must be at least 8 characters")
     .required("Password is required"),
-  // tel:Yup.string()
- // .max(10)
- // .required("contact number is required"),
-  //aplink:Yup.string().aplink("Application Link is mandatory"),
-  //istate:Yup.string().istate("State is required"),
- // DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+  tel:Yup.string()
+  .max(10)
+  .required("contact number is required"),
+  aplink:Yup.string().aplink("Application Link is mandatory"),
+  istate:Yup.string().istate("State is required")});
+
+  const RegisterSchema3 = Yup.object().shape({
+ DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 });
+
 
 
 
@@ -147,7 +152,7 @@ const Register = () => {
               <div class="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
                 <Formik
                   initialValues={{ name: '', type: '', brief: '' }}
-                  validationSchema={RegisterSchema}//Schema
+                  validationSchema={RegisterSchema1}//Schema
                   onSubmit={values => {
                     console.log(values);
                   }}
@@ -184,7 +189,7 @@ const Register = () => {
                         ) : null}</div>
 
                       <div className="form-outline mb-4" style={{ width: "200px" }}>
-                        <MDBInput label='Date Of Establishment' type="date" value={values.date} onChange={handleChange} name="date" />
+                        <MDBInput label='Date Of Establishment' type="date" value={values.date} onChange={handleChange} name="date"  />
                         {errors.date && touched.date ? (
                           <div>{errors.date}</div>
                         ) : null}
@@ -224,21 +229,21 @@ const Register = () => {
                       </div>
 
                       <div class="form-outline mb-4">
-                        <MDBTextArea label='Brief' id='textAreaExample' rows={2} value={values.brief} onChange={handleChange} />
+                        <MDBTextArea label='Brief' id='textAreaExample' rows={2} name="brief"value={values.brief} onChange={handleChange} />
                         {errors.brief && touched.brief ? (
                           <div>{errors.brief}</div>
                         ) : null}
                       </div>
 
                       <div className="form-outline mb-4 ">
-                        <MDBInput label='Current Incubatees' type="text" value={values.currentincubatees} onChange={handleChange} name="currentincubatees" />
+                        <MDBInput label='Current Incubatees'  name="currentincubatees" type="text" value={values.currentincubatees} onChange={handleChange} />
                         {errors.currentincubatees && touched.currentincubatees ? (
                           <div>{errors.currentincubatees}</div>
                         ) : null}
                       </div>
                       <div className="form-outline mb-4">
                         <div>
-                          <MDBInput label='Graduated Incubatees' type="text" value={values.graduatedincubatees} onChange={handleChange} name="graduatedincubatees" />
+                          <MDBInput label='Graduated Incubatees'name="graduatedincubatees" type="text" value={values.graduatedincubatees} onChange={handleChange}  />
                         </div>
                       </div>
                       <FormControl className="ps-3 pb-4">
@@ -278,7 +283,7 @@ const Register = () => {
 
           <Formik
             initialValues={{ name: '', type: '', brief: '' }}
-            validationSchema={RegisterSchema}
+            validationSchema={RegisterSchema2}
             onSubmit={values => {
               console.log(values);
             }}
@@ -358,7 +363,7 @@ const Register = () => {
               select2: '',
               type: '',
             }}
-            // validationSchema={RegisterSchema}
+             validationSchema={RegisterSchema3}
             onSubmit={values => {
               console.log(values);
             }}
