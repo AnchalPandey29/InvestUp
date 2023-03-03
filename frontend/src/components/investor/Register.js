@@ -17,10 +17,10 @@ const RegisterSchema = Yup.object().shape({
  // date:Yup.string().required("This field is mandatory"),
  // brief:Yup.string().required("Description is required"),
  // currentincubatees:Yup.string().required("Description is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Password is required"),
+  // email: Yup.string().email("Invalid email").required("Email is required"),
+  // password: Yup.string()
+  //   .min(8, "Password must be at least 8 characters")
+  //   .required("Password is required"),
   // tel:Yup.string()
  // .max(10)
  // .required("contact number is required"),
@@ -153,7 +153,7 @@ const Register = () => {
                   }}
                 >
                   {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
-                    <Form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
                       <div class="form-outline mb-2">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
@@ -251,8 +251,8 @@ const Register = () => {
                           </div>
                         </RadioGroup>
                       </FormControl>
-                      <MDBBtn type="Submit">Next</MDBBtn>
-                    </Form>
+                      <button type="submit">Next</button>
+                    </form>
 
                   )}
                 </Formik>
@@ -333,7 +333,7 @@ const Register = () => {
                     </div>
                   </div>
                 </div>
-                <MDBBtn type="Submit">Next</MDBBtn>
+                <button type="submit">Next</button>
               </form>
             )}
           </Formik>
@@ -426,7 +426,7 @@ const Register = () => {
                   </div>
                 </div>
 
-                <MDBBtn type="Submit">Submit</MDBBtn>
+                <button type="submit">Submit</button>
               </form>
             )}
           </Formik>
