@@ -25,11 +25,22 @@ const CampaignDetail = () => {
     if (!loading && campaignData) {
       return <div className='card m-5'>
         <h1>{campaignData.title}</h1>
+        {campaignData.image}
+        <div className='row'>
+          <div className='col-md-5 me-5'>
+              <h5>{campaignData.startdate}</h5>
+          </div>
+          <div className='col-md-5'>
+              <h5>{campaignData.lastdate}</h5>
+          </div>
+        </div>
+       <p> {campaignData.content}</p>
       </div>
 
     }
     else{
-        return <h2>loading...</h2>
+        return <div className='text-center'><img src="https://cdn.dribbble.com/users/3533804/screenshots/6666006/all-anim-gif.gif" style={{width:"500px"}} alt="" />
+        <h1 style={{color:"#518f3d"}}>Loading...</h1></div>
     }
   };
 

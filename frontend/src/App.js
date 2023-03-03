@@ -51,6 +51,7 @@ import StartupDetails from "./components/startup/StartupDetails";
 //import Subscription from "./components/main/Subscription";
 import InvestorList from "./components/investor/InvestorList";
 import InvestorDetails from "./components/investor/InvestorDetails";
+import Dashboard from "./components/startup/Dashboard";
 
 
 function App() {
@@ -118,6 +119,7 @@ function App() {
 
             <Route element={<Startup />} path="startup">
             <Route element={<Chat />} path="chat"/>
+            <Route element={<Dashboard />} path="dashboard"/>
             <Route element={<Register />} path="register"/>
             </Route>
 

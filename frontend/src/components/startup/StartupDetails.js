@@ -108,7 +108,8 @@ const StartupDetails = () => {
     
   }
     else {
-      return <h1>Loading...</h1>
+      return <div className='text-center'><img src="https://cdn.dribbble.com/users/3533804/screenshots/6666006/all-anim-gif.gif" style={{width:"500px"}} alt="" />
+      <h1 style={{color:"#518f3d"}}>Loading...</h1></div>
     }
   };
 

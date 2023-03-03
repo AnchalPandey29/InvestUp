@@ -24,12 +24,16 @@ const BlogDetail = () => {
 
   const displayDetails = () => {
     if (!loading && blogData) {
-      return<div>
+      return<div className='card m-5'>
         <h1>{blogData.heading}</h1>
+        {blogData.image}
+        <p>{blogData.content}</p>
+
       </div>
     }
     else{
-      return <h1>loading...</h1>
+      return <div className='text-center'><img src="https://cdn.dribbble.com/users/3533804/screenshots/6666006/all-anim-gif.gif" style={{width:"500px"}} alt="" />
+      <h1 style={{color:"#518f3d"}}>Loading...</h1></div>
     }
   
 };
