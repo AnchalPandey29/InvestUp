@@ -80,7 +80,7 @@ function App() {
               <Route element={<AddCompaign />} path="addcampaign" />
               <Route element={<AddNews />} path="addnews" />
               <Route element={<AddBlog />} path="addblog" />
-              <Route element={<ManageCompaign />} path="managecompaign" />
+              <Route element={<ManageCompaign />} path="managecampaign" />
               <Route element={<ManageNews />} path="managenews" />
               <Route element={<ManageBlog />} path="manageblog" />
               <Route element={<ManageStartup />} path="managestartup" />
