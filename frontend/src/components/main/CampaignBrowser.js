@@ -66,7 +66,7 @@ const CampaignBrowser = () => {
               data-mdb-ripple-color="light"
             >
               <img
-                src={campaign.image}
+                src={url+'/'+campaign.image}
                 className="img-fluid mx-auto"
                 style={{ maxHeight: "150px", display: "block" }}
               />
@@ -76,6 +76,7 @@ const CampaignBrowser = () => {
                   style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
                 />
               </a>
+     
             </div>
           </div>
           <div className="col-md-6 mb-4">
