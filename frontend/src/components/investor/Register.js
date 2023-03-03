@@ -5,34 +5,29 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 //import { MDBInput, MDBInputGroup } from "mdb-react-ui-kit";
-import {MDBTextArea , MDBFile,MDBInput, MDBInputGroup} from 'mdb-react-ui-kit';
+import {MDBTextArea , MDBFile,MDBInput} from 'mdb-react-ui-kit';
 import * as Yup from "yup";
 
-const RegisterSchema1 = Yup.object().shape({
+const RegisterSchema = Yup.object().shape({
   name: Yup.string()
   .min(2, 'Too Short!')
   .required("Name is required"),
-  identityproofno:Yup.string().required("This field is mandatory"),
-  identityproof:Yup.string().required("Identity Proof is requied"),
-  date:Yup.string().required("This field is mandatory"),
-  brief:Yup.string().required("Description is required"),
-  currentincubatees:Yup.string().required("Description is required"),});
-
-  const RegisterSchema2 = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Password is required"),
-  tel:Yup.string()
-  .max(10)
-  .required("contact number is required"),
-  aplink:Yup.string().aplink("Application Link is mandatory"),
-  istate:Yup.string().istate("State is required")});
-
-  const RegisterSchema3 = Yup.object().shape({
- DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+  //identityproofno:Yup.string().required("This field is mandatory"),
+  //identityproof:Yup.string().required("Identity Proof is requied"),
+ // date:Yup.string().required("This field is mandatory"),
+ // brief:Yup.string().required("Description is required"),
+ // currentincubatees:Yup.string().required("Description is required"),
+  // email: Yup.string().email("Invalid email").required("Email is required"),
+  // password: Yup.string()
+  //   .min(8, "Password must be at least 8 characters")
+  //   .required("Password is required"),
+  // tel:Yup.string()
+ // .max(10)
+ // .required("contact number is required"),
+  //aplink:Yup.string().aplink("Application Link is mandatory"),
+  //istate:Yup.string().istate("State is required"),
+ // DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 });
-
 
 
 
@@ -152,13 +147,13 @@ const Register = () => {
               <div class="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
                 <Formik
                   initialValues={{ name: '', type: '', brief: '' }}
-                  validationSchema={RegisterSchema1}//Schema
+                  validationSchema={RegisterSchema}//Schema
                   onSubmit={values => {
                     console.log(values);
                   }}
                 >
                   {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
-                    <Form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
                       <div class="form-outline mb-2">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
@@ -189,7 +184,7 @@ const Register = () => {
                         ) : null}</div>
 
                       <div className="form-outline mb-4" style={{ width: "200px" }}>
-                        <MDBInput label='Date Of Establishment' type="date" value={values.date} onChange={handleChange} name="date"  />
+                        <MDBInput label='Date Of Establishment' type="date" value={values.date} onChange={handleChange} name="date" />
                         {errors.date && touched.date ? (
                           <div>{errors.date}</div>
                         ) : null}
@@ -229,21 +224,21 @@ const Register = () => {
                       </div>
 
                       <div class="form-outline mb-4">
-                        <MDBTextArea label='Brief' id='textAreaExample' rows={2} name="brief"value={values.brief} onChange={handleChange} />
+                        <MDBTextArea label='Brief' id='textAreaExample' rows={2} value={values.brief} onChange={handleChange} />
                         {errors.brief && touched.brief ? (
                           <div>{errors.brief}</div>
                         ) : null}
                       </div>
 
                       <div className="form-outline mb-4 ">
-                        <MDBInput label='Current Incubatees'  name="currentincubatees" type="text" value={values.currentincubatees} onChange={handleChange} />
+                        <MDBInput label='Current Incubatees' type="text" value={values.currentincubatees} onChange={handleChange} name="currentincubatees" />
                         {errors.currentincubatees && touched.currentincubatees ? (
                           <div>{errors.currentincubatees}</div>
                         ) : null}
                       </div>
                       <div className="form-outline mb-4">
                         <div>
-                          <MDBInput label='Graduated Incubatees'name="graduatedincubatees" type="text" value={values.graduatedincubatees} onChange={handleChange}  />
+                          <MDBInput label='Graduated Incubatees' type="text" value={values.graduatedincubatees} onChange={handleChange} name="graduatedincubatees" />
                         </div>
                       </div>
                       <FormControl className="ps-3 pb-4">
@@ -256,8 +251,17 @@ const Register = () => {
                           </div>
                         </RadioGroup>
                       </FormControl>
-                      <button>Next</button>
-                    </Form>
+
+
+                      <button disabled={isSubmitting} type="submit" className="btn btn mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
+                        :
+                        'Next'
+                    }
+                  </button>
+                    </form>
 
                   )}
                 </Formik>
@@ -279,11 +283,11 @@ const Register = () => {
           {/* second form  */}
 
 
-          <div style={{height:"fit-content"}}>
+          <div style={{height:"fit-content" ,width:"150%"}}>
 
           <Formik
             initialValues={{ name: '', type: '', brief: '' }}
-            validationSchema={RegisterSchema2}
+            validationSchema={RegisterSchema}
             onSubmit={values => {
               console.log(values);
             }}
@@ -338,7 +342,14 @@ const Register = () => {
                     </div>
                   </div>
                 </div>
-               <button>Next</button>
+                <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        :
+                        'Next'
+                    }
+                  </button>
               </form>
             )}
           </Formik>
@@ -363,7 +374,7 @@ const Register = () => {
               select2: '',
               type: '',
             }}
-             validationSchema={RegisterSchema3}
+            // validationSchema={RegisterSchema}
             onSubmit={values => {
               console.log(values);
             }}
@@ -372,7 +383,7 @@ const Register = () => {
               <form onSubmit={handleSubmit} >
                 <div className="col-12  form outline mb-4">
                   <label htmlFor="select1"> Industry</label>
-                          <br />               
+                    <br />               
                     <select
                     className="select"
                     name="select1"
@@ -431,7 +442,14 @@ const Register = () => {
                   </div>
                 </div>
 
-                <button>Submit</button>
+                <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
+                        :
+                        'Submit'
+                    }
+                  </button>
               </form>
             )}
           </Formik>
