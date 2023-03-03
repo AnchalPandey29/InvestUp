@@ -12,8 +12,8 @@ const RegisterSchema = Yup.object().shape({
   name: Yup.string()
   .min(2, 'Too Short!')
   .required("Name is required"),
-  //identityproofno:Yup.string().required("This field is mandatory"),
-  //identityproof:Yup.string().required("Identity Proof is required"),
+  identityproofno:Yup.string().required("This field is mandatory"),
+  //identityproof:Yup.string().required("Identity Proof is requied"),
  // date:Yup.string().required("This field is mandatory"),
  // brief:Yup.string().required("Description is required"),
  // currentincubatees:Yup.string().required("Description is required"),
@@ -148,10 +148,9 @@ const Register = () => {
                 <Formik
                   initialValues={{ name: '', type: '', brief: '' }}
                   validationSchema={RegisterSchema}//Schema
-                  onSubmit={values => {
-                    console.log(values);
-                  }}
-                >
+                  onSubmit={onSubmit}>
+                
+                
                   {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
                     <form onSubmit={handleSubmit}>
                       <div class="form-outline mb-2">
@@ -251,17 +250,15 @@ const Register = () => {
                           </div>
                         </RadioGroup>
                       </FormControl>
-
-
-                      <button disabled={isSubmitting} type="submit" className="btn btn mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                      <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
                     {
                       isSubmitting ?
-                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         :
-                        'Next'
+                        'Submit'
                     }
-                  </button>
-                    </form>
+                  </button>                   
+                   </form>
 
                   )}
                 </Formik>
