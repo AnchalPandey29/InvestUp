@@ -76,7 +76,7 @@ const AddNews = () => {
                  
                  
                   <label>Image</label>
-                  <input value={values.image} className="form-control mb-3" type="file" name="image" onChange={handleChange}/>
+                  <input className="form-control mb-3" type="file" onChange={uploadFile}/>
                  
                  <div className="d-flex justify-content-center align-item-center">
                   <button disabled={isSubmitting} type="submit" className="btn " style={{backgroundColor:"#9c3353", color:"white"}}>

@@ -46,7 +46,7 @@ const ManageStartup = () => {
             </div>
         </header>
 
-        <div className='container mt-4'>
+        <div className='container mt-4 table-responsive'>
 
         <table class="table table-striped table-hover">
                 <thead >
