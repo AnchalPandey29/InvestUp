@@ -17,7 +17,6 @@ const Signin = () => {
   });
     ///////////////////////////////
   const navigate = useNavigate();
-  const [selRole, setSelRole] = useState(selRole)
   
 
   const userSubmit = async (formdata, { setSubmitting }) => {
@@ -45,14 +44,13 @@ const Signin = () => {
         title: 'Success',
         text: 'You have logged in successfully'
       })
-      if(selRole==='startup'){
-        const data = await res.json();
+      const data = await res.json();
+      if(data.result.role==='startup'){
         console.log(data);
         sessionStorage.setItem('startup', JSON.stringify(data.result));
         navigate('/startup/profile');
       }
-      else if (selRole==='investor'){
-        const data = await res.json();
+      else if (data.result.role==='investor'){
         console.log(data);
         sessionStorage.setItem('investor', JSON.stringify(data.result));
         navigate('/investor/profile');
