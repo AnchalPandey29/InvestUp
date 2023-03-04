@@ -271,7 +271,7 @@ const Register = () => {
                          </div>
                       <div className="col">
                         <div className="form-outline mb-4">
-                        <MDBInput label='Contact' type="text"id="ownercontact" name="iownercontact"  value={values.ownercontact} onChange={handleChange}/>
+                        <MDBInput label='Contact' type="text"id="ownercontact" name="ownercontact"  value={values.ownercontact} onChange={handleChange}/>
                           
                         </div>
                       </div>
@@ -349,7 +349,7 @@ const Register = () => {
                     <div className="row mb-4 form-floating " >
                       <div className="col">
                         <div className="form-outline mb-4">
-                          <MDBInput label='Email Address' type="text" value={values.email} onChange={handleChange} name="email" />
+                          <MDBInput label='Email Address' type="text" value={values.semail} onChange={handleChange} name="semail" />
                         </div>
 
                       </div>
@@ -384,7 +384,7 @@ const Register = () => {
                         </div>
                         <div className="col">
                           <div className="form-outline mb-4">
-                          <MDBInput label='Mobile App Link ' type="text" id="mobileAppLink" value={values.mobileAppLink} onChange={handleChange} name="mobileAppLink" />
+                          <MDBInput label='Mobile App Link ' type="text" id="app" value={values.app} onChange={handleChange} name="app" />
                            
                           </div>
                         </div>
@@ -438,8 +438,8 @@ const Register = () => {
                       <label htmlFor="select1"> Industry</label><br/>
                       <select
                         className="select"
-                        name="select1"
-                        value={values.select1}
+                        name="industry"
+                        value={values.industry}
                         onChange={handleChange}
                       >
                         <FormLabel> Industry</FormLabel>
@@ -470,8 +470,8 @@ const Register = () => {
                       <select
                        // style={{ width: "200px" }}
                         className="select"
-                        name="select2"
-                        value={values.select2}
+                        name="sector"
+                        value={values.sector}
                         onChange={handleChange}
                       >
                         <FormLabel>Sector</FormLabel>
@@ -486,8 +486,8 @@ const Register = () => {
                       <label htmlFor="select2">Interests</label><br/>
                       <select
                         className="select"
-                        name="select2"
-                        value={values.select2}
+                        name="interests"
+                        value={values.interests}
                         onChange={handleChange}
                       ><FormLabel>Interests</FormLabel>
                         <option value="" selected></option>
@@ -509,7 +509,7 @@ const Register = () => {
 
                     <div className="col">
                       <div className="form-outline mb-4">
-                      <MDBInput label='Udyog Aadhar ' type="text" id="text" value={values.text} onChange={handleChange} name="mtext" />
+                      <MDBInput label='Udyog Aadhar ' type="text" id="aadhar" value={values.aadhar} onChange={handleChange} name="aadhar" />
                        <br/>
                       </div>
                     </div>

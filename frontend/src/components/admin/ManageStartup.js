@@ -50,33 +50,40 @@ const ManageStartup = () => {
                 <thead >
                     <tr style={{backgroundColor:"#9c3353", color:"white"}}>
                          <th></th>
-                         <th>StartupImage</th>
-                        <th>StartupName</th>
+                         <th>Role</th>
+                        <th>Password</th>
+
+                        <th>Startup Image</th>
+                        <th>Startup Name</th>
                         <th>Created_At</th>
                         <th>Type</th>
                         <th>Stage</th>
                         <th>Brief</th>
-                        <th>Documents</th>
-                        <th>Ownername</th>
-                        <th>IdentityProof</th>
-                        <th>IdentityNo</th>
-                        <th>OwnerContact</th>
-                        <th>OwnerEmail</th>
-                        <th>TeamMembers</th>
-                        <th>Document</th>
-                        <th>ProductImage</th>
-                        <th>ProductName</th>
-                        <th>ProductDescription</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>ContactNumber</th>
+                        <th> Startup Documents</th>
+
+                        <th>Owner Avatar</th>
+                        <th>Owner Name</th>
+                        <th>Identity Proof</th>
+                        <th>Identity No</th>
+                        <th>Owner Document</th>
+                        <th>Owner Contact</th>
+                        <th>Owner Email</th>
+                        <th>Team Menber No</th>
+                        <th>Team Members</th>
+                        <th>Product Image</th>
+                        <th>Product Name</th>
+                        <th>Product Description</th>
+                        <th>Startup Email</th>
+                        <th>Startup Contact</th>
                         <th>State</th>
                         <th>City</th>
                         <th>Website</th>
                         <th>App</th>
+
                         <th>Industry</th>
                         <th>Sector</th>
                         <th>Interests</th>
+                        <th> UdyogAadhar</th>
                         
                         
                     
@@ -88,6 +95,9 @@ const ManageStartup = () => {
                     {
                         userList.map( (user) => (
                             <tr >
+                                <td>{user.role}</td>
+                                <td>{user.password}</td>
+
                         <td>{user.startupimage}</td>
                         <td>{user.startupname}</td>
                         <td>{user.created_at}</td>
@@ -95,26 +105,31 @@ const ManageStartup = () => {
                         <td>{user.stage}</td>
                         <td>{user.brief}</td>
                         <td>{user.sdocuments}</td>
+
+                        <td>{user.owneravatar}</td>
                         <td>{user.ownername}</td>
                         <td>{user.identityproof}</td>
                         <td>{user.identityNo}</td>
+                        <td>{user.documents}</td>
                         <td>{user.ownercontact}</td>
                         <td>{user.owneremail}</td>
+                        <td>{user.teammemberno}</td>
                         <td>{user.teammembers}</td>
-                        <td>{user.documents}</td>
+
                         <td>{user.productimage}</td>
                         <td>{user.productname}</td>
                         <td>{user.productdescription}</td>
                         <td>{user.email}</td>
-                        <td>{user.password}</td>
                         <td>{user.tel}</td>
                         <td>{user.state}</td>
                         <td>{user.city}</td>
                         <td>{user.website}</td>
                         <td>{user.app}</td>
+                        
                         <td>{user.industry}</td>
                         <td>{user.sector}</td>
                         <td>{user.interests}</td>
+                        <td>{user.aadhar}</td>
                         
                                 
                                 

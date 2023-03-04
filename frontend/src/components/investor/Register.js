@@ -270,9 +270,17 @@ const Register = () => {
                           </div>
                         </RadioGroup>
                       </FormControl>
-                      <button type="submit">Next</button>
+                      <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        :
+                        'Next'
+                    }
+                  </button>    
                
                    </form>
+                   
 
                   )}
                 </Formik>
@@ -353,7 +361,14 @@ const Register = () => {
                     </div>
                   </div>
                 </div>
-                <button type="submit">Next</button>
+                <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        :
+                        'Next'
+                    }
+                  </button>    
 
               </form>
             )}
@@ -449,7 +464,14 @@ const Register = () => {
                   </div>
                 </div>
 
-                <button type="submit">Submit</button>
+                <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        :
+                        'Next'
+                    }
+                  </button>    
 
               </form>
             )}
