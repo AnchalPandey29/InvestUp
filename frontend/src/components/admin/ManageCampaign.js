@@ -68,7 +68,7 @@ const ManageCampaign = () => {
                                 <td>{user.id}</td>
                                 <td>{user.title}</td>
                                 <td>{user.content}</td>
-                                <td>{user.startdate}</td>
+                                <td>{new Date(user.startdate).toLocaleDateString()}</td>
                                 <td>{user.lastdate}</td>
                                 <td>{user.image}</td>
                                 

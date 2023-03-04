@@ -95,8 +95,8 @@ const ManageStartup = () => {
                     {
                         userList.map( (user) => (
                             <tr >
-                                <td>{user.role}</td>
-                                <td>{user.password}</td>
+                        <td>{user.role}</td>
+                        <td>{user.password}</td>
 
                         <td>{user.startupimage}</td>
                         <td>{user.startupname}</td>
@@ -119,7 +119,7 @@ const ManageStartup = () => {
                         <td>{user.productimage}</td>
                         <td>{user.productname}</td>
                         <td>{user.productdescription}</td>
-                        <td>{user.email}</td>
+                        <td>{user.semail}</td>
                         <td>{user.tel}</td>
                         <td>{user.state}</td>
                         <td>{user.city}</td>

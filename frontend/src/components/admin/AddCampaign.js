@@ -81,7 +81,7 @@ const AddCompaign = () => {
                   <input value={values.lastdate} className="form-control mb-3" type="date" name="lastdate" onChange={handleChange}/>
 
                   <label>Image</label>
-                  <input value={values.image} className="form-control mb-3" type="file" name="image" onChange={handleChange}/>
+                  <input value={values.image} className="form-control mb-3" type="file" name="image" onChange={uploadFile}/>
             
                   <div className="d-flex justify-content-center align-item-center">                
                   <button disabled={isSubmitting} type="submit" className="btn"  style={{backgroundColor:"#9c3353", color:"white"}}>

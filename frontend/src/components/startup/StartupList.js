@@ -51,7 +51,7 @@ const StartupList = () => {
               <Link
                 type="button"
                 className="btn"
-                to={"/main/startupdetails/"+startup._id}
+                to={"/startup/startupdetails/"+startup._id}
                 style={{ backgroundColor: "#9c3353", color: "white" }}
               >
                 Read more

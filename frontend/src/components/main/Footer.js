@@ -58,17 +58,17 @@ const Footer = () => {
               {/* Links */}
               <h6 className="text-uppercase fw-bold mb-4">Useful Links</h6>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/main/startuplist" className="text-reset">
                   Startup
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/investor/investorlist" className="text-reset">
                   Investor
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/main/subscription" className="text-reset">
                   Subscription
                 </a>
               </p>
@@ -82,17 +82,17 @@ const Footer = () => {
               <h6 className="text-uppercase fw-bold mb-4">Services</h6>
              
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/main/newsbrowser" className="text-reset">
                   News
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/main/campaignbrowser" className="text-reset">
                   Campaign
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/main/blogbrowser" className="text-reset">
                   Blog
                 </a>
               </p>
