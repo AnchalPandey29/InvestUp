@@ -8,7 +8,8 @@ const About = () => {
   return (
     <div className="row">
 
-          <div className="about col-md-5" style={{ display: "inline-block", padding: 0 }}>
+      {/* 
+      <div className="about col-md-5" style={{ display: "inline-block", padding: 0 }}>
               <motion.div
                   animate={{ y: "-100%" }}
                   transition={{ yoyo: Infinity, duration: 5 }}
@@ -22,13 +23,13 @@ const About = () => {
                   />
 
                   {/*         
-        <motion.img
-          className="aboutimg"
-          src="https://cdni.iconscout.com/illustration/premium/thumb/startup-3750487-3132252.png"
-          alt="img4"
-          initial={{ y: "50%" }}
-        /> */}
-                  <motion.img
+                     <motion.img
+                     className="aboutimg"
+                      src="https://cdni.iconscout.com/illustration/premium/thumb/startup-3750487-3132252.png"
+                      alt="img4"
+                      initial={{ y: "50%" }}
+                       /> */}
+                   {/* <motion.img
                       className="aboutimg"
                       src="https://cdni.iconscout.com/illustration/premium/thumb/startup-idea-3374849-2804221.png"
                       alt="img2"
@@ -42,7 +43,26 @@ const About = () => {
                   />
               </motion.div>
 
-          </div>
+          </div> */}
+
+           {/* <div id="carouselExampleSlidesOnly" class="carousel slide" data-mdb-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100" alt="Wild Landscape"/>
+    </div>
+    <div class="carousel-item">
+      <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100" alt="Camera"/>
+    </div>
+    <div class="carousel-item">
+      <img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-100" alt="Exotic Fruits"/>
+    </div>
+  </div>
+            </div> */}
+
+
+          <video class="me-3 my-5" autoplay loop style={{width:"500px",borderRadius:"20px"}}>
+              <source src="/about.mp4" type="video/mp4" />
+          </video>
 
           <div className="col-md-7 d-flex flex-column justify-content-center " >
               <h1>About Us</h1>

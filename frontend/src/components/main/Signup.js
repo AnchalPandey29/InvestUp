@@ -13,7 +13,7 @@ const Signup = () => {
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
 
-    email: Yup.string().email("Invalid email").required("Email is required"),
+    semail: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
       .min(8, "Password must be at least 8 characters")
       .required("Password is required"),
@@ -82,7 +82,7 @@ const Signup = () => {
             <p className="text-center h4">Signup Form</p>
             <hr />
             <Formik
-              initialValues={{ name: "", email: "", password: "", role: "startup" }}
+              initialValues={{ name: "", semail: "", password: "", role: "startup" }}
               validationSchema={SignupSchema} // Add the validation schema here
               onSubmit={userSubmit}>
 
@@ -119,11 +119,11 @@ const Signup = () => {
                   <MDBInput
                     label="Email"
                     type="email"
-                    value={values.email}
+                    value={values.semail}
                     onChange={handleChange}
-                    name="email"
+                    name="semail"
                   />
-                   {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                   {errors.semail && touched.semail ? <div>{errors.semail}</div> : null}
 
                   
                   </div>

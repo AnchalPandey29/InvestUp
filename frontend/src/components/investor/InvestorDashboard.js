@@ -139,6 +139,15 @@ export default function PersistentDrawerLeft() {
 
         <a className="navbar-brand mt-2 " href="/main/startuplist">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
+            <p> <i class="fa fa-user-circle me-4" aria-hidden="true"></i>
+            &nbsp;
+             My profile</p>
+        </div>
+
+        </a>
+
+        <a className="navbar-brand mt-2 " href="/main/startuplist">
+        <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
             <i class="fas fa-list-alt me-4 " ></i> 
             &nbsp;
@@ -150,7 +159,8 @@ export default function PersistentDrawerLeft() {
         <a className="navbar-brand mt-2 " href="/investor/investorlist">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
-            <i class="fas fa-list-alt me-4 " ></i>
+            <i class="fa fa-th-list me-4" aria-hidden="true"></i>
+
             &nbsp; 
              Investor List</p>
         </div>
@@ -236,7 +246,13 @@ export default function PersistentDrawerLeft() {
       <Main  open={open}>
         <DrawerHeader />
         <Typography paragraph>
-            
+        <div className='row ' style={{display:'flex',justifyContent:"center",alignItems:"center",marginTop:"100px"}}>
+          <h2 className='text-center'>Plant the seed of succes and watch your business grow with <strong>InvestUp</strong>
+          <br />
+          Invest in innovation with confidence!</h2>
+        <img src="/cute.gif" alt="" style={{width:"700px"}}/>
+        </div>
+
           {/* para  */}
         </Typography>
         <Typography paragraph>

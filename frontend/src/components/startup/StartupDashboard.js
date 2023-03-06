@@ -128,6 +128,7 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
 
+        
         <a className="navbar-brand mt-4" href="/startup/chat">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
@@ -135,6 +136,15 @@ export default function PersistentDrawerLeft() {
             &nbsp;
              Home</p>
         </div>
+        </a>
+
+        <a className="navbar-brand mt-2 " href="/main/startuplist">
+        <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
+            <p> <i class="fa fa-user-circle me-4" aria-hidden="true"></i>
+            &nbsp;
+             My profile</p>
+        </div>
+
         </a>
 
         <a className="navbar-brand mt-2 " href="/main/startuplist">
@@ -150,14 +160,14 @@ export default function PersistentDrawerLeft() {
         <a className="navbar-brand mt-2 " href="/investor/investorlist">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
-            <i class="fas fa-list-alt me-4 " ></i>
+            <i class="fa fa-th-list me-4" aria-hidden="true"></i>
+
             &nbsp; 
              Investor List</p>
         </div>
 
         </a>
         <Divider />
-
         <a className="navbar-brand mt-4" href="/startup/chat">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
@@ -235,8 +245,17 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main  open={open}>
         <DrawerHeader />
+        <div className='row ' style={{display:'flex',justifyContent:"center",alignItems:"center",marginTop:"100px"}}>
+          <h2 className='text-center'>Plant the seed of succes and watch your business grow with <strong>InvestUp</strong>
+          <br />
+          Let's start your seed fund journey right here!</h2>
+        <img src="/cute.gif" alt="" style={{width:"700px"}}/>
+        </div>
+
+        {/* <video class="" autoplay loop >
+          <source src="/cute.mp4" type="video/mp4" />
+        </video> */}
         <Typography paragraph>
-            
           {/* para  */}
         </Typography>
         <Typography paragraph>

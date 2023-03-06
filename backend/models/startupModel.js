@@ -27,7 +27,7 @@ const startupSchema = new Schema({
   productname:{type:String},//Name of the product
   productdescription:{type:String},//Description of the product 
 
-  semail: { type: String, required: true, unique: true },//startupemail
+  semail: { type: String },//startupemail
   tel:{type:String},
   state:{type:String},
   city:{type:String},
