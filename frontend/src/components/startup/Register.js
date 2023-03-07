@@ -7,14 +7,17 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MDBInput } from 'mdb-react-ui-kit';
 import {MDBTextArea , MDBFile} from 'mdb-react-ui-kit';
+import app_config from "../../config";
 
 const Register = () => {
   const navigate = useNavigate();
+  const url = app_config.apiurl;
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('startup')));
-
+  const [selimage, setSelimage] = useState("");
 
 
   const updateUser = async (values, { setSubmitting }) => {
+    values.startupimage = selimage;
     console.log(values);
 
     setSubmitting(true);
@@ -43,6 +46,21 @@ const Register = () => {
     }
   };
 
+
+  const uploadImage = (e) => {
+    const file = e.target.files[0];
+    setSelimage(file.name);
+    const fd = new FormData();
+    fd.append("myfile", file);
+    fetch(url + "/util/uploadfile", {
+      method: "POST",
+      body: fd,
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log("file uploaded");
+      }
+    });
+  };
 
 
   return (
@@ -119,9 +137,7 @@ const Register = () => {
             <div className="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
               <Formik
                 initialValues={currentUser}
-                onSubmit={values => {
-                  console.log(values);
-                }}
+                onSubmit={updateUser}
               >
                 {({ values, handleSubmit, handleChange, isSubmitting }) => (
                   <form onSubmit={handleSubmit}>
@@ -130,7 +146,7 @@ const Register = () => {
                     <div class="form-outline mb-2">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
-                            <MDBFile label='Startup Image' id='startupimage' name="startupimage" value={values.startupimage} onChange={handleChange} />
+                            <input type="file" label='Startup Image' onChange={uploadImage} />
 
 
                           </div>

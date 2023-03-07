@@ -3,6 +3,7 @@ import './Home.css';
 import Eligibility from './Eligibility';
 import Testimonial from './Testimonial';
 import Subscription from './Subscription';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -15,9 +16,9 @@ const Home = () => {
           <div className="col-md-4 p-4 ">
             <h1>InvestUp</h1>
             <p>Explore the funding environment with InvestUp and tap into some of the most relevant models for your startup's growth.</p>
-            <button className='btn ' style={{backgroundColor:"#9c3353", color:"#fffefe"}}>
-              Get started
-            </button>
+            <Link className='btn ' style={{backgroundColor:"#9c3353", color:"#fffefe"}} to="/main/startuplist">
+              Explore Startups
+            </Link>
           </div>
           <div className="col-md-4 heroimg">
             <img className='hero-image' src="\home.png" alt="" />
