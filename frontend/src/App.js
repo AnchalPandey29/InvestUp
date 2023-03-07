@@ -21,7 +21,7 @@ import AdminAuth from "./auth/AdminAuth";
 import UserProvider from "./context/UserProvider";
 import AdminProvider from "./context/AdminProvider";
 import { useState } from "react";
-import AddAdmin from "./components/main/AddAdmin";
+import AddAdmin from "./components/admin/AddAdmin";
 import Contact from "./components/main/Contact";
 import About from "./components/main/About";
 import Faq from "./components/main/Faq";
@@ -77,6 +77,7 @@ function App() {
               }
               path="admin"
             >
+              <Route element={<AddAdmin/>} path="addadmin" />
               <Route element={<AdminProfile />} path="profile" />
               <Route element={<AddCompaign />} path="addcampaign" />
               <Route element={<AddNews />} path="addnews" />

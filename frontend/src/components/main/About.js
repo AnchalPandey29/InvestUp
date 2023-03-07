@@ -60,9 +60,7 @@ const About = () => {
             </div> */}
 
 
-          <video class="me-3 my-5" autoplay loop style={{width:"500px",borderRadius:"20px"}}>
-              <source src="/about.mp4" type="video/mp4" />
-          </video>
+          <img style={{width:"400px"}} src="/about.gif" alt="" />
 
           <div className="col-md-7 d-flex flex-column justify-content-center " >
               <h1>About Us</h1>

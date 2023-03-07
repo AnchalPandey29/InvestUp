@@ -7,7 +7,7 @@ const startupSchema = new Schema({
   password: { type: String, required: true },//password
   
   startupimage: {type: String},//startuplogo
-  startupname: { type: String },//startupname
+  name: { type: String },//startupname
   created_at: Date,//date of creation of startup
   type:{type:String},//bootstrap or funded
   stage:{type:String},// stage by button

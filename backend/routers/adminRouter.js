@@ -22,6 +22,7 @@ router.post("/add", (req, res) => {
 });
 
 router.post("/auth", (req, res) => {
+  console.log(req.body);
   Model.findOne({ email: req.body.email })
     .then((result) => {
       if (result) {
