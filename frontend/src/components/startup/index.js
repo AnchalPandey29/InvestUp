@@ -7,10 +7,8 @@ import Header from "../main/Header";
 const Startup = () => {
   return (
     <div className="module">
-      <Header />
       <Outlet />
      
-      <Footer />
     </div>
   );
 };

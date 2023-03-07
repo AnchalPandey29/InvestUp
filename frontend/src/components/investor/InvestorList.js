@@ -11,7 +11,8 @@ const InvestorList = () => {
         const res = await fetch(url+'/investor/getall');
         const data = await res.json();
         console.log(data);
-        setInvestorList(data.result);
+        setInvestorList( data.result.filter((user) => ( user.role === 'investor' )) );
+        // setInvestorList(data.result);
     }
 
     useEffect(() => {
@@ -26,22 +27,7 @@ const InvestorList = () => {
                     <div>
 <div className="row card gx-5 mx-auto m-3" style={{width:"70%",height:"fit-content"}}>
           <div className="col-md-6 mb-4">
-            {/* <div
-              className="bg-image hover-overlay ripple shadow-2-strong rounded-5 "
-              data-mdb-ripple-color="light"
-            >
-              <img
-                src={""}
-                className="img-fluid mx-auto"
-                style={{ maxHeight: "150px", display: "block" }}
-              />
-              <a href="#!">
-                <div
-                  className="mask"
-                  style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
-                />
-              </a>
-            </div> */}
+           
           </div>
           <div className="col-md-6 mb-4">
             

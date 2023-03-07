@@ -21,7 +21,7 @@ import AdminAuth from "./auth/AdminAuth";
 import UserProvider from "./context/UserProvider";
 import AdminProvider from "./context/AdminProvider";
 import { useState } from "react";
-import AddAdmin from "./components/main/AddAdmin";
+import AddAdmin from "./components/admin/AddAdmin";
 import Contact from "./components/main/Contact";
 import About from "./components/main/About";
 import Faq from "./components/main/Faq";
@@ -48,10 +48,11 @@ import BlogBrowser from "./components/main/BlogBrowser";
 import CampaignBrowser from "./components/main/CampaignBrowser";
 import StartupList from "./components/startup/StartupList";
 import StartupDetails from "./components/startup/StartupDetails";
-//import Subscription from "./components/main/Subscription";
 import InvestorList from "./components/investor/InvestorList";
 import InvestorDetails from "./components/investor/InvestorDetails";
 import Dashboard from "./components/startup/Dashboard";
+import StartupDashboard from "./components/startup/StartupDashboard";
+import InvestorDashboard from "./components/investor/InvestorDashboard";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -76,6 +77,7 @@ function App() {
               }
               path="admin"
             >
+              <Route element={<AddAdmin/>} path="addadmin" />
               <Route element={<AdminProfile />} path="profile" />
               <Route element={<AddCompaign />} path="addcampaign" />
               <Route element={<AddNews />} path="addnews" />
@@ -95,7 +97,7 @@ function App() {
               <Route element={<Signup />} path="signup" />
               <Route element={<About />} path="aboutus" />
               <Route element={<Eligible />} path="Eligible" />
-              <Route element={<Subscription />} path="Subscription" />
+              <Route element={<Subscription />} path="subscription" />
               <Route element={<NewsDetail />} path="newsdetail/:id" />
               <Route element={<CampaignDetail />} path="campaigndetails/:id" />
               <Route element={<BlogDetail />} path="blogdetails/:id" />
@@ -113,14 +115,16 @@ function App() {
 
           <Route element={<Startup />} path="startup">
             <Route element={<Chat />} path="chat"/>
-            <Route element={<Dashboard />} path="dashboard"/>
+            {/* <Route element={<Dashboard />} path="dashboard"/> */}
             <Route element={<Register />} path="register"/>
-              <Route element={<Chat />} path="chat" />
-              <Route element={<Register />} path="profile" />
+            <Route element={<StartupDashboard />} path="dashboard"/>
+            <Route element={<Chat />} path="chat" />
+            <Route element={<Register />} path="profile" />
             </Route>
 
             <Route element={<Investor />} path="investor">
-              <Route element={<Chat />} path="chat" />
+            <Route element={<Chat />} path="chat" />
+            <Route element={<InvestorDashboard />} path="dashboard" />
               <Route element={<InvestorList />} path="investorlist" />
               <Route element={<InvestorDetails />} path="investordetails" />
               <Route element={<Registerinvestor />} path="profile" />

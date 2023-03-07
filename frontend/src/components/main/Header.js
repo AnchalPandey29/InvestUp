@@ -34,12 +34,12 @@ const Header = () => {
           {/* Left links */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link hover-overlay nav-dark" to="/main/home">
+              <NavLink className="nav-link hover-overlay " to="/main/home">
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link hover-overlay " to="/main/aboutus">
+              <NavLink className="nav-link hover-overlay " to="/main/aboutus" >
                 AboutUs
               </NavLink>
             </li>
