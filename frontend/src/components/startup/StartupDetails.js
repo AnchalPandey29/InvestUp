@@ -1,3 +1,5 @@
+import { Formik } from "formik";
+import { MDBInput } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import app_config from "../../config";
@@ -105,10 +107,52 @@ const StartupDetails = () => {
             </div>
           </div>
         
-        </div>
 
-        
-    
+
+          <Formik
+              initialValues={{ content:"" }}
+              onSubmit={fetchStartupById}>
+
+              {({ values, handleSubmit, handleChange, isSubmitting, }) => (
+               
+                <form onSubmit={handleSubmit} >
+                  {/* 2 column grid layout with text inputs for the first and last names */}
+                  <div className="row form-floating" onSubmit={handleSubmit}>
+                    <div className="col">
+                      <div className="form-outline mb-4">
+                        
+                        
+                        <MDBInput
+                          label="Write your feedback"
+                          type="text"
+                          value={values.content}
+                          onChange={handleChange}
+                          name="name"
+                          />
+                          
+
+                      </div>
+                    </div>
+                    
+                  </div>
+
+                  <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        :
+                        'Submit'
+                    }
+                  </button>
+
+                   
+                 
+                </form>
+              )}
+            </Formik>
+
+
+        </div>
         
 
 
