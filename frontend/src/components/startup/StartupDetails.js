@@ -104,8 +104,14 @@ const StartupDetails = () => {
               </div>
             </div>
           </div>
+        
         </div>
+
+        
     
+        
+
+
   }
     else {
       return <div className='text-center'><img src="https://cdn.dribbble.com/users/3533804/screenshots/6666006/all-anim-gif.gif" style={{width:"500px"}} alt="" />
