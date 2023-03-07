@@ -10,8 +10,7 @@ const Home = () => {
 
     <>
 
-      <div className="home-container pt-5" >
-        <div className="row">
+        <div className="row homerow pt-5">
 
           <div className="col-md-4 p-4 ">
             <h1>InvestUp</h1>
@@ -53,7 +52,6 @@ const Home = () => {
 
 
 
-      </div>
 
       <Eligibility />
       <Testimonial/>

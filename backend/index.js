@@ -9,6 +9,7 @@ const investorRouter = require('./routers/investorRouter');
 const campaignRouter = require('./routers/campaignRouter');
 const NewsRouter = require('./routers/NewsRouter');
 const BlogRouter = require('./routers/BlogRouter');
+const FeedbackRouter = require('./routers/FeedbackRouter');
 const SubscriptionRouter = require('./routers/SubscriptionRouter');
 const utilRouter = require('./routers/utils');
 
@@ -50,6 +51,7 @@ app.use('/investor', investorRouter);
 app.use('/campaign', campaignRouter);
 app.use('/News', NewsRouter);
 app.use('/Blog', BlogRouter);
+app.use('/feedback', FeedbackRouter);
 app.use('/Subscription', SubscriptionRouter);
 app.use('/util', utilRouter);
 

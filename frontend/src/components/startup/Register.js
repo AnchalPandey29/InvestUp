@@ -8,6 +8,34 @@ import Swal from "sweetalert2";
 import { MDBInput } from 'mdb-react-ui-kit';
 import {MDBTextArea , MDBFile} from 'mdb-react-ui-kit';
 import app_config from "../../config";
+import * as Yup from "yup";
+
+
+const Schema1 = Yup.object().shape({
+  startupname: Yup.string().min(2, "Too Short!").required("Name is required"),
+  //   identityproof:Yup.string().required("Identity Proof is requied"),
+  //  date:Yup.string().required("This field is mandatory"),
+    brief:Yup.string().required("Description is required"),
+  //   currentincubatees:Yup.string().required("Description is required"),
+  //   email: Yup.string()
+  //   .email("Invalid email")
+  //   .required("Email is required"),
+  //   password: Yup.string()
+  //   .min(8, "Password must be at least 8 characters")
+  //   .required("Password is required"),
+  //   tel:Yup.string()
+  //         .max(10)
+  //       .required("contact number is required"),
+  //        //aplink:Yup.string().aplink("Application Link is mandatory"),
+  //istate:Yup.string().istate("State is required"),
+  //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+});
+
+// const Schema2=Yup.object().shape({
+//   ownername: Yup.string().min(2, "Too Short!").required("Name is required"),
+//   owneravatar: Yup.string().required("Required"),
+
+// });
 
 const Register = () => {
   const navigate = useNavigate();
@@ -39,10 +67,14 @@ const Register = () => {
       Swal.fire({
         icon: "success",
         title: "Success",
-        text: "You have registered successfully",
+        text: "Saved Successfuly",
       });
     } else {
-      // error alert
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Please fill the required details",
+      });
     }
   };
 
@@ -124,6 +156,7 @@ const Register = () => {
       </ul>
       {/* <!-- Tabs navs --> */}
 
+
       {/* <!-- Tabs content --> */}
       <div className="tab-content" id="ex2-content">
         <div
@@ -137,9 +170,10 @@ const Register = () => {
             <div className="tab-pane fade show active" id="v-pills-About Startup" role="tabpanel" aria-labelledby="v-pills-About Startup-tab" >
               <Formik
                 initialValues={currentUser}
+                validationSchema={Schema1} 
                 onSubmit={updateUser}
               >
-                {({ values, handleSubmit, handleChange, isSubmitting }) => (
+                {({ values, handleSubmit, handleChange, isSubmitting,errors,touched}) => (
                   <form onSubmit={handleSubmit}>
 
                     <div className="d-flex flex-column">
@@ -155,8 +189,10 @@ const Register = () => {
                       
 
                       <div className="form-outline mt-4 ms-1">
-                      <MDBInput label='Startup Name'id="startupname" type="text" value={values.className} onChange={handleChange} name="startupname" />
-                        
+                      <MDBInput label='Startup Name'id="startupname" type="text" value={values.startupname} onChange={handleChange} name="startupname" />
+                      {errors.startupname && touched.startupname ? (
+                          <div>{errors.startupname}</div>
+                        ) : null}
                       </div>
                       <div className="form-outline mt-4 ms-1">
                       <MDBInput label='Created At'id="created_at" type="date" value={values.created_at} onChange={handleChange} name="created_at" />
@@ -196,7 +232,9 @@ const Register = () => {
 
                       <div className="form-outline mt-4 ms-1">
                       <MDBTextArea label='Brief' type="text" id='brief' rows={2} value={values.brief} onChange={handleChange} name="brief" />
-                        
+                      {errors.brief && touched.brief ? (
+                          <div>{errors.brief}</div>
+                        ) : null} 
                       </div>
                     </div>
 
@@ -205,7 +243,7 @@ const Register = () => {
                       <div class="form-outline mb-2">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
-                            <MDBFile label='Documents'type="file" id='sdocuments' name="sdocuments" value={values.sdocuments} onChange={handleChange} />
+                            <MDBFile label='Documents'type="file" id='sdocuments' name="sdocuments" value={values.sdocuments} onChange={uploadImage} />
 
 
                           </div>
@@ -241,20 +279,19 @@ const Register = () => {
             <div className="tab-pane fade show active" id="v-pills-Owner And Product Details" role="tabpanel" aria-labelledby="v-pills-Owner And Product Details-tab" >
               <Formik
                 initialValues={currentUser}
-                onSubmit={values => {
-                  console.log(values);
-                }}
+                // validationSchema={Schema2} 
+                onSubmit={updateUser}
               >
-                {({ values, handleSubmit, handleChange, isSubmitting }) => (
+                {({ values, handleSubmit, handleChange, isSubmitting,errors,touched}) => (
                   <Form onSubmit={handleSubmit}>
 
                     <div className="d-flex flex-column">
                     <div class="form-outline mb-4">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
-                            <MDBFile label='Owner Avatar'type="file" id='owneravatar' name="owneravatar" value={values.owneravatar} onChange={handleChange} />
-
-</div>
+                           
+                        
+                          </div>
                           </div>
                         </div>
                       </div>
@@ -263,13 +300,21 @@ const Register = () => {
 
                       <div className="form-outline mb-4">
                       <MDBInput label='Owner Name'id="ownername" type="text" value={values.ownername} onChange={handleChange} name="ownername" />
+                      {errors.ownername && touched.ownername ? (
+                          <div>{errors.ownername}</div>
+                        ) : null}
+                      <MDBFile label='Owner Avatar'type="file" id='owneravatar' name="owneravatar" value={values.owneravatar} onChange={uploadImage} />
+                            
+                         {errors.owneravatar && touched.owneravatar? (
+                          <div>{errors.owneravatar}</div>
+                        ) : null}
                        </div>
                       </div>
                       <div>
                       <div class="form-outline mb-4">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
-                            <MDBFile label='Identity Proof(Aadhar Card/PAN/VoterID)'type="file" id='identityproof' name="identityproof" value={values.identityproof} onChange={handleChange} /></div>
+                            <MDBFile label='Identity Proof(Aadhar Card/PAN/VoterID)'type="file" id='identityproof' name="identityproof" value={values.identityproof} onChange={uploadImage} /></div>
                           </div>
                         </div>
                         
@@ -281,7 +326,7 @@ const Register = () => {
                       <div class="form-outline mb-4">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
-                            <MDBFile label='Document'type="file" id='documents' name="documents" value={values.documents} onChange={handleChange} /></div>
+                            <MDBFile label='Document'type="file" id='documents' name="documents" value={values.documents} onChange={uploadImage} /></div>
                           </div>
                         </div>
                          </div>
@@ -311,7 +356,7 @@ const Register = () => {
                       <div class="form-outline mb-4">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
-                            <MDBFile label='Image Of The Product'type="file" id='productimage' name="productimage" value={values.productimage} onChange={handleChange} /></div>
+                            <MDBFile label='Image Of The Product'type="file" id='productimage' name="productimage" value={values.productimage} onChange={uploadImage} /></div>
                           </div>
                         </div>
                          </div>
@@ -426,8 +471,6 @@ const Register = () => {
         </div>
 
 
-
-
         <div
           className="tab-pane fade"
           id="ex3-tabs-4"
@@ -444,9 +487,7 @@ const Register = () => {
                   select2: '',
                   type: '',
                 }}
-                onSubmit={values => {
-                  console.log(values);
-                }}
+                onSubmit={updateUser}
               >
                 {({ values, handleSubmit, handleChange, isSubmitting }) => (
                   <form onSubmit={handleSubmit} >
@@ -563,6 +604,8 @@ const Register = () => {
           </div>
 
         </div>
+
+
       </div>
 
     </div>

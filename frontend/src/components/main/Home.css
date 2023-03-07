@@ -1,17 +1,17 @@
-/* .row{
+.homerow{
     display: flex;
     justify-content: center;
     align-items: center;
     height: fit-content;
     
 }
-.card{
+.elcard{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(240, 239, 239);
     height: 550px;
-} */
+}
 .heroimg{
     display: flex;
     justify-content: center;

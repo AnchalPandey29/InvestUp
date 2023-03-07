@@ -18,7 +18,7 @@ const Contact= () => (
                 <div >
                     <Form className='card p-5 ' style={{height:"fit-content",width:"400px"}}>
                     <p className="text-center h4">Contact Us</p>
-                    <hr style={{width:"250px"}}/>
+                    <hr className='mx-auto' style={{width:"250px"}}/>
 
                         {/* Name input */}
                         <div className="form-outline mb-4">
