@@ -24,7 +24,7 @@ const Eligibility = () => {
                               </p>
 
                               <div className='text-center mt-5'>
-                                 <a className='btn' style={{ backgroundColor: "#9c3353", color: "#fffefe" }} href="/main/eligible">
+                                 <a className='btn' style={{ backgroundColor: "#9c3353", color: "#fffefe" }} href="/main/eligible#ex1-content">
                                   More Details
                                  </a>
                               </div>

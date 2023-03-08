@@ -94,6 +94,11 @@ const Register = () => {
     });
   };
 
+  const variants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
+  };
+  
 
   return (
     <div className="card m-5 mx-auto p-5" style={{ height: "fit-content", width: "fit-content" }}>

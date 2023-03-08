@@ -2,7 +2,7 @@ import React from 'react'
 
 const Eligible = () => {
   return (
-  <div className='d-flex justify-content-center align-items-center'>
+  <div className='mx-5'>
     <div className='m-5'>
       <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
         <li class="nav-item" role="presentation">
@@ -35,10 +35,10 @@ const Eligible = () => {
           align="justify"
 
           aria-labelledby="ex1-tab-1">
-          <div class="col-md-6"  >
+          <div class="col"  >
 
 
-            <div className='row-md-8 start' ></div>
+            <div className='row start' ></div>
             <p><i class="fa fa-circle" aria-hidden="true"></i>
               &nbsp;
               A startup, recognized by DPIIT, incorporated not more than 2 years ago at the time of application.</p>
@@ -71,10 +71,10 @@ const Eligible = () => {
           </div>
 
         </div>
-        <div class="col-md-6"  >
+        <div class="col"  >
 
 
-          <div className='row-md-8' >
+          <div className='row' >
 
             <div class="tab-pane fade invest" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
               <p><i class="fa fa-circle" aria-hidden="true"></i>

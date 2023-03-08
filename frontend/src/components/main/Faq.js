@@ -2,107 +2,123 @@ import React from 'react'
 
 const Faq = () => {
   return (
+    <>
+      <div style={{height:"40vh",backgroundColor:"#9c3353"}}>
+        <h1 className='text-center ' style={{color:"white",marginTop:"100px"}}>Hi, how can we help you?</h1>
+      </div>
+
+      <div className='row justify-content-center align-items-center ' style={{color:"pink",height:"400px",marginTop:"-100px"}}>
+        <div className='col-md-3 m-2 card p-3'  >
+          <a href="/main/query" style={{color:"black"}}>
+          <div className='row ps-2 justify-content-center align-items-center mt-4'>
+            <div className='col-md-3 '>
+            <img src="https://cdn-icons-png.flaticon.com/512/9003/9003702.png" style={{width:"50px"}} alt="" />
+            </div>
+            <div className='col-md-9 ' >
+              <h5>
+                Top Queries
+              </h5>
+              <p>Click here to read the common queries that users have</p>
+            </div>
+          </div>
+          </a>
+        </div>
+
+        <div className='col-md-3 m-2 card p-3' >
+        <a href="/main/faqstartup" style={{color:"black"}}>
+        <div className='row ps-2 justify-content-center align-items-center mt-4'>
+            <div className='col-md-3 '>
+              <img src="https://cdn-icons-png.flaticon.com/512/9851/9851051.png" alt="" style={{ width: "50px" }} />
+            </div>
+            <div className='col-md-9 ' >
+              <h5>
+                For Startups
+              </h5>
+              <p>Click here to read the common queries that users have</p>
+            </div>
+          </div>
+          </a>
+        </div>
+
+        <div className='col-md-3 m-2 card p-3' >
+        <a href="/main/faqinvestor" style={{color:"black"}}>
+
+        <div className='row ps-2 justify-content-center align-items-center mt-4'>
+            <div className='col-md-3 '>
+              <img src="https://cdn-icons-png.flaticon.com/512/8701/8701040.png" alt="" style={{ width: "50px" }} />
+            </div>
+            <div className='col-md-9 ' >
+              <h5>
+                For Investors
+              </h5>
+              <p>Click here to read the common queries that users have</p>
+            </div>
+          </div>
+          </a>
+        </div>
+
+        <div className='col-md-3 m-2 card p-3'  >
+        <a href="/main/faqeligibilty" style={{color:"black"}}>
+
+        <div className='row ps-2 justify-content-center align-items-center mt-4'>
+            <div className='col-md-3 '>
+              <img src="https://cdn-icons-png.flaticon.com/512/4295/4295910.png" alt="" style={{ width: "50px" }} />
+            </div>
+            <div className='col-md-9 ' >
+              <h5>
+                Eligibility
+              </h5>
+              <p>Click here to read the common queries that users have</p>
+            </div>
+          </div>
+          </a>
+        </div>
+
+        <div className='col-md-3 m-2 card p-3' >
+        <a href="/main/faqprocess" style={{color:"black"}}>
+
+        <div className='row ps-2 justify-content-center align-items-center mt-4'>
+            <div className='col-md-3 '>
+              <img src="https://cdn-icons-png.flaticon.com/512/6597/6597098.png" alt="" style={{ width: "50px" }} />
+            </div>
+            <div className='col-md-9 ' >
+              <h5>
+                Application Process
+              </h5>
+              <p>Click here to read the common queries that users have</p>
+            </div>
+          </div>
+          </a>
+        </div>
+        
+        <div className='col-md-3 m-2 card p-3'>
+        <a href="/main/faqother" style={{color:"black"}}>
+
+        <div className='row ps-2 justify-content-center align-items-center mt-4'>
+            <div className='col-md-3 '>
+            <img src="https://cdn-icons-png.flaticon.com/512/134/134808.png" alt="" style={{width:"50px"}}/>
+            </div>
+            <div className='col-md-9 ' >
+              <h5>
+                Other
+              </h5>
+              <p>Click here to read the common queries that users have</p>
+            </div>
+          </div>
+          </a>
+        </div>
+      </div>
+
+
+
     <div className='mx-auto d-flex justify-content-center align-items-center' style={{width:"100vh",height:"100vh"}}>
 
-<div className="accordion w-100" id="basicAccordion">
-  <div className="accordion-item">
-    <h2 className="accordion-header" id="headingOne">
-      <button
-        className="accordion-button collapsed"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#basicAccordionCollapseOne"
-        aria-expanded="false"
-        aria-controls="collapseOne"
-      >
-    What is my name?
-      </button>
-    </h2>
-    <div
-      id="basicAccordionCollapseOne"
-      className="accordion-collapse collapse"
-      aria-labelledby="headingOne"
-      data-mdb-parent="#basicAccordion"
-      style={{}}
-    >
-      <div className="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is shown by
-        default, until the collapse plugin adds the appropriate classes that we
-        use to style each element. These classes control the overall appearance,
-        as well as the showing and hiding via CSS transitions. You can modify
-        any of this with custom CSS or overriding our default variables. It's
-        also worth noting that just about any HTML can go within the{" "}
-        <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div className="accordion-item">
-    <h2 className="accordion-header" id="headingTwo">
-      <button
-        className="accordion-button collapsed"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#basicAccordionCollapseTwo"
-        aria-expanded="false"
-        aria-controls="collapseTwo"
-      >
-How to apply for startups?
-      </button>
-    </h2>
-    <div
-      id="basicAccordionCollapseTwo"
-      className="accordion-collapse collapse"
-      aria-labelledby="headingTwo"
-      data-mdb-parent="#basicAccordion"
-      style={{}}
-    >
-      <div className="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden
-        by default, until the collapse plugin adds the appropriate classes that
-        we use to style each element. These classes control the overall
-        appearance, as well as the showing and hiding via CSS transitions. You
-        can modify any of this with custom CSS or overriding our default
-        variables. It's also worth noting that just about any HTML can go within
-        the <code>.accordion-body</code>, though the transition does limit
-        overflow.
-      </div>
-    </div>
-  </div>
-  <div className="accordion-item">
-    <h2 className="accordion-header" id="headingThree">
-      <button
-        className="accordion-button collapsed"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#basicAccordionCollapseThree"
-        aria-expanded="false"
-        aria-controls="collapseThree"
-      >
-What are the eligibility requiremets for investor?
-      </button>
-    </h2>
-    <div
-      id="basicAccordionCollapseThree"
-      className="accordion-collapse collapse"
-      aria-labelledby="headingThree"
-      data-mdb-parent="#basicAccordion"
-      style={{}}
-    >
-      <div className="accordion-body">
-        <strong>This is the third item's accordion body.</strong> It is hidden
-        by default, until the collapse plugin adds the appropriate classes that
-        we use to style each element. These classes control the overall
-        appearance, as well as the showing and hiding via CSS transitions. You
-        can modify any of this with custom CSS or overriding our default
-        variables. It's also worth noting that just about any HTML can go within
-        the <code>.accordion-body</code>, though the transition does limit
-        overflow.
-      </div>
-    </div>
-  </div>
-</div>
+
 
     </div>
+
+    </>
+
   )
 }
 

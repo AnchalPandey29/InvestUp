@@ -11,6 +11,12 @@ import Forgot from "./components/main/Forgot";
 import Home from "./components/main/Home";
 import Eligible from "./components/main/Eligible";
 import Subscription from "./components/main/Subscription";
+import FaqQuery from "./components/main/FaqQuery";
+import FaqStartup from "./components/main/FaqStartup";
+import FaqInvestor from "./components/main/FaqInvestor";
+import FaqEligibility from "./components/main/FaqEligibility";
+import FaqProcess from "./components/main/FaqProcess";
+import FaqOther from "./components/main/FaqOther";
 
 import UserAuth from "./auth/UserAuth";
 import User from "./components/user";
@@ -106,6 +112,12 @@ function App() {
               <Route element={<Contact />} path="contact" />
               <Route element={<Testimonial />} path="test" />
               <Route element={<Faq />} path="faq" />
+              <Route element={<FaqQuery />} path="query" />              
+              <Route element={<FaqStartup />} path="faqstartup" />
+              <Route element={<FaqInvestor/>} path="faqinvestor" />
+              <Route element={<FaqEligibility />} path="faqeligibilty" />
+              <Route element={<FaqProcess />} path="faqprocess" />
+              <Route element={<FaqOther />} path="faqother" />
               <Route element={<NewsBrowser />} path="newsbrowser" />
               <Route element={<BlogBrowser />} path="blogbrowser" />
               <Route element={<CampaignBrowser />} path="campaignbrowser" />
