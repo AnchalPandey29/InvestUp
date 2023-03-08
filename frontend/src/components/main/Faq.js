@@ -109,14 +109,6 @@ const Faq = () => {
         </div>
       </div>
 
-
-
-    <div className='mx-auto d-flex justify-content-center align-items-center' style={{width:"100vh",height:"100vh"}}>
-
-
-
-    </div>
-
     </>
 
   )
