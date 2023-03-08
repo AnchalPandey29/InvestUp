@@ -146,30 +146,23 @@ const StartupDetails = () => {
 
               <form onSubmit={handleSubmit}  >
                 {/* 2 column grid layout with text inputs for the first and last names */}
-                <div className="row d-flex " onSubmit={handleSubmit}>
+                <div className="row ">
                   <div className="col-md-10">
 
-
-                    <MDBInput
-                      label="Write your feedback"
-                      type="text"
-                      value={values.content}
-                      onChange={handleChange}
-                      name="name"
-                    />
-
+                  
+                  <MDBInput 
+                   label="Write your feedback"
+                   type="text"
+                   id="feedback"
+                   value={values.content}
+                   onChange={handleChange}
+                   name="name"
+                  />
 
                   </div>
 
                   <div className="col-md-2">
-                    <button disabled={isSubmitting} type="submit" className="btn btn-block" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
-                      {
-                        isSubmitting ?
-                          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                          :
-                          'Submit'
-                      }
-                    </button>
+                   <button className="btn " style={{backgroundColor:"#9c3353",color:"white"}}>Submit</button>
                   </div>
 
                 </div>
