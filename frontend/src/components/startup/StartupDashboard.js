@@ -245,16 +245,17 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main  open={open}>
         <DrawerHeader />
-        <div className='row ' style={{display:'flex',justifyContent:"center",alignItems:"center",marginTop:"100px"}}>
-          <h2 className='text-center'>Plant the seed of succes and watch your business grow with <strong>InvestUp</strong>
+       
+        <div className='row' style={{backgroundColor:"#9c3353",height:"30vh",alignItems:"center"}}>
+          <h2 className='text-center' style={{color:"white"}}>Plant the seed of succes and watch your business grow with <strong style={{color:"yellow"}}>InvestUp</strong>
           <br />
-          Let's start your seed fund journey right here!</h2>
-        <img src="/cute.gif" alt="" style={{width:"700px"}}/>
-        </div>
-
-        {/* <video class="" autoplay loop >
-          <source src="/cute.mp4" type="video/mp4" />
-        </video> */}
+          Invest in innovation with confidence!</h2>
+          </div>
+         
+         <div className="row justify-content-center">
+         <img  src="/cute.gif" alt="" style={{width:"700px"}}/>
+         </div>
+       
         <Typography paragraph>
           {/* para  */}
         </Typography>

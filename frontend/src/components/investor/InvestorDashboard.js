@@ -246,13 +246,19 @@ export default function PersistentDrawerLeft() {
       <Main  open={open}>
         <DrawerHeader />
         <Typography paragraph>
-        <div className='row ' style={{display:'flex',justifyContent:"center",alignItems:"center",marginTop:"100px"}}>
-          <h2 className='text-center'>Plant the seed of succes and watch your business grow with <strong>InvestUp</strong>
+
+        <div className='row' style={{backgroundColor:"#9c3353",height:"30vh",alignItems:"center"}}>
+          <h2 className='text-center' style={{color:"white"}}>Plant the seed of succes and watch your business grow with <strong style={{color:"yellow"}}>InvestUp</strong>
           <br />
           Invest in innovation with confidence!</h2>
-        <img src="/cute.gif" alt="" style={{width:"700px"}}/>
-        </div>
+          </div>
+         
+         <div className="row justify-content-center">
+         <img  src="/cute.gif" alt="" style={{width:"700px"}}/>
+         </div>
+       
 
+       
           {/* para  */}
         </Typography>
         <Typography paragraph>

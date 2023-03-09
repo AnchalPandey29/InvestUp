@@ -66,8 +66,9 @@ const Signin = () => {
 
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
-      <div className="col-md-3 mx-auto" >
+    <div style={{ height: "90vh" }}>
+        <div className="row" style={{ height: "40vh",  backgroundColor: "#9c3353" }}></div>
+      <div className="row mx-auto" style={{marginTop:"-200px",width:"fit-content"}} >
         <div className="card pt-4" style={{ height: "fit-content", padding: "40px" }}>
           <div className="card-body">
             <p className="text-center h4">Login Form</p>
