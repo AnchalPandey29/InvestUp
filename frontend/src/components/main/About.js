@@ -112,12 +112,6 @@ const About = () => {
     
       </div>
 
-      {/* <div className="row card " >
-              
-              <p>We are a startup funding website that provides a common platform for fund raising and investing. Our goal is to make it easier for startups to find funding and for investors to discover new investment opportunities.</p>
-              <p>Our platform offers various features such as consultancy, direct chat with investors, the ability to organize campaigns, and access to blogs and news. We also offer premium subscriptions for access to advanced services.</p>      <p>Join us today and take advantage of the opportunities we offer to help your startup succeed!</p>
-          </div>
- */}
 
 
     </div>
