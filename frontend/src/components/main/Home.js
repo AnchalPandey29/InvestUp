@@ -5,7 +5,6 @@ import Testimonial from './Testimonial';
 import Subscription from './Subscription';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import Footer from './Footer';
 
 const Home = () => {
   return (
@@ -77,7 +76,7 @@ const Home = () => {
       <Eligibility />
       <Testimonial/>
       <Subscription/>
-      <Footer/>
+      
 
       
     </>

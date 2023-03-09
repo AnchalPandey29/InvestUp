@@ -7,7 +7,7 @@ const Faq = () => {
         <h1 className='text-center ' style={{color:"white",marginTop:"100px"}}>Hi, how can we help you?</h1>
       </div>
 
-      <div className='row justify-content-center align-items-center ' style={{color:"pink",height:"400px",marginTop:"-100px"}}>
+      <div className='row mx-auto justify-content-center align-items-center mb-5 px-5' style={{color:"pink",height:"fit-content",marginTop:"-100px"}}>
         <div className='col-md-3 m-2 card p-3' style={{backgroundColor: "#fea5c0"}} >
           <a href="/main/query" style={{color:"black"}}>
           <div className='row ps-2 justify-content-center align-items-center mt-4'>
@@ -91,7 +91,7 @@ const Faq = () => {
           </a>
         </div>
         
-        <div className='col-md-3 m-2 card p-3'>
+        <div className='col-md-3 m-2 card p-3 '>
         <a href="/main/faqother" style={{color:"black"}}>
 
         <div className='row ps-2 justify-content-center align-items-center mt-4'>
@@ -106,7 +106,7 @@ const Faq = () => {
             </div>
           </div>
           </a>
-        </div>
+        </div> 
       </div>
 
     </>
