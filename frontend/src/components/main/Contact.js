@@ -64,14 +64,14 @@ const Contact = () => (
 
             </div>
             {/* Checkbox */}
-            <div className="form-check mb-4">
-              <Field type="checkbox" id="form4Example4" name="copy" className="form-check-input me-2" style={{ backgroundColor: "#9c3353", color: "#fffefe" }} />
+            <div className="form-check  mb-4 " >
+              <Field type="checkbox" id="form4Example4" name="copy" className="form-check-input " style={{ backgroundColor: "#9c3353", color: "#fffefe" }} />
               <label className="form-check-label" htmlFor="form4Example4">
                 Send me a copy of this message
               </label>
             </div>
             {/* Submit button */}
-            <button type="submit" disabled={isSubmitting} className="btn btn-block mb-4 " style={{ backgroundColor: "#9c3353", color: "#fffefe", width: "290px" }}>Send</button>
+            <button type="submit" disabled={isSubmitting} className="btn btn-block mb-4  " style={{ backgroundColor: "#9c3353", color: "#fffefe", width: "200px" }}>Send</button>
             </div>
 
           </Form>
