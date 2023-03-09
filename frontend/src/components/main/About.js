@@ -2,10 +2,10 @@
 
 import React from "react";
 import './about.css'
-import { motion } from "framer-motion";
 
 const About = () => {
   return (
+    <>
     <div style={{height:"100%"}}>
 
       <div className="row justify-content-center p-5" style={{ height: "40vh", backgroundColor: "#9c3353" }}>
@@ -14,9 +14,9 @@ const About = () => {
 
       </div>
 
-      <div className="row justify-content-center mx-auto" style={{marginTop:"-100px" , height:"500px"}}>
+      <div className="row justify-content-center mx-auto" style={{marginTop:"-100px" , height:"fit-content"}}>
 
-        <div className="col-md-4 p-4 mx-3 my-4 card justify-content-center align-items-center" style={{ backgroundColor: "white" ,width:"300px"}}>
+        <div className="col-md-3 p-4 mx-3 my-4 card justify-content-center align-items-center" style={{ backgroundColor: "white" ,width:"300px"}}>
 
           <div className="row " >
             <div className="col-md-3 mb-2">
@@ -27,7 +27,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-4 p-4  mx-3 my-4 card justify-content-center align-items-center" style={{ backgroundColor: "#fea5c0" ,width:"300px"}}>
+        <div className="col-md-3 p-4  mx-3 my-4 card justify-content-center align-items-center" style={{ backgroundColor: "#fea5c0" ,width:"300px"}}>
 
           <div className="row">
             <div className="col-md-3 mb-2">
@@ -38,7 +38,7 @@ const About = () => {
             </div>
           </div>
         </div> 
-        <div className="col-md-4  p-4  mx-3 my-4 card  justify-content-center align-items-center" style={{ backgroundColor: "white", width: "300px" }}>
+        <div className="col-md-3  p-4  mx-3 my-4 card  justify-content-center align-items-center" style={{ backgroundColor: "white", width: "300px" }}>
 
 <div className="row">
   <div className="col-md-3 mb-2">
@@ -50,7 +50,7 @@ const About = () => {
   </div>
 </div>
 </div> 
-        <div className="col-md-4 p-4  mx-3 my-4 card  justify-content-center align-items-center" style={{ backgroundColor: "#fea5c0", width: "300px" }}>
+        <div className="col-md-3 p-4  mx-3 my-4 card  justify-content-center align-items-center" style={{ backgroundColor: "#fea5c0", width: "300px" }}>
 
           <div className="row">
             <div className="col-md-3 mb-2">
@@ -63,7 +63,7 @@ const About = () => {
           </div>
         </div>
        
-        <div className="col-md-4 p-4  mx-3 my-4 card justify-content-center align-items-center" style={{ backgroundColor: "white" ,width:"300px" }}>
+        <div className="col-md-3 p-4  mx-3 my-4 card justify-content-center align-items-center" style={{ backgroundColor: "white" ,width:"300px" }}>
 
 <div className="row">
   <div className="col-md-3 mb-2">
@@ -75,7 +75,7 @@ const About = () => {
   </div>
 </div>
 </div> 
-        <div className="col-md-4 p-4  mx-3 my-4 card justify-content-center align-items-center" style={{ backgroundColor: "#fea5c0" ,width:"300px"}}>
+        <div className="col-md-3 p-4  mx-3 my-4 card justify-content-center align-items-center" style={{ backgroundColor: "#fea5c0" ,width:"300px"}}>
 
           <div className="row">
             <div className="col-md-3 mb-2">
@@ -87,7 +87,7 @@ const About = () => {
             </div>
           </div>
         </div> 
-        <div className="col-md-4  p-4 mx-3 my-4 card  justify-content-center align-items-center" style={{ backgroundColor: "white" ,width:"300px"}}>
+        <div className="col-md-3  p-4 mx-3 my-4 card  justify-content-center align-items-center" style={{ backgroundColor: "white" ,width:"300px"}}>
 
           <div className="row">
             <div className="col-md-3 mb-2">
@@ -98,7 +98,7 @@ const About = () => {
             </div>
           </div>
         </div> 
-        <div className="col-md-4 p-4  mx-3 my-4 card  justify-content-center align-items-center" style={{ backgroundColor: "#fea5c0" ,width:"300px"}}>
+        <div className="col-md-3 p-4  mx-3 my-4 card  justify-content-center align-items-center" style={{ backgroundColor: "#fea5c0" ,width:"300px"}}>
 
           <div className="row">
             <div className="col-md-3 mb-2">
@@ -112,9 +112,42 @@ const About = () => {
     
       </div>
 
-
-
+     
     </div>
+
+
+      <div className="row mt-5 p-5 justify-content-center align-items-center" style={{backgroundColor:"white"}}>
+
+        <div className="col-md-4 mb-3">
+          <img src="/objective.png" alt="" style={{ width: "400px" }} />
+        </div>
+        <div className="col-md-6 ">
+          <h2 >Need of InvestUp</h2>
+          <p>A company that provides easy access to capital for early-stage entrepreneurs. <br />
+            The need for seed funding for startups with innovative ideas to conduct proof of concept trials. <br />
+            Mentorship and support services for startups to build their businesses and increase their chances of success. <br />
+            A platform that promotes innovation and entrepreneurship. <br />
+            Opportunities for early-stage investors to realize significant returns on their investment if the startup is successful.</p>
+        </div>
+      </div>
+      <div className="row p-5 justify-content-center align-items-center">
+
+        <div className="col-md-6">
+          <h2 >Our objective</h2>
+          <p>To provide easy access to capital for early-stage entrepreneurs and startups with innovative ideas. <br />
+            To offer a range of seed funding options, including grants, loans, and equity investments, to support proof of concept trials.<br />
+            To provide mentorship and support services to help startups build their businesses and increase their chances of success.<br />
+            To promote innovation and entrepreneurship through a platform that fosters collaboration, creativity, and idea-sharing.<br />
+            To provide early-stage investors with opportunities to realize significant returns on their investment by investing in promising startups.
+
+
+          </p>
+        </div>
+        <div className="col-md-4">
+          <img src="/need.png" alt="" style={{ width: "400px" }} />
+        </div>
+      </div>
+   </>
   );
 };
 
