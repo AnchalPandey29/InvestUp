@@ -46,6 +46,40 @@ const StartupDetails = () => {
     setSubmitting(false);
   }
 
+  const fetchStartupFeedbacks = async (id) => {
+    const res = await fetch(`http://localhost:5000/feedback/getbystartup/`+id);
+    const data = (await res.json()).result;
+    console.log(data);
+    setFeedbackList(data);
+  }
+
+  const displayFeedbacks = () => {
+      return feedbackList.map((feedback) => (
+        <div className="border rounded card m-1 ps-5">
+          
+          <h5 className="pt-2">{feedback.user.name}</h5>
+          <Rating
+            value={feedback.rating}
+            readOnly
+          />
+          <p>{feedback.content}</p>
+      </div>
+      ))
+  }
+
+  const openChat = () => {
+    if(currentInvestor.role!== 'investor'){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You are not an investor!',
+      })
+    }else{
+      navigate('/investor/chat/' + startupData._id);
+    }
+  }
+
+
   const displayDetails = () => {
     if (!loading && startupData) {
       return <div
@@ -127,16 +161,17 @@ const StartupDetails = () => {
             </div>
           </div>
         </div>
-       
+
+        
         <center>
-        <button className="btn mt-5" style={{backgroundColor:"#9c3353",color:"white",width:"200px"}} onClick={openChat}>Start Chatting</button>
+        <button className="btn m-5" style={{backgroundColor:"#9c3353",color:"white",width:"fit-content"}} onClick={openChat}>Start Chatting</button>
         </center>
-
         <hr />
+        <div style={{backgroundColor:"#f0efef"}}>
+        <h2 className="text-center pt-5">Write your reviews</h2>
 
-        <button className="btn btn-primary" onClick={openChat}>Start Chatting</button>
+        <div className="mt-2 p-5">
 
-        <div className="mt-5 p-5">
           <Rating
             name="Feedback"
             value={rating}
@@ -171,7 +206,7 @@ const StartupDetails = () => {
                   </div>
 
                   <div className="col-md-2">
-                   <button className="btn " type="submit" style={{backgroundColor:"#9c3353",color:"white"}}>Submit</button>
+                   <button className="btn " style={{backgroundColor:"#9c3353",color:"white"}}>Submit</button>
                   </div>
 
                 </div>
@@ -185,7 +220,7 @@ const StartupDetails = () => {
           </Formik>
 
         </div>
-
+        </div>
         {displayFeedbacks()}
 
       </div>

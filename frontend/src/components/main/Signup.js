@@ -70,6 +70,7 @@ const Signup = () => {
   };
 
   return (
+    <div>
     <div style={{ height: "90vh" }}>
       <div
         className="row"
@@ -97,7 +98,6 @@ const Signup = () => {
             <p className="text-center h4">Signup Form</p>
             <hr />
             <Formik
-<<<<<<< HEAD
               initialValues={{ name: "", email: "", password: "", role: "startup" }}
               validationSchema={SignupSchema} // Add the validation schema here
               onSubmit={userSubmit}>
@@ -105,26 +105,6 @@ const Signup = () => {
               {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
 
                 <form onSubmit={handleSubmit} >
-=======
-              initialValues={{
-                name: "",
-                semail: "",
-                password: "",
-                role: "startup",
-              }}
-              // validationSchema={SignupSchema} // Add the validation schema here
-              onSubmit={userSubmit}
-            >
-              {({
-                values,
-                handleSubmit,
-                handleChange,
-                isSubmitting,
-                errors,
-                touched,
-              }) => (
-                <form onSubmit={handleSubmit}>
->>>>>>> 9f4a793ef98fe001c3f180741679b8067c97a7cc
                   {/* 2 column grid layout with text inputs for the first and last names */}
                   <div className="row form-floating" onSubmit={handleSubmit}>
                     <div className="col">
@@ -152,15 +132,10 @@ const Signup = () => {
                       onChange={handleChange}
                       name="email"
                     />
-<<<<<<< HEAD
                     {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
 
-=======
-                    {errors.semail && touched.semail ? (
-                      <div>{errors.semail}</div>
-                    ) : null}
->>>>>>> 9f4a793ef98fe001c3f180741679b8067c97a7cc
+               
                   </div>
 
                   {/* Password input */}
@@ -264,10 +239,8 @@ const Signup = () => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
 </div>
 
-=======
       <div className="col-md-2">
         <img
           src="/need.png"
@@ -282,7 +255,6 @@ const Signup = () => {
           alt=""
         />
       </div>
->>>>>>> 9f4a793ef98fe001c3f180741679b8067c97a7cc
     </div>
   );
 };
