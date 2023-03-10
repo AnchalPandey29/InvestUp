@@ -151,7 +151,7 @@ const Signup = () => {
                       <div>{errors.password}</div>
                     ) : null}
                   </div>
-
+                  <div>
                   <FormControl className="ps-3 pb-4">
                     <FormLabel id="demo-radio-buttons-group-label">
                       Role
@@ -181,27 +181,17 @@ const Signup = () => {
                       </div>
                     </RadioGroup>
                   </FormControl>
+                  </div>
 
                   {/* Submit button */}
                   {/* <button type="submit" className="btn btn-primary ">Sign up</button> */}
 
-                  <button
-                    disabled={isSubmitting}
-                    type="submit"
-                    className="btn btn-block mb-4"
-                    style={{ backgroundColor: "#9c3353", color: "#fffefe" }}
-                  >
-                    {isSubmitting ? (
-                      <span
-                        class="spinner-border spinner-border-sm"
-                        role="status"
-                        aria-hidden="true"
-                      ></span>
-                    ) : (
-                      "Submit"
-                    )}
+                  <div>
+                  <button className="btn" type="submit" style={{ backgroundColor: "#9c3353", color: "#fffefe",width:"100%"}}
+>
+                    Submit
                   </button>
-
+                  </div>
                   {/* Register buttons */}
                   <div className="text-center">
                     <p>or sign up with:</p>
@@ -241,7 +231,7 @@ const Signup = () => {
       </div>
 </div>
 
-      <div className="col-md-2">
+      {/* <div className="col-md-2">
         <img
           src="/need.png"
           style={{ marginTop: "-500px", marginLeft: "330px" }}
@@ -254,7 +244,7 @@ const Signup = () => {
           style={{ marginTop: "-500px", marginLeft: "1000px" }}
           alt=""
         />
-      </div>
+      </div> */}
     </div>
   );
 };
