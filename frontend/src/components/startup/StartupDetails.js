@@ -2,14 +2,17 @@ import { Rating } from "@mui/material";
 import { Formik } from "formik";
 import { MDBInput } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import app_config from "../../config";
 
 const StartupDetails = () => {
   const { id } = useParams();
   const [rating, setRating] = useState(4);
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('startup')));
-
+  const [currentInvestor, setCurrentInvestor] = useState(JSON.parse(sessionStorage.getItem('investor')));
+  const [feedbackList, setFeedbackList] = useState([]);
+  const navigate = useNavigate();;
   // console.log(id);
 
   const [startupData, setStartupData] = useState(null);
@@ -21,6 +24,7 @@ const StartupDetails = () => {
     const res = await fetch("http://localhost:5000/startup/getbyid/" + id);
     const data = await res.json();
     console.log(data);
+    fetchStartupFeedbacks(data.result._id);
     setStartupData(data.result);
     setLoading(false);
   };
@@ -30,6 +34,7 @@ const StartupDetails = () => {
   }, []);
 
   const feedbackSubmit = async (formdata, {setSubmitting}) => {
+    formdata.rating = rating;
     setSubmitting(true);
     const res = await fetch(`http://localhost:5000/feedback/add`, {
       method: "POST",
@@ -40,6 +45,39 @@ const StartupDetails = () => {
     console.log(res.status)
     setSubmitting(false);
   }
+
+  const fetchStartupFeedbacks = async (id) => {
+    const res = await fetch(`http://localhost:5000/feedback/getbystartup/`+id);
+    const data = (await res.json()).result;
+    console.log(data);
+    setFeedbackList(data);
+  }
+
+  const displayFeedbacks = () => {
+      return feedbackList.map((feedback) => (
+        <div>
+           <Rating
+            value={feedback.rating}
+            readOnly
+          />
+          <h4>{feedback.user.name}</h4>
+          <h4>{feedback.content}</h4>
+      </div>
+      ))
+  }
+
+  const openChat = () => {
+    if(currentInvestor.role!== 'investor'){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You are not an investor!',
+      })
+    }else{
+      navigate('/investor/chat/' + startupData._id);
+    }
+  }
+
 
   const displayDetails = () => {
     if (!loading && startupData) {
@@ -125,6 +163,7 @@ const StartupDetails = () => {
 
         <hr />
 
+        <button className="btn btn-primary" onClick={openChat}>Start Chatting</button>
 
         <div className="mt-5 p-5">
           <Rating
@@ -153,10 +192,9 @@ const StartupDetails = () => {
                   <MDBInput 
                    label="Write your feedback"
                    type="text"
-                   id="feedback"
                    value={values.content}
                    onChange={handleChange}
-                   name="name"
+                   name="content"
                   />
 
                   </div>
@@ -176,6 +214,8 @@ const StartupDetails = () => {
           </Formik>
 
         </div>
+
+        {displayFeedbacks()}
 
       </div>
 

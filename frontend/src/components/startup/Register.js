@@ -31,11 +31,12 @@ const Schema1 = Yup.object().shape({
   //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 });
 
-// const Schema2=Yup.object().shape({
-//   ownername: Yup.string().min(2, "Too Short!").required("Name is required"),
-//   owneravatar: Yup.string().required("Required"),
+const Schema2=Yup.object().shape({
+  ownername: Yup.string().min(2, "Too Short!").required("Name is required"),
+  identityno: Yup.string().required("ID No. is required"),
+  // owneravatar: Yup.string().required("Required"),
 
-// });
+});
 
 const Register = () => {
   const navigate = useNavigate();
@@ -186,8 +187,6 @@ const Register = () => {
                         <div class="file-upload-wrapper">
                           <div class="image-body">
                             <input type="file" label='Startup Image' onChange={uploadImage} />
-
-
                           </div>
                         </div>
                       </div>
@@ -284,7 +283,7 @@ const Register = () => {
             <div className="tab-pane fade show active" id="v-pills-Owner And Product Details" role="tabpanel" aria-labelledby="v-pills-Owner And Product Details-tab" >
               <Formik
                 initialValues={currentUser}
-                // validationSchema={Schema2} 
+                validationSchema={Schema2} 
                 onSubmit={updateUser}
               >
                 {({ values, handleSubmit, handleChange, isSubmitting,errors,touched}) => (
@@ -325,7 +324,9 @@ const Register = () => {
                         
                       <div className="form-outline mb-4">
                       <MDBInput label='Identity No' id="identityno" name="identityno"type="text" value={values.identityno} onChange={handleChange}/>
-                        
+                      {errors.identityno && touched.identityno? (
+                          <div>{errors.identityno}</div>
+                        ) : null}
                       </div>
                       <div>
                       <div class="form-outline mb-4">

@@ -34,6 +34,7 @@ import Faq from "./components/main/Faq";
 import Testimonial from "./components/main/Testimonial";
 import AddCompaign from "./components/admin/AddCampaign";
 import AddNews from "./components/admin/AddNews";
+import StartupChat from './components/startup/Chat';
 
 import AddBlog from "./components/admin/AddBlog";
 import ManageCompaign from "./components/admin/ManageCampaign";
@@ -41,7 +42,6 @@ import ManageNews from "./components/admin/ManageNews";
 import ManageBlog from "./components/admin/ManageBlog";
 import ManageStartup from "./components/admin/ManageStartup";
 import ManageInvestor from "./components/admin/ManageInvestor";
-import Chat from "./components/startup/Chat";
 import Register from "./components/startup/Register";
 import NewsDetail from "./components/main/NewsDetail";
 import CampaignDetail from "./components/main/CampaignDetail";
@@ -59,6 +59,7 @@ import InvestorDetails from "./components/investor/InvestorDetails";
 import Dashboard from "./components/startup/Dashboard";
 import StartupDashboard from "./components/startup/StartupDashboard";
 import InvestorDashboard from "./components/investor/InvestorDashboard";
+import InvestorChat from "./components/investor/Chat";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -126,16 +127,15 @@ function App() {
             </Route>
 
           <Route element={<Startup />} path="startup">
-            <Route element={<Chat />} path="chat"/>
             {/* <Route element={<Dashboard />} path="dashboard"/> */}
             <Route element={<Register />} path="register"/>
             <Route element={<StartupDashboard />} path="dashboard"/>
-            <Route element={<Chat />} path="chat" />
+            <Route element={<StartupChat />} path="chat" />
             <Route element={<Register />} path="profile" />
             </Route>
 
             <Route element={<Investor />} path="investor">
-            <Route element={<Chat />} path="chat" />
+            <Route element={<InvestorChat />} path="chat/:startupid" />
             <Route element={<InvestorDashboard />} path="dashboard" />
               <Route element={<InvestorList />} path="investorlist" />
               <Route element={<InvestorDetails />} path="investordetails" />

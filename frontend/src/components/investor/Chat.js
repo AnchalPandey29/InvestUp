@@ -3,10 +3,11 @@ import "./Chat.css";
 import {io} from 'socket.io-client';
 import app_config from "../../config";
 
-const Chat = () => {
+const InvestorChat = () => {
 
     const url = app_config.apiurl;
-    const [socket, setSocket] = useState(io(url, {autoConnect: false}));    
+    const [socket, setSocket] = useState(io(url, {autoConnect: false}));
+    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('investor')));    
 
     useEffect(() => {
       socket.connect();
@@ -42,7 +43,7 @@ const Chat = () => {
         <div className="card " style={{height:"90vh", width:"100vh"}}>
          
           <div className="card-header">
-            <p className="m-0 h4">Contact Name</p>
+            <p className="m-0 h4">{currentUser.name}</p>
           
           </div>
           <div
@@ -82,4 +83,4 @@ const Chat = () => {
   )
 }
 
-export default Chat
+export default InvestorChat;
