@@ -416,7 +416,7 @@ const Register = () => {
                     <div className="row mb-4 form-floating " >
                       <div className="col">
                         <div className="form-outline mb-4">
-                          <MDBInput label='Email Address' type="text" value={values.semail} onChange={handleChange} name="semail" />
+                          <MDBInput label='Email Address' type="text" value={values.email} onChange={handleChange} name="email" />
                         </div>
 
                       </div>
