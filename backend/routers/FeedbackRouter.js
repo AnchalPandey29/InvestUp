@@ -43,7 +43,6 @@ router.post("/add", (req, res) => {
       console.error("Error authenticating user", err);
       res.status(502).json({status: "failed"});
     });
-
   // .then((result) => {
   //   console.log("User Data Saved");
   //   res.status(201).json({ status: "success", result });
@@ -66,14 +65,14 @@ router.get("/getall", (req, res) => {
     });
 });
 
-router.get("/getbyid/:id", (req, res) => {
-  Model.findById(req.params.id)
+router.get("/getbystartup/:id", (req, res) => {
+  Model.find({startup : req.params.id}).populate('user')
     .then((result) => {
-      console.log("User Data Retrieved");
+      // console.log("User Data Retrieved");
       res.status(200).json({ status: "success", result });
     })
     .catch((err) => {
-      console.error("Error retrieving user data", err);
+      // console.error("Error retrieving user data", err);
       res.status(500).send("Error retrieving user data");
     });
 });

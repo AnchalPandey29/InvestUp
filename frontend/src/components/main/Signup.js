@@ -85,7 +85,7 @@ const Signup = () => {
             <p className="text-center h4">Signup Form</p>
             <hr />
             <Formik
-              initialValues={{ name: "", semail: "", password: "", role: "startup" }}
+              initialValues={{ name: "", email: "", password: "", role: "startup" }}
               validationSchema={SignupSchema} // Add the validation schema here
               onSubmit={userSubmit}>
 
@@ -122,11 +122,11 @@ const Signup = () => {
                     <MDBInput
                       label="Email"
                       type="email"
-                      value={values.semail}
+                      value={values.email}
                       onChange={handleChange}
-                      name="semail"
+                      name="email"
                     />
-                    {errors.semail && touched.semail ? <div>{errors.semail}</div> : null}
+                    {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
 
                   </div>
@@ -205,12 +205,7 @@ const Signup = () => {
         </div>
       </div>
 </div>
-<div className="col-md-2">
-<img src="/need.png" style={{marginTop:"-500px",marginLeft:"330px"}} alt="" />
-</div>
-<div  className="col-md-2">
-<img src="/news.png" style={{marginTop:"-500px",marginLeft:"1000px"}} alt="" />
-</div>
+
     </div>
   )
 }

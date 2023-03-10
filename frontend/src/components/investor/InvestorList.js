@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import app_config from '../../config';
 
 const InvestorList = () => {
@@ -8,7 +9,7 @@ const InvestorList = () => {
     const url = app_config.apiurl;
 
     const fetchData = async () => {
-        const res = await fetch(url+'/investor/getall');
+        const res = await fetch(url+'/startup/getall');
         const data = await res.json();
         console.log(data);
         setInvestorList( data.result.filter((user) => ( user.role === 'investor' )) );
@@ -37,9 +38,14 @@ const InvestorList = () => {
             <p className="text-muted">
               {investor.email}
             </p>
-            <a type="button" className="btn" href='/main/newsdetail' style={{ backgroundColor: "#9c3353", color: "white" }}>
-              Read more
-            </a>
+            <Link
+                type="button"
+                className="btn"
+                to={"/investor/investordetails/" + investor._id}
+                style={{ backgroundColor: "#9c3353", color: "white" }}
+              >
+                Read more
+              </Link>
           </div>
         </div>
 

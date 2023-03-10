@@ -110,22 +110,26 @@ const Register = () => {
   }
 
   return (
+    <>
+    
+    <div style={{backgroundColor:"#9c3353",height:"40vh",marginBottom:"-300px"}}>    </div>
     <div
-      className="m-5 card mx-auto"
+      className="m-5 card mx-auto p-5"
       style={{
+        
         height: "fit-content",
         color: "",
-        width: "50%",
+        width: "80%",
         paddingTop: "20px",
       }}
     >
       {/* Tab navs */}
 
       <ul
-        class="nav nav-tabs nav-justified mb-3"
+        class="nav nav-tabs nav-justified mb-3 d-flex justify-content-center"
         id="ex1"
         role="tablist"
-        style={{ width: "600px" }}
+        style={{ width: "fit-content" }}
       >
         <li class="nav-item" role="presentation">
           <a
@@ -437,7 +441,7 @@ const Register = () => {
         >
           {/* second form  */}
 
-          <div style={{ height: "fit-content", width: "150%" }}>
+          <div style={{ height: "fit-content"}}>
             <Formik
               initialValues={{ name: "", type: "", brief: "" }}
               validationSchema={RegisterSchema1}
@@ -694,6 +698,8 @@ const Register = () => {
         </div>
       </div>
     </div>
+
+    </>
   );
 };
 
