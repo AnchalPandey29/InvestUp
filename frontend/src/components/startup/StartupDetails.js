@@ -46,41 +46,6 @@ const StartupDetails = () => {
     setSubmitting(false);
   }
 
-  const fetchStartupFeedbacks = async (id) => {
-    const res = await fetch(`http://localhost:5000/feedback/getbystartup/`+id);
-    const data = (await res.json()).result;
-    console.log(data);
-    setFeedbackList(data);
-  }
-
-  const displayFeedbacks = () => {
-      return feedbackList.map((feedback) => (
-        <div className=" card ps-5 border rounded m-1">
-           <h5>{feedback.user.name}</h5> 
-          <Rating
-            value={feedback.rating}
-            readOnly
-          />
-          <p>{feedback.content}</p>
-         
-          
-      </div>
-      ))
-  }
-
-  const openChat = () => {
-    if(currentInvestor.role!== 'investor'){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'You are not an investor!',
-      })
-    }else{
-      navigate('/investor/chat/' + startupData._id);
-    }
-  }
-
-
   const displayDetails = () => {
     if (!loading && startupData) {
       return <div
@@ -169,6 +134,7 @@ const StartupDetails = () => {
 
         <hr />
 
+        <button className="btn btn-primary" onClick={openChat}>Start Chatting</button>
 
         <div className="mt-5 p-5">
           <Rating

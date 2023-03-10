@@ -1,4 +1,10 @@
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 import { Formik } from "formik";
 import { MDBInput } from "mdb-react-ui-kit";
 import React, { useState } from "react";
@@ -7,8 +13,6 @@ import Swal from "sweetalert2";
 import * as Yup from "yup";
 
 const Signup = () => {
-
-
   //signup schema validation
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -22,8 +26,7 @@ const Signup = () => {
   /////////////////////////////////////////
 
   const navigate = useNavigate();
-  const [selRole, setSelRole] = useState('startup');
-
+  const [selRole, setSelRole] = useState("startup");
 
   ///usersubmit event
   const userSubmit = async (formdata, { setSubmitting }) => {
@@ -35,56 +38,66 @@ const Signup = () => {
       headers: { "Content-Type": "application/json" },
     });
 
-    console.log(res.status)
+    console.log(res.status);
     setSubmitting(false);
 
-
-    //pop up 
+    //pop up
     if (res.status === 201) {
       Swal.fire({
         icon: "success",
-        title: 'Success',
-        text: 'You have registered successfully'
-      })
+        title: "Success",
+        text: "You have registered successfully",
+      });
 
-      if (selRole === 'startup') {
+      if (selRole === "startup") {
         const data = await res.json();
         console.log(data);
-        sessionStorage.setItem('startup', JSON.stringify(data.result));
-        navigate('/startup/profile');
-      }
-      else if (selRole === 'investor') {
+        sessionStorage.setItem("startup", JSON.stringify(data.result));
+        navigate("/startup/profile");
+      } else if (selRole === "investor") {
         const data = await res.json();
         console.log(data);
-        sessionStorage.setItem('investor', JSON.stringify(data.result));
-        navigate('/investor/profile');
+        sessionStorage.setItem("investor", JSON.stringify(data.result));
+        navigate("/investor/profile");
       }
-    }
-    else {
-
+    } else {
       Swal.fire({
         icon: "error",
-        title: 'Error',
-        text: 'Please Enter right credentials'
-      })
+        title: "Error",
+        text: "Please Enter right credentials",
+      });
     }
-  }
-
-
-
-
+  };
 
   return (
     <div style={{ height: "90vh" }}>
+      <div
+        className="row"
+        style={{ height: "40vh", backgroundColor: "#9c3353" }}
+      >
+        {" "}
+      </div>
 
-      <div className="row" style={{ height: "40vh",  backgroundColor: "#9c3353" }}> </div>
-
-<div className="row pt-5 mx-auto justify-content-center align-items-center" style={{marginTop:"-290px",width:"fit-content"}}>
-        <div className="card pt-5" style={{ height: "fit-content", padding: "40px" }} >
-          <div className="card-body" style={{ height: "fit-content", width: "fit-content", padding: "0" }}>
+      <div
+        className="row pt-5 mx-auto justify-content-center align-items-center"
+        style={{ marginTop: "-290px", width: "fit-content" }}
+      >
+        <div
+          className="card pt-5"
+          style={{ height: "fit-content", padding: "40px" }}
+        >
+          <div
+            className="card-body"
+            style={{
+              height: "fit-content",
+              width: "fit-content",
+              padding: "0",
+            }}
+          >
             <p className="text-center h4">Signup Form</p>
             <hr />
             <Formik
+<<<<<<< HEAD
               initialValues={{ name: "", email: "", password: "", role: "startup" }}
               validationSchema={SignupSchema} // Add the validation schema here
               onSubmit={userSubmit}>
@@ -92,12 +105,30 @@ const Signup = () => {
               {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
 
                 <form onSubmit={handleSubmit} >
+=======
+              initialValues={{
+                name: "",
+                semail: "",
+                password: "",
+                role: "startup",
+              }}
+              // validationSchema={SignupSchema} // Add the validation schema here
+              onSubmit={userSubmit}
+            >
+              {({
+                values,
+                handleSubmit,
+                handleChange,
+                isSubmitting,
+                errors,
+                touched,
+              }) => (
+                <form onSubmit={handleSubmit}>
+>>>>>>> 9f4a793ef98fe001c3f180741679b8067c97a7cc
                   {/* 2 column grid layout with text inputs for the first and last names */}
                   <div className="row form-floating" onSubmit={handleSubmit}>
                     <div className="col">
                       <div className="form-outline mb-4">
-
-
                         <MDBInput
                           label="Name"
                           type="text"
@@ -108,14 +139,9 @@ const Signup = () => {
                         {errors.name && touched.name ? (
                           <div>{errors.name}</div>
                         ) : null}
-
                       </div>
                     </div>
-
                   </div>
-
-
-
 
                   {/* Email input */}
                   <div className="form-outline mb-4">
@@ -126,14 +152,19 @@ const Signup = () => {
                       onChange={handleChange}
                       name="email"
                     />
+<<<<<<< HEAD
                     {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
 
+=======
+                    {errors.semail && touched.semail ? (
+                      <div>{errors.semail}</div>
+                    ) : null}
+>>>>>>> 9f4a793ef98fe001c3f180741679b8067c97a7cc
                   </div>
 
                   {/* Password input */}
                   <div className="form-outline mb-4">
-
                     <MDBInput
                       label="Password"
                       type="password"
@@ -141,26 +172,37 @@ const Signup = () => {
                       onChange={handleChange}
                       name="password"
                     />
-                    {errors.password && touched.password ? <div>{errors.password}</div> : null}
-
-
+                    {errors.password && touched.password ? (
+                      <div>{errors.password}</div>
+                    ) : null}
                   </div>
 
-
-
                   <FormControl className="ps-3 pb-4">
-                    <FormLabel id="demo-radio-buttons-group-label">Role</FormLabel>
+                    <FormLabel id="demo-radio-buttons-group-label">
+                      Role
+                    </FormLabel>
                     <RadioGroup
                       aria-labelledby="demo-radio-buttons-group-label"
                       defaultValue="startup"
-
                       onChange={(e, v) => setSelRole(v)}
                       value={selRole}
                     >
                       <div className="">
-                        <FormControlLabel value="startup" control={<Radio />} label="Startup" />
-                        <FormControlLabel value="investor" control={<Radio />} label="Investor" />
-                        <FormControlLabel value="user" control={<Radio />} label="Common User" />
+                        <FormControlLabel
+                          value="startup"
+                          control={<Radio />}
+                          label="Startup"
+                        />
+                        <FormControlLabel
+                          value="investor"
+                          control={<Radio />}
+                          label="Investor"
+                        />
+                        <FormControlLabel
+                          value="user"
+                          control={<Radio />}
+                          label="Common User"
+                        />
                       </div>
                     </RadioGroup>
                   </FormControl>
@@ -168,48 +210,81 @@ const Signup = () => {
                   {/* Submit button */}
                   {/* <button type="submit" className="btn btn-primary ">Sign up</button> */}
 
-                  <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
-                    {
-                      isSubmitting ?
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        :
-                        'Submit'
-                    }
+                  <button
+                    disabled={isSubmitting}
+                    type="submit"
+                    className="btn btn-block mb-4"
+                    style={{ backgroundColor: "#9c3353", color: "#fffefe" }}
+                  >
+                    {isSubmitting ? (
+                      <span
+                        class="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                    ) : (
+                      "Submit"
+                    )}
                   </button>
-
 
                   {/* Register buttons */}
                   <div className="text-center">
                     <p>or sign up with:</p>
-                    <button type="button" className="btn btn-secondary btn-floating mx-1">
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-floating mx-1"
+                    >
                       <i className="fab fa-facebook-f"></i>
                     </button>
 
-
-                    <button type="button" className="btn btn-secondary btn-floating mx-1" >
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-floating mx-1"
+                    >
                       <i className="fab fa-google"></i>
                     </button>
 
-                    <button type="button" className="btn btn-secondary btn-floating mx-1">
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-floating mx-1"
+                    >
                       <i className="fab fa-twitter"></i>
                     </button>
 
-                    <button type="button" className="btn btn-secondary btn-floating mx-1">
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-floating mx-1"
+                    >
                       <i className="fab fa-github"></i>
                     </button>
                   </div>
                 </form>
               )}
             </Formik>
-          
+          </div>
         </div>
       </div>
+<<<<<<< HEAD
 </div>
 
+=======
+      <div className="col-md-2">
+        <img
+          src="/need.png"
+          style={{ marginTop: "-500px", marginLeft: "330px" }}
+          alt=""
+        />
+      </div>
+      <div className="col-md-2">
+        <img
+          src="/news.png"
+          style={{ marginTop: "-500px", marginLeft: "1000px" }}
+          alt=""
+        />
+      </div>
+>>>>>>> 9f4a793ef98fe001c3f180741679b8067c97a7cc
     </div>
-  )
-}
+  );
+};
 
-export default Signup
-
-
+export default Signup;
