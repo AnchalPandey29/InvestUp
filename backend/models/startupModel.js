@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const SALT = 10;
 
 const startupSchema = new Schema({
+  email: String,
   role: {type:String},
   password: { type: String, required: true },//password
   

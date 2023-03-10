@@ -23,9 +23,10 @@ router.post("/add", (req, res) => {
 });
 
 router.post("/auth", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   Model.findOne({ email: req.body.email })
     .then((result) => {
+      console.log(result);
       if (result) {
         new Model(result).comparePassword(req.body.password, (err, isMatch) => {
           if (err || !isMatch) {

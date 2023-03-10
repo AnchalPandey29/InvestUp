@@ -2,14 +2,17 @@ import { Rating } from "@mui/material";
 import { Formik } from "formik";
 import { MDBInput } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import app_config from "../../config";
 
 const StartupDetails = () => {
   const { id } = useParams();
   const [rating, setRating] = useState(4);
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('startup')));
-
+  const [currentInvestor, setCurrentInvestor] = useState(JSON.parse(sessionStorage.getItem('investor')));
+  const [feedbackList, setFeedbackList] = useState([]);
+  const navigate = useNavigate();;
   // console.log(id);
 
   const [startupData, setStartupData] = useState(null);
@@ -21,6 +24,7 @@ const StartupDetails = () => {
     const res = await fetch("http://localhost:5000/startup/getbyid/" + id);
     const data = await res.json();
     console.log(data);
+    fetchStartupFeedbacks(data.result._id);
     setStartupData(data.result);
     setLoading(false);
   };
@@ -30,6 +34,7 @@ const StartupDetails = () => {
   }, []);
 
   const feedbackSubmit = async (formdata, {setSubmitting}) => {
+    formdata.rating = rating;
     setSubmitting(true);
     const res = await fetch(`http://localhost:5000/feedback/add`, {
       method: "POST",
@@ -122,9 +127,14 @@ const StartupDetails = () => {
             </div>
           </div>
         </div>
+       
+        <center>
+        <button className="btn mt-5" style={{backgroundColor:"#9c3353",color:"white",width:"200px"}} onClick={openChat}>Start Chatting</button>
+        </center>
 
         <hr />
 
+        <button className="btn btn-primary" onClick={openChat}>Start Chatting</button>
 
         <div className="mt-5 p-5">
           <Rating
@@ -153,16 +163,15 @@ const StartupDetails = () => {
                   <MDBInput 
                    label="Write your feedback"
                    type="text"
-                   id="feedback"
                    value={values.content}
                    onChange={handleChange}
-                   name="name"
+                   name="content"
                   />
 
                   </div>
 
                   <div className="col-md-2">
-                   <button className="btn " style={{backgroundColor:"#9c3353",color:"white"}}>Submit</button>
+                   <button className="btn " type="submit" style={{backgroundColor:"#9c3353",color:"white"}}>Submit</button>
                   </div>
 
                 </div>
@@ -176,6 +185,8 @@ const StartupDetails = () => {
           </Formik>
 
         </div>
+
+        {displayFeedbacks()}
 
       </div>
 
