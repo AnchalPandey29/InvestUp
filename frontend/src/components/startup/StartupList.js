@@ -39,7 +39,7 @@ const StartupList = () => {
               <h4>
                 <strong> {startup.name} </strong>
               </h4>
-              <p className="text-muted">{startup.semail}</p>
+              <p className="text-muted">{startup.email}</p>
               <Link
                 type="button"
                 className="btn"

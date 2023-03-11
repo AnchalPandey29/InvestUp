@@ -43,7 +43,6 @@ router.post("/add", (req, res) => {
       console.error("Error authenticating user", err);
       res.status(502).json({status: "failed"});
     });
-
   // .then((result) => {
   //   console.log("User Data Saved");
   //   res.status(201).json({ status: "success", result });

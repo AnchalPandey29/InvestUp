@@ -55,13 +55,14 @@ const StartupDetails = () => {
 
   const displayFeedbacks = () => {
       return feedbackList.map((feedback) => (
-        <div>
-           <Rating
+        <div className="border rounded card m-1 ps-5">
+          
+          <h5 className="pt-2">{feedback.user.name}</h5>
+          <Rating
             value={feedback.rating}
             readOnly
           />
-          <h4>{feedback.user.name}</h4>
-          <h4>{feedback.content}</h4>
+          <p>{feedback.content}</p>
       </div>
       ))
   }
@@ -161,11 +162,16 @@ const StartupDetails = () => {
           </div>
         </div>
 
+        
+        <center>
+        <button className="btn m-5" style={{backgroundColor:"#9c3353",color:"white",width:"fit-content"}} onClick={openChat}>Start Chatting</button>
+        </center>
         <hr />
+        <div style={{backgroundColor:"#f0efef"}}>
+        <h2 className="text-center pt-5">Write your reviews</h2>
 
-        <button className="btn btn-primary" onClick={openChat}>Start Chatting</button>
+        <div className="mt-2 p-5">
 
-        <div className="mt-5 p-5">
           <Rating
             name="Feedback"
             value={rating}
@@ -214,7 +220,7 @@ const StartupDetails = () => {
           </Formik>
 
         </div>
-
+        </div>
         {displayFeedbacks()}
 
       </div>

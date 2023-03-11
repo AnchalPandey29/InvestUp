@@ -27,7 +27,7 @@ const Subscription = () => {
             <li className="pricing-feature"></li>
             <li className="pricing-feature">Latest Bulletins</li>
           </ul>
-          <a className="pricing-action" href='https://buy.stripe.com/test_fZe6rA7s8gum2is5kl'>Choose plan</a>
+          <a className="pricing-action" href='https://buy.stripe.com/test_9AQdU26o4gumcX69AC'>Choose plan</a>
         </div>
         <div className="pricing-item features-item ja-animate pricing__item--featured" data-animation="move-from-bottom" data-delay="item-1" style={{minHeight: '497px'}}>
           <div className="pricing-deco" style={{background: 'linear-gradient(135deg,#2ed60d,#147800)'}}>
@@ -74,7 +74,7 @@ const Subscription = () => {
            <li className="pricing-feature">Campaigns And Drives</li>
             <li className="pricing-feature">Breaking Headlines</li>
           </ul>
-          <a className="pricing-action" href='https://buy.stripe.com/test_fZe6rA7s8gum2is5kl'>Choose plan</a>
+          <a className="pricing-action" href=''>Choose plan</a>
         </div>
       </div>
     </center></section></div>

@@ -142,7 +142,7 @@ function App() {
             <Route element={<InvestorChat />} path="chat/:startupid" />
             <Route element={<InvestorDashboard />} path="dashboard" />
               <Route element={<InvestorList />} path="investorlist" />
-              <Route element={<InvestorDetails />} path="investordetails" />
+              <Route element={<InvestorDetails />} path="investordetails/:id" />
               <Route element={<Registerinvestor />} path="profile" />
             </Route>
 
