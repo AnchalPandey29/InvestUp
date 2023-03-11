@@ -15,7 +15,7 @@ const FaqSection = () => {
                               aria-expanded="false"
                               aria-controls="collapseOne"
                           >
-                              What is my name?
+                            How do startups and investors connect with mentors/experts ?
                           </button>
                       </h2>
                       <div
@@ -26,44 +26,9 @@ const FaqSection = () => {
                           style={{}}
                       >
                           <div className="accordion-body">
-                              <strong>This is the first item's accordion body.</strong> It is shown by
-                              default, until the collapse plugin adds the appropriate classes that we
-                              use to style each element. These classes control the overall appearance,
-                              as well as the showing and hiding via CSS transitions. You can modify
-                              any of this with custom CSS or overriding our default variables. It's
-                              also worth noting that just about any HTML can go within the{" "}
-                              <code>.accordion-body</code>, though the transition does limit overflow.
-                          </div>
-                      </div>
-                  </div>
-                  <div className="accordion-item">
-                      <h2 className="accordion-header" id="headingOne">
-                          <button
-                              className="accordion-button collapsed"
-                              type="button"
-                              data-mdb-toggle="collapse"
-                              data-mdb-target="#basicAccordionCollapseOne"
-                              aria-expanded="false"
-                              aria-controls="collapseOne"
-                          >
-                              What is my name?
-                          </button>
-                      </h2>
-                      <div
-                          id="basicAccordionCollapseOne"
-                          className="accordion-collapse collapse"
-                          aria-labelledby="headingOne"
-                          data-mdb-parent="#basicAccordion"
-                          style={{}}
-                      >
-                          <div className="accordion-body">
-                              <strong>This is the first item's accordion body.</strong> It is shown by
-                              default, until the collapse plugin adds the appropriate classes that we
-                              use to style each element. These classes control the overall appearance,
-                              as well as the showing and hiding via CSS transitions. You can modify
-                              any of this with custom CSS or overriding our default variables. It's
-                              also worth noting that just about any HTML can go within the{" "}
-                              <code>.accordion-body</code>, though the transition does limit overflow.
+                          A startup/investor is allowed to connect with the mentors and experts . This is done by simply clicking on the “Chat” button on the mentor’s profile.
+                           Once you accept a connection request, the startup/ investor can reach out to you through a simple chat interface. 
+                           You can know more about the mentors which has connected with you by clicking on their profile and reading up about them.
                           </div>
                       </div>
                   </div>
@@ -77,7 +42,7 @@ const FaqSection = () => {
                               aria-expanded="false"
                               aria-controls="collapseTwo"
                           >
-                              How to apply for startups?
+                           My entity does not have a PAN . Would I be allowed to register it as a 'Startup' ?
                           </button>
                       </h2>
                       <div
@@ -88,49 +53,94 @@ const FaqSection = () => {
                           style={{}}
                       >
                           <div className="accordion-body">
-                              <strong>This is the second item's accordion body.</strong> It is hidden
-                              by default, until the collapse plugin adds the appropriate classes that
-                              we use to style each element. These classes control the overall
-                              appearance, as well as the showing and hiding via CSS transitions. You
-                              can modify any of this with custom CSS or overriding our default
-                              variables. It's also worth noting that just about any HTML can go within
-                              the <code>.accordion-body</code>, though the transition does limit
-                              overflow.
+                             Yes , an  entity without a PAN can be registered as a startup on our website .However it is advised that a valid 
+                             PAN of the entity is provided at the time of registration .
                           </div>
                       </div>
                   </div>
                   <div className="accordion-item">
-                      <h2 className="accordion-header" id="headingThree">
+                      <h2 className="accordion-header" id="headingTwo">
                           <button
                               className="accordion-button collapsed"
                               type="button"
                               data-mdb-toggle="collapse"
-                              data-mdb-target="#basicAccordionCollapseThree"
+                              data-mdb-target="#basicAccordionCollapseTwo"
                               aria-expanded="false"
-                              aria-controls="collapseThree"
+                              aria-controls="collapseTwo"
                           >
-                              What are the eligibility requiremets for investor?
+                             What is a DPIIT-recognized startup?
                           </button>
                       </h2>
                       <div
-                          id="basicAccordionCollapseThree"
+                          id="basicAccordionCollapseTwo"
                           className="accordion-collapse collapse"
-                          aria-labelledby="headingThree"
+                          aria-labelledby="headingTwo"
                           data-mdb-parent="#basicAccordion"
                           style={{}}
                       >
                           <div className="accordion-body">
-                              <strong>This is the third item's accordion body.</strong> It is hidden
-                              by default, until the collapse plugin adds the appropriate classes that
-                              we use to style each element. These classes control the overall
-                              appearance, as well as the showing and hiding via CSS transitions. You
-                              can modify any of this with custom CSS or overriding our default
-                              variables. It's also worth noting that just about any HTML can go within
-                              the <code>.accordion-body</code>, though the transition does limit
-                              overflow.
+                          An entity shall be considered a “Startup” –
+                         If it’s incorporated as either Private Limited Company or Registered Partnership Firm or Limited Liability Partnership. A sole proprietorship or a public limited company is not eligible as startup
+                         If it is up to 10 years from the date of its incorporation/ registration
+                         If its turnover for any of the financial years has not exceeded INR 100 crore
+                         If it is working towards innovation, development or improvement of products or processes or services, or if it is a scalable business model with a high potential of employment generation or wealth creation
+                         Should not have been formed by splitting up or reconstruction of a business already in existence.
                           </div>
                       </div>
                   </div>
+                  <div className="accordion-item">
+                      <h2 className="accordion-header" id="headingFour">
+                          <button
+                              className="accordion-button collapsed"
+                              type="button"
+                              data-mdb-toggle="collapse"
+                              data-mdb-target="#basicAccordionCollapseFour"
+                              aria-expanded="false"
+                              aria-controls="collapseFour"
+                          >
+                              What are the parameters for evaluation of startup applicants?
+                          </button>
+                      </h2>
+                      <div
+                          id="basicAccordionCollapseFour"
+                          className="accordion-collapse collapse"
+                          aria-labelledby="headingFour"
+                          data-mdb-parent="#basicAccordion"
+                          style={{}}
+                      >
+                          <div className="accordion-body">
+                              There are some major criterias such as Is there a need for this idea? , Feasibility , Its Potential Impact , team
+                              Fund Utilization Plan , Presentation of Idea and some additional parameters . 
+                          </div>
+                      </div>
+                  </div>
+                  <div className="accordion-item">
+                      <h2 className="accordion-header" id="headingFive">
+                          <button
+                              className="accordion-button collapsed"
+                              type="button"
+                              data-mdb-toggle="collapse"
+                              data-mdb-target="#basicAccordionCollapseFive"
+                              aria-expanded="false"
+                              aria-controls="collapseFive"
+                          >
+                           How much amount can a startup receive under the funding?   
+                          </button>
+                      </h2>
+                      <div
+                          id="basicAccordionCollapseFive"
+                          className="accordion-collapse collapse"
+                          aria-labelledby="headingFive"
+                          data-mdb-parent="#basicAccordion"
+                          style={{}}
+                      >
+                          <div className="accordion-body">
+                          Up to Rs. 5 Lakhs as grant for validation of Proof of Concept, or prototype development, or product trials. The grant shall be disbursed in milestone-based installments. These milestones can be related to development of prototype, product testing, building a product ready for market launch, etc.
+Up to Rs. 10 Lakhs of investment for market entry, commercialization, or scaling up through convertible debentures or debt or debt-linked instruments.
+                          </div>
+                      </div>
+                  </div>
+                  
               </div>
           </div>
 

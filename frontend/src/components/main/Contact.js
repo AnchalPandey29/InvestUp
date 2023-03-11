@@ -59,7 +59,7 @@ const Contact = () => (
 
             {/* Message input */}
             <div className="form-outline mb-4">
-              <MDBInput label='Message' type="email" placeholder='You can type any suggestions or queries you might have.Let us help you!' value={values.email} onChange={handleChange} name="email" />
+              <MDBInput label='Message' type="text" placeholder='You can type any suggestions or queries you might have.Let us help you!' value={values.message} onChange={handleChange} name="message" />
 
 
             </div>

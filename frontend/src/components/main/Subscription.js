@@ -21,9 +21,11 @@ const Subscription = () => {
             <h3 className="pricing-title"><strong>Basic</strong></h3>
           </div>
           <ul className="pricing-feature-list">
-            <li className="pricing-feature">1 GB of space</li>
-            <li className="pricing-feature">Support at $25/hour</li>
-            <li className="pricing-feature">Limited cloud access</li>
+            <li className="pricing-feature">Customer Support</li>
+            <li className="pricing-feature"></li>
+            <li className="pricing-feature">Insightful Blogs</li>
+            <li className="pricing-feature"></li>
+            <li className="pricing-feature">Latest Bulletins</li>
           </ul>
           <a className="pricing-action" href='https://buy.stripe.com/test_fZe6rA7s8gum2is5kl'>Choose plan</a>
         </div>
@@ -41,9 +43,14 @@ const Subscription = () => {
             <h3 className="pricing-title"><strong>Standard</strong></h3>
           </div>
           <ul className="pricing-feature-list">
-            <li className="pricing-feature">5 GB of space</li>
-            <li className="pricing-feature">Support at $5/hour</li>
-            <li className="pricing-feature">Full cloud access</li>
+            
+            <li className="pricing-feature">Chatting</li>
+            <li className="pricing-feature"></li>
+            <li className="pricing-feature">Insightful Blogs</li>
+            <li className="pricing-feature"></li>
+            <li className="pricing-feature">Campaigns And Drives</li>
+            <li className="pricing-feature"></li>
+            <li className="pricing-feature">Breaking Headlines</li>
           </ul>
           <a className="pricing-action" href='https://buy.stripe.com/test_fZe6rA7s8gum2is5kl'>Choose plan</a>
         </div>
@@ -61,9 +68,11 @@ const Subscription = () => {
             <h3 className="pricing-title"><strong>Premium</strong></h3>
           </div>
           <ul className="pricing-feature-list">
-            <li className="pricing-feature">10 GB of space</li>
-            <li className="pricing-feature">Support at $5/hour</li>
-            <li className="pricing-feature">Full cloud access</li>
+          <li className="pricing-feature">Expert Advisory</li>
+            <li className="pricing-feature">Chatting</li>
+            <li className="pricing-feature">Insightful Blogs</li>
+           <li className="pricing-feature">Campaigns And Drives</li>
+            <li className="pricing-feature">Breaking Headlines</li>
           </ul>
           <a className="pricing-action" href='https://buy.stripe.com/test_fZe6rA7s8gum2is5kl'>Choose plan</a>
         </div>
