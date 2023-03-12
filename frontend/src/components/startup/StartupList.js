@@ -24,11 +24,11 @@ const StartupList = () => {
 
   const displayList = () => {
     return startupList.map((startup) => (
-      <div className="card bg-warning mb-3">
+      <div className="card mb-3">
         <div className="row gx-5">
           <div className="col-md-4">
             <img
-              className="img-fluid"
+              className="img-fluid p-2"
               src={startup.startupimage? (url + "/" + startup.startupimage): placeholder}
               alt=""
             />
@@ -57,11 +57,11 @@ const StartupList = () => {
 
   return (
     <div>
-      <header>
-        <h1>Startup List</h1>
-      </header>
-      <div className="row">
-        <div className="col-3"></div>
+      <div style={{backgroundColor:"#9c3353",height:"30vh",marginBottom:"-80px",display:"flex",justifyContent:"center"}}>  
+      <h1 style={{color:"white",paddingTop:"50px"}}>Startup List</h1>
+        </div>
+
+      <div className="row justify-content-center">
         <div className="col-9">{displayList()}</div>
       </div>
     </div>

@@ -53,7 +53,7 @@ const Header = () => {
                 FAQs
               </NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink className="nav-link hover-overlay " to="/main/blogbrowser">
                 Blog
               </NavLink>
@@ -62,7 +62,7 @@ const Header = () => {
               <NavLink className="nav-link hover-overlay " to="/main/newsbrowser">
                 News
               </NavLink>
-            </li>
+            </li> */}
           </ul>
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item me-2">

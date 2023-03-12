@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import app_config from '../../config'
+import Header from '../startup/Header'
+
 
 const CampaignBrowser = () => {
 
@@ -24,6 +26,8 @@ const CampaignBrowser = () => {
    
     return (
        <div>
+
+    <Header/>
 
         <div className='row align-items-center justify-content-center ' style={{ height: "40vh", backgroundColor: "#9c3353" }}>
           <div className="col-md-2 mt-4">

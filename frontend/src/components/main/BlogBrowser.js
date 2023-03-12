@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import app_config from '../../config'
+import Header from '../startup/Header'
+
 
 const BlogBrowse = () => {
     const [blogList, setBlogList] = useState([]);
@@ -23,6 +25,8 @@ const BlogBrowse = () => {
    
   return (
     <div>
+            <Header/>
+
           <div className='row align-items-center justify-content-center ' style={{ height: "40vh", backgroundColor: "#9c3353" }}>
               <div className="col-md-2 mt-4">
                   <h1 className='text-center' style={{ color: "white" }}>Blog</h1>
@@ -32,7 +36,7 @@ const BlogBrowse = () => {
               </div>
           </div>
 
-          <div className="row mt-3" style={{ justifyContent: "center" }}>
+          <div className="row mt-3  " style={{ justifyContent: "center",alignItems:"center" }}>
               <div className='col-6 d-flex align-items-center ' style={{ height: "40px" }}>
                   <label style={{ color: "black" }} className="form-label m-2" htmlFor="category">Sort</label>&nbsp;
                   <select className="form-control" name="category" id="category" style={{ width: "70%" }} >
@@ -61,16 +65,16 @@ const BlogBrowse = () => {
    
 
       <div>
-              <div>
+              <div >
 
 
-                      <div className='row p-5'>
+                      <div className='row p-5 justify-content-center'>
           {
                       blogList.map((blog) => (
-                          <div className='col-md-3 card m-2'>
+                          <div className='col-md-3 card m-3'>
                               <div className='row-md-6'>
                               
-                                  <img className='img-fluid' src={url+'/'+blog.image} alt='' />
+                                  <img className='img-fluid' src={url+'/'+blog.image} alt='' style={{maxHeight:"260px"}}/>
                               </div>
 
                               <div className='row-md-6 p-4'>

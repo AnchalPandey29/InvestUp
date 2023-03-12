@@ -145,8 +145,7 @@ function App() {
                 <Route element={<NewsBrowser />} path="newsbrowser" />
                 <Route element={<BlogBrowser />} path="blogbrowser" />
                 <Route element={<CampaignBrowser />} path="campaignbrowser" />
-                <Route element={<StartupList />} path="startuplist" />
-                <Route element={<StartupDetails />} path="startupdetails/:id" />
+              
               </Route>
 
               <Route element={
@@ -154,6 +153,8 @@ function App() {
                   <Startup />
                 </StartupAuth>
               } path="startup">
+                  <Route element={<StartupList />} path="startuplist" />
+                <Route element={<StartupDetails />} path="startupdetails/:id" />
                 <Route element={<StartupDashboard />} path="dashboard" />
                 <Route element={<Register />} path="register" />
                 {/* <Route element={<StartupDashboardContainer />} path="dashboard" /> */}
