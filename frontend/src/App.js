@@ -65,6 +65,8 @@ import InvestorChat from "./components/investor/Chat";
 import Checkout from "./components/startup/Checkout";
 import LoginAuth from "./auth/LoginAuth";
 import StartupProvider from "./context/StartupProvider";
+import StartupProfile from "./components/startup/StartupProfile";
+import StartupAuth from "./auth/StartupAuth";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -147,11 +149,16 @@ function App() {
                 <Route element={<StartupDetails />} path="startupdetails/:id" />
               </Route>
 
-              <Route element={<Startup />} path="startup">
-                <Route element={<StartupDashboard />} path="dashboard"/>
+              <Route element={
+                <StartupAuth>
+                  <Startup />
+                </StartupAuth>
+              } path="startup">
+                <Route element={<StartupDashboard />} path="dashboard" />
                 <Route element={<Register />} path="register" />
                 {/* <Route element={<StartupDashboardContainer />} path="dashboard" /> */}
                 <Route element={<StartupChat />} path="chat" />
+                <Route element={<StartupProfile />} path="startupprofile" />
                 <Route element={<Register />} path="profile" />
                 <Route element={<Checkout />} path="checkout/:sessionid" />
               </Route>

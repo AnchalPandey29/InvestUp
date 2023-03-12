@@ -4,12 +4,12 @@ import './Header.css';
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark  text-white">
+    <nav className="navbar navbar-expand-md navbar-dark  text-white">
       {/* Container wrapper */}
       <div className="container">
         {/* Toggle button */}
         <button
-          className="navbar-toggler "
+          className="navbar-toggler"
           type="button"
           data-mdb-toggle="collapse"
           data-mdb-target="#navbarSupportedContent"

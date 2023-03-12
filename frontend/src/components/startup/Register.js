@@ -76,7 +76,7 @@ const Register = () => {
       const data = await res.json();
       console.log(data.result);
       setCurrentUser(data.result);
-      sessionStorage.setItem('user', JSON.stringify(data.result))
+      sessionStorage.setItem('user', JSON.stringify(data.result));
       Swal.fire({
         icon: "success",
         title: "Success",
@@ -199,6 +199,9 @@ const Register = () => {
                         <div class="file-upload-wrapper">
                           <div class="image-body">
                             <input type="file" label='Startup Image' onChange={uploadImage} />
+                            {selimage === '' && currentUser.startupimage ==='' ? (
+                          <div>{'Image Required'}</div>
+                        ) : null}
                           </div>
                         </div>
                       </div>

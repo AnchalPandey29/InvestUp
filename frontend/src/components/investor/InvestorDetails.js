@@ -32,6 +32,12 @@ const InvestorDetails = () => {
       
   //Feedback 
   const feedbackSubmit = async (formdata, {setSubmitting}) => {
+    if(!currentUser){
+      // error alert
+      console.log('login needed');
+      return;
+    }
+    formdata.user = currentUser._id;
     setSubmitting(true);
     const res = await fetch(`http://localhost:5000/feedback/add`, {
       method: "POST",
@@ -41,6 +47,7 @@ const InvestorDetails = () => {
 
     console.log(res.status)
     setSubmitting(false);
+    
   }
     
   const displayDetails = () => {
@@ -139,7 +146,6 @@ const InvestorDetails = () => {
           <Formik
             initialValues={{
               content: "",
-              user: currentUser._id,
               startup: investorData._id
             }}
             onSubmit={feedbackSubmit}>

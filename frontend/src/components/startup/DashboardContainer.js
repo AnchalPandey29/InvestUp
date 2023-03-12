@@ -18,6 +18,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { NavLink } from 'react-router-dom';
+import { useStartupContext } from '../../context/StartupProvider';
 
 const drawerWidth = 230;
 
@@ -71,6 +73,8 @@ export default function StartupDashboardContainer({children}) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  const {logout} = useStartupContext();
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -95,17 +99,29 @@ export default function StartupDashboardContainer({children}) {
           </IconButton>
           <Typography variant="h6" noWrap component="div">
 
-          <a className="navbar-brand mt-2 mt-lg-0" href="/main/home">
-            <img
-              style={{marginLeft:"30px"}}
-              src="\logo.png"
-              height={55}
-              alt="InvestUp logo"
-              loading="lazy"
-            />
 
-          </a>
+            <a className="navbar-brand mt-2 mt-lg-0" href="/main/home">
+              <img
+                style={{ marginLeft: "30px" }}
+                src="\logo.png"
+                height={55}
+                alt="InvestUp logo"
+                loading="lazy"
+              />
+
+            </a>
+
+
+            
+        
+
             </Typography>
+            <Box sx={{ml: 'auto'}}>
+
+            <button onClick={logout} type="submit" class="btn px-3 me-2" >
+              Logout
+            </button>
+            </Box>
         </Toolbar>
       </AppBar>
       <Drawer

@@ -7,7 +7,9 @@ const InvestorChat = () => {
 
     const url = app_config.apiurl;
     const [socket, setSocket] = useState(io(url, {autoConnect: false}));
-    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('investor')));    
+    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('investor')));
+    
+
 
     useEffect(() => {
       socket.connect();
@@ -23,7 +25,7 @@ const InvestorChat = () => {
 
   const sendMessage = () => {
     if (!inputText.trim()) return
-    const temp = { text: inputText, sent: true }
+    const temp = { text: inputText, sent: true, date: new Date() }
 
     // sending msg to backend
     socket.emit('sendmsg', temp);
@@ -57,6 +59,7 @@ const InvestorChat = () => {
             {messageList.map((obj) => (
               <div className={obj.sent ? "msg-sent" : "msg-rec"}>
                 <p className="m-0">{obj.text}</p>
+                <p className="m-0 float-end" style={{fontSize: 10}}>{new Date(obj.date).toLocaleDateString()} {new Date(obj.date).toLocaleTimeString()}</p>
               </div>
             ))}
           </div>
