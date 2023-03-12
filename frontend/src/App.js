@@ -60,6 +60,7 @@ import Dashboard from "./components/startup/Dashboard";
 import StartupDashboard from "./components/startup/StartupDashboard";
 import InvestorDashboard from "./components/investor/InvestorDashboard";
 import InvestorChat from "./components/investor/Chat";
+import Checkout from "./components/startup/Checkout";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -132,6 +133,7 @@ function App() {
             <Route element={<StartupDashboard />} path="dashboard"/>
             <Route element={<StartupChat />} path="chat" />
             <Route element={<Register />} path="profile" />
+            <Route element={<Checkout />} path="checkout/:sessionid" />
             </Route>
 
             <Route element={<Investor />} path="investor">
