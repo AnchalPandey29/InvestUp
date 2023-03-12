@@ -173,7 +173,7 @@ export default function PersistentDrawerLeft() {
             <p>
             <i class="fas fa-inbox  me-4 "></i>
             &nbsp;
-             Inboxes</p>
+             Chating</p>
         </div>
         </a>
 

@@ -24,12 +24,22 @@ const BlogDetail = () => {
 
   const displayDetails = () => {
     if (!loading && blogData) {
-      return<div className='card m-5'>
-        <h1>{blogData.heading}</h1>
-        {blogData.image}
+      return<>
+       <div style={{backgroundColor:"#9c3353",height:"40vh",marginBottom:"-300px"}}>    </div>
+
+      <div className='card m-5 p-5'>
+        <h1 className='mb-5'>{blogData.heading}</h1>
+        <img
+                        
+                        src={url + '/' + blogData.image}
+                        className="img-fluid mx-auto mb-4"
+                        style={{ display: "block" ,maxHeight: "400px"}}
+                      />
+         
         <p>{blogData.content}</p>
 
       </div>
+      </>
     }
     else{
       return <div className='text-center'><img src="https://cdn.dribbble.com/users/3533804/screenshots/6666006/all-anim-gif.gif" style={{width:"500px"}} alt="" />

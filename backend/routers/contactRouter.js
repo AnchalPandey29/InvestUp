@@ -5,7 +5,7 @@ const Model = require("../models/contactModel");
 
 router.get("/", (req, res) => {
   console.log("Request at user index");
-  res.status(299).send("UserRouter Working Perfectly!!");
+  res.status(299).send("ContactRouter Working Perfectly!!");
 });
 
 router.post("/add", (req, res) => {

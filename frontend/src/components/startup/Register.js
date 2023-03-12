@@ -30,15 +30,14 @@ const Schema1 = Yup.object().shape({
   //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 });
 
-const Schema2=Yup.object().shape({
-  ownername: Yup.string().min(2, "Too Short!").required("Name is required"),
-  identityno: Yup.string().required("ID No. is required"),
-  owneremail:Yup.string().required("Email is required"),
-  productname:Yup.string().required(" Product Name is required"),
-  productdescription:Yup.string().required("Description is required"),
+// const Schema2=Yup.object().shape({
+//   ownername: Yup.string().min(2, "Too Short!").required("Name is required"),
+//   identityno: Yup.string().required("ID No. is required"),
+//   owneremail:Yup.string().required("Email is required"),
+//   productname:Yup.string().required(" Product Name is required"),
+//   productdescription:Yup.string().required("Description is required"),
+// });
 
-
-});
 const Schema3=Yup.object().shape({
   email:Yup.string().required("Email is required"),
   tel:Yup.string().max(10)
@@ -115,10 +114,10 @@ const Register = () => {
   
 
   return (
+<>
+<div style={{backgroundColor:"#9c3353",height:"40vh",marginBottom:"-300px"}}>    </div>
+
     <div className="card m-5 mx-auto p-5" style={{ height: "fit-content", width: "fit-content" }}>
-
-
-
 
       {/* <!-- Tabs navs --> */}
       <ul className="nav nav-tabs nav-justified mb-5" id="ex3" role="tablist" style={{ width: "900px" }}>
@@ -296,7 +295,7 @@ const Register = () => {
             <div className="tab-pane fade show active" id="v-pills-Owner And Product Details" role="tabpanel" aria-labelledby="v-pills-Owner And Product Details-tab" >
               <Formik
                 initialValues={currentUser}
-                validationSchema={Schema2} 
+                // validationSchema={Schema2} 
                 onSubmit={updateUser}
               >
                 {({ values, handleSubmit, handleChange, isSubmitting,errors,touched}) => (
@@ -320,11 +319,10 @@ const Register = () => {
                       {errors.ownername && touched.ownername ? (
                           <div>{errors.ownername}</div>
                         ) : null}
+                        
                       <MDBFile label='Owner Avatar'type="file" id='owneravatar' name="owneravatar" value={values.owneravatar} onChange={uploadImage} />
                             
-                         {errors.owneravatar && touched.owneravatar? (
-                          <div>{errors.owneravatar}</div>
-                        ) : null}
+                         
                        </div>
                       </div>
                       <div>
@@ -361,8 +359,8 @@ const Register = () => {
                         <div className="form-outline mb-4">
                           <MDBInput label='Email ' type="email" id="owneremail" value={values.owneremail} onChange={handleChange} name="email" />
                         </div>
-                        {errors.email && touched.email ? (
-                          <div>{errors.email}</div>
+                        {errors.owneremail && touched.owneremail ? (
+                          <div>{errors.owneremail}</div>
                         ) : null}
                       </div>
                       <div className="form-outline mb-4">
@@ -646,7 +644,7 @@ const Register = () => {
       </div>
 
     </div>
-
+</>
   )
 };
 

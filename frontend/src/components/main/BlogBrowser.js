@@ -70,17 +70,17 @@ const BlogBrowse = () => {
                           <div className='col-md-3 card m-2'>
                               <div className='row-md-6'>
                               
-                                  <img src={url+'/'+blog.image} alt='' />
+                                  <img className='img-fluid' src={url+'/'+blog.image} alt='' />
                               </div>
 
-                              <div className='row-md-6'>
+                              <div className='row-md-6 p-4'>
                                   <h4>{blog.heading}</h4>
-                                  <p>{blog.content}</p>
+                                  <p style={{overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>{blog.content}</p>
                                   <p>{blog.date}</p>
                                   <Link
                                      to={"/main/blogdetails/"+blog._id}
                                       type='button'
-                                      className='btn'
+                                      className='btn mb-2'
                                       style={{ backgroundColor: '#9c3353', color: 'white' }}
                                   >
                                       Read more
