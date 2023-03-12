@@ -66,7 +66,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft() {
+export default function StartupDashboardContainer({children}) {
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -245,24 +246,10 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main  open={open}>
         <DrawerHeader />
-       
-        <div className='row' style={{backgroundColor:"#9c3353",height:"30vh",alignItems:"center"}}>
-          <h2 className='text-center' style={{color:"white"}}>Plant the seed of succes and watch your business grow with <strong style={{color:"yellow"}}>InvestUp</strong>
-          <br />
-          Invest in innovation with confidence!</h2>
-          </div>
-         
-         <div className="row justify-content-center">
-         <img  src="/cute.gif" alt="" style={{width:"700px"}}/>
-         </div>
-       
-        <Typography paragraph>
-          {/* para  */}
-        </Typography>
-        <Typography paragraph>
-          {/* para  */}
-        </Typography>
+        {children}
       </Main>
     </Box>
   );
 }
+
+

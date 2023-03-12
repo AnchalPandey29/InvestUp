@@ -1,14 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Footer from "../main/Footer";
-import Header from "../main/Header";
-
+import DashboardContainer from "./DashboardContainer";
+import Header from "./Header";
 
 const Startup = () => {
   return (
     <div className="module">
-      <Outlet />
-     
+      <DashboardContainer>
+        <Outlet />
+      </DashboardContainer>
     </div>
   );
 };

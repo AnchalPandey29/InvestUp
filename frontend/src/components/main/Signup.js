@@ -11,13 +11,28 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
+import app_config from "../../config";
 
 const Signup = () => {
   //signup schema validation
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
-
-    email: Yup.string().email("Invalid email").required("Email is required"),
+    email: Yup.string()
+      .email("Invalid email")
+      .required("Email is required")
+      .test("email", "Email already exists", async (value, obj) => {
+        const response = await fetch(app_config.apiurl + "/startup/checkemail/" + value);
+        if (response.status === 200) {
+          console.log("email found");
+          return false;
+        } else if (response.status === 404) {
+          // console.log("email not found");
+          return true;
+        } else if (response.status === 402) {
+          console.log("email not found");
+          return true;
+        }
+      }),
     password: Yup.string()
       .min(8, "Password must be at least 8 characters")
       .required("Password is required"),
@@ -71,165 +86,182 @@ const Signup = () => {
 
   return (
     <div>
-    <div style={{ height: "90vh" }}>
-      <div
-        className="row"
-        style={{ height: "40vh", backgroundColor: "#9c3353" }}
-      >
-        {" "}
-      </div>
-
-      <div
-        className="row pt-5 mx-auto justify-content-center align-items-center"
-        style={{ marginTop: "-290px", width: "fit-content" }}
-      >
+      <div style={{ height: "90vh" }}>
         <div
-          className="card pt-5"
-          style={{ height: "fit-content", padding: "40px" }}
+          className="row"
+          style={{ height: "40vh", backgroundColor: "#9c3353" }}
+        >
+          {" "}
+        </div>
+
+        <div
+          className="row pt-5 mx-auto justify-content-center align-items-center"
+          style={{ marginTop: "-290px", width: "fit-content" }}
         >
           <div
-            className="card-body"
-            style={{
-              height: "fit-content",
-              width: "fit-content",
-              padding: "0",
-            }}
+            className="card pt-5"
+            style={{ height: "fit-content", padding: "40px" }}
           >
-            <p className="text-center h4">Signup Form</p>
-            <hr />
-            <Formik
-              initialValues={{ name: "", email: "", password: "", role: "startup" }}
-              validationSchema={SignupSchema} // Add the validation schema here
-              onSubmit={userSubmit}>
-
-              {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
-
-                <form onSubmit={handleSubmit} >
-                  {/* 2 column grid layout with text inputs for the first and last names */}
-                  <div className="row form-floating" onSubmit={handleSubmit}>
-                    <div className="col">
-                      <div className="form-outline mb-4">
-                        <MDBInput
-                          label="Name"
-                          type="text"
-                          value={values.name}
-                          onChange={handleChange}
-                          name="name"
-                        />
-                        {errors.name && touched.name ? (
-                          <div>{errors.name}</div>
-                        ) : null}
+            <div
+              className="card-body"
+              style={{
+                height: "fit-content",
+                width: "fit-content",
+                padding: "0",
+              }}
+            >
+              <p className="text-center h4">Signup Form</p>
+              <hr />
+              <Formik
+                initialValues={{
+                  name: "",
+                  email: "",
+                  password: "",
+                  role: "startup",
+                }}
+                validationSchema={SignupSchema} // Add the validation schema here
+                onSubmit={userSubmit}
+              >
+                {({
+                  values,
+                  handleSubmit,
+                  handleChange,
+                  isSubmitting,
+                  errors,
+                  touched,
+                }) => (
+                  <form onSubmit={handleSubmit}>
+                    {/* 2 column grid layout with text inputs for the first and last names */}
+                    <div className="row form-floating" onSubmit={handleSubmit}>
+                      <div className="col">
+                        <div className="form-outline mb-4">
+                          <MDBInput
+                            label="Name"
+                            type="text"
+                            value={values.name}
+                            onChange={handleChange}
+                            name="name"
+                          />
+                          {errors.name && touched.name ? (
+                            <div>{errors.name}</div>
+                          ) : null}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Email input */}
-                  <div className="form-outline mb-4">
-                    <MDBInput
-                      label="Email"
-                      type="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      name="email"
-                    />
-                    {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                    {/* Email input */}
+                    <div className="form-outline mb-4">
+                      <MDBInput
+                        label="Email"
+                        type="email"
+                        value={values.email}
+                        onChange={handleChange}
+                        name="email"
+                      />
+                      {errors.email && touched.email ? (
+                        <div>{errors.email}</div>
+                      ) : null}
+                    </div>
 
+                    {/* Password input */}
+                    <div className="form-outline mb-4">
+                      <MDBInput
+                        label="Password"
+                        type="password"
+                        value={values.password}
+                        onChange={handleChange}
+                        name="password"
+                      />
+                      {errors.password && touched.password ? (
+                        <div>{errors.password}</div>
+                      ) : null}
+                    </div>
+                    <div>
+                      <FormControl className="ps-3 pb-4">
+                        <FormLabel id="demo-radio-buttons-group-label">
+                          Role
+                        </FormLabel>
+                        <RadioGroup
+                          aria-labelledby="demo-radio-buttons-group-label"
+                          defaultValue="startup"
+                          onChange={(e, v) => setSelRole(v)}
+                          value={selRole}
+                        >
+                          <div className="">
+                            <FormControlLabel
+                              value="startup"
+                              control={<Radio />}
+                              label="Startup"
+                            />
+                            <FormControlLabel
+                              value="investor"
+                              control={<Radio />}
+                              label="Investor"
+                            />
+                            <FormControlLabel
+                              value="user"
+                              control={<Radio />}
+                              label="Common User"
+                            />
+                          </div>
+                        </RadioGroup>
+                      </FormControl>
+                    </div>
 
-               
-                  </div>
+                    {/* Submit button */}
+                    {/* <button type="submit" className="btn btn-primary ">Sign up</button> */}
 
-                  {/* Password input */}
-                  <div className="form-outline mb-4">
-                    <MDBInput
-                      label="Password"
-                      type="password"
-                      value={values.password}
-                      onChange={handleChange}
-                      name="password"
-                    />
-                    {errors.password && touched.password ? (
-                      <div>{errors.password}</div>
-                    ) : null}
-                  </div>
-                  <div>
-                  <FormControl className="ps-3 pb-4">
-                    <FormLabel id="demo-radio-buttons-group-label">
-                      Role
-                    </FormLabel>
-                    <RadioGroup
-                      aria-labelledby="demo-radio-buttons-group-label"
-                      defaultValue="startup"
-                      onChange={(e, v) => setSelRole(v)}
-                      value={selRole}
-                    >
-                      <div className="">
-                        <FormControlLabel
-                          value="startup"
-                          control={<Radio />}
-                          label="Startup"
-                        />
-                        <FormControlLabel
-                          value="investor"
-                          control={<Radio />}
-                          label="Investor"
-                        />
-                        <FormControlLabel
-                          value="user"
-                          control={<Radio />}
-                          label="Common User"
-                        />
-                      </div>
-                    </RadioGroup>
-                  </FormControl>
-                  </div>
+                    <div>
+                      <button
+                        className="btn"
+                        type="submit"
+                        style={{
+                          backgroundColor: "#9c3353",
+                          color: "#fffefe",
+                          width: "100%",
+                        }}
+                      >
+                        Submit
+                      </button>
+                    </div>
+                    {/* Register buttons */}
+                    <div className="text-center">
+                      <p>or sign up with:</p>
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-floating mx-1"
+                      >
+                        <i className="fab fa-facebook-f"></i>
+                      </button>
 
-                  {/* Submit button */}
-                  {/* <button type="submit" className="btn btn-primary ">Sign up</button> */}
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-floating mx-1"
+                      >
+                        <i className="fab fa-google"></i>
+                      </button>
 
-                  <div>
-                  <button className="btn" type="submit" style={{ backgroundColor: "#9c3353", color: "#fffefe",width:"100%"}}
->
-                    Submit
-                  </button>
-                  </div>
-                  {/* Register buttons */}
-                  <div className="text-center">
-                    <p>or sign up with:</p>
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-floating mx-1"
-                    >
-                      <i className="fab fa-facebook-f"></i>
-                    </button>
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-floating mx-1"
+                      >
+                        <i className="fab fa-twitter"></i>
+                      </button>
 
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-floating mx-1"
-                    >
-                      <i className="fab fa-google"></i>
-                    </button>
-
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-floating mx-1"
-                    >
-                      <i className="fab fa-twitter"></i>
-                    </button>
-
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-floating mx-1"
-                    >
-                      <i className="fab fa-github"></i>
-                    </button>
-                  </div>
-                </form>
-              )}
-            </Formik>
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-floating mx-1"
+                      >
+                        <i className="fab fa-github"></i>
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </Formik>
+            </div>
           </div>
         </div>
       </div>
-</div>
 
       {/* <div className="col-md-2">
         <img

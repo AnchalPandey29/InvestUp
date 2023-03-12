@@ -4,8 +4,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
+import { useStartupContext } from "../../context/StartupProvider";
 
 const Signin = () => {
+
+  const { setSloggedIn } = useStartupContext();
+
   // signin schema validation
   const SigninSchema = Yup.object().shape({
    
@@ -47,8 +51,10 @@ const Signin = () => {
       const data = await res.json();
       if(data.result.role==='startup'){
         console.log(data);
+        setSloggedIn(true);
         sessionStorage.setItem('startup', JSON.stringify(data.result));
         navigate('/startup/dashboard');
+
       }
       else if (data.result.role==='investor'){
         console.log(data);
