@@ -42,6 +42,8 @@ import ManageNews from "./components/admin/ManageNews";
 import ManageBlog from "./components/admin/ManageBlog";
 import ManageStartup from "./components/admin/ManageStartup";
 import ManageInvestor from "./components/admin/ManageInvestor";
+import ManageContact from "./components/admin/ManageContact";
+
 import Register from "./components/startup/Register";
 import NewsDetail from "./components/main/NewsDetail";
 import CampaignDetail from "./components/main/CampaignDetail";
@@ -95,6 +97,8 @@ function App() {
               <Route element={<ManageBlog />} path="manageblog" />
               <Route element={<ManageStartup />} path="managestartup" />
               <Route element={<ManageInvestor />} path="manageinvestor" />
+              <Route element={<ManageContact />} path="managecontact" />
+
             </Route>
 
             <Route element={<Main />} path="main">
@@ -140,7 +144,7 @@ function App() {
             <Route element={<InvestorChat />} path="chat/:startupid" />
             <Route element={<InvestorDashboard />} path="dashboard" />
               <Route element={<InvestorList />} path="investorlist" />
-              <Route element={<InvestorDetails />} path="investordetails" />
+              <Route element={<InvestorDetails />} path="investordetails/:id" />
               <Route element={<Registerinvestor />} path="profile" />
             </Route>
 

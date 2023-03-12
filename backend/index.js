@@ -12,7 +12,7 @@ const BlogRouter = require('./routers/BlogRouter');
 const FeedbackRouter = require('./routers/FeedbackRouter');
 const SubscriptionRouter = require('./routers/SubscriptionRouter');
 const utilRouter = require('./routers/utils');
-
+const contactRouter = require('./routers/contactRouter');
 
 const cors = require('cors');
 const { PORT } = require('./config');
@@ -54,6 +54,8 @@ app.use('/Blog', BlogRouter);
 app.use('/feedback', FeedbackRouter);
 app.use('/Subscription', SubscriptionRouter);
 app.use('/util', utilRouter);
+app.use('/contact', contactRouter);
+
 
 app.use(express.static('./static/uploads'));
 

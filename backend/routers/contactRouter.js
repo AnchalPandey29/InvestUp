@@ -1,14 +1,15 @@
 const express = require("express");
 
 const router = express.Router();
-const Model = require("../models/FeedbackModel");
+const Model = require("../models/contactModel");
 
 router.get("/", (req, res) => {
   console.log("Request at user index");
-  res.status(299).send("UserRouter Working Perfectly!!");
+  res.status(299).send("ContactRouter Working Perfectly!!");
 });
 
 router.post("/add", (req, res) => {
+  console.log(req.body);
   new Model(req.body)
     .save()
     .then((result) => {
@@ -21,9 +22,11 @@ router.post("/add", (req, res) => {
     });
 });
 
-/*router.post("/auth", (req, res) => {
+router.post("/auth", (req, res) => {
+  // console.log(req.body);
   Model.findOne({ email: req.body.email })
     .then((result) => {
+      console.log(result);
       if (result) {
         new Model(result).comparePassword(req.body.password, (err, isMatch) => {
           if (err || !isMatch) {
@@ -43,6 +46,7 @@ router.post("/add", (req, res) => {
       console.error("Error authenticating user", err);
       res.status(502).json({status: "failed"});
     });
+
   // .then((result) => {
   //   console.log("User Data Saved");
   //   res.status(201).json({ status: "success", result });
@@ -51,7 +55,7 @@ router.post("/add", (req, res) => {
   //   console.error("Error saving user data", err);
   //   res.status(500).send("Error saving user data");
   // });
-});*/
+});
 
 router.get("/getall", (req, res) => {
   Model.find()
@@ -65,14 +69,26 @@ router.get("/getall", (req, res) => {
     });
 });
 
-router.get("/getbystartup/:id", (req, res) => {
-  Model.find({startup : req.params.id}).populate('user')
+router.get("/getbyid/:id", (req, res) => {
+  Model.findById(req.params.id)
     .then((result) => {
-      // console.log("User Data Retrieved");
+      console.log("User Data Retrieved");
       res.status(200).json({ status: "success", result });
     })
     .catch((err) => {
-      // console.error("Error retrieving user data", err);
+      console.error("Error retrieving user data", err);
+      res.status(500).send("Error retrieving user data");
+    });
+});
+
+router.get("/getbyemail/:email", (req, res) => {
+  Model.findOne({email : req.params.email})
+    .then((result) => {
+      console.log("User Data Retrieved");
+      res.status(200).json({ status: "success", result });
+    })
+    .catch((err) => {
+      console.error("Error retrieving user data", err);
       res.status(500).send("Error retrieving user data");
     });
 });

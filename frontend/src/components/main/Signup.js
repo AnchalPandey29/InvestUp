@@ -70,6 +70,7 @@ const Signup = () => {
   };
 
   return (
+    <div>
     <div style={{ height: "90vh" }}>
       <div
         className="row"
@@ -97,24 +98,13 @@ const Signup = () => {
             <p className="text-center h4">Signup Form</p>
             <hr />
             <Formik
-              initialValues={{
-                name: "",
-                semail: "",
-                password: "",
-                role: "startup",
-              }}
-              // validationSchema={SignupSchema} // Add the validation schema here
-              onSubmit={userSubmit}
-            >
-              {({
-                values,
-                handleSubmit,
-                handleChange,
-                isSubmitting,
-                errors,
-                touched,
-              }) => (
-                <form onSubmit={handleSubmit}>
+              initialValues={{ name: "", email: "", password: "", role: "startup" }}
+              validationSchema={SignupSchema} // Add the validation schema here
+              onSubmit={userSubmit}>
+
+              {({ values, handleSubmit, handleChange, isSubmitting, errors, touched }) => (
+
+                <form onSubmit={handleSubmit} >
                   {/* 2 column grid layout with text inputs for the first and last names */}
                   <div className="row form-floating" onSubmit={handleSubmit}>
                     <div className="col">
@@ -138,13 +128,14 @@ const Signup = () => {
                     <MDBInput
                       label="Email"
                       type="email"
-                      value={values.semail}
+                      value={values.email}
                       onChange={handleChange}
-                      name="semail"
+                      name="email"
                     />
-                    {errors.semail && touched.semail ? (
-                      <div>{errors.semail}</div>
-                    ) : null}
+                    {errors.email && touched.email ? <div>{errors.email}</div> : null}
+
+
+               
                   </div>
 
                   {/* Password input */}
@@ -160,7 +151,7 @@ const Signup = () => {
                       <div>{errors.password}</div>
                     ) : null}
                   </div>
-
+                  <div>
                   <FormControl className="ps-3 pb-4">
                     <FormLabel id="demo-radio-buttons-group-label">
                       Role
@@ -190,27 +181,17 @@ const Signup = () => {
                       </div>
                     </RadioGroup>
                   </FormControl>
+                  </div>
 
                   {/* Submit button */}
                   {/* <button type="submit" className="btn btn-primary ">Sign up</button> */}
 
-                  <button
-                    disabled={isSubmitting}
-                    type="submit"
-                    className="btn btn-block mb-4"
-                    style={{ backgroundColor: "#9c3353", color: "#fffefe" }}
-                  >
-                    {isSubmitting ? (
-                      <span
-                        class="spinner-border spinner-border-sm"
-                        role="status"
-                        aria-hidden="true"
-                      ></span>
-                    ) : (
-                      "Submit"
-                    )}
+                  <div>
+                  <button className="btn" type="submit" style={{ backgroundColor: "#9c3353", color: "#fffefe",width:"100%"}}
+>
+                    Submit
                   </button>
-
+                  </div>
                   {/* Register buttons */}
                   <div className="text-center">
                     <p>or sign up with:</p>
@@ -248,7 +229,9 @@ const Signup = () => {
           </div>
         </div>
       </div>
-      <div className="col-md-2">
+</div>
+
+      {/* <div className="col-md-2">
         <img
           src="/need.png"
           style={{ marginTop: "-500px", marginLeft: "330px" }}
@@ -261,7 +244,7 @@ const Signup = () => {
           style={{ marginTop: "-500px", marginLeft: "1000px" }}
           alt=""
         />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -13,9 +13,8 @@ import * as Yup from "yup";
 
 const Schema1 = Yup.object().shape({
   startupname: Yup.string().min(2, "Too Short!").required("Name is required"),
-  //   identityproof:Yup.string().required("Identity Proof is requied"),
-  //  date:Yup.string().required("This field is mandatory"),
-    brief:Yup.string().required("Description is required"),
+  brief:Yup.string().required("Description is required"),
+  //created_at:Yup.string().required(" Establishment date is required"),
   //   currentincubatees:Yup.string().required("Description is required"),
   //   email: Yup.string()
   //   .email("Invalid email")
@@ -31,12 +30,25 @@ const Schema1 = Yup.object().shape({
   //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 });
 
-const Schema2=Yup.object().shape({
-  ownername: Yup.string().min(2, "Too Short!").required("Name is required"),
-  identityno: Yup.string().required("ID No. is required"),
-  // owneravatar: Yup.string().required("Required"),
+// const Schema2=Yup.object().shape({
+//   ownername: Yup.string().min(2, "Too Short!").required("Name is required"),
+//   identityno: Yup.string().required("ID No. is required"),
+//   owneremail:Yup.string().required("Email is required"),
+//   productname:Yup.string().required(" Product Name is required"),
+//   productdescription:Yup.string().required("Description is required"),
+// });
+
+const Schema3=Yup.object().shape({
+  email:Yup.string().required("Email is required"),
+  tel:Yup.string().max(10)
+      .required("contact number is required"),
 
 });
+const Schema4=Yup.object().shape({
+ aadhar:Yup.string().max(12)
+ .required("this field is mandatory"),
+});
+
 
 const Register = () => {
   const navigate = useNavigate();
@@ -102,10 +114,10 @@ const Register = () => {
   
 
   return (
+<>
+<div style={{backgroundColor:"#9c3353",height:"40vh",marginBottom:"-300px"}}>    </div>
+
     <div className="card m-5 mx-auto p-5" style={{ height: "fit-content", width: "fit-content" }}>
-
-
-
 
       {/* <!-- Tabs navs --> */}
       <ul className="nav nav-tabs nav-justified mb-5" id="ex3" role="tablist" style={{ width: "900px" }}>
@@ -283,7 +295,7 @@ const Register = () => {
             <div className="tab-pane fade show active" id="v-pills-Owner And Product Details" role="tabpanel" aria-labelledby="v-pills-Owner And Product Details-tab" >
               <Formik
                 initialValues={currentUser}
-                validationSchema={Schema2} 
+                // validationSchema={Schema2} 
                 onSubmit={updateUser}
               >
                 {({ values, handleSubmit, handleChange, isSubmitting,errors,touched}) => (
@@ -307,11 +319,10 @@ const Register = () => {
                       {errors.ownername && touched.ownername ? (
                           <div>{errors.ownername}</div>
                         ) : null}
+                        
                       <MDBFile label='Owner Avatar'type="file" id='owneravatar' name="owneravatar" value={values.owneravatar} onChange={uploadImage} />
                             
-                         {errors.owneravatar && touched.owneravatar? (
-                          <div>{errors.owneravatar}</div>
-                        ) : null}
+                         
                        </div>
                       </div>
                       <div>
@@ -348,6 +359,9 @@ const Register = () => {
                         <div className="form-outline mb-4">
                           <MDBInput label='Email ' type="email" id="owneremail" value={values.owneremail} onChange={handleChange} name="email" />
                         </div>
+                        {errors.owneremail && touched.owneremail ? (
+                          <div>{errors.owneremail}</div>
+                        ) : null}
                       </div>
                       <div className="form-outline mb-4">
                       <MDBInput label='No of members in team ' type="number" id="teammemberno" value={values.teammemberno} onChange={handleChange} name="teammemberno" />
@@ -369,12 +383,16 @@ const Register = () => {
                     
                     <div className="form-outline mb-4">
                     <MDBInput label=' Name Of Product' type="text" id="productname" value={values.productname} onChange={handleChange} name="productname" />
-                      
+                    {errors.productname && touched.productname ? (
+                          <div>{errors.productname}</div>
+                        ) : null}
                     </div>
                     <div className="form-outline mb-4 ">
                       
                     <MDBTextArea label='Description Of Product' type="text" id='productdescription' rows={2} value={values.productdescription} onChange={handleChange} name="productdescription" /> 
-                      
+                    {errors.productdescription  && touched.productdescription ? (
+                          <div>{errors.productdescription}</div>
+                        ) : null}
                     </div>
                     <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
                     {
@@ -409,21 +427,27 @@ const Register = () => {
             <div className="tab-pane fade show active" id="v-pills-Owner And Product Details" role="tabpanel" aria-labelledby="v-pills-Owner And Product Details-tab" >
               <Formik
                 initialValues={currentUser}
+                validationSchema={Schema3} 
                 onSubmit={updateUser}
               >
-                {({ values, handleSubmit, handleChange, isSubmitting }) => (
+                {({ values, handleSubmit, handleChange, isSubmitting ,errors,touched}) => (
                   <form onSubmit={handleSubmit} >
                     <div className="row mb-4 form-floating " >
                       <div className="col">
                         <div className="form-outline mb-4">
                           <MDBInput label='Email Address' type="text" value={values.email} onChange={handleChange} name="email" />
+                          {errors.email && touched.brief ? (
+                          <div>{errors.email}</div>
+                        ) : null} 
                         </div>
 
                       </div>
                       <div className="col">
                         <div className="form-outline mb-4">
                         <MDBInput label=' Mobile' type="text" id="tel" value={values.tel} onChange={handleChange} name="tel" />
-                         
+                        {errors.tel && touched.tel ? (
+                          <div>{errors.tel}</div>
+                        ) : null} 
                         </div>
                       </div>
                     </div>
@@ -493,9 +517,10 @@ const Register = () => {
                   select2: '',
                   type: '',
                 }}
+                validationSchema={Schema4} 
                 onSubmit={updateUser}
               >
-                {({ values, handleSubmit, handleChange, isSubmitting }) => (
+                {({ values, handleSubmit, handleChange, isSubmitting ,errors,touched}) => (
                   <form onSubmit={handleSubmit} >
                     <div className="col-12 mb-4">
                       <label htmlFor="select1"> Industry</label><br/>
@@ -574,7 +599,11 @@ const Register = () => {
                       <div className="form-outline mb-4">
                       <MDBInput label='Udyog Aadhar ' type="text" id="aadhar" value={values.aadhar} onChange={handleChange} name="aadhar" />
                        <br/>
+                       {errors.aadhar && touched.aadhar ? (
+                          <div>{errors.aadhar}</div>
+                        ) : null} 
                       </div>
+                      
                     </div>
 
                     <FormControl className="ps-3 pb-4">
@@ -615,7 +644,7 @@ const Register = () => {
       </div>
 
     </div>
-
+</>
   )
 };
 

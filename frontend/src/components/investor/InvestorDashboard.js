@@ -137,7 +137,7 @@ export default function PersistentDrawerLeft() {
         </div>
         </a>
 
-        <a className="navbar-brand mt-2 " href="/main/startuplist">
+        <a className="navbar-brand mt-2 " href="/investor/profile">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p> <i class="fa fa-user-circle me-4" aria-hidden="true"></i>
             &nbsp;
@@ -173,7 +173,7 @@ export default function PersistentDrawerLeft() {
             <p>
             <i class="fas fa-inbox  me-4 "></i>
             &nbsp;
-             Inboxes</p>
+            Chating</p>
         </div>
         </a>
 

@@ -1,11 +1,47 @@
-
-
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { MDBInput } from 'mdb-react-ui-kit';
+import Swal from 'sweetalert2';
 
-const Contact = () => (
-  <>
+const Contact = () => {
+
+  const userSubmit = async (formdata, { setSubmitting }) => {
+    console.log(formdata);
+    setSubmitting(true);
+    const res = await fetch(`http://localhost:5000/contact/add`, {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    // 1. URL
+    // 2. request method - get, post, put, delete , etc.
+    // 3. Data you want to sent.
+    // 4. data format - json, etc.
+
+   
+
+    console.log(res.status)
+    setSubmitting(false);
+
+    if (res.status === 201) {
+      Swal.fire({
+        icon: "success",
+        title: 'Success',
+        text: 'Thank You '
+      })
+     
+    }else{
+      Swal.fire({
+        icon: "error",
+        title: 'Error',
+        text: 'Please try again'
+      })
+    }
+  }
+
+  return(
+    <>
     <div className='row  p-3 py-5' style={{ backgroundColor: "#9c3353" }}>
       <div className='col-md-5 mt-5 mx-auto mb-5' style={{ color: "white" }}>
         <h2>Contact us</h2>
@@ -18,19 +54,15 @@ const Contact = () => (
     </div>
     <Formik
       initialValues={{ name: '', email: '', message: '', copy: true }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          console.log(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      onSubmit={userSubmit}
     >
       {({ values, handleSubmit, handleChange, isSubmitting }) => (
 
 
         <div className='m-5'>
 
-          <Form className='card p-5 ' style={{ height: "fit-content" }}>
+          <form className='card p-5 ' style={{ height: "fit-content" }}
+          onSubmit={handleSubmit}>
             <div className='px-5'>
             <p className=" h4">Let us know what you think</p>
 
@@ -59,7 +91,7 @@ const Contact = () => (
 
             {/* Message input */}
             <div className="form-outline mb-4">
-              <MDBInput label='Message' type="email" placeholder='You can type any suggestions or queries you might have.Let us help you!' value={values.email} onChange={handleChange} name="email" />
+              <MDBInput label='Message' type="text" placeholder='You can type any suggestions or queries you might have.Let us help you!' value={values.message} onChange={handleChange} name="message" />
 
 
             </div>
@@ -74,13 +106,14 @@ const Contact = () => (
             <button type="submit" disabled={isSubmitting} className="btn btn-block mb-4  " style={{ backgroundColor: "#9c3353", color: "#fffefe", width: "200px" }}>Send</button>
             </div>
 
-          </Form>
+          </form>
         </div>
 
       )}
     </Formik>
 
   </>
-);
+  )
+}
 
 export default Contact;

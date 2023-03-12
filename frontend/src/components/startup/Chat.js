@@ -38,13 +38,15 @@ const StartupChat = () => {
   })
 
   return (
-   
+  <> 
+         <div style={{backgroundColor:"#9c3353",height:"40vh",marginBottom:"-300px"}}>    </div>
+
     <div className="container d-flex flex-column justify-content-center align-items-center p-5">
      
         <div className="card " style={{height:"80vh", width:"100vh"}}>
          
-          <div className="card-header">
-            <p className="m-0 h4">{currentUser.name}</p>
+        <div className="card-header bg-success" style={{color:"white"}}>
+            <p className="m-0 h4 text-center">{currentUser.name}</p>
           
           </div>
           <div
@@ -80,7 +82,7 @@ const StartupChat = () => {
           </div>
     </div>
       
-    
+    </>  
   )
 }
 

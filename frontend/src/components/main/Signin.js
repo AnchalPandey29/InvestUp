@@ -48,12 +48,12 @@ const Signin = () => {
       if(data.result.role==='startup'){
         console.log(data);
         sessionStorage.setItem('startup', JSON.stringify(data.result));
-        navigate('/startup/profile');
+        navigate('/startup/dashboard');
       }
       else if (data.result.role==='investor'){
         console.log(data);
         sessionStorage.setItem('investor', JSON.stringify(data.result));
-        navigate('/investor/profile');
+        navigate('/investor/dashboard');
       }
     }else{
       Swal.fire({

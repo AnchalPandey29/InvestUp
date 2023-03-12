@@ -73,6 +73,7 @@ const NewsBrowser = () => {
                         data-mdb-ripple-color="light"
                       >
                         <img
+                        
                           src={url + '/' + news.image}
                           className="img-fluid mx-auto"
                           style={{ maxHeight: "150px", display: "block" }}
@@ -92,7 +93,7 @@ const NewsBrowser = () => {
                       <h4>
                         <strong> {news.heading} </strong>
                       </h4>
-                      <p className="text-muted">
+                      <p className="text-muted" style={{overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>
                         {news.content}
                       </p>
                       <Link
