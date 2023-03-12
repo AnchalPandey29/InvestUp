@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import app_config from "../../config";
-import { Formik } from "formik";
-import { MDBInput } from "mdb-react-ui-kit";
 
 const StartupList = () => {
   const [startupList, setStartupList] = useState([]);
@@ -43,7 +41,7 @@ const StartupList = () => {
               <Link
                 type="button"
                 className="btn"
-                to={"/main/startupdetails/" + startup._id}
+                to={"/startup/startupdetails/" + startup._id}
                 style={{ backgroundColor: "#9c3353", color: "white" }}
               >
                 Read more

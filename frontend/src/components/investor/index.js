@@ -1,16 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-//import Footer from "./Footer";
-//import Header from "./Header";
-
+import DashboardContainer from "./DashboardContainer";
 
 const Startup = () => {
   return (
     <div className="module">
-      {/* <Header /> */}
-      <Outlet />
-     
-      {/* <Footer /> */}
+      <DashboardContainer>
+        <Outlet />
+      </DashboardContainer>
     </div>
   );
 };
