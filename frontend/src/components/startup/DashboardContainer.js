@@ -146,7 +146,7 @@ export default function StartupDashboardContainer({children}) {
         <Divider />
 
         
-        <a className="navbar-brand mt-4" href="/startup/chat">
+        <a className="navbar-brand mt-4" href="/startup/dashboard">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
             <i class="fas fa-home   me-4 "></i>
@@ -164,7 +164,7 @@ export default function StartupDashboardContainer({children}) {
 
         </a>
 
-        <a className="navbar-brand mt-2 " href="/main/startuplist">
+        <a className="navbar-brand mt-2 " href="/startup/startuplist">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
             <i class="fas fa-list-alt me-4 " ></i> 

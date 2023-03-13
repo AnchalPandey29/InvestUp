@@ -2,10 +2,14 @@
 
 import React from "react";
 import './about.css'
+import Header from './Header';
+
 
 const About = () => {
   return (
     <>
+        <Header/>
+
     <div style={{height:"100%"}}>
 
       <div className="row justify-content-center p-5" style={{ height: "40vh", backgroundColor: "#9c3353" }}>

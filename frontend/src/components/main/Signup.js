@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
 import app_config from "../../config";
+import Header from "./Header";
 
 const Signup = () => {
   //signup schema validation
@@ -86,6 +87,7 @@ const Signup = () => {
 
   return (
     <div>
+      <Header/>
       <div style={{ height: "90vh" }}>
         <div
           className="row"

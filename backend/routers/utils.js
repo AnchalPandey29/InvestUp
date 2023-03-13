@@ -1,6 +1,7 @@
 const multer = require("multer");
 const router = require("express").Router();
 const { SMTPClient } = require("emailjs");
+const stripe = require("stripe")("sk_test_4ypbMh4aR9gRNnUkQCwgOyCT00rSoAbXzZ");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -47,6 +48,11 @@ router.post("/sendmail", (req, res) => {
   const data = req.body;
   sendMail(data.to, data.subject, data.text);
   res.status(200).json({ message: "mail sent successfully" });
+});
+
+router.get("/getpaymentdetails/:sessionid", async (req, res) => {
+  const session = await stripe.checkout.sessions.retrieve(req.params.sessionid);
+  res.json(session);
 });
 
 module.exports = router;

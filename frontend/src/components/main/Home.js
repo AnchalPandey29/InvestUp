@@ -5,11 +5,11 @@ import Testimonial from './Testimonial';
 import Subscription from './Subscription';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import Header from './Header';
 const Home = () => {
   return (
-
     <>
+    <Header/>
 <AnimatePresence>
   <motion.div 
     className="row homerow pt-5"
@@ -74,21 +74,14 @@ const Home = () => {
 
 
       <Eligibility />
-      <Testimonial/>
-      <Subscription/>
-      
-
-      
+      <Testimonial />
+      <Subscription />
     </>
-
-
-  )
-}
+  );
+};
 
 export default Home;
 
 //startup list details add
 //profile page
 //detail id se
-
-

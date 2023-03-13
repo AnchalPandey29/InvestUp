@@ -60,14 +60,13 @@ import InvestorList from "./components/investor/InvestorList";
 import InvestorDetails from "./components/investor/InvestorDetails";
 import StartupDashboard from "./components/startup/Dashboard";
 // import StartupDashboardContainer from "./components/startup/DashboardContainer";
-import InvestorDashboard from "./components/investor/InvestorDashboard";
 import InvestorChat from "./components/investor/Chat";
 import Checkout from "./components/startup/Checkout";
 import LoginAuth from "./auth/LoginAuth";
 import StartupProvider from "./context/StartupProvider";
 import StartupProfile from "./components/startup/StartupProfile";
 import StartupAuth from "./auth/StartupAuth";
-
+import InvestorDashboard from "./components/investor/Dashboard";
 function App() {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(sessionStorage.getItem("user"))
@@ -145,8 +144,7 @@ function App() {
                 <Route element={<NewsBrowser />} path="newsbrowser" />
                 <Route element={<BlogBrowser />} path="blogbrowser" />
                 <Route element={<CampaignBrowser />} path="campaignbrowser" />
-                <Route element={<StartupList />} path="startuplist" />
-                <Route element={<StartupDetails />} path="startupdetails/:id" />
+              
               </Route>
 
               <Route element={
@@ -154,6 +152,8 @@ function App() {
                   <Startup />
                 </StartupAuth>
               } path="startup">
+                  <Route element={<StartupList />} path="startuplist" />
+                <Route element={<StartupDetails />} path="startupdetails/:id" />
                 <Route element={<StartupDashboard />} path="dashboard" />
                 <Route element={<Register />} path="register" />
                 {/* <Route element={<StartupDashboardContainer />} path="dashboard" /> */}
@@ -164,8 +164,9 @@ function App() {
               </Route>
 
               <Route element={<Investor />} path="investor">
+              <Route element={<InvestorDashboard />} path="dashboard" />
+
                 <Route element={<InvestorChat />} path="chat/:startupid" />
-                <Route element={<InvestorDashboard />} path="dashboard" />
                 <Route element={<InvestorList />} path="investorlist" />
                 <Route
                   element={<InvestorDetails />}

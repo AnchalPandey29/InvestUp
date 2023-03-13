@@ -2,6 +2,8 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { MDBInput } from 'mdb-react-ui-kit';
 import Swal from 'sweetalert2';
+import Header from './Header';
+
 
 const Contact = () => {
 
@@ -42,6 +44,8 @@ const Contact = () => {
 
   return(
     <>
+        <Header/>
+
     <div className='row  p-3 py-5' style={{ backgroundColor: "#9c3353" }}>
       <div className='col-md-5 mt-5 mx-auto mb-5' style={{ color: "white" }}>
         <h2>Contact us</h2>
