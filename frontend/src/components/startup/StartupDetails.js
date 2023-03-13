@@ -34,6 +34,12 @@ const StartupDetails = () => {
   }, []);
 
   const feedbackSubmit = async (formdata, {setSubmitting}) => {
+    if(!currentUser){
+      // error alert
+      console.log('startup login needed');
+      return;
+    }
+    formdata.user = currentUser._id;
     formdata.rating = rating;
     setSubmitting(true);
     const res = await fetch(`http://localhost:5000/feedback/add`, {
@@ -44,6 +50,7 @@ const StartupDetails = () => {
 
     console.log(res.status)
     setSubmitting(false);
+    fetchStartupFeedbacks(startupData._id);
   }
 
   const fetchStartupFeedbacks = async (id) => {
@@ -182,7 +189,6 @@ const StartupDetails = () => {
           <Formik
             initialValues={{
               content: "",
-              user: currentUser._id,
               startup: startupData._id
             }}
             onSubmit={feedbackSubmit}>

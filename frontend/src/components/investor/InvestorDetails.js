@@ -2,15 +2,18 @@ import { Rating } from "@mui/material";
 import { Formik } from "formik";
 import { MDBInput } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import app_config from "../../config";
 
 
 const InvestorDetails = () => {
-    const { id } = useParams();
-    const [rating, setRating] = useState(4);
-    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('startup')));
-  
+  const { id } = useParams();
+  const [rating, setRating] = useState(4);
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('startup')));
+  const [currentInvestor, setCurrentInvestor] = useState(JSON.parse(sessionStorage.getItem('investor')));
+  const [feedbackList, setFeedbackList] = useState([]);
+  const navigate = useNavigate();
 
     const [investorData, setInvestorData] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -21,6 +24,7 @@ const InvestorDetails = () => {
         const res = await fetch("http://localhost:5000/startup/getbyid/" + id);
         const data = await res.json();
         console.log(data);
+        fetchStartupFeedbacks(data.result._id);
         setInvestorData(data.result);
         setLoading(false);
       };
@@ -32,6 +36,18 @@ const InvestorDetails = () => {
       
   //Feedback 
   const feedbackSubmit = async (formdata, {setSubmitting}) => {
+    if(!currentUser){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You are not an investor!',
+      })
+      console.log('login needed');
+      return;
+    }
+    formdata.user = currentUser._id;
+    formdata.rating = rating;
+
     setSubmitting(true);
     const res = await fetch(`http://localhost:5000/feedback/add`, {
       method: "POST",
@@ -41,7 +57,43 @@ const InvestorDetails = () => {
 
     console.log(res.status)
     setSubmitting(false);
+    fetchStartupFeedbacks(investorData._id);
+
+    
   }
+
+  const fetchStartupFeedbacks = async (id) => {
+    const res = await fetch(`http://localhost:5000/feedback/getbystartup/`+id);
+    const data = (await res.json()).result;
+    console.log(data);
+    setFeedbackList(data);
+  }
+
+  const displayFeedbacks = () => {
+    return feedbackList.map((feedback) => (
+      <div className="border rounded card m-1 ps-5">
+        
+        <h5 className="pt-2">{feedback.user.name}</h5>
+        <Rating
+          value={feedback.rating}
+          readOnly
+        />
+        <p>{feedback.content}</p>
+    </div>
+    ))
+}
+
+const openChat = () => {
+  if(currentInvestor.role!== 'startup'){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'You can not chat with an investor!',
+    })
+  }else{
+    navigate('/startup/chat/' + investorData._id);
+  }
+}
     
   const displayDetails = () => {
     if (!loading && investorData) {
@@ -125,7 +177,12 @@ const InvestorDetails = () => {
           </div>
         </div>
 
+        <center>
+        <button className="btn m-5" style={{backgroundColor:"#9c3353",color:"white",width:"fit-content"}} onClick={openChat}>Start Chatting</button>
+        </center>
         <hr />
+        <div style={{backgroundColor:"#f0efef"}}>
+        <h2 className="text-center pt-5">Write your reviews</h2>
 
 
         <div className="mt-5 p-5">
@@ -139,7 +196,6 @@ const InvestorDetails = () => {
           <Formik
             initialValues={{
               content: "",
-              user: currentUser._id,
               startup: investorData._id
             }}
             onSubmit={feedbackSubmit}>
@@ -155,10 +211,9 @@ const InvestorDetails = () => {
                   <MDBInput 
                    label="Write your feedback"
                    type="text"
-                   id="feedback"
                    value={values.content}
                    onChange={handleChange}
-                   name="name"
+                   name="content"
                   />
 
                   </div>
@@ -181,8 +236,9 @@ const InvestorDetails = () => {
 
       </div>
 
+      {displayFeedbacks()}
 
-
+      </div>
     }
     else {
       return <div className='text-center'><img src="https://cdn.dribbble.com/users/3533804/screenshots/6666006/all-anim-gif.gif" style={{ width: "500px" }} alt="" />

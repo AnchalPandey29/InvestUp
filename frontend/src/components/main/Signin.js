@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
 import { useStartupContext } from "../../context/StartupProvider";
+import Header from "./Header";
 
 const Signin = () => {
 
@@ -73,8 +74,9 @@ const Signin = () => {
 
   return (
     <div style={{ height: "90vh" }}>
+        <Header/>
         <div className="row" style={{ height: "40vh",  backgroundColor: "#9c3353" }}></div>
-      <div className="row mx-auto" style={{marginTop:"-200px",width:"fit-content"}} >
+      <div className="row mx-auto" style={{marginTop:"-250px",width:"fit-content"}} >
         <div className="card pt-4" style={{ height: "fit-content", padding: "40px" }}>
           <div className="card-body">
             <p className="text-center h4">Login Form</p>

@@ -14,29 +14,16 @@ import * as Yup from "yup";
 const Schema1 = Yup.object().shape({
   startupname: Yup.string().min(2, "Too Short!").required("Name is required"),
   brief:Yup.string().required("Description is required"),
-  //created_at:Yup.string().required(" Establishment date is required"),
-  //   currentincubatees:Yup.string().required("Description is required"),
-  //   email: Yup.string()
-  //   .email("Invalid email")
-  //   .required("Email is required"),
-  //   password: Yup.string()
-  //   .min(8, "Password must be at least 8 characters")
-  //   .required("Password is required"),
-  //   tel:Yup.string()
-  //         .max(10)
-  //       .required("contact number is required"),
-  //        //aplink:Yup.string().aplink("Application Link is mandatory"),
-  //istate:Yup.string().istate("State is required"),
-  //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+  currentincubatees:Yup.string().required("Description is required"),
 });
 
-// const Schema2=Yup.object().shape({
+//const Schema2=Yup.object().shape({
 //   ownername: Yup.string().min(2, "Too Short!").required("Name is required"),
 //   identityno: Yup.string().required("ID No. is required"),
 //   owneremail:Yup.string().required("Email is required"),
 //   productname:Yup.string().required(" Product Name is required"),
 //   productdescription:Yup.string().required("Description is required"),
-// });
+ //});
 
 const Schema3=Yup.object().shape({
   email:Yup.string().required("Email is required"),
@@ -76,7 +63,7 @@ const Register = () => {
       const data = await res.json();
       console.log(data.result);
       setCurrentUser(data.result);
-      sessionStorage.setItem('user', JSON.stringify(data.result))
+      sessionStorage.setItem('user', JSON.stringify(data.result));
       Swal.fire({
         icon: "success",
         title: "Success",
@@ -199,6 +186,9 @@ const Register = () => {
                         <div class="file-upload-wrapper">
                           <div class="image-body">
                             <input type="file" label='Startup Image' onChange={uploadImage} />
+                            {selimage === '' && currentUser.startupimage ==='' ? (
+                          <div>{'Image Required'}</div>
+                        ) : null}
                           </div>
                         </div>
                       </div>
@@ -260,7 +250,9 @@ const Register = () => {
                         <div class="file-upload-wrapper">
                           <div class="image-body">
                             <MDBFile label='Documents'type="file" id='sdocuments' name="sdocuments" value={values.sdocuments} onChange={uploadImage} />
-
+                            {selimage === '' && currentUser.sdocuments ==='' ? (
+                          <div>{'Image Required'}</div>
+                        ) : null}
 
                           </div>
                         </div>
@@ -330,7 +322,9 @@ const Register = () => {
                         <div class="file-upload-wrapper">
                           <div class="image-body">
                             <MDBFile label='Identity Proof(Aadhar Card/PAN/VoterID)'type="file" id='identityproof' name="identityproof" value={values.identityproof} onChange={uploadImage} /></div>
-                          </div>
+                            {selimage === '' && currentUser.identityproof ==='' ? (
+                          <div>{'Image Required'}</div>
+                        ) : null}</div>
                         </div>
                         
                       <div className="form-outline mb-4">
@@ -344,6 +338,10 @@ const Register = () => {
                         <div class="file-upload-wrapper">
                           <div class="image-body">
                             <MDBFile label='Document'type="file" id='documents' name="documents" value={values.documents} onChange={uploadImage} /></div>
+                            {selimage === '' && currentUser.documents ==='' ? (
+                          <div>{'Image Required'}</div>
+                        ) : null}
+                       
                           </div>
                         </div>
                          </div>
@@ -377,7 +375,9 @@ const Register = () => {
                         <div class="file-upload-wrapper">
                           <div class="image-body">
                             <MDBFile label='Image Of The Product'type="file" id='productimage' name="productimage" value={values.productimage} onChange={uploadImage} /></div>
-                          </div>
+                          {selimage === '' && currentUser.productimage ==='' ? (
+                          <div>{'Image Required'}</div>
+                        ) : null}</div>
                         </div>
                          </div>
                     
@@ -391,7 +391,7 @@ const Register = () => {
                       
                     <MDBTextArea label='Description Of Product' type="text" id='productdescription' rows={2} value={values.productdescription} onChange={handleChange} name="productdescription" /> 
                     {errors.productdescription  && touched.productdescription ? (
-                          <div>{errors.productdescription}</div>
+                          <div>{ }</div>
                         ) : null}
                     </div>
                     <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>

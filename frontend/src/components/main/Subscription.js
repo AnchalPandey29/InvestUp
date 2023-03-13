@@ -75,7 +75,7 @@ const Subscription = () => {
            <li className="pricing-feature">Campaigns And Drives</li>
             <li className="pricing-feature">Breaking Headlines</li>
           </ul>
-          <a className="pricing-action" href='https://buy.stripe.com/test_6oE8zIcMs2Dw6yI004'>Choose plan</a>
+          <a className="pricing-action" href='https://buy.stripe.com/test_eVa2bkfYE7XQ1eofZ3'>Choose plan</a>
         </div>
       </div>
     </center></section></div>

@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Header from '../startup/Header'
 const ConsultancyCard = () => {
   return (
-<>      
+<>    
+<Header/>
+
  <div style={{backgroundColor:"#9c3353",height:"40vh",marginBottom:"-300px"}}>    </div>
 
       <div className='m-5 p-5'>

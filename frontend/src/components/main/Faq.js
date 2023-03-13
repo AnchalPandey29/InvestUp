@@ -1,8 +1,12 @@
 import React from 'react'
+import Header from './Header';
+
 const Faq = () => {
   return (
     
     <>
+        <Header/>
+
       <div style={{height:"40vh",backgroundColor:"#9c3353"}}>
         <h1 className='text-center ' style={{color:"white",marginTop:"100px"}}>Hi, how can we help you?</h1>
       </div>
