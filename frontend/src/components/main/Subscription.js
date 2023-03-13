@@ -27,7 +27,8 @@ const Subscription = () => {
             <li className="pricing-feature"></li>
             <li className="pricing-feature">Latest Bulletins</li>
           </ul>
-          <a className="pricing-action" href='https://buy.stripe.com/test_9AQdU26o4gumcX69AC'>Choose plan</a>
+          {/* <a className="pricing-action" href='https://buy.stripe.com/test_9AQdU26o4gumcX69AC'>Choose plan</a> */}
+          <a className="pricing-action" href='https://buy.stripe.com/test_8wM2c6fvm20g0Qo7st'>Choose plan</a>
         </div>
         <div className="pricing-item features-item ja-animate pricing__item--featured" data-animation="move-from-bottom" data-delay="item-1" style={{minHeight: '497px'}}>
           <div className="pricing-deco" style={{background: 'linear-gradient(135deg,#2ed60d,#147800)'}}>
