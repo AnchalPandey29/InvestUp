@@ -58,7 +58,7 @@ const StartupChat = () => {
             {messageList.map((obj) => (
               <div className={obj.sent ? "msg-sent" : "msg-rec"}>
                 <p className="m-0">{obj.text}</p>
-                <p className="m-0 float-end" style={{fontSize: 10}}>{new Date(obj.date).toLocaleDateString()} {new Date(obj.date).toLocaleTimeString()}</p>
+                <p className="m-0 float-end" style={{fontSize: 10}}>{new Date(obj.date).toLocaleTimeString()}</p>
 
               </div>
             ))}
