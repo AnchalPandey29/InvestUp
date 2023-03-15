@@ -24,12 +24,13 @@ const StartupList = () => {
       if(currentUser!==null){
           if(currentUser.data.payment_status === "paid")
           {
-            
+            const data = await res.json();
+            setSubscriptionData(data);
           }
       }
   }
   
-
+ 
   const getSubscriptionData = async () => {
     const res = await fetch(url+'/Subscription/getbyuser/'+currentUser._id);
     if(res.status === 201){
@@ -38,6 +39,10 @@ const StartupList = () => {
     }
   }
   
+  useEffect(() => {
+    getSubscriptionData();
+  }, [])
+
 
   const url = app_config.apiurl;
   const placeholder = 'https://via.placeholder.com/640x400.png/a59090/000000?Text=640x400';
