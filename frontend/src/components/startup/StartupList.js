@@ -4,6 +4,40 @@ import app_config from "../../config";
 
 const StartupList = () => {
   const [startupList, setStartupList] = useState([]);
+  const [subscriptionData, setSubscriptionData] = useState(null);
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem(null)));
+
+
+  const filters = [
+    {
+      name : 'Sector',
+      option: [
+        'technology',
+        'entertainment'
+      ]
+    }
+  ]
+
+
+  const checkSubscription = async () => {
+    const res = await fetch(`http://localhost:5000//Subscription/getbyuser/:id`);   
+      if(currentUser!==null){
+          if(currentUser.data.payment_status === "paid")
+          {
+            
+          }
+      }
+  }
+  
+
+  const getSubscriptionData = async () => {
+    const res = await fetch(url+'/Subscription/getbyuser/'+currentUser._id);
+    if(res.status === 201){
+      const data = await res.json();
+      setSubscriptionData(data);
+    }
+  }
+  
 
   const url = app_config.apiurl;
   const placeholder = 'https://via.placeholder.com/640x400.png/a59090/000000?Text=640x400';
@@ -27,7 +61,7 @@ const StartupList = () => {
           <div className="col-md-4">
             <img
               className="img-fluid p-2"
-              src={startup.startupimage? (url + "/" + startup.startupimage): placeholder}
+              src={startup.startupimage ? (url + "/" + startup.startupimage) : placeholder}
               alt=""
             />
           </div>
@@ -41,7 +75,7 @@ const StartupList = () => {
               <Link
                 type="button"
                 className="btn"
-                to={"/startup/startupdetails/" + startup._id}
+                to={"/main/startupdetails/" + startup._id}
                 style={{ backgroundColor: "#9c3353", color: "white" }}
               >
                 Read more
@@ -55,9 +89,9 @@ const StartupList = () => {
 
   return (
     <div>
-      <div style={{backgroundColor:"#9c3353",height:"30vh",marginBottom:"-80px",display:"flex",justifyContent:"center"}}>  
-      <h1 style={{color:"white",paddingTop:"50px"}}>Startup List</h1>
-        </div>
+      <div style={{ backgroundColor: "#9c3353", height: "30vh", marginBottom: "-80px", display: "flex", justifyContent: "center" }}>
+        <h1 style={{ color: "white", paddingTop: "50px" }}>Startup List</h1>
+      </div>
 
       <div className="row justify-content-center">
         <div className="col-9">{displayList()}</div>

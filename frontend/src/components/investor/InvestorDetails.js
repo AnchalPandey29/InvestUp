@@ -84,14 +84,14 @@ const InvestorDetails = () => {
 }
 
 const openChat = () => {
-  if(currentInvestor.role!== 'startup'){
+  if(currentUser===null){
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
       text: 'You can not chat with an investor!',
     })
   }else{
-    navigate('/startup/chat/' + investorData._id);
+    navigate('/startup/chat/');
   }
 }
     

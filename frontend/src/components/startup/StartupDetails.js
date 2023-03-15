@@ -79,7 +79,7 @@ const StartupDetails = () => {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'You are not an investor!',
+        text: 'You can not chat with startup!',
       })
     }else{
       navigate('/investor/chat/' + startupData._id);

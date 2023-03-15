@@ -25,7 +25,7 @@ const InvestorChat = () => {
 
   const sendMessage = () => {
     if (!inputText.trim()) return
-    const temp = { text: inputText, sent: true, date: new Date() }
+    const temp = { text: inputText, sent: true, date: new Date(), name: currentUser.name }
 
     // sending msg to backend
     socket.emit('sendmsg', temp);

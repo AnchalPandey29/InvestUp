@@ -164,7 +164,7 @@ export default function StartupDashboardContainer({children}) {
 
         </a>
 
-        <a className="navbar-brand mt-2 " href="/startup/startuplist">
+        <a className="navbar-brand mt-2 " href="/main/startuplist">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
             <i class="fas fa-list-alt me-4 " ></i> 
@@ -174,7 +174,7 @@ export default function StartupDashboardContainer({children}) {
 
         </a>
 
-        <a className="navbar-brand mt-2 " href="/investor/investorlist">
+        <a className="navbar-brand mt-2 " href="/main/investorlist">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
             <i class="fa fa-th-list me-4" aria-hidden="true"></i>

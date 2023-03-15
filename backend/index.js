@@ -23,7 +23,7 @@ const { createServer } = require("http");
 const { Server } = require("socket.io");
 
 const httpServer = createServer(app);
-const io = new Server(httpServer, { cors: { origin: ['http://localhost:3000', 'http://localhost:3001'], } });
+const io = new Server(httpServer, { cors: { origin: ['http://localhost:3000', 'http://localhost:3001', 'http://127.0.0.1:3000'], } });
 
 io.on("connection", (socket) => {
     console.log('client connected');
