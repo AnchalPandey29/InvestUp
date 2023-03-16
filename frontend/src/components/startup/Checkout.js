@@ -5,9 +5,10 @@ import app_config from "../../config";
 // const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const Checkout = () => {
-  const [currentUser, setCurrentUser] = useState(
-    JSON.parse(sessionStorage.getItem("startup"))
-  );
+
+  const [currentStartup, setCurrentStartup] = useState(JSON.parse(sessionStorage.getItem('startup')));
+  const [currentInvestor, setCurrentInvestor] = useState(JSON.parse(sessionStorage.getItem('investor')));
+  const [currentUser, setCurrentUser] = useState(currentStartup?currentStartup:currentInvestor);
   const url = app_config.apiurl;
   const navigate = useNavigate();
   // CHECKOUT_SESSION_ID
@@ -37,7 +38,7 @@ const Checkout = () => {
         title: "Subscribed",
         text: "Purchase Successful",
       });
-      navigate("/startup/dashboard");
+      // navigate("/startup/dashboard");
 
       const data = await res.json();
     }

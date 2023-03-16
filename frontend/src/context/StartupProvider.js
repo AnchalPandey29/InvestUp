@@ -13,6 +13,7 @@ const StartupProvider = ({children, currentStartup}) => {
         setSloggedIn(false);
         navigate('/main/login');
     }
+    
 
     return <StartupContext.Provider value={{sLoggedIn, setSloggedIn, logout}}>
         {children}

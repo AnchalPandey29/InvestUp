@@ -70,7 +70,7 @@ router.get("/getbyuser/:id", (req, res) => {
   Model.findOne({user : req.params.id})
     .then((result) => {
       console.log("User Data Retrieved");
-      res.status(200).json({ status: "success", result });
+      res.status(201).json({ status: "success", result });
     })
     .catch((err) => {
       console.error("Error retrieving user data", err);

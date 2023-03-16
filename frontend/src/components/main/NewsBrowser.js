@@ -79,7 +79,7 @@ const NewsBrowser = () => {
                         
                           src={url + '/' + news.image}
                           className="img-fluid mx-auto"
-                          style={{ maxHeight: "150px", display: "block" }}
+                          style={{ maxHeight: "300px", display: "block" }}
                         />
                         <a href="#!">
                           <div

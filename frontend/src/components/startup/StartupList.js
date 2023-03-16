@@ -4,8 +4,9 @@ import app_config from "../../config";
 
 const StartupList = () => {
   const [startupList, setStartupList] = useState([]);
-  const [subscriptionData, setSubscriptionData] = useState(null);
+  
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem(null)));
+  const [searchKeyword, setSearchKeyword] = useState("");
 
 
   const filters = [
@@ -18,32 +19,25 @@ const StartupList = () => {
     }
   ]
 
+  const search =  async (field) => {
+    const res = await fetch(url + "/startup/getall");
+    const data = await res.json();
+    console.log(data);
+    setStartupList(data.result.filter((user) => (user.role === "startup" && user[field] === searchKeyword)));
+  }
+
 
   const checkSubscription = async () => {
-    const res = await fetch(`http://localhost:5000//Subscription/getbyuser/:id`);   
+    const res = await fetch(url+`/Subscription/getbyuser/`);   
       if(currentUser!==null){
-          if(currentUser.data.payment_status === "paid")
+          if(currentUser.data.name === "Basic")
           {
             const data = await res.json();
-            setSubscriptionData(data);
           }
       }
   }
   
  
-  const getSubscriptionData = async () => {
-    const res = await fetch(url+'/Subscription/getbyuser/'+currentUser._id);
-    if(res.status === 201){
-      const data = await res.json();
-      setSubscriptionData(data);
-    }
-  }
-  
-  useEffect(() => {
-    getSubscriptionData();
-  }, [])
-
-
   const url = app_config.apiurl;
   const placeholder = 'https://via.placeholder.com/640x400.png/a59090/000000?Text=640x400';
 
@@ -94,8 +88,15 @@ const StartupList = () => {
 
   return (
     <div>
-      <div style={{ backgroundColor: "#9c3353", height: "30vh", marginBottom: "-80px", display: "flex", justifyContent: "center" }}>
-        <h1 style={{ color: "white", paddingTop: "50px" }}>Startup List</h1>
+      {/* <div style={{ backgroundColor: "#9c3353", height: "30vh", marginBottom: "-80px", display: "flex", justifyContent: "center" }}> */}
+      <div style={{ backgroundColor: "#9c3353", padding: '50px 0'}}>
+        <div className="col-md-8 mx-auto">
+        <h1 className="text-white text-center">Startup List</h1>
+        <div className="input-group my-3">
+          <input className="form-control  p-3" value={searchKeyword} onChange={e => setSearchKeyword(e.target.value)} />
+          <button className="btn btn-primary input-group-append" onClick={e => search('ownername')}>Search</button>
+        </div>
+        </div>
       </div>
 
       <div className="row justify-content-center">

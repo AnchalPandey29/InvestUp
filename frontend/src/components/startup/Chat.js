@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react"
 import "./Chat.css";
 import { io } from 'socket.io-client';
 import app_config from "../../config";
+import subscriptionData from "../../subscriptionDetails";
 
 const StartupChat = () => {
 
   const url = app_config.apiurl;
   const [socket, setSocket] = useState(io(url, { autoConnect: false }));
+  const subscriptionData = subscriptionData;
 
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('startup')));
 
@@ -36,6 +38,7 @@ const StartupChat = () => {
   socket.on('recmsg', (data) => {
     setMessageList([...messageList, data])
   })
+
 
   return (
     <>
