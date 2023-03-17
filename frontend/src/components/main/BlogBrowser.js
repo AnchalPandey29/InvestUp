@@ -71,16 +71,16 @@ const BlogBrowse = () => {
                       <div className='row p-5 justify-content-center'>
           {
                       blogList.map((blog) => (
-                          <div className='col-md-3 card m-3'>
-                              <div className='row-md-6'>
+                          <div className='col-md-3 card m-3 pt-3'>
+                              <div className='row-md-6 mx-auto'>
                               
-                                  <img className='img-fluid' src={url+'/'+blog.image} alt='' style={{maxHeight:"260px"}}/>
+                                  <img className='img-fluid ' src={url+'/'+blog.image} alt='' style={{maxHeight:"260px"}}/>
                               </div>
 
                               <div className='row-md-6 p-4'>
                                   <h4>{blog.heading}</h4>
                                   <p style={{overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>{blog.content}</p>
-                                  <p>{blog.date}</p>
+                                  <p>{new Date().toLocaleDateString()}</p>
                                   <Link
                                      to={"/main/blogdetails/"+blog._id}
                                       type='button'

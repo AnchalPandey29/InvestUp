@@ -23,20 +23,35 @@ const CampaignDetail = () => {
 
   const displayDetails = () => {
     if (!loading && campaignData) {
-      return <div className='card m-5'>
-        <h1>{campaignData.title}</h1>
-        {campaignData.image}
-        <div className='row'>
+      return <>
+             <div style={{backgroundColor:"#9c3353",height:"40vh",marginBottom:"-300px"}}>    </div>
+
+      <div className='card m-5 p-5'>
+        <h1 className='mb-3'>{campaignData.title}</h1>
+       
+        <img
+                        
+                        src={url + '/' + campaignData.image}
+                        className="img-fluid mx-auto mb-5"
+                        style={{ display: "block" ,maxHeight: "400px"}}
+                      />
+         
+       
+         <div className='row mb-3'>
           <div className='col-md-5 me-5'>
-              <h5>{campaignData.startdate}</h5>
+              <h5>Start Date</h5>
+              <p>{new Date(campaignData.startdate).toLocaleDateString()}</p>
           </div>
           <div className='col-md-5'>
-              <h5>{campaignData.lastdate}</h5>
+              <h5>Last Date</h5>
+              <p>{new Date(campaignData.lastdate).toLocaleDateString()}</p>
+
           </div>
         </div>
        <p> {campaignData.content}</p>
       </div>
 
+      </> 
     }
     else{
         return <div className='text-center'><img src="https://cdn.dribbble.com/users/3533804/screenshots/6666006/all-anim-gif.gif" style={{width:"500px"}} alt="" />

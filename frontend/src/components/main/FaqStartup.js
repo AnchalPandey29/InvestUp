@@ -2,8 +2,11 @@ import React from 'react'
 
 const FaqSection = () => {
   return (
+<>
+    <div style={{backgroundColor:"#9c3353",height:"40vh",marginBottom:"-300px"}}>    </div>
+    <div className='justify-content-center align-items-center row' style={{height:"80vh"}}>
 
-          <div className=' card mx-auto' style={{width:"70%"}}>
+          <div className='mx-auto' style={{width:"70%"}}>
               <div className="accordion w-100" id="basicAccordion">
                   <div className="accordion-item">
                       <h2 className="accordion-header" id="headingOne">
@@ -194,8 +197,8 @@ Up to Rs. 10 Lakhs of investment for market entry, commercialization, or scaling
               </div>
         </div>
        
-
-       
+        </div>
+    </>   
   )
 }
 

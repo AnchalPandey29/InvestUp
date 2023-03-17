@@ -104,12 +104,12 @@ const CampaignBrowser = () => {
             <div>
                 <h5>Start Date : 
                 </h5>              
-                <p>{campaign.startdate}</p>
+                <p>{new Date(campaign.startdate).toLocaleDateString()}</p>
             </div>
             <div>
                 <h5>End Date : 
                 </h5>  
-                <p>{campaign.lastdate}</p>
+                <p>{new Date(campaign.lastdate).toLocaleDateString()}</p>
             
             </div>
             <Link
