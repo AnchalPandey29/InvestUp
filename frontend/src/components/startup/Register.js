@@ -185,7 +185,7 @@ const Register = () => {
                     <div class="form-outline mb-2">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
-                            <input type="file" label='Startup Image' onChange={uploadImage} />
+                            <input type="file" label='Startup Image'name="startupimage" value={values.startupimage} onChange={uploadImage} />
                             {selimage === '' && currentUser.startupimage ==='' ? (
                           <div>{'Image Required'}</div>
                         ) : null}
@@ -571,7 +571,7 @@ const Register = () => {
                     
                     <div className="col-12 mb-4">
                     
-                      <label htmlFor="select2">Interests</label><br/>
+                      <label htmlFor="select3">Interests</label><br/>
                       <select
                         className="select"
                         name="interests"

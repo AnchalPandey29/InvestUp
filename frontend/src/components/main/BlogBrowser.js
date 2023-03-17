@@ -7,6 +7,24 @@ import Header from '../startup/Header'
 
 const BlogBrowse = () => {
     const [blogList, setBlogList] = useState([]);
+    const filters = [
+        {
+          name : 'Categories',
+          option: [
+            'Success Story',
+            'Motivational Blog',
+            
+          ]
+        }
+      ]
+    
+      const search =  async (field) => {
+        const res = await fetch(url + "/blogbrowser/getall");
+        const data = await res.json();
+        console.log(data);
+        setStartupList(data.result.filter((user) => ( user[field] === searchKeyword)));
+      }
+    
 
     const url = app_config.apiurl;
 
