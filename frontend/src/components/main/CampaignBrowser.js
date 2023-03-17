@@ -66,15 +66,15 @@ const CampaignBrowser = () => {
         </div>
 
 
-      <div className='card mx-auto m-5 ms-5 me-5 p-4' style={{ width: "auto", height: "fit-content" }}>
+      <div className='mx-auto m-5 ms-5 me-5 p-4' style={{ width: "auto", height: "fit-content" }}>
 
 
 
-        <div>
+        <div >
             {
                 campaignList.map((campaign)=>(
-                    <div>
-<div className="row gx-5">
+                    <div className=' card p-3 mb-3'>
+<div className="row gx-5 justify-content-center align-items-center">
           <div className="col-md-6 mb-4">
             <div
               className="bg-image hover-overlay ripple shadow-2-strong rounded-5 "
@@ -83,7 +83,7 @@ const CampaignBrowser = () => {
               <img
                 src={url+'/'+campaign.image}
                 className="img-fluid mx-auto"
-                style={{ maxHeight: "150px", display: "block" }}
+                style={{ maxHeight: "250px", display: "block" }}
               />
               <a href="#!">
                 <div
@@ -95,24 +95,22 @@ const CampaignBrowser = () => {
             </div>
           </div>
           <div className="col-md-6 mb-4">
-            <span className="badge bg-primary px-2 py-1 shadow-1-strong mb-3">
-              News of the day
-            </span>
+           
             <h4>
-              <strong> {campaign.heading} </strong>
+              <strong> {campaign.title} </strong>
             </h4>
-            <p className="text-muted">
-              {campaign.content}
-            </p>
+            <p style={{overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}> {campaign.content}</p>
+           
             <div>
                 <h5>Start Date : 
-                    <p>{campaign.startdate}</p>
                 </h5>              
+                <p>{campaign.startdate}</p>
             </div>
             <div>
                 <h5>End Date : 
-                    <p>{campaign.lastdate}</p>
-                </h5>              
+                </h5>  
+                <p>{campaign.lastdate}</p>
+            
             </div>
             <Link
              type="button" 

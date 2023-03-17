@@ -63,13 +63,13 @@ const NewsBrowser = () => {
            
 </div>
        
-        <div className='card mx-auto m-5 ms-5 me-5 p-4' style={{ width: "auto", height: "fit-content" }}>
+        <div className='mx-auto m-5 ms-5 me-5 p-4' style={{ width: "auto", height: "fit-content" }}>
 
           <div>
             {
               newsList.map((news) => (
-                <div>
-                  <div className="row gx-5">
+                <div className='card mb-3 p-3'>
+                  <div className="row gx-5 align-items-center">
                     <div className="col-md-6 mb-4">
                       <div
                         className="bg-image hover-overlay ripple shadow-2-strong rounded-5 "
@@ -79,7 +79,7 @@ const NewsBrowser = () => {
                         
                           src={url + '/' + news.image}
                           className="img-fluid mx-auto"
-                          style={{ maxHeight: "300px", display: "block" }}
+                          style={{ maxHeight: "250px", display: "block" }}
                         />
                         <a href="#!">
                           <div
