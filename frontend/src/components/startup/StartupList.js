@@ -14,7 +14,10 @@ const StartupList = () => {
       name : 'Sector',
       option: [
         'technology',
-        'entertainment'
+        'entertainment',
+        'Art And Photography',
+        'Technology',
+        'others',
       ]
     }
   ]

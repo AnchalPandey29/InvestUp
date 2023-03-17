@@ -49,7 +49,7 @@ const ManageStartup = () => {
         <table class="table table-striped table-hover">
                 <thead >
                     <tr style={{backgroundColor:"#9c3353", color:"white"}}>
-                         <th></th>
+                         
                          <th>Role</th>
                         <th>Password</th>
 
@@ -60,7 +60,6 @@ const ManageStartup = () => {
                         <th>Stage</th>
                         <th>Brief</th>
                         <th> Startup Documents</th>
-
                         <th>Owner Avatar</th>
                         <th>Owner Name</th>
                         <th>Identity Proof</th>
@@ -79,11 +78,11 @@ const ManageStartup = () => {
                         <th>City</th>
                         <th>Website</th>
                         <th>App</th>
-
                         <th>Industry</th>
                         <th>Sector</th>
                         <th>Interests</th>
                         <th> UdyogAadhar</th>
+                        <th></th>
                         
                         
                     
@@ -97,26 +96,23 @@ const ManageStartup = () => {
                             <tr >
                         <td>{user.role}</td>
                         <td>{user.password}</td>
-
-                        <td>{user.startupimage}</td>
                         <td>{user.startupname}</td>
+                         <td>{user.startupimage}</td>
                         <td>{user.created_at}</td>
                         <td>{user.type}</td>
                         <td>{user.stage}</td>
                         <td>{user.brief}</td>
                         <td>{user.sdocuments}</td>
-
                         <td>{user.owneravatar}</td>
                         <td>{user.ownername}</td>
+                       
                         <td>{user.identityproof}</td>
                         <td>{user.identityNo}</td>
                         <td>{user.documents}</td>
                         <td>{user.ownercontact}</td>
                         <td>{user.owneremail}</td>
                         <td>{user.teammemberno}</td>
-                        <td>{user.teammembers}</td>
-
-                        <td>{user.productimage}</td>
+                        <td>{user.teammembers}</td> <td>{user.productimage}</td>
                         <td>{user.productname}</td>
                         <td>{user.productdescription}</td>
                         <td>{user.semail}</td>
@@ -125,11 +121,12 @@ const ManageStartup = () => {
                         <td>{user.city}</td>
                         <td>{user.website}</td>
                         <td>{user.app}</td>
-                        
                         <td>{user.industry}</td>
+                        <td>{user.interests}</td> 
                         <td>{user.sector}</td>
-                        <td>{user.interests}</td>
                         <td>{user.aadhar}</td>
+                        
+                        <td></td>
                         
                                 
                                 
