@@ -6,6 +6,7 @@ import Header from '../startup/Header'
 
 
 const BlogBrowse = () => {
+    const [searchKeyword, setSearchKeyword] = useState("");
     const [blogList, setBlogList] = useState([]);
     const filters = [
         {
@@ -22,7 +23,7 @@ const BlogBrowse = () => {
         const res = await fetch(url + "/blogbrowser/getall");
         const data = await res.json();
         console.log(data);
-        setStartupList(data.result.filter((user) => ( user[field] === searchKeyword)));
+        setBlogList(data.result.filter((user) => ( user[field] === searchKeyword)));
       }
     
 
@@ -69,12 +70,14 @@ const BlogBrowse = () => {
 
               <div className="col-6 input-group  " style={{ width: "40%", height: "36px" }}>
                   <div className="form-outline bg-white">
-                      <input type="search" id="form1" className="form-control rounded" />
+                      <input type="search" id="form1" className="form-control rounded" 
+                      value={searchKeyword} onChange={e => setSearchKeyword(e.target.value)}/>
                       <label className="form-label rounded" htmlFor="form1" >
                           Search
                       </label>
                   </div>
-                  <button type="button" className="btn btn-primary">
+                  <button type="button" className="btn btn-primary"
+                  onClick={e => search('heading')}>
                       <i className="fas fa-search" />
                   </button>
               </div>

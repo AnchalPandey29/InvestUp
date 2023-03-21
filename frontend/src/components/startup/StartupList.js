@@ -65,6 +65,7 @@ const StartupList = () => {
               className="img-fluid p-2"
               src={startup.startupimage ? (url + "/" + startup.startupimage) : placeholder}
               alt=""
+              style={{maxHeight:"200px",width:"200px"}}
             />
           </div>
 

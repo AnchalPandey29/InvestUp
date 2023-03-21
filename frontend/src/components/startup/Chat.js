@@ -24,7 +24,21 @@ const StartupChat = () => {
 
   const [inputText, setInputText] = useState("")
 
+  const saveData = async (formdata) => {
+    
+    const res = await fetch(`http://localhost:5000/chat/add`, {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    console.log(res.status);
+  }
+
+
   const sendMessage = () => {
+    
+    
     if (!inputText.trim()) return
     const temp = { text: inputText, sent: true }
 
@@ -33,6 +47,12 @@ const StartupChat = () => {
 
     setMessageList([...messageList, temp])
     setInputText("")
+    saveData({
+      sender: currentUser._id,
+      reciever: currentUser._id,
+      date: Date,
+      message : inputText
+    });
   }
 
   socket.on('recmsg', (data) => {

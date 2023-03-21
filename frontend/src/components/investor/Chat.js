@@ -8,8 +8,6 @@ const InvestorChat = () => {
     const url = app_config.apiurl;
     const [socket, setSocket] = useState(io(url, {autoConnect: false}));
     const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('investor')));
-    
-
 
     useEffect(() => {
       socket.connect();
@@ -19,9 +17,21 @@ const InvestorChat = () => {
   const [messageList, setMessageList] = useState([
     // { text: "Kal wale exam ka syllabus send kro", sent: false },
     // { text: "Kal kaun sa exam hai??", sent: true },
-  ])
+  ]);
 
   const [inputText, setInputText] = useState("")
+
+  const saveData = async (formdata) => {
+    
+    const res = await fetch(`http://localhost:5000/chat/add`, {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    console.log(res.status);
+  }
+
 
   const sendMessage = () => {
     if (!inputText.trim()) return
@@ -32,6 +42,12 @@ const InvestorChat = () => {
 
     setMessageList([...messageList, temp])
     setInputText("")
+    saveData({
+      sender: currentUser._id,
+      reciever: currentUser._id,
+      date: Date,
+      message : inputText
+    });
   }
 
   socket.on('recmsg', (data) => {

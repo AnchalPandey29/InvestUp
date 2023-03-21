@@ -91,10 +91,9 @@ const openChat = () => {
       text: 'You can not chat with an investor!',
     })
   }else{
-    navigate('/startup/chat/');
+    navigate('/startup/chat/'+id);
   }
 }
-    
   const displayDetails = () => {
     if (!loading && investorData) {
       return <div
