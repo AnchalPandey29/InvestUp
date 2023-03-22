@@ -182,7 +182,7 @@ function App() {
                 <Route element={<StartupDashboard />} path="dashboard" />
                 <Route element={<Register />} path="register" />
                 {/* <Route element={<StartupDashboardContainer />} path="dashboard" /> */}
-                <Route element={<StartupChat />} path="chat" />
+                <Route element={<StartupChat />} path="chat/:investorid" />
                 <Route element={<StartupProfile />} path="startupprofile" />
                 <Route element={<Register />} path="profile" />
                 

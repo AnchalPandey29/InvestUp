@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import "./Chat.css";
 import {io} from 'socket.io-client';
 import app_config from "../../config";
+import { useParams } from "react-router-dom";
 
 const InvestorChat = () => {
 
@@ -9,8 +10,11 @@ const InvestorChat = () => {
     const [socket, setSocket] = useState(io(url, {autoConnect: false}));
     const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('investor')));
 
+    const {startupid} = useParams();
+
     useEffect(() => {
       socket.connect();
+      fetchChats();
     }, [])
     
 
@@ -32,6 +36,23 @@ const InvestorChat = () => {
     console.log(res.status);
   }
 
+  const fetchChats = async () => {
+    const res = await fetch(url+'/chat/getchat/'+currentUser._id+'/'+startupid);
+    const chatsData = (await res.json()).result;
+    console.log(chatsData);
+    if(chatsData.length){
+
+      setMessageList([...chatsData.map(chat => { return {...chat.data} })]);
+      // {
+      //   if(chat.rec === currentUser._id){
+      //     if(!chat.read)
+      //       setCount(count+1)
+      //   }
+      // }
+      console.log(messageList);
+    }
+  }
+
 
   const sendMessage = () => {
     if (!inputText.trim()) return
@@ -44,14 +65,18 @@ const InvestorChat = () => {
     setInputText("")
     saveData({
       sender: currentUser._id,
-      reciever: currentUser._id,
-      date: Date,
-      message : inputText
+      reciever: startupid,
+      data: temp,
     });
   }
 
   socket.on('recmsg', (data) => {
-    setMessageList([...messageList, data])
+    setMessageList([...messageList, data]);
+    saveData({
+      sender: currentUser._id,
+      reciever: startupid,
+      data: data,
+    });
   })
 
   return (

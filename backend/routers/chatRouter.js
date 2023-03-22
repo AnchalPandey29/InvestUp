@@ -22,6 +22,8 @@ router.post("/add", (req, res) => {
 });
 
 
+
+
 router.get("/getall", (req, res) => {
   Model.find()
     .then((result) => {
@@ -36,6 +38,30 @@ router.get("/getall", (req, res) => {
 
 router.get("/getbyid/:id", (req, res) => {
   Model.findById(req.params.id)
+    .then((result) => {
+      console.log("User Data Retrieved");
+      res.status(200).json({ status: "success", result });
+    })
+    .catch((err) => {
+      console.error("Error retrieving user data", err);
+      res.status(500).send("Error retrieving user data");
+    });
+});
+
+router.get("/getchat/:senderid/:recid", (req, res) => {
+  Model.find({sender: req.params.senderid, reciever: req.params.recid})
+    .then((result) => {
+      console.log("User Data Retrieved");
+      res.status(200).json({ status: "success", result });
+    })
+    .catch((err) => {
+      console.error("Error retrieving user data", err);
+      res.status(500).send("Error retrieving user data");
+    });
+});
+
+router.get("/getrecchat/:recid", (req, res) => {
+  Model.find({reciever: req.params.recid})
     .then((result) => {
       console.log("User Data Retrieved");
       res.status(200).json({ status: "success", result });

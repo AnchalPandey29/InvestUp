@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import app_config from "../../config";
 import { useStartupContext } from "../../context/StartupProvider";
 import './Header.css';
 
 const Header = () => {
 
   const { logout }  = useStartupContext();
+  
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark  text-white">
@@ -67,6 +69,7 @@ const Header = () => {
                 News
               </NavLink>
             </li>
+            
           </ul>
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item">

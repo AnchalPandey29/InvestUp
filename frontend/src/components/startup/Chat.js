@@ -8,7 +8,6 @@ const StartupChat = () => {
 
   const url = app_config.apiurl;
   const [socket, setSocket] = useState(io(url, { autoConnect: false }));
-  const subscriptionData = subscriptionData;
 
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('startup')));
 

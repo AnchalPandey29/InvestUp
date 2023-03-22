@@ -106,7 +106,7 @@ const StartupDetails = () => {
       return
     }
     if (subscriptionData[planDetails.data.name].includes(feature)) { navigate(path) }
-    else Swal.fire({ title: 'You need to subscribe' })
+    else Swal.fire({ title: 'Please upgrade your plan!!' })
   }
 
   const displayDetails = () => {

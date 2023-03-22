@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -20,6 +21,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { NavLink } from 'react-router-dom';
 import { useStartupContext } from '../../context/StartupProvider';
+import app_config from '../../config';
 
 const drawerWidth = 230;
 
@@ -75,6 +77,30 @@ export default function StartupDashboardContainer({children}) {
 
   const {logout} = useStartupContext();
 
+  const [count, setCount] = useState(0);
+  const url = app_config.apiurl;
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
+
+  const fetchChats = async () => {
+    const res = await fetch(url+'/chat/getrecchat/'+currentUser._id);
+    const chatsData = (await res.json()).result;
+    console.log(chatsData);
+    if(chatsData.length){
+
+      // setMessageList([...chatsData.map(chat => { return {...chat.data} })]);
+      chatsData.forEach(chat => {
+        if(!chat.read)
+          setCount(count+1);
+      });
+      console.log(chatsData);
+    }
+  }
+
+  React.useEffect(() => {
+    fetchChats();
+  }, [])
+  
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -117,6 +143,7 @@ export default function StartupDashboardContainer({children}) {
 
             </Typography>
             <Box sx={{ml: 'auto'}}>
+            Unread Messages : {count}
 
             <button onClick={logout} type="submit" class="btn px-3 me-2" >
               Logout
