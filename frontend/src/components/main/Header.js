@@ -82,7 +82,23 @@ const Header = () => {
                       Signin
                     </NavLink>
                   ) :
+                  
+                  (currentUser === null &&  currentInvestor === null) ?
+                  (
+
+                    <NavLink className="btn btn-outline-dark" to="/startup/dashboard" style={{ backgroundColor: "#9c3353", color: "white" }}>
+                  Your Dashboard
+                </NavLink>
+                  ) :
+                  (currentUser === null &&  currentStartup === null) ?
+                  (
+
+                    <NavLink className="btn btn-outline-dark" to="/investor/dashboard" style={{ backgroundColor: "#9c3353", color: "white" }}>
+                  Your Dashboard
+                </NavLink>
+                  ) :
                   ''
+                  
               }
 
             </li>
