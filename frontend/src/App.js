@@ -59,6 +59,8 @@ import StartupDetails from "./components/startup/StartupDetails";
 import InvestorList from "./components/investor/InvestorList";
 import InvestorDetails from "./components/investor/InvestorDetails";
 import StartupDashboard from "./components/startup/Dashboard";
+import chatlist from "./components/investor/Dashboard";
+
 // import StartupDashboardContainer from "./components/startup/DashboardContainer";
 import InvestorChat from "./components/investor/Chat";
 import Checkout from "./components/startup/Checkout";
@@ -190,7 +192,8 @@ function App() {
 
               <Route element={<Investor />} path="investor">
                 <Route element={<InvestorDashboard />} path="dashboard" />
-
+                
+                <Route element={<chatlist />} path="chatlist" />
                 <Route element={<InvestorChat />} path="chat/:startupid" />
                 <Route element={<Registerinvestor />} path="profile" />
                 <Route element={<PlanDetails />} path="plan" />

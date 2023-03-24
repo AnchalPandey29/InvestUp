@@ -55,6 +55,8 @@ const ManageNews = () => {
                         <th>HEADING</th>
                         <th>CONTENT</th>
                         <th>IMAGE</th>
+                        <th>CATEGORY</th>
+
                         <th>DELETE</th>
                         
                     </tr>
@@ -69,6 +71,9 @@ const ManageNews = () => {
                                 <td>{user.heading}</td>
                                 <td>{user.content}</td>
                                 <td>{user.image}</td>
+                                <td>{user.category}</td>
+                                <td></td>
+
                                 
                                 <td>
                                     <button className='btn btn-dark' style={{backgroundColor:"#9c3353"}} onClick={() => deleteUser(user._id)}> <i style={{color:"white"}} class="fas fa-trash"></i></button>

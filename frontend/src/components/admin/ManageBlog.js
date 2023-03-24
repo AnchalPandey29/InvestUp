@@ -56,6 +56,8 @@ const ManageBlog = () => {
                         <th>CONTENT</th>
                         <th>IMAGE</th>
                         <th>DELETE</th>
+                        <th>CATEGORY</th>
+                        <th>DELETE</th>
                         
                     </tr>
                 </thead>
@@ -69,6 +71,8 @@ const ManageBlog = () => {
                                 <td>{user.heading}</td>
                                 <td>{user.content}</td>
                                 <td>{user.image}</td>
+                                <td>{user.category}</td>
+                                <td></td>
                                 
                                 <td>
                                 <button className='btn btn-dark' style={{backgroundColor:"#9c3353"}} onClick={() => deleteUser(user._id)}> <i style={{color:"white"}} class="fas fa-trash"></i></button>

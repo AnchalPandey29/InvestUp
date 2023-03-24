@@ -7,6 +7,7 @@ const schema = new Schema({
   content: { type: String, required: true},
   image:{type:String},
   created_at:Date,
+  category:{type:String},
   });
 
 

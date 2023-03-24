@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import app_config from "../../config";
+import {
+  FormLabel, 
+} from "@mui/material";
 
 const AddNews = () => {
 
@@ -77,6 +80,27 @@ const AddNews = () => {
                  
                   <label>Image</label>
                   <input className="form-control mb-3" type="file" onChange={uploadFile}/>
+                  <div className="col-8 mb-4">
+                   
+                   <label htmlFor="select2">Category</label><br/>
+                   
+                   <select
+                    style={{ width: "423px" }}
+                     className="select"
+                     name="category"
+                     value={values.category}
+                     onChange={handleChange}
+                   >
+                     <FormLabel>Category</FormLabel>
+                     <option value=""></option>
+                     <option value="Business">Business</option>
+                     <option value="Technology">Technology</option>
+                     <option value="Advertisement">Entertainment</option>
+                     <option value="IT Services">IT Services</option>
+                     <option value="Consulting">Consulting</option>
+                     <option value="Marketing">Marketing</option>
+                   </select>
+                   </div>
                  
                  <div className="d-flex justify-content-center align-item-center">
                   <button disabled={isSubmitting} type="submit" className="btn " style={{backgroundColor:"#9c3353", color:"white"}}>

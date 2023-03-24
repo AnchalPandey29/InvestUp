@@ -57,6 +57,7 @@ const ManageCampaign = () => {
                         <th>START DATE</th>
                         <th>LAST DATE</th>
                         <th>IMAGE</th>
+                        <th>CATEGORY</th>
                         <th>DELETE</th>
                         
                     </tr>
@@ -72,6 +73,9 @@ const ManageCampaign = () => {
                                 <td>{new Date(user.startdate).toLocaleDateString()}</td>
                                 <td>{user.lastdate}</td>
                                 <td>{user.image}</td>
+                                <td>{user.category}</td>
+                                <td></td>
+                                
                                 
                                 <td>
                                     <button className='btn btn-dark' style={{backgroundColor:"#9c3353"}} onClick={() => deleteUser(user._id)}> <i style={{color:"white"}} class="fas fa-trash"></i></button>

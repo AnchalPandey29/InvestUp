@@ -26,7 +26,8 @@ const StartupList = () => {
     const res = await fetch(url + "/startup/getall");
     const data = await res.json();
     console.log(data);
-    setStartupList(data.result.filter((user) => (user.role === "startup" && user[field] === searchKeyword)));
+    setStartupList(data.result.filter((user) => (user.role === "startup" 
+    && user[field] === searchKeyword)));
   }
 
 
