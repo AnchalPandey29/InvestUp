@@ -33,13 +33,13 @@ const AddBlog = () => {
     console.log(res.status)
     setSubmitting(false);
 
-    if (res.status === 200) {
+    if (res.status === 201) {
       Swal.fire({
         icon: "success",
         title: 'Success',
-        text: 'You have registered successfully'
+        text: 'Blog Added Successfully'
       })
-      navigate('/login');
+      navigate('main/BlogBrowser');
     } else {
       // error alert
     }
