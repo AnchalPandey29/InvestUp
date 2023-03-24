@@ -80,7 +80,8 @@ const AddBlog = () => {
                  
                   <label>Image</label>
                   <input className="form-control mb-3" type="file" onChange={uploadFile}/>
-
+                  <label>Date</label>
+                  <input className="form-control mb-3" type="date" value={values.date} onChange={handleChange} name="date" />
                   <div className="col-8 mb-4">
                    
                       <label htmlFor="select2">Category</label><br/>
@@ -94,14 +95,15 @@ const AddBlog = () => {
                       >
                         <FormLabel>Category</FormLabel>
                         <option value=""></option>
-                        <option value="Success Stories">Success Stories</option>
+                        <option value="Inspirational">Success Stories</option>
                         <option value="Technology">Technology</option>
                         <option value="Entertainment">Entertainment</option>
-                        <option value="IT Services">IT Services</option>
+                        <option value="Educational">IT Services</option>
                         <option value="Consulting">Consulting</option>
-                        <option value="Consulting">Marketing</option>
+                        <option value="Marketing">Marketing</option>
                       </select>
                       </div>
+
                  
                  <div className="d-flex justify-content-center align-item-center">
                   <button disabled={isSubmitting} type="submit" className="btn " style={{backgroundColor:"#9c3353", color:"white"}}>

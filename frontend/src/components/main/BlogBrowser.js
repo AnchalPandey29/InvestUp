@@ -12,7 +12,7 @@ const BlogBrowse = () => {
         {
           name : 'Categories',
           option: [
-            'Success Story',
+            'SuccessStory',
             'Motivational Blog',
             
           ]
