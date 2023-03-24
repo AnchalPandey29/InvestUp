@@ -76,7 +76,7 @@ const BlogBrowse = () => {
                           Search
                       </label>
                   </div>
-                  <button type="button" className="btn btn-primary"
+<button type="button" className="btn btn-primary"
                   onClick={e => search('category')}>
                       <i className="fas fa-search" />
                   </button>

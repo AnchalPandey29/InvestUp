@@ -39,7 +39,7 @@ const AddNews = () => {
         title: 'Success',
         text: 'News Added Successfully'
       })
-      navigate('main/NewsBrowser');
+      
     } else {
       // error alert
     }
@@ -96,12 +96,13 @@ const AddNews = () => {
                    >
                      <FormLabel>Category</FormLabel>
                      <option value=""></option>
-                     <option value="Business">Business</option>
-                     <option value="Technology">Technology</option>
-                     <option value="Advertisement">Entertainment</option>
-                     <option value="IT Services">IT Services</option>
-                     <option value="Consulting">Consulting</option>
-                     <option value="Marketing">Marketing</option>
+                     <option value="all" selected>All</option>
+                <option value="technology">Technology</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Sales">Sales</option>
+                <option value="Shares">Shares</option>
+
+                <option value="Consulting">Consulting</option>
                    </select>
                    </div>
                  

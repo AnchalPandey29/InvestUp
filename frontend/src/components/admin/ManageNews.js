@@ -50,13 +50,12 @@ const ManageNews = () => {
                 <thead >
                     <tr style={{backgroundColor:"#9c3353", color:"white"}}>
                         
-                        <th>ID</th>
+                       
                         <th>DATE</th>
                         <th>HEADING</th>
                         <th>CONTENT</th>
                         <th>IMAGE</th>
                         <th>CATEGORY</th>
-
                         <th>DELETE</th>
                         
                     </tr>
@@ -66,7 +65,7 @@ const ManageNews = () => {
                         userList.map( (user) => (
                             <tr >
                                 
-                                <td>{user.id}</td>
+                                
                                 <td>{user.date}</td>
                                 <td>{user.heading}</td>
                                 <td>{user.content}</td>

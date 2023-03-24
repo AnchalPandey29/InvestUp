@@ -40,7 +40,7 @@ const AddCompaign = () => {
         title: 'Success',
         text: 'Campaign Data Added Successfully'
       })
-      navigate('/main/CampaignBrowser');
+     
     } else {
       // error alert
     }
@@ -98,7 +98,7 @@ const AddCompaign = () => {
                    >
                      <FormLabel>Category</FormLabel>
                      <option value=""></option>
-                     <option value="Business">Success Stories</option>
+                     <option value="Business">Business</option>
                      <option value="Technology">Technology</option>
                      <option value="Advertisement">Entertainment</option>
                      <option value="Educational">IT Services</option>

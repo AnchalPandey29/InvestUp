@@ -39,7 +39,7 @@ const AddBlog = () => {
         title: 'Success',
         text: 'Blog Added Successfully'
       })
-      navigate('main/BlogBrowser');
+      navigate('/main/BlogBrowser');
     } else {
       // error alert
     }

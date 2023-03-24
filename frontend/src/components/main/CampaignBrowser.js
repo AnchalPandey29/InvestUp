@@ -6,9 +6,15 @@ import Header from '../startup/Header'
 
 
 const CampaignBrowser = () => {
-
+  const [searchKeyword, setSearchKeyword] = useState("");
     const [campaignList, setCampaignList] = useState([]);
-
+    
+    const search =  async (field) => {
+      const res = await fetch(url + "/campaign/getall");
+      const data = await res.json();
+      console.log(data);
+      setCampaignList(data.result.filter((user) => ( user[field] === searchKeyword)));
+    }
     const url = app_config.apiurl;
 
     const fetchData = async () => {
@@ -42,12 +48,14 @@ const CampaignBrowser = () => {
           <div className='col-6 d-flex align-items-center ' style={{ height: "40px" }}>
             <label style={{ color: "black" }} className="form-label m-2" htmlFor="category">Sort</label>&nbsp;
             <select className="form-control" name="category" id="category" style={{ width: "70%" }} >
-
+            <option value="" selected></option>
               <option value="all" selected>All</option>
-              <option value="technology">Technology</option>
-              <option value="entertainmnet">Entertainment</option>
-              <option value="sports">Sports</option>
-              <option value="food">Food</option>
+              <option value="Business">Business</option>
+                     <option value="Technology">Technology</option>
+                     <option value="Advertisement">Entertainment</option>
+                     <option value="Educational">Educational</option>
+                     <option value="Consulting">Consulting</option>
+                     <option value="Marketing">Marketing</option>
             </select>
           </div>
 
@@ -58,7 +66,9 @@ const CampaignBrowser = () => {
                 Search
               </label>
             </div>
-            <button type="button" className="btn btn-primary">
+            <button type="button" className="btn btn-primary" 
+             onClick={e => search('category')}>
+          
               <i className="fas fa-search" />
             </button>
           </div>
