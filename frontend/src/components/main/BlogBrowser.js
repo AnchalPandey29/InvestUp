@@ -20,7 +20,7 @@ const BlogBrowse = () => {
       ]
     
       const search =  async (field) => {
-        const res = await fetch(url + "/blogbrowser/getall");
+        const res = await fetch(url + "/Blog/getall");
         const data = await res.json();
         console.log(data);
         setBlogList(data.result.filter((user) => ( user[field] === searchKeyword)));
@@ -77,7 +77,7 @@ const BlogBrowse = () => {
                       </label>
                   </div>
                   <button type="button" className="btn btn-primary"
-                  onClick={e => search('heading')}>
+                  onClick={e => search('category')}>
                       <i className="fas fa-search" />
                   </button>
               </div>
