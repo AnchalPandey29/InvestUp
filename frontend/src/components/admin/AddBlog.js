@@ -95,10 +95,10 @@ const AddBlog = () => {
                       >
                         <FormLabel>Category</FormLabel>
                         <option value=""></option>
-                        <option value="Inspirational">Success Stories</option>
+                        <option value="Inspirational">Inspirational</option>
                         <option value="Technology">Technology</option>
                         <option value="Entertainment">Entertainment</option>
-                        <option value="Educational">IT Services</option>
+                        <option value="Educational">Educational</option>
                         <option value="Consulting">Consulting</option>
                         <option value="Marketing">Marketing</option>
                       </select>
