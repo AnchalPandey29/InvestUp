@@ -71,7 +71,7 @@ const ManageNews = () => {
                                 <td>{user.content}</td>
                                 <td>{user.image}</td>
                                 <td>{user.category}</td>
-                                <td></td>
+                                <td> </td>
 
                                 
                                 <td>
