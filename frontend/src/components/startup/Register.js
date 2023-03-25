@@ -12,9 +12,8 @@ import * as Yup from "yup";
 
 
 const Schema1 = Yup.object().shape({
-  startupname: Yup.string().min(2, "Too Short!").required("Name is required"),
+  name: Yup.string().min(2, "Too Short!").required("Name is required"),
   brief:Yup.string().required("Description is required"),
-  currentincubatees:Yup.string().required("Description is required"),
 });
 
 //const Schema2=Yup.object().shape({
@@ -185,7 +184,7 @@ const Register = () => {
                     <div class="form-outline mb-2">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
-                            <input type="file" label='Startup Image'name="startupimage" value={values.startupimage} onChange={uploadImage} />
+                            <input type="file" label='Startup Image' onChange={uploadImage} />
                             {selimage === '' && currentUser.startupimage ==='' ? (
                           <div>{'Image Required'}</div>
                         ) : null}

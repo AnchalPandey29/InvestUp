@@ -94,7 +94,7 @@ const AddBlog = () => {
                       <label htmlFor="select2">Category</label><br/>
                       
                       <select
-                       style={{ width: "423px" }}
+                       style={{ width: "45vh"}}
                         className="select"
                         name="category"
                         value={values.category}

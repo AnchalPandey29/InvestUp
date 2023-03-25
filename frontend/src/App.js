@@ -72,6 +72,7 @@ import InvestorDashboard from "./components/investor/Dashboard";
 import Auth from "./auth/Auth";
 import PlanDetails from "./components/investor/PlanDetails";
 import InvestorAuth from "./auth/InvestorAuth";
+import InvestorProvider from "./context/InvestorProvider";
 function App() {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(sessionStorage.getItem("user"))
@@ -84,12 +85,17 @@ function App() {
   const [currentStartup, setCurrentStartup] = useState(
     JSON.parse(sessionStorage.getItem("startup"))
   );
+ 
+  const [currentInvestor, setCurrentInvestor] = useState(
+    JSON.parse(sessionStorage.getItem("investor"))
+  );
 
   return (
     <BrowserRouter>
       <AdminProvider currentUser={currentAdmin}>
         <UserProvider currentUser={currentUser}>
           <StartupProvider currentStartup={currentStartup}>
+            <InvestorProvider currentStartup={currentInvestor}>
             <Routes>
               <Route element={<Navigate to="/main/home" />} path="/" />
               <Route
@@ -218,6 +224,7 @@ function App() {
               <Route path="addadmin" element={<AddAdmin />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </InvestorProvider>
           </StartupProvider>
         </UserProvider>
       </AdminProvider>

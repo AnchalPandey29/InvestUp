@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import app_config from "../../config";
 // const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
@@ -63,7 +63,21 @@ const Checkout = () => {
     getPaymentDetails();
   }, []);
 
-  return <div>Checkout</div>;
+  return <div className="mx-auto" style={{height:"80vh"}}>  
+  
+    <div className="mt-5" >
+    <img style={{height:"200px",marginLeft:"50px"}} src="https://www.lappymaker.com/images/greentick-unscreen.gif" alt="" />  
+    </div>
+    <div >
+    <h2 className="text-center" style={{color:"#9c3353"}}>Thanks for your payment</h2>
+    <p className="text-center">Your payment is done successfully</p>
+
+    </div>
+    <div className="row">
+  
+  <Link className="btn mx-auto mt-5" style={{background:"#9c3353",color:"white",width:"fit-content"}} to="/main/home">Back to Home</Link>
+</div>
+  </div>;
 };
 
 export default Checkout;

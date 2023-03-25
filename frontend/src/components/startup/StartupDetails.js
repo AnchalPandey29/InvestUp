@@ -50,6 +50,7 @@ const StartupDetails = () => {
     }
     formdata.user = currentUser._id;
     formdata.rating = rating;
+    formdata.created_at = new Date();
     setSubmitting(true);
     const res = await fetch(`http://localhost:5000/feedback/add`, {
       method: "POST",
@@ -70,10 +71,14 @@ const StartupDetails = () => {
   }
 
   const displayFeedbacks = () => {
-    return feedbackList.map((feedback) => (
+    const reversedList = feedbackList.map((_, index) => feedbackList[feedbackList.length - 1 - index]);
+
+    return reversedList.map((feedback) => (
       <div className="border rounded card m-1 ps-5">
 
         <h5 className="pt-2">{feedback.user.name}</h5>
+        <p className="m-0 " style={{ fontSize: 10 }}>{new Date(feedback.created_at).toLocaleDateString()}</p>
+
         <Rating
           value={feedback.rating}
           readOnly
@@ -86,7 +91,8 @@ const StartupDetails = () => {
   const openChat = () => {
     if(currentInvestor){
         checkVisiblity('chat', '/investor/chat/' + startupData._id)
-    }else if(currentUser){
+    }
+    else if(currentUser){
         checkVisiblity('chat', '/startup/chat/' + startupData._id)   
     }
   }

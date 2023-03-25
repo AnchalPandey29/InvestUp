@@ -73,7 +73,7 @@ export default function InvestorDashboardContainer({children}) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  // const {logout} =useInvestorContext();
+  const {logout} =useInvestorContext();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -118,7 +118,7 @@ export default function InvestorDashboardContainer({children}) {
             </Typography>
             <Box sx={{ml: 'auto'}}>
 
-            <button onClick={{}} type="submit" class="btn px-3 me-2" >
+            <button onClick={logout} type="submit" class="btn px-3 me-2" >
               Logout
             </button>
             </Box>
@@ -146,7 +146,7 @@ export default function InvestorDashboardContainer({children}) {
         <Divider />
 
         
-        <a className="navbar-brand mt-4" href="/startup/dashboard">
+        <a className="navbar-brand mt-4" href="/main/home">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
             <i class="fas fa-home   me-4 "></i>
@@ -155,7 +155,7 @@ export default function InvestorDashboardContainer({children}) {
         </div>
         </a>
 
-        <a className="navbar-brand mt-2 " href="/startup/register">
+        <a className="navbar-brand mt-2 " href="/investor/profile">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p> <i class="fa fa-user-circle me-4" aria-hidden="true"></i>
             &nbsp;
