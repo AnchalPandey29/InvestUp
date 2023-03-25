@@ -8,7 +8,14 @@ import Header from '../startup/Header'
 const NewsBrowser = () => {
 
     const [newsList, setNewsList] = useState([]);
+    const [searchKeyword, setSearchKeyword] = useState("");
 
+    const search =  async (field) => {
+        const res = await fetch(url + "/News/getall");
+        const data = await res.json();
+        console.log(data);
+        setNewsList(data.result.filter((user) => ( user[field] === searchKeyword)));
+      }
     const url = app_config.apiurl;
 
     const fetchData = async () => {
@@ -43,9 +50,12 @@ const NewsBrowser = () => {
   
                 <option value="all" selected>All</option>
                 <option value="technology">Technology</option>
-                <option value="entertainmnet">Entertainment</option>
-                <option value="sports">Sports</option>
-                <option value="food">Food</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Sales">Sales</option>
+                <option value="Shares">Shares</option>
+
+                <option value="Consulting">Consulting</option>
+
               </select>
             </div>
   
@@ -56,8 +66,9 @@ const NewsBrowser = () => {
                     Search
                   </label>
                 </div>
-                <button type="button" className="btn btn-primary">
-                  <i className="fas fa-search" />
+                <button type="button" className="btn btn-primary"
+               onClick={e => search('category')}>
+                <i className="fas fa-search" />
                 </button>
               </div>
            

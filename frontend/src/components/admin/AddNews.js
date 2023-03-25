@@ -33,13 +33,13 @@ const AddNews = () => {
     console.log(res.status)
     setSubmitting(false);
 
-    if (res.status === 200) {
+    if (res.status === 201) {
       Swal.fire({
         icon: "success",
         title: 'Success',
-        text: 'You have registered successfully'
+        text: 'News Added Successfully'
       })
-      navigate('/login');
+      
     } else {
       // error alert
     }
@@ -80,6 +80,9 @@ const AddNews = () => {
                  
                   <label>Image</label>
                   <input className="form-control mb-3" type="file" onChange={uploadFile}/>
+                  <label>Date</label>
+                  <input className="form-control mb-3" type="date" value={values.date} onChange={handleChange} name="date" />
+                 
                   <div className="col-8 mb-4">
                    
                    <label htmlFor="select2">Category</label><br/>
@@ -93,12 +96,13 @@ const AddNews = () => {
                    >
                      <FormLabel>Category</FormLabel>
                      <option value=""></option>
-                     <option value="Business">Business</option>
-                     <option value="Technology">Technology</option>
-                     <option value="Advertisement">Entertainment</option>
-                     <option value="IT Services">IT Services</option>
-                     <option value="Consulting">Consulting</option>
-                     <option value="Marketing">Marketing</option>
+                     <option value="all" selected>All</option>
+                <option value="technology">Technology</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Sales">Sales</option>
+                <option value="Shares">Shares</option>
+
+                <option value="Consulting">Consulting</option>
                    </select>
                    </div>
                  

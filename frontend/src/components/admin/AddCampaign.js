@@ -34,13 +34,13 @@ const AddCompaign = () => {
     console.log(res.status)
     setSubmitting(false);
 
-    if (res.status === 200) {
+    if (res.status === 201) {
       Swal.fire({
         icon: "success",
         title: 'Success',
-        text: 'You have registered successfully'
+        text: 'Campaign Data Added Successfully'
       })
-      navigate('/login');
+     
     } else {
       // error alert
     }
@@ -98,10 +98,10 @@ const AddCompaign = () => {
                    >
                      <FormLabel>Category</FormLabel>
                      <option value=""></option>
-                     <option value="Business">Success Stories</option>
+                     <option value="Business">Business</option>
                      <option value="Technology">Technology</option>
                      <option value="Advertisement">Entertainment</option>
-                     <option value="IT Services">IT Services</option>
+                     <option value="Educational">IT Services</option>
                      <option value="Consulting">Consulting</option>
                      <option value="Marketing">Marketing</option>
                    </select>
