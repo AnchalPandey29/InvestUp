@@ -74,7 +74,7 @@ const ManageCampaign = () => {
                                 <td>{user.lastdate}</td>
                                 <td>{user.image}</td>
                                 <td>{user.category}</td>
-                                <td></td>
+                                <td>   </td>
                                 
                                 
                                 <td>
