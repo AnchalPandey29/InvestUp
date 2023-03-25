@@ -19,7 +19,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { NavLink } from 'react-router-dom';
-import { useStartupContext } from '../../context/StartupProvider';
+import { useInvestorContext } from '../../context/InvestorProvider';
 
 const drawerWidth = 230;
 
@@ -68,12 +68,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function StartupDashboardContainer({children}) {
+export default function InvestorDashboardContainer({children}) {
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const {logout} = useStartupContext();
+  // const {logout} =useInvestorContext();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -118,7 +118,7 @@ export default function StartupDashboardContainer({children}) {
             </Typography>
             <Box sx={{ml: 'auto'}}>
 
-            <button onClick={logout} type="submit" class="btn px-3 me-2" >
+            <button onClick={{}} type="submit" class="btn px-3 me-2" >
               Logout
             </button>
             </Box>
@@ -190,7 +190,7 @@ export default function StartupDashboardContainer({children}) {
             <p>
             <i class="fas fa-inbox  me-4 "></i>
             &nbsp;
-             Chating</p>
+             Chat</p>
         </div>
         </a>
 

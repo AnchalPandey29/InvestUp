@@ -86,13 +86,20 @@ const BlogBrowse = () => {
    
 
       <div>
+
+            <Link to="/admin/addblog" className='btn p-2 mt-5' style={{marginLeft:"12%",color:"white",background:"#9c3353",fontSize:"15px"}}>
+                <i class="fas fa-edit    "></i>
+                &nbsp;
+                Write your own Story
+            </Link>
+
               <div >
 
 
                       <div className='row p-5 justify-content-center'>
           {
                       blogList.map((blog) => (
-                          <div className='col-md-3 card m-3 pt-3'>
+                          <div className='col-md-3 card m-3 mt-0 pt-3'>
                               <div className='row-md-6 mx-auto'>
                               
                                   <img className='img-fluid ' src={url+'/'+blog.image} alt='' style={{maxHeight:"260px"}}/>

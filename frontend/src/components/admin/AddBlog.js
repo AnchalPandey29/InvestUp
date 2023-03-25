@@ -62,7 +62,14 @@ const AddBlog = () => {
 
   return (
   
-  <div>
+  <div style={{height:"100%",marginBottom:"10vh"}}>
+     <div
+          className="row"
+          style={{ height: "40vh", backgroundColor: "#9c3353",marginBottom:"-40vh" }}
+        >
+         
+        </div>
+
       <div className="col-md-3 mx-auto pt-5">
         <div className="card" >
           <div className="card-body">
@@ -93,7 +100,7 @@ const AddBlog = () => {
                         value={values.category}
                         onChange={handleChange}
                       >
-                        <FormLabel>Category</FormLabel>
+                        <FormLabel >Category</FormLabel>
                         <option value=""></option>
                         <option value="Inspirational">Inspirational</option>
                         <option value="Technology">Technology</option>
