@@ -71,6 +71,7 @@ import StartupAuth from "./auth/StartupAuth";
 import InvestorDashboard from "./components/investor/Dashboard";
 import Auth from "./auth/Auth";
 import PlanDetails from "./components/investor/PlanDetails";
+import InvestorAuth from "./auth/InvestorAuth";
 function App() {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(sessionStorage.getItem("user"))
@@ -190,7 +191,11 @@ function App() {
                 
               </Route>
 
-              <Route element={<Investor />} path="investor">
+              <Route element={
+                <InvestorAuth>
+                   <Investor />
+                </InvestorAuth>
+              } path="investor">
                 <Route element={<InvestorDashboard />} path="dashboard" />
                 
                 <Route element={<chatlist />} path="chatlist" />
