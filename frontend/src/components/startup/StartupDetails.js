@@ -44,7 +44,11 @@ const StartupDetails = () => {
 
   const feedbackSubmit = async (formdata, { setSubmitting }) => {
     if (!currentUser) {
-      // error alert
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Login needed!',
+      })
       console.log('startup login needed');
       return;
     }

@@ -7,6 +7,7 @@ const schema = new Schema({
   date:Date,
   category:{type:String},
   
+  
   });
 
 
