@@ -142,10 +142,13 @@ export default function StartupDashboardContainer({children}) {
         
 
             </Typography>
+        
             <Box sx={{ml: 'auto'}}>
-            Unread Messages : {count}
-
-            <button onClick={logout} type="submit" class="btn px-3 me-2" >
+              
+           <strong style={{color:"green"}}> Unread Messages</strong> : {count} 
+               &nbsp;&nbsp;
+           
+            <button onClick={logout} type="submit" class="btn px-3 me-2" style={{backgroundColor:"#9c3353", color:"white"}}>
               Logout
             </button>
             </Box>
@@ -212,12 +215,12 @@ export default function StartupDashboardContainer({children}) {
 
         </a>
         <Divider />
-        <a className="navbar-brand mt-4" href="/startup/chat">
+        <a className="navbar-brand mt-4" href="/startup/inbox">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
             <i class="fas fa-inbox  me-4 "></i>
             &nbsp;
-             Chating</p>
+             Inbox</p>
         </div>
         </a>
 
