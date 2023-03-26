@@ -40,6 +40,21 @@ const startupSchema = new Schema({
   sector: { type: String },
   interests: { type: String },
   aadhar: { type: String },
+
+  investoravatar:{type:String},
+  identityproofno:{type:String},
+  date:{type:String},
+  select1:{type:String},
+  currentincubatees:{type:String},
+  graduatedincubatees:{type:String},
+  funded:{type:String},
+  istate:{type:String},
+  //city:{type:String},
+  aplink:{type:String},
+  centerlocation:{type:String},
+  centerloactionaddress:{type:String},
+  DIPPTNumber:{type:String},
+
 });
 
 startupSchema.pre("save", function (next) {

@@ -18,7 +18,7 @@ const RegisterSchema1 = Yup.object().shape({
   identityproofno: Yup.string().required("This field is mandatory"),
   //   identityproof:Yup.string().required("Identity Proof is requied"),
   //  date:Yup.string().required("This field is mandatory"),
-  //  brief:Yup.string().required("Description is required"),
+  brief:Yup.string().required("Description is required"),
   //   currentincubatees:Yup.string().required("Description is required"),
   //   email: Yup.string()
   //   .email("Invalid email")
@@ -34,21 +34,19 @@ const RegisterSchema1 = Yup.object().shape({
   //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 });
 
-/*   const RegisterSchema2= Yup.object().shape({
-    email: Yup.string().email("Invalid email").required("Email is required"),
-     password: Yup.string()
-      .min(8, "Password must be at least 8 characters")
-      .required("Password is required"),
-      tel:Yup.string()
-        .max(10)
-       .required("contact number is required"),
-     aplink:Yup.string().aplink("Application Link is mandatory"),
-    istate:Yup.string().istate("State is required"),
-    });*/
+  //const RegisterSchema2= Yup.object().shape({
+  //  email: Yup.string().email("Invalid email").required("Email is required"),
+   //   tel:Yup.string()
+    //    .max(10)
+    //   .required("contact number is required"),
+    // aplink:Yup.string().aplink("Application Link is mandatory"),
+   // istate:Yup.string().istate("State is required"),
+   // });
 
-//const RegisterSchema3= Yup.object().shape({
-// DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
-//});
+const RegisterSchema3= Yup.object().shape({
+ DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+});
+
 
 const Register = () => {
   const navigate = useNavigate();
@@ -408,7 +406,7 @@ const Register = () => {
                           </div>
                         </RadioGroup>
                       </FormControl>
-                      <button
+                     {/*  <button
                         disabled={isSubmitting}
                         type="submit"
                         className="btn btn-block mb-4"
@@ -423,7 +421,16 @@ const Register = () => {
                         ) : (
                           "Next"
                         )}
-                      </button>
+                        </button> */}
+                      <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
+                        :
+                        'Next'
+                    }
+                  </button>
+
                     </form>
                   )}
                 </Formik>
@@ -444,7 +451,7 @@ const Register = () => {
           <div style={{ height: "fit-content"}}>
             <Formik
               initialValues={{ name: "", type: "", brief: "" }}
-              validationSchema={RegisterSchema1}
+              //validationSchema={RegisterSchema2}
               onSubmit={onSubmit}
             >
               {({
@@ -549,7 +556,7 @@ const Register = () => {
                       </div>
                     </div>
                   </div>
-                  <button
+                 {/*  <button
                     disabled={isSubmitting}
                     type="submit"
                     className="btn btn-block mb-4"
@@ -564,7 +571,17 @@ const Register = () => {
                     ) : (
                       "Next"
                     )}
+                  </button> */}
+                  <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
+                        :
+                        'Next'
+                    }
                   </button>
+
+
                 </form>
               )}
             </Formik>
@@ -586,7 +603,7 @@ const Register = () => {
                 select2: "",
                 type: "",
               }}
-              validationSchema={RegisterSchema1}
+              //validationSchema={RegisterSchema1}
               //validationSchema={RegisterSchema3}
               onSubmit={onSubmit}
             >
@@ -674,7 +691,7 @@ const Register = () => {
                     </div>
                   </div>
 
-                  <button
+                 {/*  <button
                     disabled={isSubmitting}
                     type="submit"
                     className="btn btn-block mb-4"
@@ -689,7 +706,16 @@ const Register = () => {
                     ) : (
                       "Next"
                     )}
+                  </button> */}
+                  <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
+                        :
+                        'Next'
+                    }
                   </button>
+
                 </form>
               )}
             </Formik>
