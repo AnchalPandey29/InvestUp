@@ -1,48 +1,45 @@
-const { Schema, model } = require("../connection");
+const { Schema, model, Types } = require("../connection");
 const bcrypt = require("bcrypt");
 const SALT = 10;
 
 const startupSchema = new Schema({
- // email: {type : String},
-  role: {type:String},
-  password: { type: String, required: true },//password
-  
-  startupimage: {type: String},//startuplogo
-  name: { type: String },//startupname
-  created_at: Date,//date of creation of startup
-  type:{type:String},//bootstrap or funded
-  stage:{type:String},// stage by button
-  brief:{type:String},// Description about startup
-  sdocuments: {type: String},//document for the verification of startup
+  // email: {type : String},
+  role: { type: String },
+  password: { type: String, required: true }, //password
+  contacts: [{type: Types.ObjectId, ref: 'startup'}],
 
-  owneravatar:{type:String},//owner image
-  ownername:{type:String},// name of the owner
-  identityproof:{type:String},
-  identityno:{type:String},
-  documents: {type: String},//document for the verification of owner
-  ownercontact: { type: Number},//contact no of owner
-  owneremail:{type:String},
-  teammemberno:{type:Number},//no of members in team
-  teammembers:{type:Array},//name of members
-  productimage:{type:String},//image of startup product
-  productname:{type:String},//Name of the product
-  productdescription:{type:String},//Description of the product 
+  startupimage: { type: String }, //startuplogo
+  name: { type: String }, //startupname
+  created_at: Date, //date of creation of startup
+  type: { type: String }, //bootstrap or funded
+  stage: { type: String }, // stage by button
+  brief: { type: String }, // Description about startup
+  sdocuments: { type: String }, //document for the verification of startup
 
-  email: { type: String },//startupemail
-  tel:{type:String},
-  state:{type:String},
-  city:{type:String},
-  website:{type:String},//website link of startup
-  app:{type:String},//app link of startup
+  owneravatar: { type: String }, //owner image
+  ownername: { type: String }, // name of the owner
+  identityproof: { type: String },
+  identityno: { type: String },
+  documents: { type: String }, //document for the verification of owner
+  ownercontact: { type: Number }, //contact no of owner
+  owneremail: { type: String },
+  teammemberno: { type: Number }, //no of members in team
+  teammembers: { type: Array }, //name of members
+  productimage: { type: String }, //image of startup product
+  productname: { type: String }, //Name of the product
+  productdescription: { type: String }, //Description of the product
 
-  
+  email: { type: String }, //startupemail
+  tel: { type: String },
+  state: { type: String },
+  city: { type: String },
+  website: { type: String }, //website link of startup
+  app: { type: String }, //app link of startup
 
-  industry:{type:String},
-  sector:{type:String},
-  interests:{type:String},
-  aadhar:{type:String},
- 
-  
+  industry: { type: String },
+  sector: { type: String },
+  interests: { type: String },
+  aadhar: { type: String },
 });
 
 startupSchema.pre("save", function (next) {

@@ -1,32 +1,48 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 import "./Chat.css";
-import {io} from 'socket.io-client';
+import { io } from "socket.io-client";
 import app_config from "../../config";
 import { useParams } from "react-router-dom";
 
 const InvestorChat = () => {
+  const url = app_config.apiurl;
+  const [socket, setSocket] = useState(io(url, { autoConnect: false }));
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("investor"))
+  );
 
-    const url = app_config.apiurl;
-    const [socket, setSocket] = useState(io(url, {autoConnect: false}));
-    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('investor')));
+  const { startupid } = useParams();
 
-    const {startupid} = useParams();
+  useEffect(() => {
+    socket.connect();
+    fetchChats();
+  }, []);
 
-    useEffect(() => {
-      socket.connect();
-      fetchChats();
-    }, [])
-    
+  const checkStartuphasContact = async () => {
+    const response = await fetch(`${url}/startup/getbyid/${startupid}`);
+    // console.log(response.status);
+    const startupContacts = (await response.json()).result.contacts;
+    console.log(startupContacts);
+    return startupContacts.includes(currentUser._id);
+  };
 
-  const [messageList, setMessageList] = useState([
-    // { text: "Kal wale exam ka syllabus send kro", sent: false },
-    // { text: "Kal kaun sa exam hai??", sent: true },
-  ]);
+  const addInvestorToContact = async () => {
+    const response = await fetch(`${url}/startup/addtocontact/${startupid}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        contacts: currentUser._id,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(response.status);
+    console.log("contact added");
+  };
 
-  const [inputText, setInputText] = useState("")
+  const [messageList, setMessageList] = useState([]);
+
+  const [inputText, setInputText] = useState("");
 
   const saveData = async (formdata) => {
-    
     const res = await fetch(`http://localhost:5000/chat/add`, {
       method: "POST",
       body: JSON.stringify(formdata),
@@ -34,15 +50,20 @@ const InvestorChat = () => {
     });
 
     console.log(res.status);
-  }
+  };
 
   const fetchChats = async () => {
-    const res = await fetch(url+'/chat/getchat/'+currentUser._id+'/'+startupid);
+    const res = await fetch(
+      url + "/chat/getchat/" + currentUser._id + "/" + startupid
+    );
     const chatsData = (await res.json()).result;
     console.log(chatsData);
-    if(chatsData.length){
-
-      setMessageList([...chatsData.map(chat => { return {...chat.data} })]);
+    if (chatsData.length) {
+      setMessageList([
+        ...chatsData.map((chat) => {
+          return { ...chat.data };
+        }),
+      ]);
       // {
       //   if(chat.rec === currentUser._id){
       //     if(!chat.read)
@@ -51,69 +72,88 @@ const InvestorChat = () => {
       // }
       console.log(messageList);
     }
-  }
-
+  };
 
   const sendMessage = () => {
-    if (!inputText.trim()) return
-    const temp = { text: inputText, sent: true, date: new Date(), name: currentUser.name }
+    if (!inputText.trim()) return;
+    const temp = {
+      text: inputText,
+      sent: true,
+      date: new Date(),
+      name: currentUser.name,
+    };
 
     // sending msg to backend
-    socket.emit('sendmsg', temp);
+    socket.emit("sendmsg", temp);
 
-    setMessageList([...messageList, temp])
-    setInputText("")
+    setMessageList([...messageList, temp]);
+    setInputText("");
+    checkStartuphasContact().then((added) => {
+      console.log(added);
+      if (!added) addInvestorToContact();
+    });
     saveData({
       sender: currentUser._id,
       reciever: startupid,
       data: temp,
     });
-  }
+  };
 
-  socket.on('recmsg', (data) => {
+  socket.on("recmsg", (data) => {
     setMessageList([...messageList, data]);
     saveData({
       sender: currentUser._id,
       reciever: startupid,
       data: data,
     });
-  })
+  });
 
   return (
-   <>
-          <div style={{backgroundColor:"#9c3353",height:"40vh",marginBottom:"-300px"}}>    </div>
+    <>
+      <div
+        style={{
+          backgroundColor: "#9c3353",
+          height: "40vh",
+          marginBottom: "-300px",
+        }}
+      >
+        {" "}
+      </div>
 
-    <div className="container d-flex flex-column justify-content-center align-items-center p-5">
-     
-        <div className="card " style={{height:"90vh", width:"100vh"}}>
-         
-          <div className="card-header bg-success" style={{color:"white"}}>
+      <div className="container d-flex flex-column justify-content-center align-items-center p-5">
+        <div className="card " style={{ height: "90vh", width: "100vh" }}>
+          <div className="card-header bg-success" style={{ color: "white" }}>
             <p className="m-0 h4 text-center">{currentUser.name}</p>
-          
           </div>
           <div
             className="card-body chat-body"
             style={{
               height: "80vh",
-              width: "100vh"
-            }}>
+              width: "100vh",
+            }}
+          >
             {messageList.map((obj) => (
               <div className={obj.sent ? "msg-sent" : "msg-rec"}>
                 <p className="m-0">{obj.text}</p>
-                <p className="m-0 float-end" style={{fontSize: 10}}>{new Date(obj.date).toLocaleDateString()} {new Date(obj.date).toLocaleTimeString()}</p>
+                <p className="m-0 float-end" style={{ fontSize: 10 }}>
+                  {new Date(obj.date).toLocaleDateString()}{" "}
+                  {new Date(obj.date).toLocaleTimeString()}
+                </p>
               </div>
             ))}
           </div>
-          <div className="card-footer" style={{
-        
-              width: "100vh"
-            }}>
+          <div
+            className="card-footer"
+            style={{
+              width: "100vh",
+            }}
+          >
             <div className="input-group">
               <input
                 type="text"
                 className="form-control"
                 onChange={(e) => {
-                  setInputText(e.target.value)
+                  setInputText(e.target.value);
                 }}
                 value={inputText}
               />
@@ -122,11 +162,10 @@ const InvestorChat = () => {
               </button>
             </div>
           </div>
-          </div>
-    </div>
-    </>     
-    
-  )
-}
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default InvestorChat;

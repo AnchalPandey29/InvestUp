@@ -73,6 +73,7 @@ import Auth from "./auth/Auth";
 import PlanDetails from "./components/investor/PlanDetails";
 import InvestorAuth from "./auth/InvestorAuth";
 import InvestorProvider from "./context/InvestorProvider";
+import StartupInbox from "./components/startup/StartupInbox";
 function App() {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(sessionStorage.getItem("user"))
@@ -85,7 +86,7 @@ function App() {
   const [currentStartup, setCurrentStartup] = useState(
     JSON.parse(sessionStorage.getItem("startup"))
   );
- 
+
   const [currentInvestor, setCurrentInvestor] = useState(
     JSON.parse(sessionStorage.getItem("investor"))
   );
@@ -96,134 +97,149 @@ function App() {
         <UserProvider currentUser={currentUser}>
           <StartupProvider currentStartup={currentStartup}>
             <InvestorProvider currentStartup={currentInvestor}>
-            <Routes>
-              <Route element={<Navigate to="/main/home" />} path="/" />
-              <Route
-                element={
-                  // <AdminAuth>
-                  // </AdminAuth>
-                  <Admin />
-                }
-                path="admin"
-              >
-                <Route element={<AddAdmin />} path="addadmin" />
-                <Route element={<AdminProfile />} path="profile" />
-                <Route element={<AddCompaign />} path="addcampaign" />
-                <Route element={<AddNews />} path="addnews" />
-                <Route element={<AddBlog />} path="addblog" />
-                <Route element={<ManageCompaign />} path="managecampaign" />
-                <Route element={<ManageNews />} path="managenews" />
-                <Route element={<ManageBlog />} path="manageblog" />
-                <Route element={<ManageStartup />} path="managestartup" />
-                <Route element={<ManageInvestor />} path="manageinvestor" />
-                <Route element={<ManageContact />} path="managecontact" />
-              </Route>
-
-              <Route element={<Main />} path="main">
-              <Route element={<Checkout />} path="checkout/:sessionid" />
-                <Route element={<Home />} path="home" />
-                <Route element={<Forgot />} path="forgot" />
+              <Routes>
+                <Route element={<Navigate to="/main/home" />} path="/" />
                 <Route
                   element={
-                    <LoginAuth>
-                      <Signin />
-                    </LoginAuth>
+                    // <AdminAuth>
+                    // </AdminAuth>
+                    <Admin />
                   }
-                  path="login"
-                />
-                <Route element={<Option />} path="option" />
-                <Route element={<Signup />} path="signup" />
-                <Route element={<About />} path="aboutus" />
-                <Route element={<Eligible />} path="Eligible" />
-                <Route element={<Subscription />} path="subscription" />
-                <Route element={<NewsDetail />} path="newsdetail/:id" />
+                  path="admin"
+                >
+                  <Route element={<AddAdmin />} path="addadmin" />
+                  <Route element={<AdminProfile />} path="profile" />
+                  <Route element={<AddCompaign />} path="addcampaign" />
+                  <Route element={<AddNews />} path="addnews" />
+                  <Route element={<AddBlog />} path="addblog" />
+                  <Route element={<ManageCompaign />} path="managecampaign" />
+                  <Route element={<ManageNews />} path="managenews" />
+                  <Route element={<ManageBlog />} path="manageblog" />
+                  <Route element={<ManageStartup />} path="managestartup" />
+                  <Route element={<ManageInvestor />} path="manageinvestor" />
+                  <Route element={<ManageContact />} path="managecontact" />
+                </Route>
+
+                <Route element={<Main />} path="main">
+                  <Route element={<Checkout />} path="checkout/:sessionid" />
+                  <Route element={<Home />} path="home" />
+                  <Route element={<Forgot />} path="forgot" />
+                  <Route
+                    element={
+                      <LoginAuth>
+                        <Signin />
+                      </LoginAuth>
+                    }
+                    path="login"
+                  />
+                  <Route element={<Option />} path="option" />
+                  <Route element={<Signup />} path="signup" />
+                  <Route element={<About />} path="aboutus" />
+                  <Route element={<Eligible />} path="Eligible" />
+                  <Route element={<Subscription />} path="subscription" />
+                  <Route element={<NewsDetail />} path="newsdetail/:id" />
+                  <Route
+                    element={<CampaignDetail />}
+                    path="campaigndetails/:id"
+                  />
+                  <Route element={<BlogDetail />} path="blogdetails/:id" />
+                  <Route element={<ConsultancyCard />} path="consultancy" />
+                  <Route element={<Consultancy />} path="chat" />
+                  <Route element={<Contact />} path="contact" />
+                  <Route element={<Testimonial />} path="test" />
+                  <Route element={<Faq />} path="faq" />
+                  <Route element={<FaqQuery />} path="query" />
+                  <Route element={<FaqStartup />} path="faqstartup" />
+                  <Route element={<FaqInvestor />} path="faqinvestor" />
+                  <Route element={<FaqEligibility />} path="faqeligibilty" />
+                  <Route element={<FaqProcess />} path="faqprocess" />
+                  <Route element={<FaqOther />} path="faqother" />
+                  <Route element={<NewsBrowser />} path="newsbrowser" />
+                  <Route element={<BlogBrowser />} path="blogbrowser" />
+                  <Route element={<CampaignBrowser />} path="campaignbrowser" />
+                  <Route
+                    element={
+                      <Auth>
+                        <StartupList />
+                      </Auth>
+                    }
+                    path="startuplist"
+                  />
+
+                  <Route
+                    element={
+                      <Auth>
+                        <StartupDetails />
+                      </Auth>
+                    }
+                    path="startupdetails/:id"
+                  />
+
+                  <Route
+                    element={
+                      <Auth>
+                        <InvestorList />
+                      </Auth>
+                    }
+                    path="investorlist"
+                  />
+
+                  <Route
+                    element={
+                      <Auth>
+                        <InvestorDetails />
+                      </Auth>
+                    }
+                    path="investordetails/:id"
+                  />
+                </Route>
+
                 <Route
-                  element={<CampaignDetail />}
-                  path="campaigndetails/:id"
-                />
-                <Route element={<BlogDetail />} path="blogdetails/:id" />
-                <Route element={<ConsultancyCard />} path="consultancy" />
-                <Route element={<Consultancy />} path="chat" />
-                <Route element={<Contact />} path="contact" />
-                <Route element={<Testimonial />} path="test" />
-                <Route element={<Faq />} path="faq" />
-                <Route element={<FaqQuery />} path="query" />
-                <Route element={<FaqStartup />} path="faqstartup" />
-                <Route element={<FaqInvestor />} path="faqinvestor" />
-                <Route element={<FaqEligibility />} path="faqeligibilty" />
-                <Route element={<FaqProcess />} path="faqprocess" />
-                <Route element={<FaqOther />} path="faqother" />
-                <Route element={<NewsBrowser />} path="newsbrowser" />
-                <Route element={<BlogBrowser />} path="blogbrowser" />
-                <Route element={<CampaignBrowser />} path="campaignbrowser" />
-                <Route element={
-                  <Auth>
-                    <StartupList />
-                  </Auth>
-                } path="startuplist" />
-               
-                <Route element={
-                 <Auth>
-                <StartupDetails />
-              </Auth>
-              } path="startupdetails/:id" />
+                  element={
+                    <StartupAuth>
+                      <Startup />
+                    </StartupAuth>
+                  }
+                  path="startup"
+                >
+                  <Route element={<StartupDashboard />} path="dashboard" />
+                  <Route element={<Register />} path="register" />
+                  {/* <Route element={<StartupDashboardContainer />} path="dashboard" /> */}
+                  <Route element={<StartupChat />} path="chat/:investorid" />
+                  <Route element={<StartupInbox />} path="inbox" />
+                  <Route element={<StartupProfile />} path="startupprofile" />
+                  <Route element={<Register />} path="profile" />
+                </Route>
+                <Route
+                  element={
+                    <InvestorAuth>
+                      <Investor />
+                    </InvestorAuth>
+                  }
+                  path="investor"
+                >
+                  <Route element={<InvestorDashboard />} path="dashboard" />
 
-                <Route element={
-                  <Auth>
-                <InvestorList />
-                </Auth>
-                } path="investorlist" />
+                  <Route element={<chatlist />} path="chatlist" />
+                  <Route element={<InvestorChat />} path="chat/:startupid" />
+                  <Route element={<Registerinvestor />} path="profile" />
+                  <Route element={<PlanDetails />} path="plan" />
+                </Route>
 
-                <Route element={
-                  <Auth>
-                <InvestorDetails />
-                </Auth>
-                }
-                  path="investordetails/:id"
-                />
-              </Route>
+                <Route
+                  element={
+                    // <UserAuth>
+                    // </UserAuth>
+                    <User />
+                  }
+                  path="user"
+                >
+                  <Route path="profile" element={<UserProfile />} />
+                </Route>
 
-              <Route element={
-                <StartupAuth>
-                  <Startup />
-                </StartupAuth>
-              } path="startup">
-                <Route element={<StartupDashboard />} path="dashboard" />
-                <Route element={<Register />} path="register" />
-                {/* <Route element={<StartupDashboardContainer />} path="dashboard" /> */}
-                <Route element={<StartupChat />} path="chat/:investorid" />
-                <Route element={<StartupProfile />} path="startupprofile" />
-                <Route element={<Register />} path="profile" />
-                
-              </Route>
-
-              <Route element={
-                <InvestorAuth>
-                   <Investor />
-                </InvestorAuth>
-              } path="investor">
-                <Route element={<InvestorDashboard />} path="dashboard" />
-                
-                <Route element={<chatlist />} path="chatlist" />
-                <Route element={<InvestorChat />} path="chat/:startupid" />
-                <Route element={<Registerinvestor />} path="profile" />
-                <Route element={<PlanDetails />} path="plan" />
-              </Route>
-
-              <Route
-                element={
-                  // <UserAuth>
-                  // </UserAuth>
-                  <User />
-                }
-                path="user"
-              >
-                <Route path="profile" element={<UserProfile />} />
-              </Route>
-
-              <Route path="addadmin" element={<AddAdmin />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+                <Route path="addadmin" element={<AddAdmin />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
             </InvestorProvider>
           </StartupProvider>
         </UserProvider>

@@ -79,7 +79,7 @@ export default function StartupDashboardContainer({children}) {
 
   const [count, setCount] = useState(0);
   const url = app_config.apiurl;
-  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('startup')));
 
   const fetchChats = async () => {
     const res = await fetch(url+'/chat/getrecchat/'+currentUser._id);

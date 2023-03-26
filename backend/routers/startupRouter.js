@@ -70,7 +70,19 @@ router.get("/getall", (req, res) => {
 });
 
 router.get("/getbyid/:id", (req, res) => {
-  Model.findById(req.params.id)
+  Model.findById(req.params.id).populate("contacts")
+    .then((result) => {
+      console.log("User Data Retrieved");
+      res.status(200).json({ status: "success", result });
+    })
+    .catch((err) => {
+      console.error("Error retrieving user data", err);
+      res.status(500).send("Error retrieving user data");
+    });
+});
+
+router.put("/addtoContact/:id", (req, res) => {
+  Model.findByIdAndUpdate(req.params.id, {$push: req.body})
     .then((result) => {
       console.log("User Data Retrieved");
       res.status(200).json({ status: "success", result });
