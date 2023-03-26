@@ -256,22 +256,7 @@ const Register = () => {
                           </div>
                         </div>
                       </div>
-                         {/* <button 
-                         disabled={isSubmitting} 
-                         type="submit" 
-                         className="btn btn-block mb-4" 
-                         style={{ backgroundColor: "#9c3353", color: "#fffefe" }}
-                         >
-                    {isSubmitting ? (
-                          <span
-                            class="spinner-border spinner-border-sm"
-                            role="status"
-                            aria-hidden="true"
-                          ></span>
-                        ) : (
-                          "Next"
-                        )}
-                  </button>     */}
+                       
 
                    <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
                     {
@@ -314,8 +299,13 @@ const Register = () => {
                     <div class="form-outline mb-4">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
-                           
-                        
+                           <label htmlFor="Owner Image">Owner Image</label>
+                           <br />
+                          <input type="file"  onChange={uploadImage} />
+                          {selimage === '' && currentUser.owneravatar ==='' ? (
+                          <div>{'Image Required'}</div>
+                        ) : null}
+        
                           </div>
                           </div>
                         </div>
@@ -329,10 +319,12 @@ const Register = () => {
                           <div>{errors.ownername}</div>
                         ) : null}
                         
-                      <MDBFile label='Owner Avatar'type="file" id='owneravatar' name="owneravatar" value={values.owneravatar} onChange={uploadImage} />
+
+
                             
                          
                        </div>
+
                       </div>
                       <div>
                       <div class="form-outline mb-4">
@@ -354,6 +346,7 @@ const Register = () => {
                       <div class="form-outline mb-4">
                         <div class="file-upload-wrapper">
                           <div class="image-body">
+
                             <MDBFile label='Document'type="file" id='documents' name="documents" value={values.documents} onChange={uploadImage} /></div>
                             {selimage === '' && currentUser.documents ==='' ? (
                           <div>{'Image Required'}</div>
@@ -641,15 +634,15 @@ const Register = () => {
                         </div>
                       </RadioGroup>
                     </FormControl>
-
-                    <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+""
+                    <a disabled={isSubmitting} href="/startup/dashboard" type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
                     {
                       isSubmitting ?
                         <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
                         :
                         'Submit'
                     }
-                  </button>
+                  </a>
                   </form>
                 )}
               </Formik>

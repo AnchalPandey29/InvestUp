@@ -142,9 +142,17 @@ export default function StartupDashboardContainer({ children }) {
               />
             </a>
           </Typography>
+
           <Box sx={{ ml: "auto" }}>
-            Unread Messages : {count}
-            <button onClick={logout} type="submit" class="btn px-3 me-2">
+            <strong style={{ color: "green" }}> Unread Messages</strong> :{" "}
+            {count}
+            &nbsp;&nbsp;
+            <button
+              onClick={logout}
+              type="submit"
+              class="btn px-3 me-2"
+              style={{ backgroundColor: "#9c3353", color: "white" }}
+            >
               Logout
             </button>
           </Box>

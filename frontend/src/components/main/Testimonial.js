@@ -33,6 +33,7 @@ const Testimonial = () => {
               <p></p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
+                
                 I've been using this platform for my startup fundraising and it has been a game-changer. The process is smooth and efficient, and I've been able to 
                 connect with investors who have been instrumental in taking my business to the next level.
               </p>
@@ -62,7 +63,7 @@ const Testimonial = () => {
                 style={{ width: 150 }}
               />
               <h5 className="mb-3">John Doe</h5>
-              <p>Web Developer</p>
+              <p></p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
                 This platform has been incredibly helpful for my business. Not only have I been able to secure funding, but I've also been able to connect with 
@@ -94,7 +95,7 @@ const Testimonial = () => {
                 style={{ width: 150 }}
               />
               <h5 className="mb-3">Maria Kate</h5>
-              <p>Photographer</p>
+              <p></p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
                 The team behind this platform is fantastic. They're knowledgeable, helpful, and always available to answer any questions I have. I've felt supported throughout the entire fundraising 
@@ -133,10 +134,11 @@ const Testimonial = () => {
                 style={{ width: 150 }}
               />
               <h5 className="mb-3">Anna Deynah</h5>
-              <p>UX Designer</p>
+              <p></p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
-                
+                As a startup founder, I appreciated the guidance and support I received from this website . Their team was always available to answer questions and provide feedback, which helped me refine my pitch and secure funding.
+                 I'm grateful for their help and highly recommend their platform.
               </p>
               <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
                 <li>
@@ -164,11 +166,11 @@ const Testimonial = () => {
                 style={{ width: 150 }}
               />
               <h5 className="mb-3">John Doe</h5>
-              <p>Web Developer</p>
+              <p></p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
-                Ut enim ad minima veniam, quis nostrum exercitationem ullam
-                corporis suscipit laboriosam, nisi ut aliquid commodi.
+                As the first-time founder, I was nervous about approaching investors. But the team at this platform made the process easy 
+                and straemlined . I was able to secure seed funding quickly and efficiently and could be happier with the support I received. 
               </p>
               <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
                 <li>
@@ -196,11 +198,11 @@ const Testimonial = () => {
                 style={{ width: 150 }}
               />
               <h5 className="mb-3">Maria Kate</h5>
-              <p>Photographer</p>
+              <p></p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                blanditiis praesentium voluptatum deleniti atque corrupti.
+               I was impressed by the quality of the startups on this platform . As an investor , I was able to find promising companies in a variety 
+               of industries and the team was always available to help me evaluate potential investments and connect with founders.
               </p>
               <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
                 <li>
@@ -235,12 +237,11 @@ const Testimonial = () => {
                 style={{ width: 150 }}
               />
               <h5 className="mb-3">Anna Deynah</h5>
-              <p>UX Designer</p>
+              <p></p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-                eos id officiis hic tenetur quae quaerat ad velit ab hic
-                tenetur.
+                I was hesistant to join another startup platform , but I am so glad I gave this one try . The team is active and engaged 
+                and i have been able to connect with the investors who are genunily interested in my mission .
               </p>
               <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
                 <li>
@@ -268,11 +269,11 @@ const Testimonial = () => {
                 style={{ width: 150 }}
               />
               <h5 className="mb-3">John Doe</h5>
-              <p>Web Developer</p>
+              <p></p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
-                Ut enim ad minima veniam, quis nostrum exercitationem ullam
-                corporis suscipit laboriosam, nisi ut aliquid commodi.
+                This website is a valuable resource for anyone looking to invest in startups or raise capital for their business. Their platform is user-friendly, and their team is knowledgeable and responsive.
+                 I've had a positive experience using their platform and would recommend it to anyone in the startup world.
               </p>
               <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
                 <li>
@@ -300,11 +301,12 @@ const Testimonial = () => {
                 style={{ width: 150 }}
               />
               <h5 className="mb-3">Maria Kate</h5>
-              <p>Photographer</p>
+              <p></p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                blanditiis praesentium voluptatum deleniti atque corrupti.
+                I was skeptical at first about using an online platform to connect with investors, 
+                but this website exceeded my expectations. They have a robust network of investors who are
+                 serious about supporting startups,  I'm grateful for their support and would use their platform again in the future.
               </p>
               <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
                 <li>

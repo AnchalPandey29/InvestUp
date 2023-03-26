@@ -117,7 +117,7 @@ const StartupChat = () => {
                 <div className={obj.sentBy === currentUser._id ? "msg-sent" : "msg-rec"}>
                   <p className="m-0">{obj.message}</p>
                   <p className="m-0 float-end" style={{ fontSize: 10 }}>
-                    {new Date(obj.date).toLocaleTimeString()}
+                    {new Date(obj.date).toLocaleDateString()}
                   </p>
                 </div>
               </>
