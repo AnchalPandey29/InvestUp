@@ -66,11 +66,11 @@ router.get("/getall", (req, res) => {
     });
 });
 
-router.get("/getbyid/:id", (req, res) => {
-  Model.findById(req.params.id)
+router.get("/getbyuser/:id", (req, res) => {
+  Model.findOne({user : req.params.id})
     .then((result) => {
       console.log("User Data Retrieved");
-      res.status(200).json({ status: "success", result });
+      res.status(201).json({ status: "success", result });
     })
     .catch((err) => {
       console.error("Error retrieving user data", err);

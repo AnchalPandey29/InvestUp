@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import app_config from "../../config";
+import {
+  FormLabel, 
+} from "@mui/material";
 
 const AddCompaign = () => {
 
@@ -31,13 +34,13 @@ const AddCompaign = () => {
     console.log(res.status)
     setSubmitting(false);
 
-    if (res.status === 200) {
+    if (res.status === 201) {
       Swal.fire({
         icon: "success",
         title: 'Success',
-        text: 'You have registered successfully'
+        text: 'Campaign Data Added Successfully'
       })
-      navigate('/login');
+     
     } else {
       // error alert
     }
@@ -82,6 +85,27 @@ const AddCompaign = () => {
 
                   <label>Image</label>
                   <input value={values.image} className="form-control mb-3" type="file" name="image" onChange={uploadFile}/>
+                  <div className="col-8 mb-4">
+                   
+                   <label htmlFor="select2">Category</label><br/>
+                   
+                   <select
+                    style={{ width: "423px" }}
+                     className="select"
+                     name="category"
+                     value={values.category}
+                     onChange={handleChange}
+                   >
+                     <FormLabel>Category</FormLabel>
+                     <option value=""></option>
+                     <option value="Business">Business</option>
+                     <option value="Technology">Technology</option>
+                     <option value="Advertisement">Entertainment</option>
+                     <option value="Educational">IT Services</option>
+                     <option value="Consulting">Consulting</option>
+                     <option value="Marketing">Marketing</option>
+                   </select>
+                   </div>
             
                   <div className="d-flex justify-content-center align-item-center">                
                   <button disabled={isSubmitting} type="submit" className="btn"  style={{backgroundColor:"#9c3353", color:"white"}}>

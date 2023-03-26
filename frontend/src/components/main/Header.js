@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import './Header.css';
 
 const Header = () => {
+
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
+  const [currentStartup, setCurrentStartup] = useState(JSON.parse(sessionStorage.getItem('startup')));
+  const [currentInvestor, setCurrentInvestor] = useState(JSON.parse(sessionStorage.getItem('investor')));
+
+
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark  text-white">
       {/* Container wrapper */}
@@ -34,55 +41,75 @@ const Header = () => {
           {/* Left links */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link hover-overlay " to="/main/home">
+              <NavLink className="nav-link hover-overlay " to="/main/home" style={{color:"black"}}>
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link hover-overlay " to="/main/aboutus" >
+              <NavLink className="nav-link hover-overlay " to="/main/aboutus" style={{color:"black"}}>
                 AboutUs
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link hover-overlay " to="/main/contact">
+              <NavLink className="nav-link hover-overlay " to="/main/contact" style={{color:"black"}}>
                 Contact
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link hover-overlay " to="/main/faq">
+              <NavLink className="nav-link hover-overlay " to="/main/faq" style={{color:"black"}}>
                 FAQs
               </NavLink>
             </li>
-            {/* <li className="nav-item">
-              <NavLink className="nav-link hover-overlay " to="/main/blogbrowser">
-                Blog
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link hover-overlay " to="/main/newsbrowser">
-                News
-              </NavLink>
-            </li> */}
+           
           </ul>
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item me-2">
-              <NavLink className="btn btn-outline-dark" to="/main/signup" style={{backgroundColor:"#9c3353", color:"white"}}>
-                Create Account
-              </NavLink>
+              {
+                (currentUser === null && currentStartup === null && currentInvestor === null) ?
+                  (<NavLink className="btn btn-outline-dark" to="/main/signup" style={{ backgroundColor: "#9c3353", color: "white" }}>
+                    Create Account
+                  </NavLink>) : ''
+              }
+
             </li>
             <li className="nav-item">
-              <NavLink className="btn btn-outline-dark" to="/main/login" style={{backgroundColor:"#9c3353", color:"white"}}>
-                Signin
-              </NavLink>
+
+              {
+                (currentUser === null && currentStartup === null && currentInvestor === null) ?
+                  (
+
+                    <NavLink className="btn btn-outline-dark" to="/main/login" style={{ backgroundColor: "#9c3353", color: "white" }}>
+                      Signin
+                    </NavLink>
+                  ) :
+                  
+                  (currentUser === null &&  currentInvestor === null) ?
+                  (
+
+                    <NavLink className="btn btn-outline-dark" to="/startup/dashboard" style={{ backgroundColor: "#9c3353", color: "white" }}>
+                  Your Dashboard
+                </NavLink>
+                  ) :
+                  (currentUser === null &&  currentStartup === null) ?
+                  (
+
+                    <NavLink className="btn btn-outline-dark" to="/investor/dashboard" style={{ backgroundColor: "#9c3353", color: "white" }}>
+                  Your Dashboard
+                </NavLink>
+                  ) :
+                  ''
+                  
+              }
+
             </li>
           </ul>
         </div>
       </div>
       {/* Container wrapper */}
     </nav>
-    
 
-    
+
+
   );
 };
 

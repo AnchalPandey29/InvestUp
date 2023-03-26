@@ -64,7 +64,7 @@ const Eligible = () => {
               According to the program's rules, a startup applicant may receive seed funding once each in the form of a grant and in the form of debt or convertible debentures.
             </p>
             <div className='text-center mt-5'>
-              <a className='btn' style={{ backgroundColor: "#9c3353", color: "#fffefe" }} href="/startup/profile">
+              <a className='btn' style={{ backgroundColor: "#9c3353", color: "#fffefe" }} href="/main/signup/">
                 Apply Now
               </a>
             </div>
@@ -103,7 +103,7 @@ const Eligible = () => {
                 &nbsp;
                 whatever other standards that the Experts Advisory Committee may choose (EAC).</p>
               <div className='text-center mt-5'>
-                <a className='btn' style={{ backgroundColor: "#9c3353", color: "#fffefe" }} href="/investor/profile">
+                <a className='btn' style={{ backgroundColor: "#9c3353", color: "#fffefe" }} href="/main/signup/">
                   Apply Now
                 </a>
               </div>

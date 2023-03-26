@@ -5,8 +5,31 @@ import app_config from '../../config'
 import Header from '../startup/Header'
 
 
+
+
+
+
 const BlogBrowse = () => {
+    const [searchKeyword, setSearchKeyword] = useState("");
     const [blogList, setBlogList] = useState([]);
+    const filters = [
+        {
+          name : 'Categories',
+          option: [
+            'SuccessStory',
+            'Motivational Blog',
+            
+          ]
+        }
+      ]
+    
+      const search =  async (field) => {
+        const res = await fetch(url + "/Blog/getall");
+        const data = await res.json();
+        console.log(data);
+        setBlogList(data.result.filter((user) => ( user[field] === searchKeyword)));
+      }
+    
 
     const url = app_config.apiurl;
 
@@ -51,12 +74,14 @@ const BlogBrowse = () => {
 
               <div className="col-6 input-group  " style={{ width: "40%", height: "36px" }}>
                   <div className="form-outline bg-white">
-                      <input type="search" id="form1" className="form-control rounded" />
+                      <input type="search" id="form1" className="form-control rounded" 
+                      value={searchKeyword} onChange={e => setSearchKeyword(e.target.value)}/>
                       <label className="form-label rounded" htmlFor="form1" >
                           Search
                       </label>
                   </div>
-                  <button type="button" className="btn btn-primary">
+<button type="button" className="btn btn-primary"
+                  onClick={e => search('category')}>
                       <i className="fas fa-search" />
                   </button>
               </div>
@@ -65,22 +90,30 @@ const BlogBrowse = () => {
    
 
       <div>
+
+            <Link to="/admin/addblog" className='btn p-2 mt-5' style={{marginLeft:"12%",color:"white",background:"#9c3353",fontSize:"15px"}}>
+                <i class="fas fa-edit    "></i>
+                &nbsp;
+                Write your own Story
+            </Link>
+
               <div >
 
 
                       <div className='row p-5 justify-content-center'>
           {
                       blogList.map((blog) => (
-                          <div className='col-md-3 card m-3'>
-                              <div className='row-md-6'>
+                          <div className='col-md-3 card m-3 mt-0 pt-3'>
+                              <div className='row-md-6 mx-auto'>
                               
-                                  <img className='img-fluid' src={url+'/'+blog.image} alt='' style={{maxHeight:"260px"}}/>
+                                  <img className='img-fluid ' src={url+'/'+blog.image} alt='' style={{maxHeight:"260px"}}/>
                               </div>
 
                               <div className='row-md-6 p-4'>
                                   <h4>{blog.heading}</h4>
                                   <p style={{overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>{blog.content}</p>
-                                  <p>{blog.date}</p>
+
+                                  <p>{new Date().toLocaleDateString()}</p>
                                   <Link
                                      to={"/main/blogdetails/"+blog._id}
                                       type='button'

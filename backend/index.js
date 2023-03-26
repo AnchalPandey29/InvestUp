@@ -13,6 +13,7 @@ const FeedbackRouter = require('./routers/FeedbackRouter');
 const SubscriptionRouter = require('./routers/SubscriptionRouter');
 const utilRouter = require('./routers/utils');
 const contactRouter = require('./routers/contactRouter');
+const chatRouter = require('./routers/chatRouter');
 
 const cors = require('cors');
 const { PORT } = require('./config');
@@ -23,7 +24,7 @@ const { createServer } = require("http");
 const { Server } = require("socket.io");
 
 const httpServer = createServer(app);
-const io = new Server(httpServer, { cors: { origin: ['http://localhost:3000', 'http://localhost:3001'], } });
+const io = new Server(httpServer, { cors: { origin: ['http://localhost:3000', 'http://localhost:3001', 'http://127.0.0.1:3000'], } });
 
 io.on("connection", (socket) => {
     console.log('client connected');
@@ -55,6 +56,7 @@ app.use('/feedback', FeedbackRouter);
 app.use('/Subscription', SubscriptionRouter);
 app.use('/util', utilRouter);
 app.use('/contact', contactRouter);
+app.use('/chat', chatRouter);
 
 
 app.use(express.static('./static/uploads'));

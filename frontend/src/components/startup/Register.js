@@ -12,9 +12,8 @@ import * as Yup from "yup";
 
 
 const Schema1 = Yup.object().shape({
-  startupname: Yup.string().min(2, "Too Short!").required("Name is required"),
+  name: Yup.string().min(2, "Too Short!").required("Name is required"),
   brief:Yup.string().required("Description is required"),
-  currentincubatees:Yup.string().required("Description is required"),
 });
 
 //const Schema2=Yup.object().shape({
@@ -195,9 +194,9 @@ const Register = () => {
                       
 
                       <div className="form-outline mt-4 ms-1">
-                      <MDBInput label='Startup Name'id="startupname" type="text" value={values.startupname} onChange={handleChange} name="startupname" />
-                      {errors.startupname && touched.startupname ? (
-                          <div>{errors.startupname}</div>
+                      <MDBInput label='Startup Name'id="name" type="text" value={values.name} onChange={handleChange} name="name" />
+                      {errors.name && touched.name ? (
+                          <div>{errors.name}</div>
                         ) : null}
                       </div>
                       <div className="form-outline mt-4 ms-1">
@@ -257,14 +256,32 @@ const Register = () => {
                           </div>
                         </div>
                       </div>
-                         <button disabled={isSubmitting} type="submit" className="btn btn-block mb-4" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                         {/* <button 
+                         disabled={isSubmitting} 
+                         type="submit" 
+                         className="btn btn-block mb-4" 
+                         style={{ backgroundColor: "#9c3353", color: "#fffefe" }}
+                         >
+                    {isSubmitting ? (
+                          <span
+                            class="spinner-border spinner-border-sm"
+                            role="status"
+                            aria-hidden="true"
+                          ></span>
+                        ) : (
+                          "Next"
+                        )}
+                  </button>     */}
+
+                   <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
                     {
                       isSubmitting ?
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
                         :
                         'Next'
                     }
-                  </button>    
+                  </button>
+
                   </form>
                 )}
 
@@ -549,6 +566,8 @@ const Register = () => {
 
 
 
+
+
                       </select>
                     </div>
                     <div className="col-12 mb-4">
@@ -571,7 +590,7 @@ const Register = () => {
                     
                     <div className="col-12 mb-4">
                     
-                      <label htmlFor="select2">Interests</label><br/>
+                      <label htmlFor="select3">Interests</label><br/>
                       <select
                         className="select"
                         name="interests"

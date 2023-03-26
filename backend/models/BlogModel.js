@@ -5,6 +5,8 @@ const schema = new Schema({
   content: { type: String, required: true},
   image:{type:String},
   date:Date,
+  category:{type:String},
+  
   
   });
 

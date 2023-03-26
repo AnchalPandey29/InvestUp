@@ -42,7 +42,7 @@ const ManageStartup = () => {
     <div>
         <header className='py-5'>
             <div className="container">
-                <h1 className='display-3 fw-bold  text-center' style={{color:"#9c3353"}}>Manage Startup Data</h1>
+                <h1 className='display-3 fw-bold  text-center' style={{color:"#9c3353"}}>Manage Investor Data</h1>
             </div>
         </header>
 

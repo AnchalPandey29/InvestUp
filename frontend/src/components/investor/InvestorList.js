@@ -45,7 +45,7 @@ const InvestorList = () => {
             <Link
               type="button"
               className="btn"
-              to={"/investor/investordetails/" + investor._id}
+              to={"/main/investordetails/" + investor._id}
               style={{ backgroundColor: "#9c3353", color: "white" }}
             >
               Read more

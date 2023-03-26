@@ -11,3 +11,6 @@ const schema = new Schema({
 
 
 module.exports = model("feedback", schema);
+
+
+// {new Date(startup.created_at).toLocaleDateString()}

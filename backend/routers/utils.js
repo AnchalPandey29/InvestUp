@@ -1,7 +1,7 @@
 const multer = require("multer");
 const router = require("express").Router();
 const { SMTPClient } = require("emailjs");
-const stripe = require("stripe")("sk_test_4ypbMh4aR9gRNnUkQCwgOyCT00rSoAbXzZ");
+const stripe = require("stripe")("sk_test_51MgNGvSJuddPqKFR2LBYHiEBkIZZbIxcihG8xn8ZK3t6mxxfmNr302jubWmRjx27MtoN77dhLkjtkZdpRKUykPYn00isrhKV0o");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {

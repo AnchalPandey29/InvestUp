@@ -9,6 +9,9 @@ const Startup = () => {
         <Outlet />
       </DashboardContainer>
     </div>
+
+    ///auth lgani h list aur details me
+    //auth me investor k bnana h
   );
 };
 

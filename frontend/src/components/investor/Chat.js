@@ -2,40 +2,81 @@ import React, { useEffect, useState } from "react"
 import "./Chat.css";
 import {io} from 'socket.io-client';
 import app_config from "../../config";
+import { useParams } from "react-router-dom";
 
 const InvestorChat = () => {
 
     const url = app_config.apiurl;
     const [socket, setSocket] = useState(io(url, {autoConnect: false}));
     const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('investor')));
-    
 
+    const {startupid} = useParams();
 
     useEffect(() => {
       socket.connect();
+      fetchChats();
     }, [])
     
 
   const [messageList, setMessageList] = useState([
     // { text: "Kal wale exam ka syllabus send kro", sent: false },
     // { text: "Kal kaun sa exam hai??", sent: true },
-  ])
+  ]);
 
   const [inputText, setInputText] = useState("")
 
+  const saveData = async (formdata) => {
+    
+    const res = await fetch(`http://localhost:5000/chat/add`, {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    console.log(res.status);
+  }
+
+  const fetchChats = async () => {
+    const res = await fetch(url+'/chat/getchat/'+currentUser._id+'/'+startupid);
+    const chatsData = (await res.json()).result;
+    console.log(chatsData);
+    if(chatsData.length){
+
+      setMessageList([...chatsData.map(chat => { return {...chat.data} })]);
+      // {
+      //   if(chat.rec === currentUser._id){
+      //     if(!chat.read)
+      //       setCount(count+1)
+      //   }
+      // }
+      console.log(messageList);
+    }
+  }
+
+
   const sendMessage = () => {
     if (!inputText.trim()) return
-    const temp = { text: inputText, sent: true, date: new Date() }
+    const temp = { text: inputText, sent: true, date: new Date(), name: currentUser.name }
 
     // sending msg to backend
     socket.emit('sendmsg', temp);
 
     setMessageList([...messageList, temp])
     setInputText("")
+    saveData({
+      sender: currentUser._id,
+      reciever: startupid,
+      data: temp,
+    });
   }
 
   socket.on('recmsg', (data) => {
-    setMessageList([...messageList, data])
+    setMessageList([...messageList, data]);
+    saveData({
+      sender: currentUser._id,
+      reciever: startupid,
+      data: data,
+    });
   })
 
   return (

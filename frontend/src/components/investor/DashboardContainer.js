@@ -19,7 +19,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { NavLink } from 'react-router-dom';
-import { useStartupContext } from '../../context/StartupProvider';
+import { useInvestorContext } from '../../context/InvestorProvider';
 
 const drawerWidth = 230;
 
@@ -68,12 +68,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function StartupDashboardContainer({children}) {
+export default function InvestorDashboardContainer({children}) {
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const {logout} = useStartupContext();
+  const {logout} =useInvestorContext();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -146,7 +146,7 @@ export default function StartupDashboardContainer({children}) {
         <Divider />
 
         
-        <a className="navbar-brand mt-4" href="/startup/dashboard">
+        <a className="navbar-brand mt-4" href="/main/home">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
             <i class="fas fa-home   me-4 "></i>
@@ -155,7 +155,7 @@ export default function StartupDashboardContainer({children}) {
         </div>
         </a>
 
-        <a className="navbar-brand mt-2 " href="/startup/register">
+        <a className="navbar-brand mt-2 " href="/investor/profile">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p> <i class="fa fa-user-circle me-4" aria-hidden="true"></i>
             &nbsp;
@@ -164,7 +164,7 @@ export default function StartupDashboardContainer({children}) {
 
         </a>
 
-        <a className="navbar-brand mt-2 " href="/startup/startuplist">
+        <a className="navbar-brand mt-2 " href="/main/startuplist">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
             <i class="fas fa-list-alt me-4 " ></i> 
@@ -174,7 +174,7 @@ export default function StartupDashboardContainer({children}) {
 
         </a>
 
-        <a className="navbar-brand mt-2 " href="/investor/investorlist">
+        <a className="navbar-brand mt-2 " href="/main/investorlist">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
             <i class="fa fa-th-list me-4" aria-hidden="true"></i>
@@ -190,7 +190,7 @@ export default function StartupDashboardContainer({children}) {
             <p>
             <i class="fas fa-inbox  me-4 "></i>
             &nbsp;
-             Chating</p>
+             Chat</p>
         </div>
         </a>
 

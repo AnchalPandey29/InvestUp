@@ -59,6 +59,8 @@ import StartupDetails from "./components/startup/StartupDetails";
 import InvestorList from "./components/investor/InvestorList";
 import InvestorDetails from "./components/investor/InvestorDetails";
 import StartupDashboard from "./components/startup/Dashboard";
+import chatlist from "./components/investor/Dashboard";
+
 // import StartupDashboardContainer from "./components/startup/DashboardContainer";
 import InvestorChat from "./components/investor/Chat";
 import Checkout from "./components/startup/Checkout";
@@ -67,6 +69,10 @@ import StartupProvider from "./context/StartupProvider";
 import StartupProfile from "./components/startup/StartupProfile";
 import StartupAuth from "./auth/StartupAuth";
 import InvestorDashboard from "./components/investor/Dashboard";
+import Auth from "./auth/Auth";
+import PlanDetails from "./components/investor/PlanDetails";
+import InvestorAuth from "./auth/InvestorAuth";
+import InvestorProvider from "./context/InvestorProvider";
 function App() {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(sessionStorage.getItem("user"))
@@ -79,12 +85,17 @@ function App() {
   const [currentStartup, setCurrentStartup] = useState(
     JSON.parse(sessionStorage.getItem("startup"))
   );
+ 
+  const [currentInvestor, setCurrentInvestor] = useState(
+    JSON.parse(sessionStorage.getItem("investor"))
+  );
 
   return (
     <BrowserRouter>
       <AdminProvider currentUser={currentAdmin}>
         <UserProvider currentUser={currentUser}>
           <StartupProvider currentStartup={currentStartup}>
+            <InvestorProvider currentStartup={currentInvestor}>
             <Routes>
               <Route element={<Navigate to="/main/home" />} path="/" />
               <Route
@@ -109,6 +120,7 @@ function App() {
               </Route>
 
               <Route element={<Main />} path="main">
+              <Route element={<Checkout />} path="checkout/:sessionid" />
                 <Route element={<Home />} path="home" />
                 <Route element={<Forgot />} path="forgot" />
                 <Route
@@ -144,7 +156,31 @@ function App() {
                 <Route element={<NewsBrowser />} path="newsbrowser" />
                 <Route element={<BlogBrowser />} path="blogbrowser" />
                 <Route element={<CampaignBrowser />} path="campaignbrowser" />
-              
+                <Route element={
+                  <Auth>
+                    <StartupList />
+                  </Auth>
+                } path="startuplist" />
+               
+                <Route element={
+                 <Auth>
+                <StartupDetails />
+              </Auth>
+              } path="startupdetails/:id" />
+
+                <Route element={
+                  <Auth>
+                <InvestorList />
+                </Auth>
+                } path="investorlist" />
+
+                <Route element={
+                  <Auth>
+                <InvestorDetails />
+                </Auth>
+                }
+                  path="investordetails/:id"
+                />
               </Route>
 
               <Route element={
@@ -152,27 +188,26 @@ function App() {
                   <Startup />
                 </StartupAuth>
               } path="startup">
-                  <Route element={<StartupList />} path="startuplist" />
-                <Route element={<StartupDetails />} path="startupdetails/:id" />
                 <Route element={<StartupDashboard />} path="dashboard" />
                 <Route element={<Register />} path="register" />
                 {/* <Route element={<StartupDashboardContainer />} path="dashboard" /> */}
-                <Route element={<StartupChat />} path="chat" />
+                <Route element={<StartupChat />} path="chat/:investorid" />
                 <Route element={<StartupProfile />} path="startupprofile" />
                 <Route element={<Register />} path="profile" />
-                <Route element={<Checkout />} path="checkout/:sessionid" />
+                
               </Route>
 
-              <Route element={<Investor />} path="investor">
-              <Route element={<InvestorDashboard />} path="dashboard" />
-
+              <Route element={
+                <InvestorAuth>
+                   <Investor />
+                </InvestorAuth>
+              } path="investor">
+                <Route element={<InvestorDashboard />} path="dashboard" />
+                
+                <Route element={<chatlist />} path="chatlist" />
                 <Route element={<InvestorChat />} path="chat/:startupid" />
-                <Route element={<InvestorList />} path="investorlist" />
-                <Route
-                  element={<InvestorDetails />}
-                  path="investordetails/:id"
-                />
                 <Route element={<Registerinvestor />} path="profile" />
+                <Route element={<PlanDetails />} path="plan" />
               </Route>
 
               <Route
@@ -189,6 +224,7 @@ function App() {
               <Route path="addadmin" element={<AddAdmin />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </InvestorProvider>
           </StartupProvider>
         </UserProvider>
       </AdminProvider>

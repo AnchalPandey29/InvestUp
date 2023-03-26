@@ -30,12 +30,11 @@ const Testimonial = () => {
                 style={{ width: 150 }}
               />
               <h5 className="mb-3">Anna Deynah</h5>
-              <p>UX Designer</p>
+              <p></p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-                eos id officiis hic tenetur quae quaerat ad velit ab hic
-                tenetur.
+                I've been using this platform for my startup fundraising and it has been a game-changer. The process is smooth and efficient, and I've been able to 
+                connect with investors who have been instrumental in taking my business to the next level.
               </p>
               <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
                 <li>
@@ -66,8 +65,8 @@ const Testimonial = () => {
               <p>Web Developer</p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
-                Ut enim ad minima veniam, quis nostrum exercitationem ullam
-                corporis suscipit laboriosam, nisi ut aliquid commodi.
+                This platform has been incredibly helpful for my business. Not only have I been able to secure funding, but I've also been able to connect with 
+                mentors and other professionals who have been instrumental in helping me grow my business.
               </p>
               <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
                 <li>
@@ -98,8 +97,8 @@ const Testimonial = () => {
               <p>Photographer</p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                blanditiis praesentium voluptatum deleniti atque corrupti.
+                The team behind this platform is fantastic. They're knowledgeable, helpful, and always available to answer any questions I have. I've felt supported throughout the entire fundraising 
+                process and would highly recommend this platform to anyone looking to grow their business.
               </p>
               <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
                 <li>
@@ -137,9 +136,7 @@ const Testimonial = () => {
               <p>UX Designer</p>
               <p className="text-muted">
                 <i className="fas fa-quote-left pe-2" />
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-                eos id officiis hic tenetur quae quaerat ad velit ab hic
-                tenetur.
+                
               </p>
               <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
                 <li>

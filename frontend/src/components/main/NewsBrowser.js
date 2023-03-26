@@ -8,7 +8,14 @@ import Header from '../startup/Header'
 const NewsBrowser = () => {
 
     const [newsList, setNewsList] = useState([]);
+    const [searchKeyword, setSearchKeyword] = useState("");
 
+    const search =  async (field) => {
+        const res = await fetch(url + "/News/getall");
+        const data = await res.json();
+        console.log(data);
+        setNewsList(data.result.filter((user) => ( user[field] === searchKeyword)));
+      }
     const url = app_config.apiurl;
 
     const fetchData = async () => {
@@ -43,9 +50,12 @@ const NewsBrowser = () => {
   
                 <option value="all" selected>All</option>
                 <option value="technology">Technology</option>
-                <option value="entertainmnet">Entertainment</option>
-                <option value="sports">Sports</option>
-                <option value="food">Food</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Sales">Sales</option>
+                <option value="Shares">Shares</option>
+
+                <option value="Consulting">Consulting</option>
+
               </select>
             </div>
   
@@ -56,20 +66,21 @@ const NewsBrowser = () => {
                     Search
                   </label>
                 </div>
-                <button type="button" className="btn btn-primary">
-                  <i className="fas fa-search" />
+                <button type="button" className="btn btn-primary"
+               onClick={e => search('category')}>
+                <i className="fas fa-search" />
                 </button>
               </div>
            
 </div>
        
-        <div className='card mx-auto m-5 ms-5 me-5 p-4' style={{ width: "auto", height: "fit-content" }}>
+        <div className='mx-auto m-5 ms-5 me-5 p-4' style={{ width: "auto", height: "fit-content" }}>
 
           <div>
             {
               newsList.map((news) => (
-                <div>
-                  <div className="row gx-5">
+                <div className='card mb-3 p-3'>
+                  <div className="row gx-5 align-items-center">
                     <div className="col-md-6 mb-4">
                       <div
                         className="bg-image hover-overlay ripple shadow-2-strong rounded-5 "
@@ -79,7 +90,7 @@ const NewsBrowser = () => {
                         
                           src={url + '/' + news.image}
                           className="img-fluid mx-auto"
-                          style={{ maxHeight: "150px", display: "block" }}
+                          style={{ maxHeight: "250px", display: "block" }}
                         />
                         <a href="#!">
                           <div
@@ -96,6 +107,8 @@ const NewsBrowser = () => {
                       <h4>
                         <strong> {news.heading} </strong>
                       </h4>
+                      <p>{new Date().toLocaleDateString()}</p>
+
                       <p className="text-muted" style={{overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>
                         {news.content}
                       </p>

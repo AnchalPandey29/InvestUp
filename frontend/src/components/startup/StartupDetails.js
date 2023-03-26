@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import app_config from "../../config";
+import subscriptionData from "../../subscriptionDetails";
 
 const StartupDetails = () => {
   const { id } = useParams();
@@ -12,7 +13,9 @@ const StartupDetails = () => {
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('startup')));
   const [currentInvestor, setCurrentInvestor] = useState(JSON.parse(sessionStorage.getItem('investor')));
   const [feedbackList, setFeedbackList] = useState([]);
-  const navigate = useNavigate();;
+  const navigate = useNavigate();
+  const [planDetails, setPlanDetails] = useState(null);
+
   // console.log(id);
 
   const [startupData, setStartupData] = useState(null);
@@ -31,16 +34,27 @@ const StartupDetails = () => {
 
   useEffect(() => {
     fetchStartupById();
+    if(currentInvestor){
+      getSubscriptionData(currentInvestor._id);
+    }else{
+      getSubscriptionData(currentUser._id);
+
+    }
   }, []);
 
-  const feedbackSubmit = async (formdata, {setSubmitting}) => {
-    if(!currentUser){
-      // error alert
+  const feedbackSubmit = async (formdata, { setSubmitting }) => {
+    if (!currentUser) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Login needed!',
+      })
       console.log('startup login needed');
       return;
     }
     formdata.user = currentUser._id;
     formdata.rating = rating;
+    formdata.created_at = new Date();
     setSubmitting(true);
     const res = await fetch(`http://localhost:5000/feedback/add`, {
       method: "POST",
@@ -54,38 +68,56 @@ const StartupDetails = () => {
   }
 
   const fetchStartupFeedbacks = async (id) => {
-    const res = await fetch(`http://localhost:5000/feedback/getbystartup/`+id);
+    const res = await fetch(`http://localhost:5000/feedback/getbystartup/` + id);
     const data = (await res.json()).result;
     console.log(data);
     setFeedbackList(data);
   }
 
   const displayFeedbacks = () => {
-      return feedbackList.map((feedback) => (
-        <div className="border rounded card m-1 ps-5">
-          
-          <h5 className="pt-2">{feedback.user.name}</h5>
-          <Rating
-            value={feedback.rating}
-            readOnly
-          />
-          <p>{feedback.content}</p>
+    const reversedList = feedbackList.map((_, index) => feedbackList[feedbackList.length - 1 - index]);
+
+    return reversedList.map((feedback) => (
+      <div className="border rounded card m-1 ps-5">
+
+        <h5 className="pt-2">{feedback.user.name}</h5>
+        <p className="m-0 " style={{ fontSize: 10 }}>{new Date(feedback.created_at).toLocaleDateString()}</p>
+
+        <Rating
+          value={feedback.rating}
+          readOnly
+        />
+        <p>{feedback.content}</p>
       </div>
-      ))
+    ))
   }
 
   const openChat = () => {
-    if(currentInvestor.role!== 'investor'){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'You are not an investor!',
-      })
-    }else{
-      navigate('/investor/chat/' + startupData._id);
+    if(currentInvestor){
+        checkVisiblity('chat', '/investor/chat/' + startupData._id)
+    }
+    else if(currentUser){
+        checkVisiblity('chat', '/startup/chat/' + startupData._id)   
     }
   }
 
+  const getSubscriptionData = async (id) => {
+    const res = await fetch(url + '/Subscription/getbyuser/' + id);
+    if (res.status === 201) {
+      const data = await res.json();
+      console.log(data.result);
+      setPlanDetails(data.result);
+    }
+  }
+
+  const checkVisiblity = (feature, path) => {
+    if(!planDetails){
+      Swal.fire({title : 'You need to subscribe!!'})
+      return
+    }
+    if (subscriptionData[planDetails.data.name].includes(feature)) { navigate(path) }
+    else Swal.fire({ title: 'Please upgrade your plan!!' })
+  }
 
   const displayDetails = () => {
     if (!loading && startupData) {
@@ -169,63 +201,63 @@ const StartupDetails = () => {
           </div>
         </div>
 
-        
+
         <center>
-        <button className="btn m-5" style={{backgroundColor:"#9c3353",color:"white",width:"fit-content"}} onClick={openChat}>Start Chatting</button>
+          <button className="btn m-5" style={{ backgroundColor: "#9c3353", color: "white", width: "fit-content" }} onClick={openChat}>Start Chatting</button>
         </center>
         <hr />
-        <div style={{backgroundColor:"#f0efef"}}>
-        <h2 className="text-center pt-5">Write your reviews</h2>
+        <div style={{ backgroundColor: "#f0efef" }}>
+          <h2 className="text-center pt-5">Write your reviews</h2>
 
-        <div className="mt-2 p-5">
+          <div className="mt-2 p-5">
 
-          <Rating
-            name="Feedback"
-            value={rating}
-            onChange={(event, newValue) => {
-              setRating(newValue);
-            }}
-          />
-          <Formik
-            initialValues={{
-              content: "",
-              startup: startupData._id
-            }}
-            onSubmit={feedbackSubmit}>
+            <Rating
+              name="Feedback"
+              value={rating}
+              onChange={(event, newValue) => {
+                setRating(newValue);
+              }}
+            />
+            <Formik
+              initialValues={{
+                content: "",
+                startup: startupData._id
+              }}
+              onSubmit={feedbackSubmit}>
 
-            {({ values, handleSubmit, handleChange, isSubmitting, }) => (
+              {({ values, handleSubmit, handleChange, isSubmitting, }) => (
 
-              <form onSubmit={handleSubmit}  >
-                {/* 2 column grid layout with text inputs for the first and last names */}
-                <div className="row ">
-                  <div className="col-md-10">
+                <form onSubmit={handleSubmit}  >
+                  {/* 2 column grid layout with text inputs for the first and last names */}
+                  <div className="row ">
+                    <div className="col-md-10">
 
-                  
-                  <MDBInput 
-                   label="Write your feedback"
-                   type="text"
-                   value={values.content}
-                   onChange={handleChange}
-                   name="content"
-                  />
+
+                      <MDBInput
+                        label="Write your feedback"
+                        type="text"
+                        value={values.content}
+                        onChange={handleChange}
+                        name="content"
+                      />
+
+                    </div>
+
+                    <div className="col-md-2">
+                      <button className="btn " style={{ backgroundColor: "#9c3353", color: "white" }}>Submit</button>
+                    </div>
 
                   </div>
 
-                  <div className="col-md-2">
-                   <button className="btn " style={{backgroundColor:"#9c3353",color:"white"}}>Submit</button>
-                  </div>
-
-                </div>
 
 
 
 
+                </form>
+              )}
+            </Formik>
 
-              </form>
-            )}
-          </Formik>
-
-        </div>
+          </div>
         </div>
         {displayFeedbacks()}
 

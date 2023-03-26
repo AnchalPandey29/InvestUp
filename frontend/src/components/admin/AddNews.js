@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import app_config from "../../config";
+import {
+  FormLabel, 
+} from "@mui/material";
 
 const AddNews = () => {
 
@@ -30,13 +33,13 @@ const AddNews = () => {
     console.log(res.status)
     setSubmitting(false);
 
-    if (res.status === 200) {
+    if (res.status === 201) {
       Swal.fire({
         icon: "success",
         title: 'Success',
-        text: 'You have registered successfully'
+        text: 'News Added Successfully'
       })
-      navigate('/login');
+      
     } else {
       // error alert
     }
@@ -77,6 +80,31 @@ const AddNews = () => {
                  
                   <label>Image</label>
                   <input className="form-control mb-3" type="file" onChange={uploadFile}/>
+                  <label>Date</label>
+                  <input className="form-control mb-3" type="date" value={values.date} onChange={handleChange} name="date" />
+                 
+                  <div className="col-8 mb-4">
+                   
+                   <label htmlFor="select2">Category</label><br/>
+                   
+                   <select
+                    style={{ width: "423px" }}
+                     className="select"
+                     name="category"
+                     value={values.category}
+                     onChange={handleChange}
+                   >
+                     <FormLabel>Category</FormLabel>
+                     <option value=""></option>
+                     <option value="all" selected>All</option>
+                <option value="technology">Technology</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Sales">Sales</option>
+                <option value="Shares">Shares</option>
+
+                <option value="Consulting">Consulting</option>
+                   </select>
+                   </div>
                  
                  <div className="d-flex justify-content-center align-item-center">
                   <button disabled={isSubmitting} type="submit" className="btn " style={{backgroundColor:"#9c3353", color:"white"}}>

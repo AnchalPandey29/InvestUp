@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import app_config from "../../config";
+import subscriptionData from "../../subscriptionDetails";
 
 
 const InvestorDetails = () => {
@@ -14,6 +15,8 @@ const InvestorDetails = () => {
   const [currentInvestor, setCurrentInvestor] = useState(JSON.parse(sessionStorage.getItem('investor')));
   const [feedbackList, setFeedbackList] = useState([]);
   const navigate = useNavigate();
+  const [planDetails, setPlanDetails] = useState(null);
+
 
     const [investorData, setInvestorData] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -24,29 +27,37 @@ const InvestorDetails = () => {
         const res = await fetch("http://localhost:5000/startup/getbyid/" + id);
         const data = await res.json();
         console.log(data);
-        fetchStartupFeedbacks(data.result._id);
+        fetchInvestorFeedbacks(data.result._id);
         setInvestorData(data.result);
         setLoading(false);
       };
 
       useEffect(() => {
         fetchInvestorById();
+        if(currentInvestor){
+          getSubscriptionData(currentInvestor._id);
+        }else{
+          getSubscriptionData(currentUser._id);
+    
+        }
       }, []);
 
       
   //Feedback 
   const feedbackSubmit = async (formdata, {setSubmitting}) => {
-    if(!currentUser){
+    if(!currentInvestor){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'You are not an investor!',
+        text: 'Login needed!',
       })
       console.log('login needed');
       return;
     }
-    formdata.user = currentUser._id;
+   
+    formdata.user = currentInvestor._id;
     formdata.rating = rating;
+    formdata.created_at = new Date();
 
     setSubmitting(true);
     const res = await fetch(`http://localhost:5000/feedback/add`, {
@@ -57,12 +68,12 @@ const InvestorDetails = () => {
 
     console.log(res.status)
     setSubmitting(false);
-    fetchStartupFeedbacks(investorData._id);
+    fetchInvestorFeedbacks(investorData._id);
 
     
   }
 
-  const fetchStartupFeedbacks = async (id) => {
+  const fetchInvestorFeedbacks = async (id) => {
     const res = await fetch(`http://localhost:5000/feedback/getbystartup/`+id);
     const data = (await res.json()).result;
     console.log(data);
@@ -70,10 +81,13 @@ const InvestorDetails = () => {
   }
 
   const displayFeedbacks = () => {
-    return feedbackList.map((feedback) => (
+    const reversedList = feedbackList.map((_, index) => feedbackList[feedbackList.length - 1 - index]);
+
+    return reversedList.map((feedback) => (
       <div className="border rounded card m-1 ps-5">
         
         <h5 className="pt-2">{feedback.user.name}</h5>
+        <p className="m-0 " style={{ fontSize: 10 }}>{new Date(feedback.created_at).toLocaleDateString()}</p>
         <Rating
           value={feedback.rating}
           readOnly
@@ -84,17 +98,33 @@ const InvestorDetails = () => {
 }
 
 const openChat = () => {
-  if(currentInvestor.role!== 'startup'){
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'You can not chat with an investor!',
-    })
-  }else{
-    navigate('/startup/chat/' + investorData._id);
+  if(currentInvestor){
+    checkVisiblity('chat', '/investor/chat/' + investorData._id)
+}
+else if(currentUser){
+    checkVisiblity('chat', '/startup/chat/' + investorData._id)   
+}
+}
+
+const getSubscriptionData = async (id) => {
+  const res = await fetch(url + '/Subscription/getbyuser/' + id);
+  if (res.status === 201) {
+    const data = await res.json();
+    console.log(data.result);
+    setPlanDetails(data.result);
   }
 }
-    
+
+const checkVisiblity = (feature, path) => {
+  if(!planDetails){
+    Swal.fire({title : 'You need to subscribe!!'})
+    return
+  }
+  if (subscriptionData[planDetails.data.name].includes(feature)) { navigate(path) }
+  else Swal.fire({ title: 'Please upgrade your plan!!' })
+}
+
+
   const displayDetails = () => {
     if (!loading && investorData) {
       return <div

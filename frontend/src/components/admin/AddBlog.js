@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import app_config from "../../config";
+import {
+   FormLabel, 
+} from "@mui/material";
 
 const AddBlog = () => {
 
@@ -30,13 +33,13 @@ const AddBlog = () => {
     console.log(res.status)
     setSubmitting(false);
 
-    if (res.status === 200) {
+    if (res.status === 201) {
       Swal.fire({
         icon: "success",
         title: 'Success',
-        text: 'You have registered successfully'
+        text: 'Blog Added Successfully'
       })
-      navigate('/login');
+      navigate('/main/BlogBrowser');
     } else {
       // error alert
     }
@@ -59,7 +62,14 @@ const AddBlog = () => {
 
   return (
   
-  <div>
+  <div style={{height:"100%",marginBottom:"10vh"}}>
+     <div
+          className="row"
+          style={{ height: "40vh", backgroundColor: "#9c3353",marginBottom:"-40vh" }}
+        >
+         
+        </div>
+
       <div className="col-md-3 mx-auto pt-5">
         <div className="card" >
           <div className="card-body">
@@ -77,6 +87,30 @@ const AddBlog = () => {
                  
                   <label>Image</label>
                   <input className="form-control mb-3" type="file" onChange={uploadFile}/>
+                  <label>Date</label>
+                  <input className="form-control mb-3" type="date" value={values.date} onChange={handleChange} name="date" />
+                  <div className="col-8 mb-4">
+                   
+                      <label htmlFor="select2">Category</label><br/>
+                      
+                      <select
+                       style={{ width: "45vh"}}
+                        className="select"
+                        name="category"
+                        value={values.category}
+                        onChange={handleChange}
+                      >
+                        <FormLabel >Category</FormLabel>
+                        <option value=""></option>
+                        <option value="Inspirational">Inspirational</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Educational">Educational</option>
+                        <option value="Consulting">Consulting</option>
+                        <option value="Marketing">Marketing</option>
+                      </select>
+                      </div>
+
                  
                  <div className="d-flex justify-content-center align-item-center">
                   <button disabled={isSubmitting} type="submit" className="btn " style={{backgroundColor:"#9c3353", color:"white"}}>
