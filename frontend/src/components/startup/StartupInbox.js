@@ -31,7 +31,7 @@ const StartupInbox = () => {
     return currentUser.contacts.map((contact) => (
       <li class="list-group-item d-flex justify-content-between align-items-center" onClick={ () => navigate('/startup/chat/'+contact._id) }>
         <div>
-          <div class="fw-bold">John Doe</div>
+          <div class="fw-bold">{contact.name}</div>
           <div class="text-muted">{contact.email}</div>
         </div>
         <span class="badge rounded-pill badge-success">Active</span>

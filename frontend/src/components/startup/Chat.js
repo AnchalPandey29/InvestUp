@@ -19,24 +19,26 @@ const StartupChat = () => {
     );
     const chatsData = (await res.json()).result;
     console.log(chatsData);
-    if (chatsData.length) {
-      setMessageList([
-        ...chatsData.map((chat) => {
-          return { ...chat.data };
-        }),
-      ]);
+    setMessageList(chatsData)
+    // if (chatsData.length) {
+    //   setMessageList([
+    //     ...chatsData.map((chat) => {
+    //       return { ...chat.data };
+    //     }),
+    //   ]);
       // {
       //   if(chat.rec === currentUser._id){
       //     if(!chat.read)
       //       setCount(count+1)
       //   }
       // }
-      console.log(messageList);
-    }
+    //   console.log(messageList);
+    // }
   };
 
   useEffect(() => {
     socket.connect();
+    socket.emit('addtocontact', currentUser._id)
     fetchChats();
   }, []);
 
@@ -59,7 +61,13 @@ const StartupChat = () => {
 
   const sendMessage = () => {
     if (!inputText.trim()) return;
-    const temp = { text: inputText, sent: true };
+    // const temp = { text: inputText, sent: true };
+    const temp = { users: [currentUser._id, investorid],
+      sentBy: currentUser._id,
+      date: new Date(),
+      to: investorid,
+      message : inputText,
+      name: currentUser.name, };
 
     // sending msg to backend
     socket.emit("sendmsg", temp);
@@ -67,10 +75,11 @@ const StartupChat = () => {
     setMessageList([...messageList, temp]);
     setInputText("");
     saveData({
-      sender: currentUser._id,
-      reciever: currentUser._id,
-      date: Date,
-      message: inputText,
+      users: [currentUser._id, investorid],
+      sentBy: currentUser._id,
+      date: new Date(),
+      message : inputText,
+      name: currentUser.name,
     });
   };
 
@@ -104,11 +113,11 @@ const StartupChat = () => {
           >
             {messageList.map((obj) => (
               <>
-                <p className="m-0">{obj.name}</p>
-                <div className={obj.sent ? "msg-sent" : "msg-rec"}>
-                  <p className="m-0">{obj.text}</p>
+                <p className="m-0">{obj.sentBy !== currentUser._id ? obj.name : ''}</p>
+                <div className={obj.sentBy === currentUser._id ? "msg-sent" : "msg-rec"}>
+                  <p className="m-0">{obj.message}</p>
                   <p className="m-0 float-end" style={{ fontSize: 10 }}>
-                    {new Date(obj.date).toLocaleTimeString()}
+                    {new Date(obj.date).toLocaleDateString()}
                   </p>
                 </div>
               </>

@@ -118,7 +118,7 @@ export default function InvestorDashboardContainer({children}) {
             </Typography>
             <Box sx={{ml: 'auto'}}>
 
-            <button onClick={logout} type="submit" class="btn px-3 me-2" >
+            <button onClick={logout} type="submit" class="btn px-3 me-2" style={{backgroundColor:"#9c3353", color:"white"}}>
               Logout
             </button>
             </Box>

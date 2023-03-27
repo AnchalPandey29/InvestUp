@@ -9,10 +9,11 @@ router.get("/", (req, res) => {
 });
 
 router.post("/add", (req, res) => {
+  // console.log(req.body);
   new Model(req.body)
     .save()
     .then((result) => {
-      console.log("User Data Saved");
+      // console.log("User Data Saved");
       res.status(201).json({ status: "success", result });
     })
     .catch((err) => {
@@ -27,7 +28,7 @@ router.post("/add", (req, res) => {
 router.get("/getall", (req, res) => {
   Model.find()
     .then((result) => {
-      console.log("User Data Retrieved");
+      // console.log("User Data Retrieved");
       res.status(200).json({ status: "success", result });
     })
     .catch((err) => {
@@ -39,7 +40,7 @@ router.get("/getall", (req, res) => {
 router.get("/getbyid/:id", (req, res) => {
   Model.findById(req.params.id)
     .then((result) => {
-      console.log("User Data Retrieved");
+      // console.log("User Data Retrieved");
       res.status(200).json({ status: "success", result });
     })
     .catch((err) => {
@@ -48,10 +49,10 @@ router.get("/getbyid/:id", (req, res) => {
     });
 });
 
-router.get("/getchat/:senderid/:recid", (req, res) => {
-  Model.find({sender: req.params.senderid, reciever: req.params.recid})
+router.get("/getchat/:userid/:recid", (req, res) => {
+  Model.find({users: { $all: [req.params.userid, req.params.recid] }})
     .then((result) => {
-      console.log("User Data Retrieved");
+      // console.log(result);
       res.status(200).json({ status: "success", result });
     })
     .catch((err) => {
@@ -63,7 +64,7 @@ router.get("/getchat/:senderid/:recid", (req, res) => {
 router.get("/getrecchat/:recid", (req, res) => {
   Model.find({reciever: req.params.recid})
     .then((result) => {
-      console.log("User Data Retrieved");
+      // console.log("User Data Retrieved");
       res.status(200).json({ status: "success", result });
     })
     .catch((err) => {
@@ -75,7 +76,7 @@ router.get("/getrecchat/:recid", (req, res) => {
 router.put("/update/:id", (req, res) => {
   Model.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((result) => {
-      console.log("User Data Updated");
+      // console.log("User Data Updated");
       res.status(200).json({ status: "success", result });
     })
     .catch((err) => {
