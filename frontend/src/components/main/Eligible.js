@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Eligible = () => {
   return (
@@ -24,10 +25,7 @@ const Eligible = () => {
         </li>
 
       </ul>
-
-
-
-      <div class="tab-content" id="ex1-content">
+  <div class="tab-content" id="ex1-content">
         <div
           class="tab-pane fade show active"
           id="ex1-tabs-1"
@@ -68,6 +66,9 @@ const Eligible = () => {
                 Apply Now
               </a>
             </div>
+            <div className="row">
+  <Link className="btn mx-auto mt-5" style={{background:"#9c3353",color:"white",width:"fit-content"}} to="/main/home">Back to Home</Link>
+</div>
           </div>
 
         </div>
@@ -107,13 +108,17 @@ const Eligible = () => {
                   Apply Now
                 </a>
               </div>
+              <div className="row">
+  <Link className="btn mx-auto mt-5" style={{background:"#9c3353",color:"white",width:"fit-content"}} to="/main/home">Back to Home</Link>
+</div>
             </div>
+          
           </div>
 
 
 
         </div></div>
-
+       
     </div>
   </div>   
 

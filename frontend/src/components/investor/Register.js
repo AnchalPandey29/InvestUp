@@ -50,6 +50,15 @@ const RegisterSchema1 = Yup.object().shape({
 //  DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 // });
 
+//const RegisterSchema3= Yup.object().shape({
+ //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+//});
+
+// const RegisterSchema3= Yup.object().shape({
+//  DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+// });
+
+
 
 const Register = () => {
   const navigate = useNavigate();
@@ -713,15 +722,22 @@ const Register = () => {
                       "Next"
                     )}
                   </button> */}
-                  <button disabled={isSubmitting} href="/investor/dashboard" type="submit" className="btn btn-block mb-1" 
+                 {/*  <button disabled={isSubmitting} href="/investor/dashboard" type="submit" className="btn btn-block mb-1" 
                   style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
                     {
                       isSubmitting ?
                         <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
                         :
                         'Submit'
+                    } */}
+                <a disabled={isSubmitting} href="/investor/dashboard" type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
+                        :
+                        'Submit'
                     }
-                  </button>
+                  </a>
 
                 </form>
               )}
