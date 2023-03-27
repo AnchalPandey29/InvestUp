@@ -31,6 +31,7 @@ const InvestorList = () => {
               className="img-fluid p-2"
               src={investor.investoravatar? (url + "/" + investor.investoravatar): placeholder}
               alt=""
+              style={{maxHeight:"200px",width:"200px"}}
             />
           </div>
           <div className="col-md-6 ">

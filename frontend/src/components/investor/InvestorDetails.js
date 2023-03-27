@@ -135,29 +135,28 @@ const checkVisiblity = (feature, path) => {
         <div className="row justify-content-center">
           <img
             className="rounded-circle shadow-1-strong mb-4"
-            src="/logo.png"
+            src={url+'/'+investorData.investoravatar} 
             alt="avatar"
             style={{ width: 150, color: "" }}
           />
         </div>
         <div className="text-center row">
-          <h5>Eleva</h5>
+          <h5>{investorData.name}</h5>
           <div className="d-flex flex-row justify-content-center">
             <p className="me-4">
-              {" "}
+             
               <i class="fas fa-mail-bulk fa-lg  "></i> &nbsp; {investorData.email}
             </p>
 
             <p>
-              {" "}
+             
               <i class="fab fa-linkedin fa-lg  "></i> &nbsp; {investorData.name}
             </p>
           </div>
 
           <p>
-            <i class="fas fa-quote-left    "></i>&nbsp; We are the biggest
-            healthcare company, providing medicinal and health services to the
-            world.
+            <i class="fas fa-quote-left    "></i>&nbsp; 
+            {investorData.brief}
           </p>
         </div>
 
