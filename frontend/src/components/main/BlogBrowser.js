@@ -123,11 +123,14 @@ const BlogBrowse = () => {
                                       Read more
                                   </Link>
                               </div>
+                             
                           </div>
 
                       ))
                     }
-      
+       <div className="row">
+  <Link className="btn mx-auto mt-5" style={{background:"#9c3353",color:"white",width:"fit-content"}} to="/main/home">Back to Home</Link>
+</div>
                       </div>
                   </div>
 
