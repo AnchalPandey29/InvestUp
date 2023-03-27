@@ -15,6 +15,7 @@ const InvestorChat = () => {
 
   useEffect(() => {
     socket.connect();
+    socket.emit('addtocontact', currentUser._id)
     fetchChats();
   }, []);
 
@@ -23,7 +24,8 @@ const InvestorChat = () => {
     // console.log(response.status);
     const startupContacts = (await response.json()).result.contacts;
     console.log(startupContacts);
-    return startupContacts.includes(currentUser._id);
+    // return startupContacts.includes(currentUser._id);
+    return startupContacts.find(contact => contact._id === currentUser._id);
   };
 
   const addInvestorToContact = async () => {
@@ -43,7 +45,7 @@ const InvestorChat = () => {
   const [inputText, setInputText] = useState("");
 
   const saveData = async (formdata) => {
-    const res = await fetch(`http://localhost:5000/chat/add`, {
+    const res = await fetch(url + `/chat/add`, {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },
@@ -58,28 +60,37 @@ const InvestorChat = () => {
     );
     const chatsData = (await res.json()).result;
     console.log(chatsData);
-    if (chatsData.length) {
-      setMessageList([
-        ...chatsData.map((chat) => {
-          return { ...chat.data };
-        }),
-      ]);
-      // {
-      //   if(chat.rec === currentUser._id){
-      //     if(!chat.read)
-      //       setCount(count+1)
-      //   }
-      // }
-      console.log(messageList);
-    }
+    setMessageList(chatsData);
+    // if (chatsData.length) {
+    //   setMessageList([
+    //     ...chatsData.map((chat) => {
+    //       return { ...chat.data };
+    //     }),
+    //   ]);
+    // {
+    //   if(chat.rec === currentUser._id){
+    //     if(!chat.read)
+    //       setCount(count+1)
+    //   }
+    // }
+    //   console.log(messageList);
+    // }
   };
 
   const sendMessage = () => {
     if (!inputText.trim()) return;
+    // const temp = {
+    //   text: inputText,
+    //   sent: true,
+    //   date: new Date(),
+    //   name: currentUser.name,
+    // };
     const temp = {
-      text: inputText,
-      sent: true,
+      users: [currentUser._id, startupid],
+      sentBy: currentUser._id,
+      to: startupid,
       date: new Date(),
+      message: inputText,
       name: currentUser.name,
     };
 
@@ -93,19 +104,21 @@ const InvestorChat = () => {
       if (!added) addInvestorToContact();
     });
     saveData({
-      sender: currentUser._id,
-      reciever: startupid,
-      data: temp,
+      users: [currentUser._id, startupid],
+      sentBy: currentUser._id,
+      date: new Date(),
+      message: inputText,
+      name: currentUser.name,
     });
   };
 
   socket.on("recmsg", (data) => {
     setMessageList([...messageList, data]);
-    saveData({
-      sender: currentUser._id,
-      reciever: startupid,
-      data: data,
-    });
+    // saveData({
+    //   sender: currentUser._id,
+    //   reciever: startupid,
+    //   data: data,
+    // });
   });
 
   return (
@@ -136,9 +149,9 @@ const InvestorChat = () => {
               <div className={obj.sent ? "msg-sent" : "msg-rec"}>
                 <p className="m-0">{obj.text}</p>
                 <p className="m-0 float-end" style={{ fontSize: 10 }}>
-                    {new Date(obj.date).toLocaleTimeString()}
-                  </p>
-                
+                  {new Date(obj.date).toLocaleDateString()}{" "}
+                  {new Date(obj.date).toLocaleTimeString()}
+                </p>
               </div>
             ))}
           </div>

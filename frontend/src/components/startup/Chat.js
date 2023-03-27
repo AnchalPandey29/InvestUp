@@ -19,24 +19,26 @@ const StartupChat = () => {
     );
     const chatsData = (await res.json()).result;
     console.log(chatsData);
-    if (chatsData.length) {
-      setMessageList([
-        ...chatsData.map((chat) => {
-          return { ...chat.data };
-        }),
-      ]);
+    setMessageList(chatsData)
+    // if (chatsData.length) {
+    //   setMessageList([
+    //     ...chatsData.map((chat) => {
+    //       return { ...chat.data };
+    //     }),
+    //   ]);
       // {
       //   if(chat.rec === currentUser._id){
       //     if(!chat.read)
       //       setCount(count+1)
       //   }
       // }
-      console.log(messageList);
-    }
+    //   console.log(messageList);
+    // }
   };
 
   useEffect(() => {
     socket.connect();
+    socket.emit('addtocontact', currentUser._id)
     fetchChats();
   }, []);
 
@@ -59,12 +61,7 @@ const StartupChat = () => {
 
   const sendMessage = () => {
     if (!inputText.trim()) return;
-    const temp = { 
-      text: inputText, 
-      sent: true ,
-      date: new Date(),
-      name: currentUser.name
-    };
+    const temp = { text: inputText, sent: true };
 
     // sending msg to backend
     socket.emit("sendmsg", temp);
@@ -73,8 +70,9 @@ const StartupChat = () => {
     setInputText("");
     saveData({
       sender: currentUser._id,
-      reciever: investorid,
-      date: temp,
+      reciever: currentUser._id,
+      date: Date,
+      message: inputText,
     });
   };
 
@@ -113,6 +111,7 @@ const StartupChat = () => {
           >
             {messageList.map((obj) => (
               <>
+                <p className="m-0">{obj.name}</p>
                 <div className={obj.sent ? "msg-sent" : "msg-rec"}>
                   <p className="m-0">{obj.text}</p>
                   <p className="m-0 float-end" style={{ fontSize: 10 }}>

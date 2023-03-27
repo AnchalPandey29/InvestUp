@@ -48,7 +48,7 @@ const startupSchema = new Schema({
   currentincubatees:{type:String},
   graduatedincubatees:{type:String},
   funded:{type:String},
-  istate:{type:String},
+  //istate:{type:String},
   //city:{type:String},
   aplink:{type:String},
   centerlocation:{type:String},

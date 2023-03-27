@@ -82,6 +82,30 @@ const ManageStartup = () => {
                         <th>Sector</th>
                         <th>Interests</th>
                         <th> UdyogAadhar</th>
+                        <th>  InvestorAvatar</th>
+                        <th> IdentityProofNo</th>
+                        <th> Date</th>
+                        <th>Interests</th>
+                        <th> CurrentIncubatees </th>
+                        <th>  GraduatedIncubatees</th>
+                        <th>  Funded </th>
+                        
+                        <th>  Application Link </th>
+                        <th>  CenterLocation </th>
+                        <th>CenterLoactionAddress</th>
+                        <th>DIPPTNumber</th>
+
+
+
+                        
+                        
+
+
+
+                    
+                        
+
+
                         <th></th>
                         
                         
@@ -117,7 +141,7 @@ const ManageStartup = () => {
                         <td>{user.productdescription}</td>
                         <td>{user.semail}</td>
                         <td>{user.tel}</td>
-                        <td>{user.state}</td>
+                       
                         <td>{user.city}</td>
                         <td>{user.website}</td>
                         <td>{user.app}</td>
@@ -125,6 +149,25 @@ const ManageStartup = () => {
                         <td>{user.interests}</td> 
                         <td>{user.sector}</td>
                         <td>{user.aadhar}</td>
+                        <td>{user.investoravatar}</td>
+                        <td>{user.identityproofno}</td>
+                        <td>{user.date}</td>
+                        <td>{user.select1}</td>
+
+                        <td>{user.currentincubatees}</td>
+                        <td>{user.graduatedincubatees}</td>
+                        <td>{user.funded}</td>
+                        <td>{user. istate}</td>
+                        <td>{user. aplink}</td>
+                        <td>{user. centerlocation }</td>
+                        <td>{user. centerloactionaddress }</td>
+                        <td>{user.  DIPPTNumber}</td>
+
+                        
+
+                        
+
+
                         
                         <td></td>
                         
