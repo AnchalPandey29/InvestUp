@@ -43,15 +43,12 @@ const RegisterSchema1 = Yup.object().shape({
    // istate:Yup.string().istate("State is required"),
    // });
 
-<<<<<<< HEAD
 //const RegisterSchema3= Yup.object().shape({
  //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 //});
-=======
 // const RegisterSchema3= Yup.object().shape({
 //  DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 // });
->>>>>>> ed779fcfa779190b62cfe09551561b66072655cd
 
 
 const Register = () => {
