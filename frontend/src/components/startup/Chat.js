@@ -61,13 +61,7 @@ const StartupChat = () => {
 
   const sendMessage = () => {
     if (!inputText.trim()) return;
-    // const temp = { text: inputText, sent: true };
-    const temp = { users: [currentUser._id, investorid],
-      sentBy: currentUser._id,
-      date: new Date(),
-      to: investorid,
-      message : inputText,
-      name: currentUser.name, };
+    const temp = { text: inputText, sent: true };
 
     // sending msg to backend
     socket.emit("sendmsg", temp);
@@ -75,16 +69,20 @@ const StartupChat = () => {
     setMessageList([...messageList, temp]);
     setInputText("");
     saveData({
-      users: [currentUser._id, investorid],
-      sentBy: currentUser._id,
-      date: new Date(),
-      message : inputText,
-      name: currentUser.name,
+      sender: currentUser._id,
+      reciever: currentUser._id,
+      date: Date,
+      message: inputText,
     });
   };
 
   socket.on("recmsg", (data) => {
     setMessageList([...messageList, data]);
+    saveData({
+      sender: currentUser._id,
+      reciever: investorid,
+      data: data,
+    });
   });
 
   return (
@@ -113,11 +111,11 @@ const StartupChat = () => {
           >
             {messageList.map((obj) => (
               <>
-                <p className="m-0">{obj.sentBy !== currentUser._id ? obj.name : ''}</p>
-                <div className={obj.sentBy === currentUser._id ? "msg-sent" : "msg-rec"}>
-                  <p className="m-0">{obj.message}</p>
+                <p className="m-0">{obj.name}</p>
+                <div className={obj.sent ? "msg-sent" : "msg-rec"}>
+                  <p className="m-0">{obj.text}</p>
                   <p className="m-0 float-end" style={{ fontSize: 10 }}>
-                    {new Date(obj.date).toLocaleDateString()}
+                    {new Date(obj.date).toLocaleTimeString()}
                   </p>
                 </div>
               </>
