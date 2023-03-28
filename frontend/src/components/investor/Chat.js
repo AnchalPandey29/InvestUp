@@ -10,12 +10,10 @@ const InvestorChat = () => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(sessionStorage.getItem("investor"))
   );
-
   const { startupid } = useParams();
-
   useEffect(() => {
     socket.connect();
-    socket.emit('addtocontact', currentUser._id)
+    socket.emit("addtocontact", currentUser._id);
     fetchChats();
   }, []);
 
@@ -25,7 +23,7 @@ const InvestorChat = () => {
     const startupContacts = (await response.json()).result.contacts;
     console.log(startupContacts);
     // return startupContacts.includes(currentUser._id);
-    return startupContacts.find(contact => contact._id === currentUser._id);
+    return startupContacts.find((contact) => contact._id === currentUser._id);
   };
 
   const addInvestorToContact = async () => {
@@ -129,9 +127,7 @@ const InvestorChat = () => {
           height: "40vh",
           marginBottom: "-300px",
         }}
-      >
-        {" "}
-      </div>
+      ></div>
 
       <div className="container d-flex flex-column justify-content-center align-items-center p-5">
         <div className="card " style={{ height: "90vh", width: "100vh" }}>
