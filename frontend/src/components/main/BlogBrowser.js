@@ -129,7 +129,7 @@ const BlogBrowse = () => {
                       ))
                     }
        <div className="row">
-  <Link className="btn mx-auto mt-5" style={{background:"#9c3353",color:"white",width:"fit-content"}} to="/main/home">Back to Home</Link>
+  <Link className="btn mt-5" style={{background:"#9c3353",color:"white",width:"fit-content",marginLeft:"10%"}} to="/main/home">Back to Home</Link>
 </div>
                       </div>
                   </div>

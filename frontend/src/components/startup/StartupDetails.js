@@ -43,7 +43,8 @@ const StartupDetails = () => {
   }, []);
 
   const feedbackSubmit = async (formdata, { setSubmitting }) => {
-    if (!currentUser) {
+    let loggedinUser = currentUser !== null ? currentUser:currentInvestor;
+    if (!loggedinUser) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -52,11 +53,11 @@ const StartupDetails = () => {
       console.log('startup login needed');
       return;
     }
-    formdata.user = currentUser._id;
+    formdata.user = loggedinUser._id;
     formdata.rating = rating;
     formdata.created_at = new Date();
     setSubmitting(true);
-    const res = await fetch(`http://localhost:5000/feedback/add`, {
+    const res = await fetch(url+`/feedback/add`, {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },

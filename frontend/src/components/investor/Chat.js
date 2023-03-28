@@ -146,13 +146,22 @@ const InvestorChat = () => {
             }}
           >
             {messageList.map((obj) => (
-              <div className={obj.sent ? "sendmsg" : "recmsg"}>
-                <p className="m-0">{obj.message}</p>
-                <p className="m-0 float-end" style={{ fontSize: 10 }}>
-                  {new Date(obj.date).toLocaleDateString()}{" "}
-                  {new Date(obj.date).toLocaleTimeString()}
+              <>
+                <p className="m-0 ms-3" style={{fontSize:"14px",color:"#9c3353"}}>
+                  {obj.sentBy !== currentUser._id ? obj.name : ""}
                 </p>
-              </div>
+                <div
+                  className={
+                    obj.sentBy === currentUser._id ? "msg-sent" : "msg-rec"
+                  }
+                >
+                  <p className="m-0">{obj.message}</p>
+                  <p className="m-0 float-end" style={{ fontSize: 10 }}>
+                    {new Date(obj.date).toLocaleDateString()}{" "}
+                    {new Date(obj.date).toLocaleTimeString()}
+                  </p>
+                </div>
+              </>
             ))}
           </div>
           <div
@@ -171,7 +180,7 @@ const InvestorChat = () => {
                 value={inputText}
               />
               <button className="btn btn-success" onClick={sendMessage}>
-                <i class="fas fa-paper-plane"></i> &nbsp; Send
+                <i class="fas fa-paper-plane"></i>   Send
               </button>
             </div>
           </div>

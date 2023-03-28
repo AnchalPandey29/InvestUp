@@ -13,30 +13,6 @@ const StartupChat = () => {
     JSON.parse(sessionStorage.getItem("startup"))
   );
 
-  
-  useEffect(() => {
-    socket.connect();
-    socket.emit('addtocontact', currentUser._id)
-    fetchChats();
-  }, []);
-
-  const [messageList, setMessageList] = useState([
-    // { text: "Kal wale exam ka syllabus send kro", sent: false },
-    // { text: "Kal kaun sa exam hai??", sent: true },
-  ]);
-
-  const [inputText, setInputText] = useState("");
-
-  const saveData = async (formdata) => {
-    const res = await fetch(url + `/chat/add`, {
-      method: "POST",
-      body: JSON.stringify(formdata),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    console.log(res.status);
-  };
-
   const fetchChats = async () => {
     const res = await fetch(
       url + "/chat/getchat/" + currentUser._id + "/" + investorid
@@ -60,18 +36,38 @@ const StartupChat = () => {
     // }
   };
 
+  useEffect(() => {
+    socket.connect();
+    socket.emit('addtocontact', currentUser._id)
+    fetchChats();
+  }, []);
 
-  
+  const [messageList, setMessageList] = useState([
+    // { text: "Kal wale exam ka syllabus send kro", sent: false },
+    // { text: "Kal kaun sa exam hai??", sent: true },
+  ]);
+
+  const [inputText, setInputText] = useState("");
+
+  const saveData = async (formdata) => {
+    const res = await fetch(`http://localhost:5000/chat/add`, {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    console.log(res.status);
+  };
+
   const sendMessage = () => {
     if (!inputText.trim()) return;
-    const temp = {
-      users: [currentUser._id, investorid],
+    // const temp = { text: inputText, sent: true };
+    const temp = { users: [currentUser._id, investorid],
       sentBy: currentUser._id,
-      to: investorid,
       date: new Date(),
-      message: inputText,
-      name: currentUser.name,
-    };
+      to: investorid,
+      message : inputText,
+      name: currentUser.name, };
 
     // sending msg to backend
     socket.emit("sendmsg", temp);
@@ -82,19 +78,13 @@ const StartupChat = () => {
       users: [currentUser._id, investorid],
       sentBy: currentUser._id,
       date: new Date(),
-      message: inputText,
+      message : inputText,
       name: currentUser.name,
-     
     });
   };
 
   socket.on("recmsg", (data) => {
     setMessageList([...messageList, data]);
-    // saveData({
-    //   sender: currentUser._id,
-    //   reciever: investorid,
-    //   data: data,
-    // });
   });
 
   return (
@@ -122,16 +112,15 @@ const StartupChat = () => {
             }}
           >
             {messageList.map((obj) => (
-              
-              <div className={obj.sent ? "msg-sent" : "msg-rec"}>
-                <p className="m-0">{obj.message}</p>
-                <p className="m-0 float-end" style={{ fontSize: 10 }}>
-                  {new Date(obj.date).toLocaleDateString()}{" "}
-                  {new Date(obj.date).toLocaleTimeString()}
-                </p>
-              </div>
-                
-              
+              <>
+                <p className="m-0 ms-3" style={{fontSize:"14px",color:"#9c3353"}}>{obj.sentBy !== currentUser._id ? obj.name : ''}</p>
+                <div className={obj.sentBy === currentUser._id ? "msg-sent" : "msg-rec"}>
+                  <p className="m-0">{obj.message}</p>
+                  <p className="m-0 float-end" style={{ fontSize: 10 }}>
+                    {new Date(obj.date).toLocaleDateString()}
+                  </p>
+                </div>
+              </>
             ))}
           </div>
           <div
@@ -150,7 +139,7 @@ const StartupChat = () => {
                 value={inputText}
               />
               <button className="btn btn-success" onClick={sendMessage}>
-                <i class="fas fa-paper-plane"></i> &nbsp; Send
+                <i class="fas fa-paper-plane"></i>   Send
               </button>
             </div>
           </div>

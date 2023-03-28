@@ -30,21 +30,35 @@ const StartupInbox = () => {
   const displayContacts = () => {
     return currentUser.contacts.map((contact) => (
       <li class="list-group-item d-flex justify-content-between align-items-center" onClick={ () => navigate('/startup/chat/'+contact._id) }>
-        <div>
-          <div class="fw-bold">{contact.name}</div>
-          <div class="text-muted">{contact.email}</div>
+        <div className="row">
+          <div className="col-md-3">
+            <img className='img-fluid ' src={url + '/' + contact.investoravatar} alt='' style={{ width: "90px", borderRadius: "50%" }} />
+          </div>
+          <div className="col-md-9">
+            <div class="fw-bold">{contact.name}</div>
+            <div class="text-muted">{contact.email}</div>
+          </div>
+      
         </div>
+
+
         <span class="badge rounded-pill badge-success">Active</span>
       </li>
     ));
   };
 
   return (
-    <div>
-      <h1>StartupInbox Component</h1>
-      <hr />
-      <ul class="list-group list-group-light">{displayContacts()}</ul>
-    </div>
+   <> 
+      <div
+        className="row align-items-center"
+        style={{ height: "30vh", backgroundColor: "#9c3353", }} >
+        <h1 className="text-center" style={{color:"white"}}>Inbox</h1>
+
+      </div>
+
+    <ul class="list-group list-group-light px-5">{displayContacts()}</ul>
+
+    </>
   );
 };
 

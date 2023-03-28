@@ -45,17 +45,17 @@ const InvestorDetails = () => {
       
   //Feedback 
   const feedbackSubmit = async (formdata, {setSubmitting}) => {
-    if(!currentInvestor){
+    let loggedinUser = currentUser !== null ? currentUser:currentInvestor;
+    if (!loggedinUser) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Login needed!',
       })
-      console.log('login needed');
+      console.log('startup login needed');
       return;
     }
-   
-    formdata.user = currentInvestor._id;
+    formdata.user = loggedinUser._id;
     formdata.rating = rating;
     formdata.created_at = new Date();
 

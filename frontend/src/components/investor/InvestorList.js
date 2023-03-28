@@ -24,8 +24,8 @@ const InvestorList = () => {
 
   const displayList = () => {
     return investorList.map((investor) => (
-      <div className="card mb-3">
-        <div className="row gx-5">
+      <div className="card mb-3 mx-auto" style={{width:"80%"}}>
+        <div className="row gx-5 justify-content-center" >
           <div className="col-md-4">
           <img
               className="img-fluid p-2"
@@ -67,7 +67,7 @@ return (
       </div>
 
     <div className="row justify-content-center">
-      <div className="col-9">{displayList()}</div>
+      <div className="col-9 ">{displayList()}</div>
     </div>
   </div>
 );
