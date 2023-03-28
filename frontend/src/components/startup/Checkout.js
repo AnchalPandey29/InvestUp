@@ -16,7 +16,8 @@ const Checkout = () => {
  
   const addSubscription = async (subscriptionData) => {
     // Store subscriptionData in LocalStorage
-    localStorage.setItem('subscriptionData', JSON.stringify(subscriptionData));
+    let plan = JSON.parse(localStorage.getItem('planDetails'));
+    console.log(plan);
   
     const today = new Date();
     const res = await fetch(`${url}/Subscription/add`, {
@@ -30,13 +31,16 @@ const Checkout = () => {
         endDate: new Date(today.setMonth(today.getMonth() + 1)),
         duration: "1 Month",
         data: {
-          name: "Basic",
+          plan,
           customer_details: subscriptionData.customer_details,
         }
       }),
     });
+
+    // localStorage.removeItem('planDetails');
   
     if (res.status === 201) {
+      
       Swal.fire({
         icon: "success",
         title: "Subscribed",

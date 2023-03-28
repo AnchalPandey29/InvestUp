@@ -1,7 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import planData from '../../planData';
 import './Subscription.css'
 
 const Subscription = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div>   
       <section className='sec'>
@@ -28,7 +33,10 @@ const Subscription = () => {
             <li className="pricing-feature">Latest Bulletins</li>
           </ul>
           {/* <a className="pricing-action" href='https://buy.stripe.com/test_9AQdU26o4gumcX69AC'>Choose plan</a> */}
-          <a className="pricing-action" href='https://buy.stripe.com/test_6oEg2abIo91U5uEeV1'>Choose plan</a>
+          <button className="pricing-action" onClick={e => {
+            localStorage.setItem('planDetails', JSON.stringify(planData.basic));
+            window.location.replace('https://buy.stripe.com/test_6oEg2abIo91U5uEeV1')
+          }}>Choose plan</button>
         </div>
         <div className="pricing-item features-item ja-animate pricing__item--featured" data-animation="move-from-bottom" data-delay="item-1" style={{minHeight: '497px'}}>
           <div className="pricing-deco" style={{background: 'linear-gradient(135deg,#2ed60d,#147800)'}}>
@@ -53,7 +61,10 @@ const Subscription = () => {
             <li className="pricing-feature"></li>
             <li className="pricing-feature">Breaking Headlines</li>
           </ul>
-          <a className="pricing-action" href='https://buy.stripe.com/test_bIYaHQ8wcba28GQcMP'>Choose plan</a>
+          <button className="pricing-action" onClick={e => {
+            localStorage.setItem('planDetails', JSON.stringify(planData.regular));
+            window.location.replace('https://buy.stripe.com/test_bIYaHQ8wcba28GQcMP');
+          }}>Choose plan</button>
         </div>
         <div className="pricing-item features-item ja-animate" data-animation="move-from-bottom" data-delay="item-2" style={{minHeight: '497px'}}>
           <div className="pricing-deco">
@@ -75,7 +86,10 @@ const Subscription = () => {
            <li className="pricing-feature">Campaigns And Drives</li>
             <li className="pricing-feature">Breaking Headlines</li>
           </ul>
-          <a className="pricing-action" href='https://buy.stripe.com/test_eVa2bkfYE7XQ1eofZ3'>Choose plan</a>
+          <button className="pricing-action" onClick={e => {
+            localStorage.setItem('planDetails', JSON.stringify(planData.basic));
+            navigate('https://buy.stripe.com/test_eVa2bkfYE7XQ1eofZ3');
+          }}>Choose plan</button>
         </div>
       </div>
     </center></section></div>
