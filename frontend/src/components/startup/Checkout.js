@@ -13,7 +13,11 @@ const Checkout = () => {
   const navigate = useNavigate();
   // CHECKOUT_SESSION_ID
 
+ 
   const addSubscription = async (subscriptionData) => {
+    // Store subscriptionData in LocalStorage
+    localStorage.setItem('subscriptionData', JSON.stringify(subscriptionData));
+  
     const today = new Date();
     const res = await fetch(`${url}/Subscription/add`, {
       method: "POST",
@@ -31,7 +35,7 @@ const Checkout = () => {
         }
       }),
     });
-
+  
     if (res.status === 201) {
       Swal.fire({
         icon: "success",
@@ -39,13 +43,19 @@ const Checkout = () => {
         text: "Purchase Successful",
       });
       // navigate("/startup/dashboard");
-
+  
       const data = await res.json();
     }
   };
+  
+ 
 
   const { sessionid } = useParams();
-  console.log(sessionid);
+  const subscriptionData = JSON.parse(localStorage.getItem('subscriptionData'));
+
+console.log(sessionid);
+console.log(subscriptionData);
+
 
   const getPaymentDetails = async () => {
     const response = await fetch(`${url}/util/getpaymentdetails/${sessionid}`);

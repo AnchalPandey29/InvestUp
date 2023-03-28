@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Eligible = () => {
   return (
@@ -24,10 +25,7 @@ const Eligible = () => {
         </li>
 
       </ul>
-
-
-
-      <div class="tab-content" id="ex1-content">
+  <div class="tab-content" id="ex1-content">
         <div
           class="tab-pane fade show active"
           id="ex1-tabs-1"
@@ -63,11 +61,16 @@ const Eligible = () => {
               &nbsp;
               According to the program's rules, a startup applicant may receive seed funding once each in the form of a grant and in the form of debt or convertible debentures.
             </p>
-            <div className='text-center mt-5'>
-              <a className='btn' style={{ backgroundColor: "#9c3353", color: "#fffefe" }} href="/main/signup/">
-                Apply Now
-              </a>
-            </div>
+            <div className='row text-center'>
+                  <div className='col-md-6 text-center mt-5'>
+                    <a className='btn' style={{ backgroundColor: "#9c3353", color: "#fffefe" }} href="/main/signup/">
+                      Apply Now
+                    </a>
+                  </div>
+                  <div className="col-md-6">
+                    <Link className="btn mx-auto mt-5" style={{ background: "#9c3353", color: "white", width: "fit-content" }} to="/main/home">Back to Home</Link>
+                  </div>
+                </div>
           </div>
 
         </div>
@@ -102,18 +105,24 @@ const Eligible = () => {
               <p><i class="fa fa-circle" aria-hidden="true"></i>
                 &nbsp;
                 whatever other standards that the Experts Advisory Committee may choose (EAC).</p>
-              <div className='text-center mt-5'>
-                <a className='btn' style={{ backgroundColor: "#9c3353", color: "#fffefe" }} href="/main/signup/">
-                  Apply Now
-                </a>
-              </div>
+                <div className='row text-center'>
+                  <div className='col-md-6 text-center mt-5'>
+                    <a className='btn' style={{ backgroundColor: "#9c3353", color: "#fffefe" }} href="/main/signup/">
+                      Apply Now
+                    </a>
+                  </div>
+                  <div className="col-md-6">
+                    <Link className="btn mx-auto mt-5" style={{ background: "#9c3353", color: "white", width: "fit-content" }} to="/main/home">Back to Home</Link>
+                  </div>
+                </div>
             </div>
+          
           </div>
 
 
 
         </div></div>
-
+       
     </div>
   </div>   
 

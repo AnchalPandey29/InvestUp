@@ -43,9 +43,21 @@ const RegisterSchema1 = Yup.object().shape({
    // istate:Yup.string().istate("State is required"),
    // });
 
+//const RegisterSchema3= Yup.object().shape({
+ //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+//});
 // const RegisterSchema3= Yup.object().shape({
 //  DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 // });
+
+//const RegisterSchema3= Yup.object().shape({
+ //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+//});
+
+// const RegisterSchema3= Yup.object().shape({
+//  DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
+// });
+
 
 
 const Register = () => {
@@ -86,7 +98,7 @@ const Register = () => {
         icon: "success",
         title: "Success",
 
-        text: "You have registered successfully",
+        text: "Your data saved successfully",
       });
     } else {
       // error alert
@@ -187,7 +199,7 @@ const Register = () => {
                 aria-labelledby="v-pills-About Startup-tab"
               >
                 <Formik
-                  initialValues={{ name: "", type: "", brief: "" }}
+                  initialValues={{ investoravatar:"",name: "", type: "", brief: "" }}
                   validationSchema={RegisterSchema1} //Schema
                   onSubmit={onSubmit}
                 >
@@ -450,7 +462,7 @@ const Register = () => {
 
           <div style={{ height: "fit-content"}}>
             <Formik
-              initialValues={{ name: "", type: "", brief: "" }}
+              initialValues={{ email: "", tel: "",istate: "",city:"",website:" ",aplink:"" }}
               //validationSchema={RegisterSchema2}
               onSubmit={onSubmit}
             >
@@ -499,9 +511,9 @@ const Register = () => {
                         <MDBInput
                           label="State"
                           type="text"
-                          value={values.istate}
+                          value={values.state}
                           onChange={handleChange}
-                          name="istate"
+                          name="state"
                         />
                         {errors.istate && touched.istate ? (
                           <div>{errors.istate}</div>
@@ -601,7 +613,9 @@ const Register = () => {
               initialValues={{
                 select1: "",
                 select2: "",
-                type: "",
+                type:"",
+                DIPPTNumber:"",
+                
               }}
               //validationSchema={RegisterSchema1}
               //validationSchema={RegisterSchema3}
@@ -621,9 +635,9 @@ const Register = () => {
                     <br />
                     <select
                       className="select"
-                      name="select1"
-                      id="select1"
-                      value={values.select1}
+                      name="industry"
+                      id="industry"
+                      value={values.industry}
                       onChange={handleChange}
                     >
                       <FormLabel> Industry</FormLabel>
@@ -657,9 +671,9 @@ const Register = () => {
 
                     <select
                       className="select"
-                      name="select2"
-                      id="select2"
-                      value={values.select2}
+                      name="select1"
+                      id="select1"
+                      value={values.select1}
                       onChange={handleChange}
                     >
                       <FormLabel>Interests</FormLabel>
@@ -682,6 +696,7 @@ const Register = () => {
                       <MDBInput
                         label="DIPPT Enpanelment Number"
                         id="DIPPTNumber"
+                        name="DIPPTNumber"
                         value={values.DIPPTNumber}
                         onChange={handleChange}
                       />
@@ -707,14 +722,22 @@ const Register = () => {
                       "Next"
                     )}
                   </button> */}
-                  <button disabled={isSubmitting} type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                 {/*  <button disabled={isSubmitting} href="/investor/dashboard" type="submit" className="btn btn-block mb-1" 
+                  style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
                     {
                       isSubmitting ?
                         <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
                         :
-                        'Next'
+                        'Submit'
+                    } */}
+                <a disabled={isSubmitting} href="/investor/dashboard" type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
+                    {
+                      isSubmitting ?
+                        <span class="spinner-border spinner-border-sm"  aria-hidden="true"></span>
+                        :
+                        'Submit'
                     }
-                  </button>
+                  </a>
 
                 </form>
               )}

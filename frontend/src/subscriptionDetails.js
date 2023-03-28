@@ -1,5 +1,5 @@
 const subscriptionData = {
-    'Basic' : ['consultancy', 'chat'],
+    'Basic' : ['consultancy','chat'],
     'Regular' : ['chat', 'consultancy'],
     'Premium' : ['chat', 'consultancy','campaign']
 }

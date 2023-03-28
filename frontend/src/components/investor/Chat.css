@@ -1,4 +1,4 @@
-.msg-sent{
+.sendmsg{
     background-color: #9c3353;
     padding: 20px;
     width: fit-content;
@@ -12,7 +12,7 @@
     max-width: 70%;
 }
 
-.msg-rec{
+.recmsg{
     background-color: white;
     padding: 20px;
     width: fit-content;

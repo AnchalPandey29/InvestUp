@@ -143,7 +143,7 @@ const InvestorChat = () => {
           >
             {messageList.map((obj) => (
               <>
-                <p className="m-0">
+                <p className="m-0 ms-3" style={{fontSize:"14px",color:"#9c3353"}}>
                   {obj.sentBy !== currentUser._id ? obj.name : ""}
                 </p>
                 <div
@@ -176,7 +176,7 @@ const InvestorChat = () => {
                 value={inputText}
               />
               <button className="btn btn-success" onClick={sendMessage}>
-                <i class="fas fa-paper-plane"></i> &nbsp; Send
+                <i class="fas fa-paper-plane"></i>   Send
               </button>
             </div>
           </div>

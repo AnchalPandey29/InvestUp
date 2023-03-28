@@ -123,11 +123,14 @@ const BlogBrowse = () => {
                                       Read more
                                   </Link>
                               </div>
+                             
                           </div>
 
                       ))
                     }
-      
+       <div className="row">
+  <Link className="btn mt-5" style={{background:"#9c3353",color:"white",width:"fit-content",marginLeft:"10%"}} to="/main/home">Back to Home</Link>
+</div>
                       </div>
                   </div>
 

@@ -43,7 +43,8 @@ const StartupDetails = () => {
   }, []);
 
   const feedbackSubmit = async (formdata, { setSubmitting }) => {
-    if (!currentUser) {
+    let loggedinUser = currentUser !== null ? currentUser:currentInvestor;
+    if (!loggedinUser) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -52,11 +53,11 @@ const StartupDetails = () => {
       console.log('startup login needed');
       return;
     }
-    formdata.user = currentUser._id;
+    formdata.user = loggedinUser._id;
     formdata.rating = rating;
     formdata.created_at = new Date();
     setSubmitting(true);
-    const res = await fetch(`http://localhost:5000/feedback/add`, {
+    const res = await fetch(url+`/feedback/add`, {
       method: "POST",
       body: JSON.stringify(formdata),
       headers: { "Content-Type": "application/json" },
@@ -129,29 +130,25 @@ const StartupDetails = () => {
         <div className="row justify-content-center">
           <img
             className="rounded-circle shadow-1-strong mb-4"
-            src="/logo.png"
+            src={url+'/'+startupData.startupimage} 
             alt="avatar"
             style={{ width: 150, color: "" }}
           />
         </div>
         <div className="text-center row">
-          <h5>Eleva</h5>
+          <h5>{startupData.name}</h5>
           <div className="d-flex flex-row justify-content-center">
             <p className="me-4">
-              {" "}
               <i class="fas fa-mail-bulk fa-lg  "></i> &nbsp; {startupData.email}
             </p>
 
             <p>
-              {" "}
               <i class="fab fa-linkedin fa-lg  "></i> &nbsp; {startupData.name}
             </p>
           </div>
 
           <p>
-            <i class="fas fa-quote-left    "></i>&nbsp; We are the biggest
-            healthcare company, providing medicinal and health services to the
-            world.
+            <i class="fas fa-quote-left    "></i>&nbsp; {startupData.brief}
           </p>
         </div>
 
@@ -161,15 +158,15 @@ const StartupDetails = () => {
             <div className="me-5">
               <img
                 className="mx-auto"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+                src={url+'/'+startupData.owneravatar} 
                 alt=""
                 style={{ width: "100px", borderRadius: "10px" }}
               />
             </div>
             <div>
-              <h5>Olla Heden</h5>
+              <h5>{startupData.ownername}</h5>
               <p>
-                Founder and CEO of <strong>Eleva</strong>
+                Founder and CEO of <strong>{startupData.name}</strong>
               </p>
               <p className="me-4">
                 {" "}
@@ -192,10 +189,11 @@ const StartupDetails = () => {
             </div>
 
             <div>
-              <h5>Dialysis Machine</h5>
+              <h5>{startupData.productname}</h5>
               <p>
-                Designed and Manufacturing <br />
-                About 5 lakhs machine were sold world wide{" "}
+              
+              {startupData.productdescription}
+                
               </p>
             </div>
           </div>

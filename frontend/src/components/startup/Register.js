@@ -634,7 +634,7 @@ const Register = () => {
                         </div>
                       </RadioGroup>
                     </FormControl>
-""
+
                     <a disabled={isSubmitting} href="/startup/dashboard" type="submit" className="btn btn-block mb-1" style={{ backgroundColor: "#9c3353", color: "#fffefe" }}>
                     {
                       isSubmitting ?

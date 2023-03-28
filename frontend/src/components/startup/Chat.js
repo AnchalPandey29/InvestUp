@@ -113,7 +113,7 @@ const StartupChat = () => {
           >
             {messageList.map((obj) => (
               <>
-                <p className="m-0">{obj.sentBy !== currentUser._id ? obj.name : ''}</p>
+                <p className="m-0 ms-3" style={{fontSize:"14px",color:"#9c3353"}}>{obj.sentBy !== currentUser._id ? obj.name : ''}</p>
                 <div className={obj.sentBy === currentUser._id ? "msg-sent" : "msg-rec"}>
                   <p className="m-0">{obj.message}</p>
                   <p className="m-0 float-end" style={{ fontSize: 10 }}>
@@ -139,7 +139,7 @@ const StartupChat = () => {
                 value={inputText}
               />
               <button className="btn btn-success" onClick={sendMessage}>
-                <i class="fas fa-paper-plane"></i> &nbsp; Send
+                <i class="fas fa-paper-plane"></i>   Send
               </button>
             </div>
           </div>
