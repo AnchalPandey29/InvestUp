@@ -26,11 +26,11 @@ const Subscription = () => {
             <h3 className="pricing-title"><strong>Basic</strong></h3>
           </div>
           <ul className="pricing-feature-list">
-            <li className="pricing-feature">Customer Support</li>
+            {/* <li className="pricing-feature">Customer Support</li>
             <li className="pricing-feature"></li>
             <li className="pricing-feature">Insightful Blogs</li>
-            <li className="pricing-feature"></li>
-            <li className="pricing-feature">Latest Bulletins</li>
+            <li className="pricing-feature"></li> */}
+            <li className="pricing-feature">Consultancy</li>
           </ul>
           {/* <a className="pricing-action" href='https://buy.stripe.com/test_9AQdU26o4gumcX69AC'>Choose plan</a> */}
           <button className="pricing-action" onClick={e => {
@@ -55,11 +55,11 @@ const Subscription = () => {
             
             <li className="pricing-feature">Chatting</li>
             <li className="pricing-feature"></li>
-            <li className="pricing-feature">Insightful Blogs</li>
+            <li className="pricing-feature">Consultancy</li>
             <li className="pricing-feature"></li>
-            <li className="pricing-feature">Campaigns And Drives</li>
+            {/* <li className="pricing-feature">Campaigns And Drives</li>
             <li className="pricing-feature"></li>
-            <li className="pricing-feature">Breaking Headlines</li>
+            <li className="pricing-feature">Breaking Headlines</li> */}
           </ul>
           <button className="pricing-action" onClick={e => {
             localStorage.setItem('planDetails', JSON.stringify(planData.regular));
@@ -80,15 +80,16 @@ const Subscription = () => {
             <h3 className="pricing-title"><strong>Premium</strong></h3>
           </div>
           <ul className="pricing-feature-list">
-          <li className="pricing-feature">Expert Advisory</li>
-            <li className="pricing-feature">Chatting</li>
-            <li className="pricing-feature">Insightful Blogs</li>
+          <li className="pricing-feature">Chatting</li>
+            <li className="pricing-feature"></li>
+            <li className="pricing-feature">Consultancy</li>
+            <li className="pricing-feature"></li>
+          
            <li className="pricing-feature">Campaigns And Drives</li>
-            <li className="pricing-feature">Breaking Headlines</li>
           </ul>
           <button className="pricing-action" onClick={e => {
-            localStorage.setItem('planDetails', JSON.stringify(planData.basic));
-            navigate('https://buy.stripe.com/test_eVa2bkfYE7XQ1eofZ3');
+            localStorage.setItem('planDetails', JSON.stringify(planData.premium));
+            window.location.replace('https://buy.stripe.com/test_eVa2bkfYE7XQ1eofZ3');
           }}>Choose plan</button>
         </div>
       </div>

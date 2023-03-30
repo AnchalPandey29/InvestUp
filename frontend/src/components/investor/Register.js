@@ -245,6 +245,7 @@ const Register = () => {
                           validate={validate}
                           onChange={handleChange}
                           name="identityproofno"
+                          maxLength={12} minLength={12}
                         />
                         {errors.identityproofno && touched.identityproofno ? (
                           <div>{errors.identityproofno}</div>
@@ -497,6 +498,7 @@ const Register = () => {
                             value={values.tel}
                             onChange={handleChange}
                             name="tel"
+                            maxLength={10} minLength={10}
                           />
                           {errors.tel && touched.tel ? (
                             <div>{errors.tel}</div>
@@ -699,6 +701,7 @@ const Register = () => {
                         name="DIPPTNumber"
                         value={values.DIPPTNumber}
                         onChange={handleChange}
+                        maxLength={12}
                       />
                       {errors.DIPPTNumber && touched.DIPPTNumber ? (
                         <div>{errors.DIPPTNumber}</div>

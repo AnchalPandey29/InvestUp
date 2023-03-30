@@ -57,7 +57,7 @@ const Checkout = () => {
   const { sessionid } = useParams();
   const subscriptionData = JSON.parse(localStorage.getItem('subscriptionData'));
 
-console.log(sessionid);
+// console.log(sessionid);
 console.log(subscriptionData);
 
 

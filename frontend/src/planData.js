@@ -2,17 +2,17 @@ const planData = {
     basic : {
         name : 'Basic',
         features : [],
-        price : 30
+        price : 29
     },
     regular : {
         name : 'Regular',
         features : [],
-        price : 100
+        price : 59
     },
     premium : {
         name : 'Premium',
         features : [],
-        price : 500
+        price : 99
     },
 }
 

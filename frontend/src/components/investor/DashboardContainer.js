@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from "react";
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -18,8 +19,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useInvestorContext } from '../../context/InvestorProvider';
+import Swal from 'sweetalert2';
+import subscriptionData from '../../subscriptionDetails';
+import app_config from '../../config';
 
 const drawerWidth = 230;
 
@@ -59,6 +63,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
+
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -69,6 +74,51 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function InvestorDashboardContainer({children}) {
+
+  const url = app_config.apiurl;
+const [planDetails, setPlanDetails] = useState(null);
+const navigate = useNavigate();
+const [currentUser, setCurrentUser] = useState(
+  JSON.parse(sessionStorage.getItem("investor"))
+);
+
+React.useEffect(() => {
+  getSubscriptionData(currentUser._id);
+
+}, []);
+
+const getSubscriptionData = async (id) => {
+  const res = await fetch(url + '/Subscription/getbyuser/' + id);
+  if (res.status === 201) {
+    const data = await res.json();
+    console.log(data.result);
+    setPlanDetails(data.result);
+  }
+}
+
+const checkVisiblity = (feature, path) => {
+  if(!planDetails){
+    Swal.fire({title : 'You need to subscribe!!'})
+    return
+  }
+  if (subscriptionData[planDetails.data.plan.name].includes(feature))  { navigate(path) }
+  else Swal.fire({ title: 'Please upgrade your plan!!' })
+}
+
+const openConsultancy= () => {
+   
+  if(currentUser){
+      checkVisiblity('consultancy', '/main/consultancy/' )   
+  }
+}
+
+const openCampaign= () => {
+   
+  if(currentUser){
+      checkVisiblity('campaign', '/main/campaignbrowser/' )   
+  }
+}
+
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -185,23 +235,27 @@ export default function InvestorDashboardContainer({children}) {
 
         </a>
         <Divider />
-        <a className="navbar-brand mt-4" href="/startup/chat">
+        {/* <a className="navbar-brand mt-4" href="/startup/chat">
         <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
             <p>
             <i class="fas fa-inbox  me-4 "></i>
             &nbsp;
              Chat</p>
         </div>
-        </a>
+        </a> */}
 
-        <a className="navbar-brand mt-2" href="/main/consultancy">
-        <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
+        <button className="navbar-brand mt-2" onClick={openConsultancy} 
+        style={{border:"none"}}>
+          <div
+            className="col ms-3"
+            style={{ display: "flex", alignItems: "center" }}
+          >
             <p>
-            <i class="fas fa-comment-dots  me-4  "></i>
-            &nbsp;
-             Consultancy</p>
-        </div>
-        </a>
+              <i class="fas fa-comment-dots  me-4  "></i>
+              &nbsp; Consultancy
+            </p>
+          </div>
+        </button>
         
         {/* <List  >
           {['StartupList', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -236,15 +290,18 @@ export default function InvestorDashboardContainer({children}) {
 
         </a>
 
-        <a className="navbar-brand mt-2 " href="/main/campaignbrowser">
-        <div className='col ms-4' style={{display:"flex",alignItems:"center"}}>
+        <button className="navbar-brand mt-2" onClick={openCampaign} 
+        style={{border:"none"}}>
+          <div
+            className="col ms-3"
+            style={{ display: "flex", alignItems: "center" }}
+          >
             <p>
-            <i class="fa fa-bookmark me-4" aria-hidden="true"></i>
-            &nbsp; 
-             Campaign</p>
-        </div>
-
-        </a>
+              <i class="fas fa-comment-dots  me-4  "></i>
+              &nbsp; Campaign
+            </p>
+          </div>
+        </button>
         <Divider />
 
         {/* <List >

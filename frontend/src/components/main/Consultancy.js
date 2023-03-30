@@ -41,8 +41,8 @@ const Chat = () => {
      
         <div className="card " style={{height:"70vh", width:"100vh"}}>
          
-          <div className="card-header">
-            <p className="m-0 h4">Ola Daudin</p>
+          <div className="card-header bg-success">
+            <p className="m-0 h4" ></p>
           
           </div>
           <div

@@ -120,7 +120,7 @@ const checkVisiblity = (feature, path) => {
     Swal.fire({title : 'You need to subscribe!!'})
     return
   }
-  if (subscriptionData[planDetails.data.name].includes(feature)) { navigate(path) }
+  if (subscriptionData[planDetails.data.plan.name].includes(feature)) { navigate(path) }
   else Swal.fire({ title: 'Please upgrade your plan!!' })
 }
 

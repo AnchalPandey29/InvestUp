@@ -31,7 +31,7 @@ const Schema3=Yup.object().shape({
 
 });
 const Schema4=Yup.object().shape({
- aadhar:Yup.string().max(12)
+ aadhar:Yup.string().max(21)
  .required("this field is mandatory"),
 });
 
@@ -337,7 +337,8 @@ const Register = () => {
                         </div>
                         
                       <div className="form-outline mb-4">
-                      <MDBInput label='Identity No' id="identityno" name="identityno"type="text" value={values.identityno} onChange={handleChange}/>
+                      <MDBInput label='Identity No' id="identityno" name="identityno"type="text" value={values.identityno} onChange={handleChange}
+                       maxLength={12} minLength={12}/>
                       {errors.identityno && touched.identityno? (
                           <div>{errors.identityno}</div>
                         ) : null}
@@ -454,7 +455,8 @@ const Register = () => {
                       </div>
                       <div className="col">
                         <div className="form-outline mb-4">
-                        <MDBInput label=' Mobile' type="text" id="tel" value={values.tel} onChange={handleChange} name="tel" />
+                        <MDBInput label=' Mobile' type="text" id="tel" value={values.tel} onChange={handleChange} name="tel" 
+                         maxLength={10} minLength={10}/>
                         {errors.tel && touched.tel ? (
                           <div>{errors.tel}</div>
                         ) : null} 
@@ -609,7 +611,8 @@ const Register = () => {
 
                     <div className="col">
                       <div className="form-outline mb-4">
-                      <MDBInput label='Udyog Aadhar ' type="text" id="aadhar" value={values.aadhar} onChange={handleChange} name="aadhar" />
+                      <MDBInput label='CIN (Corporate Idfentification Number)' type="text" id="aadhar" value={values.aadhar} onChange={handleChange} name="aadhar"
+                      maxLength={21} minLength={21}/>
                        <br/>
                        {errors.aadhar && touched.aadhar ? (
                           <div>{errors.aadhar}</div>
