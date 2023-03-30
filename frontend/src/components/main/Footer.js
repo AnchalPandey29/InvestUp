@@ -19,16 +19,16 @@ const Footer = () => {
           <a href="" className="me-4 text-reset">
             <i className="fab fa-twitter" />
           </a>
-          <a href="" className="me-4 text-reset">
+          <a href="mailto:investupwithus@gmail.com" className="me-4 text-reset">
             <i className="fab fa-google" />
           </a>
           <a href="" className="me-4 text-reset">
             <i className="fab fa-instagram" />
           </a>
-          <a href="" className="me-4 text-reset">
+          <a href="https://www.linkedin.com/in/investup-3a181a270/" className="me-4 text-reset">
             <i className="fab fa-linkedin" />
           </a>
-          <a href="" className="me-4 text-reset">
+          <a href="https://github.com/AnchalPandey29" className="me-4 text-reset">
             <i className="fab fa-github" />
           </a>
         </div>
@@ -86,11 +86,7 @@ const Footer = () => {
                   News
                 </a>
               </p>
-              <p>
-                <a href="/main/campaignbrowser" className="text-reset">
-                  Campaign
-                </a>
-              </p>
+             
               <p>
                 <a href="/main/blogbrowser" className="text-reset">
                   Blog

@@ -5,13 +5,28 @@ import app_config from "../../config";
 import { useParams } from "react-router-dom";
 
 const Consultancy = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+  const [searchKeyword, setSearchKeyword] = useState("");
+
   const url = app_config.apiurl;
   const [socket, setSocket] = useState(io(url, { autoConnect: false }));
   const { investorid } = useParams();
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(sessionStorage.getItem("startup"))
+    JSON.parse(sessionStorage.getItem("investor"))
   );
 
+  const search =  async (field) => {
+    const res = await fetch(
+      url + "/chat/getchat/" + currentUser._id + "/" + investorid
+    );
+    const data = await res.json();
+    // console.log(data);
+    setMessageList(data.result.filter((user) => user[field] === searchKeyword));
+  }
+ 
   const fetchChats = async () => {
     const res = await fetch(
       url + "/chat/getchat/" + currentUser._id + "/" + investorid
@@ -46,14 +61,8 @@ const Consultancy = () => {
   ]);
 
   const [inputText, setInputText] = useState("");
-  const [searchKeyword, setSearchKeyword] = useState("");
 
-  const search =  async (field) => {
-    const res = await fetch(url + "/chat/getall");
-    const data = await res.json();
-    console.log(data);
-    setMessageList(data.result.filter((user) => user[field] === searchKeyword));
-  }
+  
 
   const saveData = async (formdata) => {
     const res = await fetch(`http://localhost:5000/chat/add`, {
@@ -104,14 +113,28 @@ const Consultancy = () => {
       >
         {" "}
       </div>
-      <div className="input-group my-3 px-3 pt-4">
-              <input className="form-control  p-3" value={searchKeyword} onChange={e => setSearchKeyword(e.target.value)} />
-              <button className="btn btn-primary input-group-append" onClick={e => search('message')}>Search</button>
-      </div>
+     
       <div className="container d-flex flex-column justify-content-center align-items-center p-5">
         <div className="card " style={{ height: "80vh", width: "100vh" }}>
-          <div className="card-header bg-success" style={{ color: "white" }}>
+        <div className="card-header bg-success row " style={{ color: "white",width:"100vh",marginLeft:"0" }}>
+            <div className="col-md-11">
             <p className="m-0 h4 text-center">{currentUser.name}</p>
+            </div>
+            <div className="col-md-1">
+            <div>
+      <button  onClick={handleClick} className="m-0 float-end" style={{border:"none",background:"none"}}>
+      <img src="https://cdn-icons-png.flaticon.com/512/225/225287.png" style={{width:"20px"}} alt="" />
+      </button>
+      {isOpen && 
+        <div className="input-group my-3 px-3 pt-4" style={{width:"400px"}}>
+              <input className="form-control  p-3" value={searchKeyword} onChange={e => setSearchKeyword(e.target.value)} />
+              <button className="btn btn-primary input-group-append bg-success" style={{color:"white"}} onClick={e => search('message')}>Search</button>
+      </div>
+        }
+    </div>
+            
+            </div>
+          
           </div>
           <div
             className="card-body chat-body"
