@@ -48,6 +48,14 @@ const StartupChat = () => {
   ]);
 
   const [inputText, setInputText] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const search =  async (field) => {
+    const res = await fetch(url + "/chat/getall");
+    const data = await res.json();
+    console.log(data);
+    setMessageList(data.result.filter((user) => user[field] === searchKeyword));
+  }
 
   const saveData = async (formdata) => {
     const res = await fetch(`http://localhost:5000/chat/add`, {
@@ -98,7 +106,10 @@ const StartupChat = () => {
       >
         {" "}
       </div>
-
+      <div className="input-group my-3 px-3 pt-4">
+              <input className="form-control  p-3" value={searchKeyword} onChange={e => setSearchKeyword(e.target.value)} />
+              <button className="btn btn-primary input-group-append" onClick={e => search('message')}>Search</button>
+      </div>
       <div className="container d-flex flex-column justify-content-center align-items-center p-5">
         <div className="card " style={{ height: "80vh", width: "100vh" }}>
           <div className="card-header bg-success" style={{ color: "white" }}>
