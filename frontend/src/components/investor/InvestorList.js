@@ -22,6 +22,19 @@ const InvestorList = () => {
       fetchData();
     }, [])
 
+//     const [selectedValue, setSelectedValue] = useState("");
+// <select onChange={(e) => setSelectedValue(e.target.value)}>
+//   <option value="option1">Option 1</option>
+//   <option value="option2">Option 2</option>
+//   <option value="option3">Option 3</option>
+// </select>
+// fetch(`https://example.com/api/data/${selectedValue}`)
+// .then((response) => response.json())
+// .then((data) => {
+//   // Do something with the data
+// });
+
+
   const displayList = () => {
     return investorList.map((investor) => (
       <div className="card mb-3 mx-auto" style={{width:"80%"}}>
