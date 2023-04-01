@@ -71,7 +71,7 @@ const AddBlog = () => {
         </div>
 
       <div className="col-md-3 mx-auto pt-5">
-        <div className="card" >
+        <div className="card">
           <div className="card-body">
             <p className="text-center h4">Blog</p>
             <hr />

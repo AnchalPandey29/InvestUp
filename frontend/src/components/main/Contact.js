@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import { MDBInput } from 'mdb-react-ui-kit';
 import Swal from 'sweetalert2';
 import Header from './Header';
+import * as Yup from "yup";
 
 
 const Contact = () => {
@@ -42,6 +43,19 @@ const Contact = () => {
     }
   }
 
+  const ContactSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required")
+    .max(15, "Name must be atmost 10 characters"),
+    email: Yup.string()
+      .email("Invalid email")
+      .required("Email is required"),
+      
+    
+    message: Yup.string()
+      .max(100, "Message limit exceeded")
+      .required("Password is required"),
+  });
+
   return(
     <>
         <Header/>
@@ -58,9 +72,10 @@ const Contact = () => {
     </div>
     <Formik
       initialValues={{ name: '', email: '', message: '', copy: true }}
+      validationSchema={ContactSchema} // Added the validation schema here
       onSubmit={userSubmit}
     >
-      {({ values, handleSubmit, handleChange, isSubmitting }) => (
+      {({ values, handleSubmit, handleChange, isSubmitting, errors, touched, }) => (
 
 
         <div className='m-5'>
@@ -76,8 +91,10 @@ const Contact = () => {
               <div className='col-md-6'>
                 {/* Name input */}
                 <div className="  form-outline mb-4">
-                  <MDBInput label='Name' type="text" value={values.name} onChange={handleChange} name="name" />
-
+                  <MDBInput label='Name' type="text" maxLength={15} value={values.name} onChange={handleChange} name="name" />
+                  {errors.name && touched.name ? (
+                            <div>{errors.name}</div>
+                          ) : null}
                 </div>
               </div>
 
@@ -86,7 +103,9 @@ const Contact = () => {
                 <div className=" col-md-6 form-outline mb-4 ">
 
                   <MDBInput label='Email' type="email" value={values.email} onChange={handleChange} name="email" />
-
+                  {errors.email && touched.email ? (
+                            <div>{errors.email}</div>
+                          ) : null}
                 </div>
               </div>
 
@@ -95,8 +114,10 @@ const Contact = () => {
 
             {/* Message input */}
             <div className="form-outline mb-4">
-              <MDBInput label='Message' type="text" placeholder='You can type any suggestions or queries you might have.Let us help you!' value={values.message} onChange={handleChange} name="message" />
-
+              <MDBInput label='Message' type="text" maxLength={100} placeholder='You can type any suggestions or queries you might have.Let us help you!' value={values.message} onChange={handleChange} name="message" />
+              {errors.message && touched.message ? (
+                            <div>{errors.message}</div>
+                          ) : null}
 
             </div>
             {/* Checkbox */}

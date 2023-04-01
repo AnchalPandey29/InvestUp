@@ -227,7 +227,7 @@ const Signup = () => {
                       </button>
                     </div>
                     {/* Register buttons */}
-                    <div className="text-center">
+                    {/* <div className="text-center">
                       <p>or sign up with:</p>
                       <button
                         type="button"
@@ -256,7 +256,7 @@ const Signup = () => {
                       >
                         <i className="fab fa-github"></i>
                       </button>
-                    </div>
+                    </div> */}
                   </form>
                 )}
               </Formik>

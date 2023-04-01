@@ -41,6 +41,20 @@ const InvestorChat = () => {
   const [messageList, setMessageList] = useState([]);
 
   const [inputText, setInputText] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const search =  async (field) => {
+    const res = await fetch(url + "/chat/getall");
+    const data = await res.json();
+    console.log(data);
+    setMessageList(data.result.filter((user) => user[field] === searchKeyword)
+    );
+  }
+
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
 
   const saveData = async (formdata) => {
     const res = await fetch(url + `/chat/add`, {
@@ -131,8 +145,25 @@ const InvestorChat = () => {
 
       <div className="container d-flex flex-column justify-content-center align-items-center p-5">
         <div className="card " style={{ height: "90vh", width: "100vh" }}>
-          <div className="card-header bg-success" style={{ color: "white" }}>
+        <div className="card-header bg-success row " style={{ color: "white",width:"100vh",marginLeft:"0" }}>
+            <div className="col-md-11">
             <p className="m-0 h4 text-center">{currentUser.name}</p>
+            </div>
+            <div className="col-md-1">
+            <div>
+      <button  onClick={handleClick} className="m-0 float-end" style={{border:"none",background:"none"}}>
+      <img src="https://cdn-icons-png.flaticon.com/512/225/225287.png" style={{width:"20px"}} alt="" />
+      </button>
+      {isOpen && 
+        <div className="input-group my-3 px-3 pt-4" style={{width:"400px"}}>
+              <input className="form-control  p-3" value={searchKeyword} onChange={e => setSearchKeyword(e.target.value)} />
+              <button className="btn btn-primary input-group-append bg-success" style={{color:"white"}} onClick={e => search('message')}>Search</button>
+      </div>
+        }
+    </div>
+            
+            </div>
+          
           </div>
           <div
             className="card-body chat-body"

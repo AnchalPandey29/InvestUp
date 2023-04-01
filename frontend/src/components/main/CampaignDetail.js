@@ -49,6 +49,7 @@ const CampaignDetail = () => {
           </div>
         </div>
        <p> {campaignData.content}</p>
+       <button className='btn m-3' style={{background:"#9c3353",color:"white",width:"fit-content"}}>Apply Now</button>
       </div>
 
       </> 

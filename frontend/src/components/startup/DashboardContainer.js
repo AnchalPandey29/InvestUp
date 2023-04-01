@@ -19,9 +19,13 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useStartupContext } from "../../context/StartupProvider";
 import app_config from "../../config";
+import Swal from "sweetalert2";
+import subscriptionData from "../../subscriptionDetails";
+import { Button } from "@mui/material";
+
 
 const drawerWidth = 230;
 
@@ -82,6 +86,10 @@ export default function StartupDashboardContainer({ children }) {
     JSON.parse(sessionStorage.getItem("startup"))
   );
 
+  const [planDetails, setPlanDetails] = useState(null);
+  const navigate = useNavigate();
+
+
   const fetchChats = async () => {
     const res = await fetch(url + "/chat/getrecchat/" + currentUser._id);
     const chatsData = (await res.json()).result;
@@ -97,7 +105,42 @@ export default function StartupDashboardContainer({ children }) {
 
   React.useEffect(() => {
     fetchChats();
+    getSubscriptionData(currentUser._id);
+
   }, []);
+
+  const getSubscriptionData = async (id) => {
+    const res = await fetch(url + '/Subscription/getbyuser/' + id);
+    if (res.status === 201) {
+      const data = await res.json();
+      console.log(data.result);
+      setPlanDetails(data.result);
+    }
+  }
+
+  const checkVisiblity = (feature, path) => {
+    if(!planDetails){
+      Swal.fire({title : 'You need to subscribe!!'})
+      return
+    }
+    if (subscriptionData[planDetails.data.plan.name].includes(feature))  { navigate(path) }
+    else Swal.fire({ title: 'Please upgrade your plan!!' })
+  }
+
+  const openConsultancy= () => {
+   
+    if(currentUser){
+        checkVisiblity('consultancy', '/main/consultancy/' )   
+    }
+  }
+
+  const openCampaign= () => {
+   
+    if(currentUser){
+        checkVisiblity('campaign', '/main/campaignbrowser/'  )   
+    }
+  }
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -232,7 +275,7 @@ export default function StartupDashboardContainer({ children }) {
           </div>
         </a>
         <Divider />
-        <a className="navbar-brand mt-4" href="/startup/chat">
+        {/* <a className="navbar-brand mt-4" href="/startup/chat">
           <div
             className="col ms-4"
             style={{ display: "flex", alignItems: "center" }}
@@ -242,7 +285,7 @@ export default function StartupDashboardContainer({ children }) {
               &nbsp; Chating
             </p>
           </div>
-        </a>
+        </a> */}
         <a className="navbar-brand mt-2" href="/startup/inbox">
           <div
             className="col ms-4"
@@ -255,9 +298,10 @@ export default function StartupDashboardContainer({ children }) {
           </div>
         </a>
 
-        <a className="navbar-brand mt-2" href="/main/consultancy">
+        <button className="navbar-brand mt-2" onClick={openConsultancy} 
+        style={{border:"none"}}>
           <div
-            className="col ms-4"
+            className="col ms-3"
             style={{ display: "flex", alignItems: "center" }}
           >
             <p>
@@ -265,7 +309,7 @@ export default function StartupDashboardContainer({ children }) {
               &nbsp; Consultancy
             </p>
           </div>
-        </a>
+        </button>
 
         {/* <List  >
           {['StartupList', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -305,17 +349,18 @@ export default function StartupDashboardContainer({ children }) {
           </div>
         </a>
 
-        <a className="navbar-brand mt-2 " href="/main/campaignbrowser">
+        <button className="navbar-brand mt-2" onClick={openCampaign} 
+        style={{border:"none"}}>
           <div
-            className="col ms-4"
+            className="col ms-3"
             style={{ display: "flex", alignItems: "center" }}
           >
             <p>
-              <i class="fa fa-bookmark me-4" aria-hidden="true"></i>
+              <i class="fas fa-comment-dots  me-4  "></i>
               &nbsp; Campaign
             </p>
           </div>
-        </a>
+        </button>
         <Divider />
 
         {/* <List >

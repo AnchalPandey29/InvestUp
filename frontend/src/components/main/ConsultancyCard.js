@@ -57,7 +57,7 @@ const ConsultancyCard = () => {
               Foodstrukk is classified as India's first Non-govt food product company based in Pune, Maharashtra.
 
             </p>
-            <a className='btn' href="/main/chat" style={{ background: " #9c3353", color: "white" }}>Chat</a>
+            <a className='btn' href="/main/chat/" style={{ background: " #9c3353", color: "white" }}>Chat</a>
 
 
           </div>

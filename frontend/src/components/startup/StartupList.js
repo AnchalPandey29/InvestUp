@@ -103,7 +103,7 @@ const StartupList = () => {
             <h1 className="text-white text-center">Startup List</h1>
             <div className="input-group my-3 px-3 pt-4">
               <input className="form-control  p-3" value={searchKeyword} onChange={e => setSearchKeyword(e.target.value)} />
-              <button className="btn btn-primary input-group-append" onClick={e => search('ownername')}>Search</button>
+              <button className="btn btn-primary input-group-append" onClick={e => search('name')}>Search</button>
             </div>
           </div>
         </div>

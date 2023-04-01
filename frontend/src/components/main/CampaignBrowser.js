@@ -43,7 +43,7 @@ const CampaignBrowser = () => {
             <img src="/news.png" alt="" style={{ width: "400px" }} />
           </div>
         </div>
-
+{/* 
         <div className="row mt-3" style={{ justifyContent: "center" }}>
           <div className='col-6 d-flex align-items-center ' style={{ height: "40px" }}>
             <label style={{ color: "black" }} className="form-label m-2" htmlFor="category">Sort</label>&nbsp;
@@ -73,7 +73,7 @@ const CampaignBrowser = () => {
             </button>
           </div>
 
-        </div>
+        </div> */}
 
 
       <div className='mx-auto m-5 ms-5 me-5 p-4' style={{ width: "auto", height: "fit-content" }}>
