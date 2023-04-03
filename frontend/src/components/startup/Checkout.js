@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import app_config from "../../config";
@@ -11,6 +11,9 @@ const Checkout = () => {
   const [currentUser, setCurrentUser] = useState(currentStartup?currentStartup:currentInvestor);
   const url = app_config.apiurl;
   const navigate = useNavigate();
+
+  const calledOnce = useRef(false);
+
   // CHECKOUT_SESSION_ID
 
  
@@ -74,7 +77,10 @@ console.log(subscriptionData);
   };
 
   useEffect(() => {
-    getPaymentDetails();
+    if(!calledOnce){
+      calledOnce.current = true;
+      getPaymentDetails();
+    }
   }, []);
 
   return <div className="mx-auto" style={{height:"80vh"}}>  

@@ -93,7 +93,6 @@ const Signup = () => {
           className="row"
           style={{ height: "40vh", backgroundColor: "#9c3353" }}
         >
-          {" "}
         </div>
 
         <div
