@@ -12,7 +12,7 @@ const Checkout = () => {
   const url = app_config.apiurl;
   const navigate = useNavigate();
 
-  const calledOnce = useRef(false);
+  const calledOnce = useRef(true);
 
   // CHECKOUT_SESSION_ID
 
@@ -65,6 +65,7 @@ console.log(subscriptionData);
 
 
   const getPaymentDetails = async () => {
+    console.log('called');
     const response = await fetch(`${url}/util/getpaymentdetails/${sessionid}`);
     console.log(response.status);
     if (response.status === 200) {
@@ -77,8 +78,9 @@ console.log(subscriptionData);
   };
 
   useEffect(() => {
-    if(!calledOnce){
-      calledOnce.current = true;
+    console.log(calledOnce.current);
+    if(calledOnce){
+      calledOnce.current = false;
       getPaymentDetails();
     }
   }, []);
