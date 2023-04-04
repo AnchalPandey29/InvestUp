@@ -1,6 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../startup/Header'
+import app_config from '../../config';
 const ConsultancyCard = () => {
+
+  const [consultantList, setConsultantList] = useState([]);
+  const url = app_config.apiurl;
+
+  const fetchConsultantData = async () => {
+    const res = await fetch(url+'/investor/getconsultant');
+    const data = await res.json();
+    console.log(data);
+    setConsultantList(data.result);
+
+  }
+
+  useEffect(() => {
+    fetchConsultantData();
+  }, [])
+
+  const displayData = () => {
+    
+  }
+
   return (
 <>    
 <Header/>
