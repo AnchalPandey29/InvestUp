@@ -129,9 +129,10 @@ export default function StartupDashboardContainer({ children }) {
 
   const openConsultancy= () => {
    
-    if(currentUser){
-        checkVisiblity('consultancy', '/main/consultancy/' )   
-    }
+    // if(currentUser){
+    //     checkVisiblity('consultancy', '/main/consultancy/' )   
+    // }
+    navigate("/main/consultancy/");
   }
 
   const openCampaign= () => {

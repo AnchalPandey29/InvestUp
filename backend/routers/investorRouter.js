@@ -102,4 +102,15 @@ router.delete("/delete/:id", (req, res) => {
     });
 });
 
+router.get("/getconsultant", (req, res) => {
+  Model.find({consultant: true})
+    .then((result) => {
+      res.status(200).json({ status: "success", result });
+    })
+    .catch((err) => {
+      console.error("Error deleting user data", err);
+      res.status(500).send("Error deleting user data");
+    });
+});
+
 module.exports = router;
