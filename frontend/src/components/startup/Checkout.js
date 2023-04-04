@@ -79,7 +79,7 @@ console.log(subscriptionData);
 
   useEffect(() => {
     console.log(calledOnce.current);
-    if(calledOnce){
+    if(calledOnce.current){
       calledOnce.current = false;
       getPaymentDetails();
     }
