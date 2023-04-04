@@ -113,7 +113,7 @@ const BlogBrowse = () => {
                                   <h4>{blog.heading}</h4>
                                   <p style={{overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>{blog.content}</p>
 
-                                  <p>{new Date().toLocaleDateString()}</p>
+                                  <p>{new Date(blog.date).toLocaleDateString()}</p>
                                   <Link
                                      to={"/main/blogdetails/"+blog._id}
                                       type='button'

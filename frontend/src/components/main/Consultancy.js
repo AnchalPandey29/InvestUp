@@ -10,13 +10,15 @@ const Consultancy = () => {
     setIsOpen(!isOpen);
   };
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [consultant, setConsultant] = useState("false");
 
   const url = app_config.apiurl;
   const [socket, setSocket] = useState(io(url, { autoConnect: false }));
   const { investorid } = useParams();
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(sessionStorage.getItem("investor"))
+    JSON.parse(sessionStorage.getItem("true"))
   );
+
 
   const search =  async (field) => {
     const res = await fetch(

@@ -75,7 +75,7 @@ const AddBlog = () => {
           <div className="card-body">
             <p className="text-center h4">Blog</p>
             <hr />
-            <Formik initialValues={{ heading: "", content: "",image:"" }} onSubmit={BlogSubmit}>
+            <Formik initialValues={{ heading: "", content: "",image:"", date:"" }} onSubmit={BlogSubmit}>
              {({ values, handleSubmit, handleChange, isSubmitting }) => (
                <form onSubmit={handleSubmit} >
                    <label>Heading</label>

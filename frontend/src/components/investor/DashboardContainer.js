@@ -77,6 +77,7 @@ export default function InvestorDashboardContainer({children}) {
 
   const url = app_config.apiurl;
 const [planDetails, setPlanDetails] = useState(null);
+const [consultant, setConsultant] = useState( JSON.parse(sessionStorage.getItem("true")));
 const navigate = useNavigate();
 const [currentUser, setCurrentUser] = useState(
   JSON.parse(sessionStorage.getItem("investor"))
@@ -84,7 +85,7 @@ const [currentUser, setCurrentUser] = useState(
 
 React.useEffect(() => {
   getSubscriptionData(currentUser._id);
-
+  // getConsultantData(currentUser._id)
 }, []);
 
 const getSubscriptionData = async (id) => {
@@ -93,6 +94,15 @@ const getSubscriptionData = async (id) => {
     const data = await res.json();
     console.log(data.result);
     setPlanDetails(data.result);
+  }
+}
+
+const getConsultantData = async (id) => {
+  const res = await fetch(url + '/Subscription/getbyconsultant/' + id);
+  if (res.status === 201) {
+    const data = await res.json();
+    console.log(data.result);
+    setConsultant(data.result);
   }
 }
 
