@@ -69,6 +69,18 @@ router.get("/getall", (req, res) => {
     });
 });
 
+router.get("/getconsultant", (req, res) => {
+  Model.find({consultant: true})
+    .then((result) => {
+      console.log(result);
+      res.status(200).json({ status: "success", result });
+    })
+    .catch((err) => {
+      console.error("Error deleting user data", err);
+      res.status(500).send("Error deleting user data");
+    });
+});
+
 router.get("/getbyid/:id", (req, res) => {
   Model.findById(req.params.id).populate("contacts")
     .then((result) => {

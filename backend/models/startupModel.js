@@ -7,7 +7,7 @@ const startupSchema = new Schema({
   role: { type: String },
   password: { type: String, required: true }, //password
   contacts: [{type: Types.ObjectId, ref: 'startup'}],
-  consultant: Boolean,
+  consultant: {type : Boolean, default: false},
   startupimage: { type: String }, //startuplogo
   name: { type: String }, //startupname
   created_at: Date, //date of creation of startup
