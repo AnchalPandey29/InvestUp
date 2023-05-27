@@ -67,10 +67,11 @@ Join InvestUp today and unlock a world of possibilities for your startup or inve
 ![image](https://github.com/AnchalPandey29/InvestUp/assets/112573550/7df5014d-f765-4bc4-a7a9-b910fe3353fd)
 ![image](https://github.com/AnchalPandey29/InvestUp/assets/112573550/f549d448-53e6-44ba-b34f-1adb32f73476)
 
-
-
-
-
+<h4>
+Show ❤️ by starring the repository!
+ <br>
+Also, ⭐️ and fork if you want to give it a new feature a!
+</h4>
 
 
 
