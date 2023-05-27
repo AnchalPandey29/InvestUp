@@ -2,7 +2,10 @@
 
 #### It is a dynamic meeting platform designed to address the challenges faced by startups in fundraising and connecting with potential investors.
 - InvestUp aims to empower startups and investors to connect, collaborate, and thrive in a competitive ecosystem. By leveraging our platform, startups can overcome the funding challenges they face, while investors gain access to a curated pool of promising ventures. <br>
-Join InvestUp today and unlock a world of possibilities for your startup or investment portfolio.
+- To visit it's admin panel <a href="https://github.com/AnchalPandey29/Admin">Click here!!<a>
+ 
+Join InvestUp today and unlock a world of possibilities for your startup or investment portfolio.<br>
+
 
 
 ## Key Features:
@@ -67,14 +70,25 @@ Join InvestUp today and unlock a world of possibilities for your startup or inve
 ![image](https://github.com/AnchalPandey29/InvestUp/assets/112573550/7df5014d-f765-4bc4-a7a9-b910fe3353fd)
 ![image](https://github.com/AnchalPandey29/InvestUp/assets/112573550/f549d448-53e6-44ba-b34f-1adb32f73476)
 
-<h4>
-Show ❤️ by starring the repository!
- <br>
-Also, ⭐️ and fork if you want to give it a new feature a!
-</h4>
+<div align="center">
+<h2>Let's connect! Find me on the web...
+</h2>
 
 
+<a href="https://github.com/AnchalPandey29" target="_blank" style="padding:40px;"><img src="https://img.shields.io/badge/Github-AnchalPandey29-green?style=for-the-badge&logo=github"></a>
+<a href="mailto:anchal29pandey@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Email-anchal29pandey@gmail.com-teal?style=for-the-badge&logo=gmail"></a>
 
+<p>Show ❤️ by starring repositories you find good!<br>
+Also, ⭐️ and fork this repository if you wish to give this new feature a try!</p>
+</div>
+
+
+<div align="center">
+  
+[![HitCount](http://hits.dwyl.com/AnchalPandey29/AnchalPandey29.svg)](http://hits.dwyl.com/AnchalPandey29/AnchalPandey29) ![ViewCount](https://views.whatilearened.today/views/github/AnchalPandey29/AnchalPandey29.svg) <br>[![Thanks!](https://img.shields.io/badge/Thanks%20for%20visiting-!-1EAEDB.svg)](https://AnchalPandey29.github.io/AnchalPandey29/)
+
+</div>
+  
 
 
 
