@@ -60,12 +60,12 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link hover-overlay " to="/main/blogbrowser">
+              <NavLink className="nav-link hover-overlay " to="/main/blogbrowser" style={{color:"black"}}>
                 Blog
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link hover-overlay " to="/main/newsbrowser">
+              <NavLink className="nav-link hover-overlay " to="/main/newsbrowser" style={{color:"black"}}>
                 News
               </NavLink>
             </li>

@@ -30,7 +30,7 @@ const Checkout = () => {
       },
       body: JSON.stringify({
         user: currentUser._id,
-        startDate: today,
+        startDate: new Date(),
         endDate: new Date(today.setMonth(today.getMonth() + 1)),
         duration: "1 Month",
         data: {

@@ -28,6 +28,7 @@ const startupSchema = new Schema({
   productimage: { type: String }, //image of startup product
   productname: { type: String }, //Name of the product
   productdescription: { type: String }, //Description of the product
+  aadhar: { type: String },
 
   email: { type: String }, //startupemail
   tel: { type: String },
@@ -39,7 +40,6 @@ const startupSchema = new Schema({
   industry: { type: String },
   sector: { type: String },
   interests: { type: String },
-  aadhar: { type: String },
 
   investoravatar:{type:String},
   identityproofno:{type:String},

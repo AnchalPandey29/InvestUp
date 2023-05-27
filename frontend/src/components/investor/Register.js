@@ -15,7 +15,7 @@ import * as Yup from "yup";
 
 const RegisterSchema1 = Yup.object().shape({
   name: Yup.string().min(2, "Too Short!").required("Name is required"),
-  identityproofno: Yup.string().required("This field is mandatory"),
+  identityproofno: Yup.string().required("Identification number is mandatory"),
   //   identityproof:Yup.string().required("Identity Proof is requied"),
   //  date:Yup.string().required("This field is mandatory"),
   brief:Yup.string().required("Description is required"),
@@ -34,14 +34,15 @@ const RegisterSchema1 = Yup.object().shape({
   //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
 });
 
-  //const RegisterSchema2= Yup.object().shape({
+  // const RegisterSchema2= Yup.object().shape({
   //  email: Yup.string().email("Invalid email").required("Email is required"),
-   //   tel:Yup.string()
-    //    .max(10)
-    //   .required("contact number is required"),
-    // aplink:Yup.string().aplink("Application Link is mandatory"),
-   // istate:Yup.string().istate("State is required"),
-   // });
+  //    tel:Yup.string()
+  //      .max(10)
+  //      .min(10)
+  //     .required("contact number is required"),
+  // //   aplink:Yup.string().aplink("Application Link is mandatory"),
+  // //  istate:Yup.string().istate("State is required"),
+  //  });
 
 //const RegisterSchema3= Yup.object().shape({
  //DIPPTNumber:Yup.string().DIPPTNumber("DIPPT Number is required"),
@@ -65,17 +66,6 @@ const Register = () => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(sessionStorage.getItem("investor"))
   );
-
-  // const initialValues = {
-  //   name: "",
-  //   email: "",
-  //   tel: "",
-  //   type: "none",
-  //   Date,
-  //   category: "",
-  //   interests: "",
-  //   brief: "",
-  // };
 
   const onSubmit = async (values, { setSubmitting }) => {
     console.log(values);
@@ -268,14 +258,15 @@ const Register = () => {
 
                       <div
                         className="form-outline mb-4"
-                        style={{ width: "200px" }}
-                      >
+                        style={{width:"100%",borderRadius:"4px"}}
+                        >
                         <MDBInput
                           label="Date Of Establishment"
                           type="date"
                           value={values.date}
                           onChange={handleChange}
                           name="date"
+
                         />
                         {errors.date && touched.date ? (
                           <div>{errors.date}</div>
@@ -290,6 +281,8 @@ const Register = () => {
                           id="select1"
                           value={values.select1}
                           onChange={handleChange}
+                          style={{width:"100%",height:"32px",borderRadius:"4px"}}
+
                         >
                           <label htmlFor="Duration">Duration</label>
                           <option value=" Upto 6"> Upto 6</option>
@@ -355,7 +348,7 @@ const Register = () => {
                         </label>
                       </div>
 
-                      <div class="form-outline mb-4">
+                      <div class="form-outline mb-4 mt-4">
                         <MDBTextArea
                           label="Brief"
                           name="brief"
@@ -464,7 +457,6 @@ const Register = () => {
           <div style={{ height: "fit-content"}}>
             <Formik
               initialValues={{ email: "", tel: "",istate: "",city:"",website:" ",aplink:"" }}
-              //validationSchema={RegisterSchema2}
               onSubmit={onSubmit}
             >
               {({
@@ -485,6 +477,7 @@ const Register = () => {
                           value={values.email}
                           onChange={handleChange}
                           name="email"
+
                         />
                         {errors.email && touched.email ? (
                           <div>{errors.email}</div>
@@ -641,6 +634,8 @@ const Register = () => {
                       id="industry"
                       value={values.industry}
                       onChange={handleChange}
+                      style={{width:"100%",height:"32px",borderRadius:"4px"}}
+
                     >
                       <FormLabel> Industry</FormLabel>
                       <option value=""></option>
@@ -677,6 +672,8 @@ const Register = () => {
                       id="select1"
                       value={values.select1}
                       onChange={handleChange}
+                      style={{width:"100%",height:"32px",borderRadius:"4px"}}
+
                     >
                       <FormLabel>Interests</FormLabel>
                       <option value="" selected></option>

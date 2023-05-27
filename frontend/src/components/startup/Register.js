@@ -183,7 +183,10 @@ const Register = () => {
                     <div className="d-flex flex-column">
                     <div class="form-outline mb-2">
                         <div class="file-upload-wrapper">
+                    
                           <div class="image-body">
+                            <label htmlFor="Profile pic">Startup Image</label>
+                            <br />
                             <input type="file" label='Startup Image' onChange={uploadImage} />
                             {selimage === '' && currentUser.startupimage ==='' ? (
                           <div>{'Image Required'}</div>
@@ -358,7 +361,8 @@ const Register = () => {
                          </div>
                       <div className="col">
                         <div className="form-outline mb-4">
-                        <MDBInput label='Contact' type="text"id="ownercontact" name="ownercontact"  value={values.ownercontact} onChange={handleChange}/>
+                        <MDBInput label='Contact' type="text"id="ownercontact" name="ownercontact"  value={values.ownercontact} onChange={handleChange}
+                         maxLength={10} minLength={10}/>
                           
                         </div>
                       </div>
@@ -529,7 +533,7 @@ const Register = () => {
                   select2: '',
                   type: '',
                 }}
-                validationSchema={Schema4} 
+               
                 onSubmit={updateUser}
               >
                 {({ values, handleSubmit, handleChange, isSubmitting ,errors,touched}) => (
@@ -576,7 +580,7 @@ const Register = () => {
                         value={values.sector}
                         onChange={handleChange}
                       >
-                        <FormLabel>Sector</FormLabel>
+                        <FormLabel >Sector</FormLabel>
                         <option value="Technology">Technology</option>
                         <option value="Sports">Sports</option>
                         <option value="Entertainment">Entertainment</option>
@@ -611,7 +615,7 @@ const Register = () => {
 
                     <div className="col">
                       <div className="form-outline mb-4">
-                      <MDBInput label='CIN (Corporate Idfentification Number)' type="text" id="aadhar" value={values.aadhar} onChange={handleChange} name="aadhar"
+                      <MDBInput label='CIN (Corporate Idfentification Number)' type="text" value={values.aadhar} onChange={handleChange} name="aadhar"
                       maxLength={21} minLength={21}/>
                        <br/>
                        {errors.aadhar && touched.aadhar ? (

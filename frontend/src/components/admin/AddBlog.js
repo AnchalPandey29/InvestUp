@@ -70,12 +70,12 @@ const AddBlog = () => {
          
         </div>
 
-      <div className="col-md-3 mx-auto pt-5">
-        <div className="card">
+      <div className="row-md-3 mx-auto pt-5" style={{display:"flex",justifyContent:"center"}}>
+        <div className="card " style={{width:"80%"}}>
           <div className="card-body">
-            <p className="text-center h4">Blog</p>
+            <p className="text-center h4">Add Blog</p>
             <hr />
-            <Formik initialValues={{ heading: "", content: "",image:"", date:"" }} onSubmit={BlogSubmit}>
+            <Formik initialValues={{ heading: "", content: "",image:"", date:"" }} onSubmit={BlogSubmit} >
              {({ values, handleSubmit, handleChange, isSubmitting }) => (
                <form onSubmit={handleSubmit} >
                    <label>Heading</label>
@@ -94,11 +94,12 @@ const AddBlog = () => {
                       <label htmlFor="select2">Category</label><br/>
                       
                       <select
-                       style={{ width: "45vh"}}
                         className="select"
                         name="category"
                         value={values.category}
                         onChange={handleChange}
+                        style={{width:"150%",height:"32px",borderRadius:"4px"}}
+
                       >
                         <FormLabel >Category</FormLabel>
                         <option value=""></option>

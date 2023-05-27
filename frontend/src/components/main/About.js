@@ -14,11 +14,11 @@ const About = () => {
 
       <div className="row justify-content-center p-5" style={{ height: "40vh", backgroundColor: "#9c3353" }}>
 
-        <h1 className="text-center" style={{ color: "white", marginTop: "50px" }}>About InvestUp</h1>
+        <h1 className="text-center" style={{ color: "white", marginTop: "40px" }}>About InvestUp</h1>
 
       </div>
 
-      <div className="row justify-content-center mx-auto" style={{marginTop:"-100px" , height:"fit-content"}}>
+      <div className="row justify-content-center mx-auto" style={{marginTop:"-140px" , height:"fit-content"}}>
 
         <div className="col-md-3 p-4 mx-3 my-4 card justify-content-center align-items-center" style={{ backgroundColor: "white" ,width:"300px"}}>
 

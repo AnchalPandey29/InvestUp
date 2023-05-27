@@ -22,17 +22,16 @@ const ConsultancyCard = () => {
       return consultantList.map(({_id, name, brief, investoravatar}, index) => (
         <div className=" col-lg-3 m-3 card p-3" style={{ height: "fit-content" }}>
             <img
-              className="rounded-circle shadow-1-strong mb-4"
+              className="img-fluid rounded-circle shadow-1-strong mb-4"
               src={url+'/'+investoravatar}
               alt="avatar"
-              style={{ width: 150 }}
+              style={{ height: 150, width: 150 }}
             />
             <h5 className="mb-3">{name}</h5>
             {/* <p>CEO and co-founder of <b> BitOasis</b></p> */}
-            <p>{brief}</p>
             <p className="text-muted">
               <i className="fas fa-quote-left pe-2" />
-              BitOasis  is leading platformthat allows you to securely buy, sell and trade cryptocurrencies like Bitcoin.
+              {brief}
             </p>
             <Link className='btn' to={"/startup/chat/"+_id} style={{ background: " #9c3353", color: "white" }}>Chat</Link>
           </div>

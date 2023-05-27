@@ -3,7 +3,16 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Eligible = () => {
   return (
+    <>
+    <div
+    className="row"
+    style={{ height: "30vh", backgroundColor: "#9c3353"}}>
+    <h1 className='text-center' style={{color:"white",marginTop:"90px"}}>Eligibility Criteria</h1>
+
+    </div>
   <div className='mx-5'>
+     
+
     <div className='m-5'>
       <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
         <li class="nav-item" role="presentation">
@@ -125,6 +134,7 @@ const Eligible = () => {
        
     </div>
   </div>   
+  </>
 
   )
 }

@@ -38,15 +38,17 @@ const CampaignDetail = () => {
          
        
          <div className='row mb-3'>
-          <div className='col-md-5 me-5'>
-              <h5>Start Date</h5>
-              <p>{new Date(campaignData.startdate).toLocaleDateString()}</p>
-          </div>
-          <div className='col-md-5'>
-              <h5>Last Date</h5>
-              <p>{new Date(campaignData.lastdate).toLocaleDateString()}</p>
+         
+          
+          
+              <p><strong className='me-5'>Start Date:</strong>
+              {new Date(campaignData.startdate).toLocaleDateString()}</p>
+              <br />
+              
+              <p><strong className='me-5'>Last Date:</strong>
+              {new Date(campaignData.lastdate).toLocaleDateString()}</p>
 
-          </div>
+          
         </div>
        <p> {campaignData.content}</p>
        <button className='btn m-3' style={{background:"#9c3353",color:"white",width:"fit-content"}}>Apply Now</button>

@@ -45,7 +45,7 @@ const Contact = () => {
 
   const ContactSchema = Yup.object().shape({
     name: Yup.string().required("Name is required")
-    .max(15, "Name must be atmost 10 characters"),
+    .max(14, "Name must be atmost 10 characters"),
     email: Yup.string()
       .email("Invalid email")
       .required("Email is required"),
@@ -53,7 +53,7 @@ const Contact = () => {
     
     message: Yup.string()
       .max(100, "Message limit exceeded")
-      .required("Password is required"),
+      .required("Message is required"),
   });
 
   return(

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAdminContext } from "../../context/AdminProvider";
 
 const Header = () => {
   const { loggedin, setLoggedin, logout } = useAdminContext();
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('investor')));
+  const [currentStartup, setCurrentStartup] = useState(JSON.parse(sessionStorage.getItem('startup')));
 
   return (
     <>
@@ -41,108 +43,45 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
+            
               <li className="nav-item">
-                <NavLink className="nav-link" to="/main/signup">
-                  Signup
-                </NavLink>
+
+                {
+
+                    (currentUser === null ) ?
+                      (
+                        <NavLink className="nav-link" to="/startup/dashboard" >
+                          Dashboard
+                        </NavLink>
+                      ) :
+                      (currentStartup === null) ?
+                        (
+
+                          <NavLink className="nav-link" to="/investor/dashboard">
+                            Dashboard
+                          </NavLink>
+                        ) :
+                        ''
+
+                }
+
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/main/login">
-                  Login
-                </NavLink>
+                
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/admin/dashboard">
-                  Dashboard
+                <NavLink className="nav-link" to="/main/BlogBrowser">
+                  Blog
                 </NavLink>
               </li>
             </ul>
-            {/* Left links */}
           </div>
-          {/* Collapsible wrapper */}
-          {/* Right elements */}
+          
           <div className="d-flex align-items-center">
-            {/* Icon */}
-            {/* <a className="text-reset me-3" href="#">
-              <i className="fas fa-shopping-cart" />
-            </a> */}
-            {/* Notifications */}
-            {/* <div className="dropdown">
-              <a
-                className="text-reset me-3 dropdown-toggle hidden-arrow"
-                href="#"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-mdb-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i className="fas fa-bell " style={{color:"black"}} />
-                <span className="badge rounded-pill badge-notification bg-danger">
-                  1
-                </span>
-              </a>
-              <ul
-                className="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Some news
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another news
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </div>
-            {/* Avatar */}
-            {/* <div className="dropdown">
-              <a
-                className="dropdown-toggle d-flex align-items-center hidden-arrow"
-                href="#"
-                id="navbarDropdownMenuAvatar"
-                role="button"
-                data-mdb-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-            src="https://img.freepik.com/free-icon/user_318-219674.jpg"
-            class="rounded-circle"
-            height="25"
-            alt="Black and White Portrait of a Man"
-            loading="lazy"
-          />
-              </a>
-              <ul
-                className="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdownMenuAvatar"
-              >
-                <li>
-                  <a className="dropdown-item" href="#">
-                    My profile
-                  </a>
-                </li>
-                
-                <li>
-                  <button onClick={logout} className="dropdown-item">
-                    Logout
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div> */} */}
+         
           </div>
         </div>
-        {/* Container wrapper */}
       </nav>
-      {/* Navbar */}
     </>
   );
 };

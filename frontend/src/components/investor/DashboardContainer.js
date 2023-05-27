@@ -260,7 +260,7 @@ const getSubscriptionData = async (id) => {
         </div>
         </a> */}
 
-        <button
+        {/* <button
           className="navbar-brand mt-2"
           onClick={openConsultancy}
           style={{ border: "none" }}
@@ -274,7 +274,28 @@ const getSubscriptionData = async (id) => {
               &nbsp; Consultancy
             </p>
           </div>
-        </button>
+        </button> */}
+        {currentUser.consultant && (
+          <>
+          
+            <button
+              className="navbar-brand mt-2"
+              onClick={openConsultancy}
+              style={{ border: "none" }}
+            >
+              <div
+                className="col ms-3"
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <p>
+                  <i class="fas fa-comment-dots me-4"></i>
+                  &nbsp; Consultancy
+                </p>
+              </div>
+            </button>
+            <Divider />
+          </>
+        )}
 
         {/* <List  >
           {['StartupList', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -324,33 +345,13 @@ const getSubscriptionData = async (id) => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <p>
-              <i class="fas fa-comment-dots  me-4  "></i>
+              <i class="fas fa-network-wired fa-lg me-3 "></i>
               &nbsp; Campaign
             </p>
           </div>
         </button>
         <Divider />
-        {currentUser.consultant && (
-          <>
-            <button
-              className="navbar-brand mt-2"
-              onClick={openCampaign}
-              style={{ border: "none" }}
-            >
-              <div
-                className="col ms-3"
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <p>
-                  <i class="fas fa-comment-dots me-4"></i>
-                  &nbsp; Provide Consultation
-                </p>
-              </div>
-            </button>
-            <Divider />
-          </>
-        )}
-
+       
         {/* <List >
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem key={text} disablePadding  >

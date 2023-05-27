@@ -57,8 +57,8 @@ import app_config from "../../config";
         if (res.status === 200) {
           Swal.fire({
             icon: "success",
-            title: "success",
-            text: "OTP Sent Successfully",
+            title: "Done",
+            text: "OTP sent Successfully",
           });
         }
         return res.json();
@@ -163,8 +163,10 @@ import app_config from "../../config";
     const showResetForm = () => {
       if (showReset) {
         return (
-          <Card className="mt-5" sx={{ width: 451 }} align="center">
+          <Card className="mt-5 mb-5" sx={{ width: 451 }} align="center">
             <CardContent align="center">
+            {/* <h1>Forget Password</h1> */}
+
               <Formik
                 initialValues={passwordForm}
                 onSubmit={verifyOTP}
@@ -190,7 +192,6 @@ import app_config from "../../config";
                       type={passVisible ? "text" : "password"}
                       value={values.password}
                       error={Boolean(errors.password)}
-                      helperText="Enter your Password please"
                       onChange={handleChange}
                       InputProps={{
                         endAdornment: (
@@ -237,11 +238,11 @@ import app_config from "../../config";
                     />
   
                     <Button
-                      color="primary"
                       variant="contained"
                       className="mt-5"
                       type="submit"
                       fullWidth
+                      style={{color:"white",background:"#9c3353"}}
                     >
                       Submit
                     </Button>
@@ -272,17 +273,20 @@ import app_config from "../../config";
             />
   
             <Button
-              color="success"
               variant="contained"
               className="mt-5"
               type="submit"
               fullWidth
               onClick={verifyUser}
+              style={{color:"white",background:"#9c3353"}}
+
             >
-              Submit
+              Send OTP
             </Button>
           </CardContent>
         </Card>
+        <hr className="mt-5"/>
+
   
         {showResetForm()}
       </div>
